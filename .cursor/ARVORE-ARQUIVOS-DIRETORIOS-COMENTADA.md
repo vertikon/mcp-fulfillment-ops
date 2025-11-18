@@ -931,33 +931,93 @@ mcp-hulk/                                    # Raiz do projeto MCP-HULK
 │   │   ├── 📄 versioning_service.go         # Serviço de aplicação Versioning
 │   │   └── 📄 monitoring_service.go        # Serviço de aplicação Monitoring
 │   │
-│   └── 📁 security/                         # BLOCO-9: Security Layer
-│       │                                    # Autenticação, autorização, criptografia
+│   └── 📁 security/                         # BLOCO-9: Security Layer (Defense in Depth)
+│       │                                    # Sistema imunológico do MCP-HULK
+│       │                                    # Cross-Cutting Concern: Auth, RBAC, Encryption
 │       │
-│       ├── 📁 auth/                         # Autenticação
-│       │   │                                # JWT, OAuth 2.0, sessões
-│       │   ├── 📄 jwt_manager.go            # Gerenciador JWT
-│       │   ├── 📄 oauth_manager.go          # Gerenciador OAuth 2.0
-│       │   ├── 📄 session_manager.go        # Gerenciador de sessões
-│       │   └── 📄 token_validator.go        # Validador de tokens
+│       ├── 📁 auth/                         # Autenticação e Autorização
+│       │   │                                # Barreira 1: Identidade (Auth, JWT, OAuth)
+│       │   ├── 📄 auth_manager.go          # ✅ AuthManager: Login, Register, ValidateToken, Logout
+│       │   │                                # Função: Authenticate, Register, ValidateToken, HasPermission, Logout
+│       │   │                                # Integração: TokenManager, SessionManager, RBACManager
+│       │   ├── 📄 auth_manager_test.go     # ✅ Testes unitários
+│       │   │
+│       │   ├── 📄 token_manager.go         # ✅ TokenManager: JWT tokens (HS256/RS256)
+│       │   │                                # Função: Generate, Validate, Refresh, Revoke
+│       │   │                                # Suporte: HS256, RS256, Claims customizados, Revocation list
+│       │   ├── 📄 token_manager_test.go    # ✅ Testes unitários
+│       │   │
+│       │   ├── 📄 session_manager.go       # ✅ SessionManager: Gestão de sessões
+│       │   │                                # Função: Create, Get, GetByUserID, Validate, Refresh, Invalidate, InvalidateAll
+│       │   │                                # Features: Limite de sessões simultâneas, Expiração automática
+│       │   ├── 📄 session_manager_test.go  # ✅ Testes unitários
+│       │   ├── 📄 in_memory_session_store.go # ✅ InMemorySessionStore para testes
+│       │   │
+│       │   ├── 📄 oauth_provider.go        # ✅ OAuthProvider: OAuth2/OIDC
+│       │   │                                # Providers: Google, GitHub, Azure AD, Auth0
+│       │   │                                # Função: GetAuthURL, ExchangeCode, GetUserInfo
+│       │   ├── 📄 oauth_manager_test.go     # ✅ Testes unitários
+│       │   ├── 📄 oauth_provider_google_test.go   # ✅ Testes Google OAuth
+│       │   ├── 📄 oauth_provider_github_test.go   # ✅ Testes GitHub OAuth
+│       │   ├── 📄 oauth_provider_azuread_test.go  # ✅ Testes Azure AD OAuth
+│       │   ├── 📄 oauth_provider_auth0_test.go    # ✅ Testes Auth0 OAuth
+│       │   └── 📄 oauth_auth0_example.go   # ✅ Exemplo Auth0
 │       │
-│       ├── 📁 rbac/                         # Role-Based Access Control
-│       │   │                                # Controle de acesso baseado em roles
-│       │   ├── 📄 rbac_manager.go           # Gerenciador RBAC
-│       │   ├── 📄 permission_checker.go     # Verificador de permissões
-│       │   ├── 📄 policy_enforcer.go         # Enforçador de políticas
-│       │   └── 📄 role_manager.go           # Gerenciador de roles
+│       ├── 📁 encryption/                   # Criptografia e Gestão de Chaves
+│       │   │                                # Barreira 3: Proteção de Dados
+│       │   ├── 📄 encryption_manager.go     # ✅ EncryptionManager: AES-256-GCM, RSA, bcrypt, Argon2
+│       │   │                                # Função: Encrypt, Decrypt, EncryptWithKey, DecryptWithKey
+│       │   │                                # Função: HashPassword, VerifyPassword, HashArgon2, Sign, Verify
+│       │   ├── 📄 encryption_manager_test.go # ✅ Testes unitários
+│       │   │
+│       │   ├── 📄 key_manager.go            # ✅ KeyManager: Gestão e rotação de chaves
+│       │   │                                # Função: GetEncryptionKey, GetKeyVersion, RotateKey
+│       │   │                                # Função: GetRSAPrivateKey, GetRSAPublicKey
+│       │   │                                # Função: LoadKeyFromEnv, LoadKeyFromFile (✅ Implementado)
+│       │   │                                # Features: Rotação automática, Thread-safe, Export PEM
+│       │   │
+│       │   ├── 📄 certificate_manager.go    # ✅ CertificateManager: Certificados TLS
+│       │   │                                # Função: GetTLSCertificate, GenerateSelfSignedCert
+│       │   │                                # Função: LoadCertificateFromFile, RotateCertificate, GetCertificateExpiry
+│       │   │                                # Features: Rotação automática, Parsing X.509
+│       │   │
+│       │   └── 📄 secure_storage.go         # ✅ SecureStorage: Armazenamento seguro de segredos
+│       │       │                                # Função: Store, Retrieve, Delete, Exists, List
+│       │       │                                # Features: Encrypt-before-write, Decrypt-on-read
+│       │       │                                # Backend: Abstrato (permite Redis/DB), InMemoryBackend para testes
 │       │
-│       ├── 📁 encryption/                   # Criptografia
-│       │   │                                # Criptografia AES-256, RSA, certificados
-│       │   ├── 📄 encryption_manager.go      # Gerenciador de criptografia
-│       │   ├── 📄 key_manager.go            # Gerenciador de chaves
-│       │   └── 📄 certificate_manager.go    # Gerenciador de certificados
+│       ├── 📁 rbac/                         # RBAC e Policies
+│       │   │                                # Barreira 2: Autorização (RBAC, Policies)
+│       │   ├── 📄 rbac_manager.go           # ✅ RBACManager: Role-Based Access Control
+│       │   │                                # Função: HasPermission, AssignRole, RevokeRole, GetUserRoles
+│       │   │                                # Função: CreateRole, GetRole, ListRoles
+│       │   │                                # Integração: RoleManager, PermissionChecker, PolicyEnforcer
+│       │   ├── 📄 rbac_manager_test.go      # ✅ Testes unitários
+│       │   │
+│       │   ├── 📄 role_manager.go           # ✅ RoleManager: CRUD de Roles
+│       │   │                                # Função: CreateRole, UpdateRole, DeleteRole, GetRole, ListRoles, Sync
+│       │   │                                # Features: RoleStore abstrato, InMemoryRoleStore para testes
+│       │   │
+│       │   ├── 📄 permission_checker.go     # ✅ PermissionChecker: Verificação granular
+│       │   │                                # Função: HasPermission, RegisterOverride, ListOverrides
+│       │   │                                # Features: Pattern matching, Overrides, Condições customizadas
+│       │   │
+│       │   ├── 📄 policy_enforcer.go        # ✅ PolicyEnforcer: Políticas complexas
+│       │   │                                # Função: Register, Remove, Evaluate, List, Clear
+│       │   │                                # Features: Priorização, Condições (Role, Tenant, Attribute, TimeWindow)
+│       │   │                                # Policies: "Somente admin pode deletar MCP", "Tenants isolados", etc.
+│       │   │
+│       │   ├── 📄 matcher.go                # ✅ Pattern matching para recursos/ações
+│       │   └── 📄 effects.go                # ✅ PolicyEffect (Allow/Deny)
 │       │
-│       └── 📁 config/                        # Configuração de segurança
-│           │                                # Configurações de segurança
-│           ├── 📄 security_config.go        # Configuração de segurança
-│           └── 📄 loader.go                 # Carregador de configuração
+│       └── 📁 config/                       # Configuração de Segurança
+│           │                                # Carregamento de configs (YAML, ENV)
+│           ├── 📄 loader.go                 # ✅ Loader de configuração
+│           │                                # Função: Load, resolveEnvVars, resolveEnvVar
+│           │                                # Features: Suporte YAML, Variáveis de ambiente, Placeholders
+│           ├── 📄 loader_test.go            # ✅ Testes unitários
+│           ├── 📄 types.go                 # ✅ Tipos de configuração
+│           └── 📄 integration.go           # ✅ Integração com outros blocos
 │
 ├── 📁 pkg/                                  # BLOCO-1: Public Libraries
 │   │                                        # Bibliotecas públicas reutilizáveis (exportadas)
@@ -1038,33 +1098,165 @@ mcp-hulk/                                    # Raiz do projeto MCP-HULK
 │   │   ├── 📄 main.rs.tmpl                  # main.rs template (Rust)
 │   │   └── 📄 manifest.yaml                 # Manifesto do template WASM
 │   │
-│   ├── 📁 web/                              # Template Web (React/TypeScript)
-│   │   │                                    # Template para projetos web frontend
-│   │   ├── 📄 App.tsx.tmpl                  # App.tsx template
-│   │   ├── 📄 index.tsx.tmpl                # index.tsx template
-│   │   └── 📄 manifest.yaml                 # Manifesto do template Web
+│   ├── 📁 base/                             # BLOCO-10: Template Clean Architecture Base
+│   │   │                                    # Template genérico para qualquer stack
+│   │   │                                    # Estrutura canônica mínima do Hulk
+│   │   ├── 📄 manifest.yaml                 # Metadados do template base
+│   │   ├── 📄 README.md.tmpl                # Documentação do template base
+│   │   ├── 📄 CHANGELOG.md.tmpl             # Histórico de mudanças
+│   │   └── 📄 structure.yaml.tmpl           # Estrutura de diretórios Clean Architecture
 │   │
-│   ├── 📁 mcp-go-premium/                   # Template MCP Go Premium
+│   ├── 📁 go/                               # BLOCO-10: Template Go Premium
+│   │   │                                    # Template Go com Clean Architecture avançada
+│   │   │                                    # Echo, Zap, Viper, Docker multi-stage
+│   │   ├── 📄 manifest.yaml                 # Metadados do template Go
+│   │   ├── 📄 README.md.tmpl                # Documentação do template Go
+│   │   ├── 📄 CHANGELOG.md.tmpl             # Histórico de mudanças
+│   │   ├── 📄 go.mod.tmpl                   # go.mod template com placeholders
+│   │   ├── 📄 Dockerfile.tmpl                # Dockerfile multi-stage
+│   │   ├── 📄 docker-compose.yaml.tmpl      # Docker Compose para desenvolvimento
+│   │   ├── 📁 cmd/server/
+│   │   │   └── 📄 main.go.tmpl              # Ponto de entrada HTTP com Echo
+│   │   └── 📁 internal/
+│   │       ├── 📁 config/
+│   │       │   └── 📄 config.go.tmpl        # Configuração centralizada (Viper)
+│   │       ├── 📁 domain/
+│   │       │   └── 📄 entities.go.tmpl        # Entidades de domínio
+│   │       ├── 📁 application/
+│   │       │   └── 📄 usecases.tmpl         # Casos de uso
+│   │       ├── 📁 infrastructure/
+│   │       │   └── 📄 repositories.tmpl       # Repositórios
+│   │       └── 📁 interfaces/
+│   │           └── 📄 handlers.tmpl           # Handlers HTTP
+│   │
+│   ├── 📁 tinygo/                           # BLOCO-10: Template TinyGo WASM
+│   │   │                                    # Template para módulos WASM (edge/browser/IoT)
+│   │   │                                    # Funções exportadas WASM
+│   │   ├── 📄 manifest.yaml                 # Metadados do template TinyGo
+│   │   ├── 📄 README.md.tmpl                # Documentação do template TinyGo
+│   │   ├── 📄 CHANGELOG.md.tmpl             # Histórico de mudanças
+│   │   ├── 📄 go.mod.tmpl                   # go.mod template
+│   │   ├── 📄 main.go.tmpl                  # Funções WASM exportadas (SetMetric, GetMetric)
+│   │   ├── 📁 cmd/__NAME__/
+│   │   │   └── 📄 main.go                   # Runner de testes locais (placeholder __NAME__)
+│   │   └── 📁 wasm/
+│   │       └── 📄 exports.go.tmpl           # Utilitários de memória/echo WASM
+│   │
+│   ├── 📁 web/                              # BLOCO-10: Template Web React/Vite
+│   │   │                                    # Template frontend moderno com React + TypeScript
+│   │   │                                    # Dashboard completo de monitoramento
+│   │   ├── 📄 manifest.yaml                 # Metadados do template Web
+│   │   ├── 📄 README.md.tmpl                # Documentação do template Web
+│   │   ├── 📄 CHANGELOG.md.tmpl             # Histórico de mudanças
+│   │   ├── 📄 IMPLEMENTACAO.md               # Documentação de implementação do dashboard
+│   │   ├── 📄 package.json.tmpl              # Dependências npm
+│   │   ├── 📄 vite.config.ts.tmpl            # Configuração Vite
+│   │   ├── 📄 index.html.tmpl                # HTML base
+│   │   ├── 📄 tailwind.config.js            # Configuração Tailwind CSS
+│   │   ├── 📄 tsconfig.json                 # Configuração TypeScript
+│   │   ├── 📄 postcss.config.js             # Configuração PostCSS
+│   │   ├── 📁 public/
+│   │   │   └── 📄 manifest.json.tmpl         # Manifest PWA
+│   │   └── 📁 src/
+│   │       ├── 📄 main.tsx.tmpl              # Entry point React
+│   │       ├── 📄 App.tsx.tmpl               # Componente principal
+│   │       ├── 📄 index.css                  # Estilos globais
+│   │       ├── 📁 components/
+│   │       │   ├── 📁 charts/               # Componentes de gráficos
+│   │       │   │   ├── 📄 LineChart.tsx
+│   │       │   │   └── 📄 CacheHitChart.tsx
+│   │       │   ├── 📁 layouts/              # Componentes de layout
+│   │       │   │   └── 📄 Header.tsx
+│   │       │   ├── 📁 sections/             # Seções do dashboard
+│   │       │   │   ├── 📄 MetricsSection.tsx
+│   │       │   │   ├── 📄 ComponentStatusSection.tsx
+│   │       │   │   ├── 📄 AlertsSection.tsx
+│   │       │   │   ├── 📄 ComponentTabs.tsx
+│   │       │   │   ├── 📄 PerformanceCharts.tsx
+│   │       │   │   └── 📄 QuickControls.tsx
+│   │       │   └── 📁 ui/                   # Componentes UI reutilizáveis
+│   │       │       ├── 📄 MetricCard.tsx
+│   │       │       └── 📄 ComponentStatusCard.tsx
+│   │       ├── 📁 hooks/                    # Custom hooks
+│   │       │   ├── 📄 useMetrics.ts
+│   │       │   └── 📄 useChartData.ts
+│   │       └── 📁 types/                    # Definições TypeScript
+│   │           └── 📄 index.ts
+│   │
+│   ├── 📁 wasm/                             # BLOCO-10: Template Rust WASM
+│   │   │                                    # Template Rust com wasm-bindgen
+│   │   │                                    # Alta performance para browser
+│   │   ├── 📄 manifest.yaml                 # Metadados do template WASM
+│   │   ├── 📄 README.md.tmpl                # Documentação do template WASM
+│   │   ├── 📄 CHANGELOG.md.tmpl             # Histórico de mudanças
+│   │   ├── 📄 Cargo.toml.tmpl               # Cargo.toml com placeholders
+│   │   ├── 📄 build.sh                      # Script de build wasm-pack
+│   │   └── 📁 src/
+│   │       └── 📄 lib.rs.tmpl               # Funções WASM exportadas (update_metric, ping)
+│   │
+│   ├── 📁 mcp-go-premium/                  # BLOCO-10: Template MCP Go Premium
 │   │   │                                    # Template completo com todas funcionalidades
-│   │   ├── 📄 main.go.tmpl                  # main.go premium
-│   │   ├── 📄 handler.go.tmpl               # handler premium
-│   │   └── 📄 manifest.yaml                 # Manifesto premium
+│   │   │                                    # Integra: AI, State, Monitoring, Infra, Interfaces
+│   │   ├── 📄 manifest.yaml                 # Metadados do template MCP Premium
+│   │   ├── 📄 README.md.tmpl                # Documentação do template MCP Premium
+│   │   ├── 📄 CHANGELOG.md.tmpl             # Histórico de mudanças
+│   │   ├── 📄 go.mod.tmpl                   # go.mod template
+│   │   ├── 📄 Makefile                      # Makefile com comandos úteis
+│   │   ├── 📁 configs/
+│   │   │   └── 📄 dev.yaml.tmpl             # Configuração desenvolvimento
+│   │   ├── 📁 cmd/
+│   │   │   └── 📄 main.go.tmpl              # Ponto de entrada com integrações completas
+│   │   └── 📁 internal/
+│   │       ├── 📁 ai/                       # Integração Bloco-6 (AI)
+│   │       │   ├── 📁 agents/
+│   │       │   │   └── 📄 agent.go.tmpl    # Agentes de IA
+│   │       │   ├── 📁 core/
+│   │       │   │   └── 📄 orchestrator.go.tmpl # Orquestrador de IA
+│   │       │   └── 📁 rag/
+│   │       │       └── 📄 ingestion.go.tmpl  # Ingestão RAG
+│   │       ├── 📁 core/                     # Core engine e cache
+│   │       │   ├── 📁 cache/
+│   │       │   │   └── 📄 cache.go.tmpl     # Sistema de cache
+│   │       │   └── 📁 engine/
+│   │       │       └── 📄 engine.go.tmpl    # Motor de execução
+│   │       ├── 📁 infrastructure/            # Integração Bloco-7 (Infra)
+│   │       │   └── 📁 http/
+│   │       │       └── 📄 server.go.tmpl    # Servidor HTTP
+│   │       ├── 📁 interfaces/               # Integração Bloco-8 (Interfaces)
+│   │       │   └── 📁 http/
+│   │       │       └── 📄 handlers.go.tmpl  # Handlers HTTP
+│   │       ├── 📁 monitoring/                # Integração Bloco-4 (Monitoring)
+│   │       │   └── 📄 telemetry.go.tmpl     # Telemetria OpenTelemetry
+│   │       └── 📁 state/                    # Integração Bloco-3 (State)
+│   │           └── 📄 store.go.tmpl         # Store de estado
 │   │
-│   ├── 📁 k8s/                              # Templates Kubernetes
-│   │   │                                    # Manifests Kubernetes para deploy
-│   │   ├── 📄 deployment.yaml.tmpl          # Deployment template
-│   │   ├── 📄 service.yaml.tmpl             # Service template
-│   │   └── 📄 ingress.yaml.tmpl            # Ingress template
+│   ├── 📁 k8s/                              # BLOCO-10: Templates Kubernetes
+│   │   │                                    # Manifests Kubernetes completos para deploy
+│   │   │                                    # Integração Bloco-7 (Infra)
+│   │   ├── 📄 manifest.yaml                 # Metadados dos templates K8s
+│   │   ├── 📄 Chart.yaml.tmpl               # Helm Chart
+│   │   ├── 📄 values.yaml.tmpl              # Valores do Helm Chart
+│   │   ├── 📄 deployment.yaml.tmpl          # Deployment Kubernetes
+│   │   ├── 📄 service.yaml.tmpl             # Service Kubernetes
+│   │   ├── 📄 ingress.yaml.tmpl             # Ingress Kubernetes
+│   │   ├── 📄 configmap.yaml.tmpl           # ConfigMap Kubernetes
+│   │   ├── 📄 secret.yaml.tmpl              # Secret Kubernetes
+│   │   └── 📄 hpa.yaml.tmpl                 # Horizontal Pod Autoscaler
 │   │
-│   ├── 📁 docker-compose/                   # Templates Docker Compose
-│   │   │                                    # Docker Compose para desenvolvimento
-│   │   ├── 📄 docker-compose.yml.tmpl      # docker-compose.yml template
-│   │   └── 📄 Dockerfile.tmpl               # Dockerfile template
+│   ├── 📁 docker-compose/                   # BLOCO-10: Templates Docker Compose
+│   │   │                                    # Docker Compose para diferentes ambientes
+│   │   │                                    # Integração Bloco-7 (Infra)
+│   │   ├── 📄 manifest.yaml                 # Metadados dos templates Docker Compose
+│   │   ├── 📄 docker-compose.yaml.tmpl      # Docker Compose base
+│   │   ├── 📄 docker-compose.dev.yaml.tmpl  # Docker Compose desenvolvimento
+│   │   └── 📄 docker-compose.prod.yaml.tmpl # Docker Compose produção
 │   │
-│   └── 📁 ci-cd/                            # Templates CI/CD
+│   └── 📁 ci-cd/                            # BLOCO-10: Templates CI/CD
 │       │                                    # Templates para pipelines CI/CD
-│       ├── 📄 github-actions.yml.tmpl       # GitHub Actions template
-│       └── 📄 gitlab-ci.yml.tmpl           # GitLab CI template
+│       │                                    # Integração Bloco-7 (Infra)
+│       ├── 📄 manifest.yaml                 # Metadados dos templates CI/CD
+│       ├── 📄 azure-pipelines.yml.tmpl      # Azure Pipelines template
+│       └── 📄 Jenkinsfile.tmpl              # Jenkinsfile template
 │
 ├── 📁 tools/                                # BLOCO-11: Tools & Utilities
 │   │                                        # Ferramentas de desenvolvimento e operação

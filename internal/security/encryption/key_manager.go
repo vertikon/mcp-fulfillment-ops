@@ -4,8 +4,14 @@ import (
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/x509"
+	"encoding/base64"
+	"encoding/hex"
 	"encoding/pem"
 	"errors"
+	"fmt"
+	"os"
+	"path/filepath"
+	"strings"
 	"sync"
 	"time"
 
@@ -167,21 +173,111 @@ func (m *Manager) GetRSAPublicKey() (*rsa.PublicKey, error) {
 
 // LoadKeyFromEnv loads key from environment variable
 func (m *Manager) LoadKeyFromEnv(keyName string) error {
-	// In production, load from environment
-	// For now, this is a placeholder
-	m.logger.Info("Loading key from environment",
+	if keyName == "" {
+		return fmt.Errorf("key name cannot be empty")
+	}
+
+	keyValue := os.Getenv(keyName)
+	if keyValue == "" {
+		return fmt.Errorf("environment variable %s not set", keyName)
+	}
+
+	// Decode base64 or hex key
+	keyBytes, err := decodeKey(keyValue)
+	if err != nil {
+		m.logger.Error("Failed to decode key from environment",
+			zap.String("key_name", keyName),
+			zap.Error(err),
+		)
+		return fmt.Errorf("failed to decode key: %w", err)
+	}
+
+	if len(keyBytes) != 32 {
+		return fmt.Errorf("invalid key length: expected 32 bytes, got %d", len(keyBytes))
+	}
+
+	m.mu.Lock()
+	defer m.mu.Unlock()
+
+	m.encryptionKey = keyBytes
+	m.keyVersion = "env_" + keyName + "_" + time.Now().Format("20060102150405")
+	m.lastRotation = time.Now()
+
+	m.logger.Info("Key loaded from environment",
 		zap.String("key_name", keyName),
+		zap.String("key_version", m.keyVersion),
 	)
+
 	return nil
 }
 
 // LoadKeyFromFile loads key from file
 func (m *Manager) LoadKeyFromFile(filePath string) error {
-	// In production, load from file with proper permissions
-	// For now, this is a placeholder
-	m.logger.Info("Loading key from file",
+	if filePath == "" {
+		return fmt.Errorf("file path cannot be empty")
+	}
+
+	// Check file permissions (should be 0600 or 0400)
+	fileInfo, err := os.Stat(filePath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return fmt.Errorf("key file not found: %s", filePath)
+		}
+		return fmt.Errorf("failed to stat key file: %w", err)
+	}
+
+	// Verify file permissions are secure (owner read/write only)
+	mode := fileInfo.Mode().Perm()
+	if mode&0077 != 0 {
+		m.logger.Warn("Key file has insecure permissions",
+			zap.String("file_path", filePath),
+			zap.String("mode", mode.String()),
+		)
+		// Don't fail, but log warning
+	}
+
+	// Read file
+	keyData, err := os.ReadFile(filePath)
+	if err != nil {
+		m.logger.Error("Failed to read key file",
+			zap.String("file_path", filePath),
+			zap.Error(err),
+		)
+		return fmt.Errorf("failed to read key file: %w", err)
+	}
+
+	// Remove whitespace and newlines
+	keyString := strings.TrimSpace(string(keyData))
+	keyString = strings.ReplaceAll(keyString, "\n", "")
+	keyString = strings.ReplaceAll(keyString, "\r", "")
+	keyString = strings.ReplaceAll(keyString, " ", "")
+
+	// Decode base64 or hex key
+	keyBytes, err := decodeKey(keyString)
+	if err != nil {
+		m.logger.Error("Failed to decode key from file",
+			zap.String("file_path", filePath),
+			zap.Error(err),
+		)
+		return fmt.Errorf("failed to decode key: %w", err)
+	}
+
+	if len(keyBytes) != 32 {
+		return fmt.Errorf("invalid key length: expected 32 bytes, got %d", len(keyBytes))
+	}
+
+	m.mu.Lock()
+	defer m.mu.Unlock()
+
+	m.encryptionKey = keyBytes
+	m.keyVersion = "file_" + filepath.Base(filePath) + "_" + time.Now().Format("20060102150405")
+	m.lastRotation = time.Now()
+
+	m.logger.Info("Key loaded from file",
 		zap.String("file_path", filePath),
+		zap.String("key_version", m.keyVersion),
 	)
+
 	return nil
 }
 
@@ -245,4 +341,28 @@ func (m *Manager) ExportRSAPublicKey() ([]byte, error) {
 	})
 
 	return publicKeyPEM, nil
+}
+
+// decodeKey attempts to decode a key string from base64 or hex format
+func decodeKey(keyString string) ([]byte, error) {
+	if keyString == "" {
+		return nil, fmt.Errorf("key string cannot be empty")
+	}
+
+	// Try base64 first
+	if keyBytes, err := base64.StdEncoding.DecodeString(keyString); err == nil {
+		return keyBytes, nil
+	}
+
+	// Try base64 URL encoding
+	if keyBytes, err := base64.URLEncoding.DecodeString(keyString); err == nil {
+		return keyBytes, nil
+	}
+
+	// Try hex
+	if keyBytes, err := hex.DecodeString(keyString); err == nil {
+		return keyBytes, nil
+	}
+
+	return nil, fmt.Errorf("key is not in base64 or hex format")
 }
