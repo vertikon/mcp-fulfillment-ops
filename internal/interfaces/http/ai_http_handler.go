@@ -38,8 +38,13 @@ func (h *AIHandler) Chat(c echo.Context) error {
 	if err := c.Bind(&req); err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": "Invalid request body"})
 	}
-	// TODO: Call service
-	return c.JSON(http.StatusOK, map[string]interface{}{"response": "AI chat endpoint - service implementation pending"})
+	// Call service
+	response, err := h.aiService.Chat(c.Request().Context(), &req)
+	if err != nil {
+		h.logger.Error("Failed to process chat", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "Failed to process chat"})
+	}
+	return c.JSON(http.StatusOK, response)
 }
 
 // Generate handles POST /ai/generate
@@ -48,8 +53,13 @@ func (h *AIHandler) Generate(c echo.Context) error {
 	if err := c.Bind(&req); err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": "Invalid request body"})
 	}
-	// TODO: Call service
-	return c.JSON(http.StatusOK, map[string]interface{}{"content": "AI generation endpoint - service implementation pending"})
+	// Call service
+	response, err := h.aiService.Generate(c.Request().Context(), &req)
+	if err != nil {
+		h.logger.Error("Failed to generate content", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "Failed to generate content"})
+	}
+	return c.JSON(http.StatusOK, response)
 }
 
 // Embed handles POST /ai/embed
@@ -58,12 +68,22 @@ func (h *AIHandler) Embed(c echo.Context) error {
 	if err := c.Bind(&req); err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": "Invalid request body"})
 	}
-	// TODO: Call service
-	return c.JSON(http.StatusOK, map[string]interface{}{"embedding": []float64{}, "message": "AI embed endpoint - service implementation pending"})
+	// Call service
+	response, err := h.aiService.Embed(c.Request().Context(), &req)
+	if err != nil {
+		h.logger.Error("Failed to generate embedding", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "Failed to generate embedding"})
+	}
+	return c.JSON(http.StatusOK, response)
 }
 
 // ListModels handles GET /ai/models
 func (h *AIHandler) ListModels(c echo.Context) error {
-	// TODO: Call service
-	return c.JSON(http.StatusOK, map[string]interface{}{"models": []interface{}{}, "message": "AI models endpoint - service implementation pending"})
+	// Call service
+	models, err := h.aiService.ListModels(c.Request().Context())
+	if err != nil {
+		h.logger.Error("Failed to list models", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "Failed to list models"})
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{"models": models})
 }

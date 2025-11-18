@@ -54,20 +54,16 @@ func (h *MCPHandler) CreateMCP(c echo.Context) error {
 		})
 	}
 
-	// Call service (placeholder - service needs to be implemented)
-	// mcp, err := h.mcpService.CreateMCP(c.Request().Context(), &req)
-	// if err != nil {
-	// 	h.logger.Error("Failed to create MCP", zap.Error(err))
-	// 	return c.JSON(http.StatusInternalServerError, map[string]string{
-	// 		"error": "Failed to create MCP",
-	// 	})
-	// }
+	// Call service
+	mcp, err := h.mcpService.CreateMCP(c.Request().Context(), &req)
+	if err != nil {
+		h.logger.Error("Failed to create MCP", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{
+			"error": "Failed to create MCP",
+		})
+	}
 
-	// For now, return placeholder response
-	return c.JSON(http.StatusCreated, map[string]interface{}{
-		"id":      "placeholder-id",
-		"message": "MCP creation endpoint - service implementation pending",
-	})
+	return c.JSON(http.StatusCreated, mcp)
 }
 
 // ListMCPs handles GET /mcps
@@ -81,17 +77,18 @@ func (h *MCPHandler) ListMCPs(c echo.Context) error {
 		zap.String("offset", offset),
 	)
 
-	// Call service (placeholder)
-	// mcps, err := h.mcpService.ListMCPs(c.Request().Context(), limit, offset)
-	// if err != nil {
-	// 	return c.JSON(http.StatusInternalServerError, map[string]string{
-	// 		"error": "Failed to list MCPs",
-	// 	})
-	// }
+	// Call service
+	mcps, err := h.mcpService.ListMCPs(c.Request().Context(), limit, offset)
+	if err != nil {
+		h.logger.Error("Failed to list MCPs", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{
+			"error": "Failed to list MCPs",
+		})
+	}
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"mcps":   []interface{}{},
-		"total":  0,
+		"mcps":   mcps,
+		"total":  len(mcps),
 		"limit":  limit,
 		"offset": offset,
 	})
@@ -106,18 +103,16 @@ func (h *MCPHandler) GetMCP(c echo.Context) error {
 		})
 	}
 
-	// Call service (placeholder)
-	// mcp, err := h.mcpService.GetMCP(c.Request().Context(), id)
-	// if err != nil {
-	// 	return c.JSON(http.StatusNotFound, map[string]string{
-	// 		"error": "MCP not found",
-	// 	})
-	// }
+	// Call service
+	mcp, err := h.mcpService.GetMCP(c.Request().Context(), id)
+	if err != nil {
+		h.logger.Error("Failed to get MCP", zap.String("id", id), zap.Error(err))
+		return c.JSON(http.StatusNotFound, map[string]string{
+			"error": "MCP not found",
+		})
+	}
 
-	return c.JSON(http.StatusOK, map[string]interface{}{
-		"id":      id,
-		"message": "MCP retrieval endpoint - service implementation pending",
-	})
+	return c.JSON(http.StatusOK, mcp)
 }
 
 // UpdateMCP handles PUT /mcps/:id
@@ -136,18 +131,16 @@ func (h *MCPHandler) UpdateMCP(c echo.Context) error {
 		})
 	}
 
-	// Call service (placeholder)
-	// mcp, err := h.mcpService.UpdateMCP(c.Request().Context(), id, &req)
-	// if err != nil {
-	// 	return c.JSON(http.StatusInternalServerError, map[string]string{
-	// 		"error": "Failed to update MCP",
-	// 	})
-	// }
+	// Call service
+	mcp, err := h.mcpService.UpdateMCP(c.Request().Context(), id, &req)
+	if err != nil {
+		h.logger.Error("Failed to update MCP", zap.String("id", id), zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{
+			"error": "Failed to update MCP",
+		})
+	}
 
-	return c.JSON(http.StatusOK, map[string]interface{}{
-		"id":      id,
-		"message": "MCP update endpoint - service implementation pending",
-	})
+	return c.JSON(http.StatusOK, mcp)
 }
 
 // DeleteMCP handles DELETE /mcps/:id
@@ -159,13 +152,14 @@ func (h *MCPHandler) DeleteMCP(c echo.Context) error {
 		})
 	}
 
-	// Call service (placeholder)
-	// err := h.mcpService.DeleteMCP(c.Request().Context(), id)
-	// if err != nil {
-	// 	return c.JSON(http.StatusInternalServerError, map[string]string{
-	// 		"error": "Failed to delete MCP",
-	// 	})
-	// }
+	// Call service
+	err := h.mcpService.DeleteMCP(c.Request().Context(), id)
+	if err != nil {
+		h.logger.Error("Failed to delete MCP", zap.String("id", id), zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{
+			"error": "Failed to delete MCP",
+		})
+	}
 
 	return c.NoContent(http.StatusNoContent)
 }
@@ -186,19 +180,16 @@ func (h *MCPHandler) GenerateMCP(c echo.Context) error {
 		})
 	}
 
-	// Call service (placeholder)
-	// result, err := h.mcpService.GenerateMCP(c.Request().Context(), &req)
-	// if err != nil {
-	// 	return c.JSON(http.StatusInternalServerError, map[string]string{
-	// 		"error": "Failed to generate MCP",
-	// 	})
-	// }
+	// Call service
+	result, err := h.mcpService.GenerateMCP(c.Request().Context(), &req)
+	if err != nil {
+		h.logger.Error("Failed to generate MCP", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{
+			"error": "Failed to generate MCP",
+		})
+	}
 
-	return c.JSON(http.StatusAccepted, map[string]interface{}{
-		"job_id":  "placeholder-job-id",
-		"status":  "pending",
-		"message": "MCP generation endpoint - service implementation pending",
-	})
+	return c.JSON(http.StatusAccepted, result)
 }
 
 // ValidateMCP handles POST /mcps/:id/validate
@@ -210,17 +201,14 @@ func (h *MCPHandler) ValidateMCP(c echo.Context) error {
 		})
 	}
 
-	// Call service (placeholder)
-	// result, err := h.mcpService.ValidateMCP(c.Request().Context(), id)
-	// if err != nil {
-	// 	return c.JSON(http.StatusInternalServerError, map[string]string{
-	// 		"error": "Failed to validate MCP",
-	// 	})
-	// }
+	// Call service
+	result, err := h.mcpService.ValidateMCP(c.Request().Context(), id)
+	if err != nil {
+		h.logger.Error("Failed to validate MCP", zap.String("id", id), zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{
+			"error": "Failed to validate MCP",
+		})
+	}
 
-	return c.JSON(http.StatusOK, map[string]interface{}{
-		"mcp_id":  id,
-		"valid":   true,
-		"message": "MCP validation endpoint - service implementation pending",
-	})
+	return c.JSON(http.StatusOK, result)
 }

@@ -185,41 +185,106 @@ mcp-hulk/                                    # Raiz do projeto MCP-HULK
 │   │       │                                # Optimizer: Analisa e otimiza performance geral do sistema
 │   │       └── 📄 optimizer_test.go         # Testes unitários do optimizer
 │   │
-│   ├── 📁 domain/                           # BLOCO-1: Domain Layer (Clean Architecture)
+│   ├── 📁 domain/                           # BLOCO-4: Domain Layer (Clean Architecture)
 │   │   │                                    # Entidades de domínio, value objects, interfaces de repositório
 │   │   │                                    # Regras de negócio puras, sem dependências externas
+│   │   │                                    # Independência total de infraestrutura
 │   │   │
 │   │   ├── 📁 entities/                     # Entidades de domínio
-│   │   │   │                                # Objetos de negócio principais (MCP, Knowledge, Model, etc.)
-│   │   │   ├── 📄 mcp.go                    # Entidade MCP (Model Context Protocol)
-│   │   │   ├── 📄 knowledge.go             # Entidade Knowledge Base
-│   │   │   ├── 📄 model.go                  # Entidade Model (IA)
-│   │   │   ├── 📄 template.go              # Entidade Template
+│   │   │   │                                # Objetos de negócio principais com identidade
+│   │   │   ├── 📄 mcp.go                    # Entidade MCP (raiz do agregado principal)
+│   │   │   │                                # Função: NewMCP, SetPath, AddFeature, AddContext
+│   │   │   │                                # Regras: nome obrigatório, stack válida, features únicas
+│   │   │   │                                # Invariantes: path nunca vazio, timestamps automáticos
+│   │   │   │
+│   │   │   ├── 📄 knowledge.go             # Entidade Knowledge Base (AI/RAG)
+│   │   │   │                                # Função: NewKnowledge, AddDocument, AddEmbedding
+│   │   │   │                                # Regras: nome obrigatório, documentos obrigatórios
+│   │   │   │                                # Invariantes: embeddings vinculados a documentos
+│   │   │   │
 │   │   │   ├── 📄 project.go                # Entidade Project
-│   │   │   ├── 📄 version.go               # Entidade Version
+│   │   │   │                                # Função: NewProject, SetStatus, Activate, Archive
+│   │   │   │                                # Regras: nome obrigatório, MCP ID obrigatório
+│   │   │   │                                # Invariantes: status válido, transições controladas
+│   │   │   │
+│   │   │   ├── 📄 template.go              # Entidade Template
+│   │   │   │                                # Função: NewTemplate, SetContent, AddVariable
+│   │   │   │                                # Regras: nome obrigatório, conteúdo obrigatório
+│   │   │   │                                # Invariantes: variáveis sem duplicatas, versionamento
+│   │   │   │
+│   │   │   ├── 📄 memory.go                # Entidade Memory (extensão - AI Memory Management)
+│   │   │   │                                # Função: NewMemory, SetContent, RecordAccess
+│   │   │   │                                # Tipos: EpisodicMemory, SemanticMemory, WorkingMemory
+│   │   │   │                                # Regras: tipo obrigatório, conteúdo obrigatório
+│   │   │   │
+│   │   │   ├── 📄 finetuning.go            # Entidades Fine-tuning (extensão)
+│   │   │   │                                # Função: NewDataset, NewTrainingJob, NewModelVersion
+│   │   │   │                                # Entidades: Dataset, TrainingJob, ModelVersion
+│   │   │   │                                # Regras: validações de status, métricas, checkpoints
+│   │   │   │
+│   │   │   ├── 📄 mcp_test.go              # Testes unitários da entidade MCP
+│   │   │   │                                # Testa: criação, validações, features, context
+│   │   │   │
 │   │   │   └── 📄 errors.go                # Erros de domínio customizados
+│   │   │                                    # Função: NewDomainError, Error, Unwrap
+│   │   │                                    # Códigos: INVALID_INPUT, NOT_FOUND, ALREADY_EXISTS
+│   │   │                                    # Erros pré-definidos: ErrMCPNotFound, ErrKnowledgeNotFound
 │   │   │
 │   │   ├── 📁 value_objects/                # Value Objects (imutáveis)
-│   │   │   │                                # Objetos de valor sem identidade própria
-│   │   │   ├── 📄 stack_type.go            # Tipo de stack (go, tinygo, wasm, web)
-│   │   │   ├── 📄 feature.go                # Feature flag
-│   │   │   ├── 📄 version.go               # Versão semântica
-│   │   │   ├── 📄 status.go                 # Status de operações
-│   │   │   └── 📄 config.go                # Configuração como value object
+│   │   │   │                                # Objetos imutáveis com significado e validação
+│   │   │   ├── 📄 technology.go            # StackType (go-premium, tinygo, web)
+│   │   │   │                                # Função: NewStackType, IsValid, ValidStackTypes
+│   │   │   │                                # Validação: apenas valores permitidos
+│   │   │   │
+│   │   │   ├── 📄 technology_test.go       # Testes unitários do StackType
+│   │   │   │
+│   │   │   ├── 📄 feature.go                # Feature (Enable/Disable + configs)
+│   │   │   │                                # Função: NewFeature, Enable, Disable, SetConfig
+│   │   │   │                                # Regras: nome obrigatório, imutabilidade preservada
+│   │   │   │                                # Métodos: Equals para comparação
+│   │   │   │
+│   │   │   ├── 📄 feature_test.go          # Testes unitários do Feature
+│   │   │   │
+│   │   │   └── 📄 validation_rule.go       # ValidationRule (extensão)
+│   │   │                                    # Função: NewValidationRule, Validate
+│   │   │                                    # Tipos: Required, Min, Max, Pattern, Custom
 │   │   │
-│   │   ├── 📁 repositories/                 # Interfaces de repositório (portas)
-│   │   │   │                                # Contratos para persistência (sem implementação)
-│   │   │   ├── 📄 mcp_repository.go         # Interface para repositório MCP
-│   │   │   ├── 📄 knowledge_repository.go   # Interface para repositório Knowledge
-│   │   │   ├── 📄 model_repository.go       # Interface para repositório Model
-│   │   │   └── 📄 template_repository.go    # Interface para repositório Template
+│   │   ├── 📁 repositories/                 # Interfaces de Repositório
+│   │   │   │                                # Contratos para persistência (implementados na infra)
+│   │   │   ├── 📄 mcp_repository.go         # Interface MCPRepository
+│   │   │   │                                # Métodos: Save, FindByID, FindByName, List, Delete, Exists
+│   │   │   │                                # Filtros: MCPFilters (Stack, HasContext, Limit, Offset)
+│   │   │   │
+│   │   │   ├── 📄 knowledge_repository.go  # Interface KnowledgeRepository
+│   │   │   │                                # Métodos: Save, FindByID, FindByName, List, Delete, Exists
+│   │   │   │                                # Filtros: KnowledgeFilters (MinVersion, Limit, Offset)
+│   │   │   │
+│   │   │   ├── 📄 project_repository.go    # Interface ProjectRepository
+│   │   │   │                                # Métodos: Save, FindByID, FindByMCPID, List, Delete, Exists
+│   │   │   │                                # Filtros: ProjectFilters (MCPID, Status, Limit, Offset)
+│   │   │   │
+│   │   │   └── 📄 template_repository.go    # Interface TemplateRepository
+│   │   │                                    # Métodos: Save, FindByID, FindByName, List, Delete, Exists
+│   │   │                                    # Filtros: TemplateFilters (Stack, Limit, Offset)
 │   │   │
-│   │   └── 📁 services/                     # Serviços de domínio
-│   │       │                                # Lógica de negócio que não pertence a uma entidade específica
-│   │       ├── 📄 mcp_service.go            # Serviço de domínio MCP
-│   │       ├── 📄 knowledge_service.go      # Serviço de domínio Knowledge
-│   │       ├── 📄 versioning_service.go     # Serviço de versionamento
-│   │       └── 📄 validation_service.go     # Serviço de validação de domínio
+│   │   └── 📁 services/                     # Domain Services
+│   │       │                                # Regras de negócio que não pertencem a uma entidade
+│   │       │                                # Não acessam banco, não fazem IO, não dependem de infra
+│   │       ├── 📄 mcp_domain_service.go     # MCPDomainService
+│   │       │                                # Função: ValidateMCP, CanAddFeature, CanAttachContext
+│   │       │                                # Regras: validação de MCP completo, features sem conflitos
+│   │       │
+│   │       ├── 📄 knowledge_domain_service.go # KnowledgeDomainService
+│   │       │                                # Função: ValidateKnowledge, CanAddDocument, CanAddEmbedding
+│   │       │                                # Regras: conhecimento deve ter documentos, embeddings válidos
+│   │       │
+│   │       ├── 📄 ai_domain_service.go      # AIDomainService
+│   │       │                                # Função: ValidateKnowledgeContext, CanUseKnowledgeForInference
+│   │       │                                # Regras: contexto válido para AI, conhecimento pronto para inferência
+│   │       │
+│   │       └── 📄 template_domain_service.go # TemplateDomainService
+│   │                                        # Função: ValidateTemplate, CanAddVariable, ShouldIncrementVersion
+│   │                                        # Regras: template válido, variáveis sem duplicatas, versionamento
 │   │
 │   ├── 📁 application/                      # BLOCO-1: Application Layer (Clean Architecture)
 │   │   │                                    # Casos de uso, DTOs, orquestração de serviços
@@ -527,34 +592,90 @@ mcp-hulk/                                    # Raiz do projeto MCP-HULK
 │   │
 │   ├── 📁 ai/                               # BLOCO-6: AI Layer
 │   │   │                                    # Integração com IA, RAG, conhecimento, memória
+│   │   │                                    # Função: Cérebro cognitivo do Hulk
+│   │   │                                    # Responsabilidades: LLM, RAG, Memória, Finetuning
 │   │   │
-│   │   ├── 📁 core/                         # Core de IA
-│   │   │   │                                # Funcionalidades centrais de IA
-│   │   │   ├── 📄 llm_client.go             # Cliente LLM (OpenAI, Gemini, GLM)
-│   │   │   ├── 📄 embedding_client.go       # Cliente de embeddings
-│   │   │   ├── 📄 rag_engine.go             # Motor RAG (Retrieval-Augmented Generation)
-│   │   │   └── 📄 prompt_engine.go         # Motor de prompts
+│   │   ├── 📁 core/                         # AI Core (Núcleo cognitivo)
+│   │   │   │                                # Função: Interface LLM, prompts, roteamento, métricas
+│   │   │   │                                # Responsabilidades: Unificação, fallback, observabilidade
+│   │   │   ├── 📄 llm_interface.go          # ✅ Implementado - Interface LLM unificada
+│   │   │   │                                # Função: NewLLMInterface, Generate, GenerateStream, GetAvailableProviders, GetModels
+│   │   │   │                                # Tipos: LLMProvider, LLMRequest, LLMResponse, LLMError
+│   │   │   ├── 📄 prompt_builder.go         # ✅ Implementado - Builder de prompts
+│   │   │   │                                # Função: NewPromptBuilder, Build
+│   │   │   │                                # Tipos: PromptPolicy, PromptContext, Message
+│   │   │   ├── 📄 router.go                 # ✅ Implementado - Router inteligente
+│   │   │   │                                # Função: NewRouter, SelectProvider, SelectFallback
+│   │   │   │                                # Estratégias: Cost, Latency, Quality, Balanced, Fallback
+│   │   │   ├── 📄 metrics.go                # ✅ Implementado - Métricas de IA
+│   │   │   │                                # Função: NewMetrics, RecordGeneration, RecordError, GetAverageLatency, GetP95Latency
+│   │   │   │                                # Tipos: ProviderStats
+│   │   │   ├── 📄 llm_interface_test.go     # ✅ Testes unitários
+│   │   │   ├── 📄 prompt_builder_test.go    # ✅ Testes unitários
+│   │   │   ├── 📄 router_test.go            # ✅ Testes unitários
+│   │   │   └── 📄 metrics_test.go           # ✅ Testes unitários
 │   │   │
-│   │   ├── 📁 knowledge/                    # Gerenciamento de conhecimento
-│   │   │   │                                # Bases de conhecimento, documentos, embeddings
-│   │   │   ├── 📄 knowledge_base.go         # Base de conhecimento
-│   │   │   ├── 📄 document_store.go         # Armazenamento de documentos
-│   │   │   ├── 📄 embedding_store.go        # Armazenamento de embeddings
-│   │   │   └── 📄 knowledge_service.go      # Serviço de conhecimento
+│   │   ├── 📁 knowledge/                    # Knowledge (RAG - Vector + Graph)
+│   │   │   │                                # Função: Ingestão, indexação e recuperação híbrida
+│   │   │   │                                # Responsabilidades: VectorDB, GraphDB, RAG híbrido
+│   │   │   ├── 📄 knowledge_store.go        # ✅ Implementado - Store de conhecimento
+│   │   │   │                                # Função: NewKnowledgeStore, AddKnowledge, AddDocument, AddEmbedding, SearchDocuments
+│   │   │   │                                # Tipos: KnowledgeStats, DocumentInput
+│   │   │   ├── 📄 retriever.go              # ✅ Implementado - Hybrid Retriever
+│   │   │   │                                # Função: NewHybridRetriever, Retrieve
+│   │   │   │                                # Fusion: ReciprocalRankFusion (RRF)
+│   │   │   │                                # Tipos: RetrievalResult, KnowledgeContext, FusionStrategy
+│   │   │   ├── 📄 indexer.go                # ✅ Implementado - Indexador de documentos
+│   │   │   │                                # Função: NewIndexer, IndexDocument, UpdateVectorIndex, Search, DeleteKnowledge
+│   │   │   │                                # Tipos: VectorClient, GraphClient, Embedder
+│   │   │   ├── 📄 knowledge_graph.go        # ✅ Implementado - Graph de conhecimento
+│   │   │   │                                # Função: NewKnowledgeGraph, CreateEntity, CreateRelation, Traverse, Query
+│   │   │   │                                # Tipos: GraphNode
+│   │   │   ├── 📄 semantic_search.go        # ✅ Implementado - Busca semântica
+│   │   │   │                                # Função: NewSemanticSearch, Search, SearchWithFilters, SimilaritySearch
+│   │   │   ├── 📄 knowledge_store_test.go   # ✅ Testes unitários
+│   │   │   ├── 📄 retriever_test.go         # ✅ Testes unitários
+│   │   │   └── 📄 indexer_test.go           # ✅ Testes unitários
 │   │   │
-│   │   ├── 📁 memory/                       # Gerenciamento de memória
-│   │   │   │                                # Memória episódica, semântica, de trabalho
-│   │   │   ├── 📄 memory_manager.go          # Gerenciador de memória
-│   │   │   ├── 📄 episodic_memory.go        # Memória episódica
-│   │   │   ├── 📄 semantic_memory.go        # Memória semântica
-│   │   │   └── 📄 working_memory.go         # Memória de trabalho
+│   │   ├── 📁 memory/                       # Memory (Episodic, Semantic, Working)
+│   │   │   │                                # Função: Memória viva do agente
+│   │   │   │                                # Responsabilidades: Episódica, semântica, trabalho
+│   │   │   ├── 📄 memory_store.go           # ✅ Implementado - Store de memória
+│   │   │   │                                # Função: NewMemoryStore, SaveEpisodic, SaveSemantic, SaveWorking, GetEpisodic, GetSemantic, GetWorking
+│   │   │   │                                # Tipos: MemoryRepository, CacheClient
+│   │   │   ├── 📄 episodic_memory.go       # ✅ Implementado - Memória episódica
+│   │   │   │                                # Função: NewEpisodicMemoryManager, Create, AddEvent, GetEvents, GetRecentEvents, Consolidate
+│   │   │   ├── 📄 semantic_memory.go        # ✅ Implementado - Memória semântica
+│   │   │   │                                # Função: NewSemanticMemoryManager, Create, AddConcept, AddRelated, GetByConcept, Search, ConsolidateFromEpisodic
+│   │   │   ├── 📄 working_memory.go         # ✅ Implementado - Memória de trabalho
+│   │   │   │                                # Função: NewWorkingMemoryManager, Create, Get, AdvanceStep, SetContext, Complete
+│   │   │   ├── 📄 memory_consolidation.go   # ✅ Implementado - Consolidação de memória
+│   │   │   │                                # Função: NewMemoryConsolidation, ConsolidateSession, ConsolidateAll (requer SessionRepository), ConsolidateBatch
+│   │   │   │                                # Tipos: ConsolidationPolicy
+│   │   │   ├── 📄 memory_retrieval.go       # ✅ Implementado - Recuperação de memória
+│   │   │   │                                # Função: NewMemoryRetrieval, Retrieve, RetrieveForPrompt, RetrieveRecent, RetrieveByImportance
+│   │   │   │                                # Tipos: RetrievalStrategy, RetrieveContext, MemoryContext
+│   │   │   ├── 📄 memory_store_test.go      # ✅ Testes unitários
+│   │   │   └── 📄 episodic_memory_test.go   # ✅ Testes unitários
 │   │   │
-│   │   └── 📁 finetuning/                   # Fine-tuning de modelos
-│   │       │                                # Treinamento e fine-tuning de modelos de IA
-│   │       ├── 📄 finetuning_engine.go      # Motor de fine-tuning
-│   │       ├── 📄 dataset_manager.go        # Gerenciador de datasets
-│   │       ├── 📄 training_manager.go       # Gerenciador de treinamento
-│   │       └── 📄 runpod_integration.go     # Integração com RunPod para GPU
+│   │   └── 📁 finetuning/                   # Finetuning (GPU Externa - RunPod)
+│   │       │                                # Função: Treinamento remoto de modelos
+│   │       │                                # Responsabilidades: RunPod, datasets, versionamento
+│   │       ├── 📄 engine.go                 # ✅ Implementado - Engine de finetuning
+│   │       │                                # Função: NewFinetuningEngine, StartTraining, CheckStatus, CancelTraining, GetLogs, CompleteTraining, Rollback
+│   │       │                                # Tipos: RunPodClient, RunPodJobConfig, RunPodJobStatus
+│   │       ├── 📄 finetuning_store.go       # ✅ Implementado - Store de finetuning
+│   │       │                                # Função: NewFinetuningStore, SaveJob, GetJob, ListJobs, GetActiveJobs, SaveDataset, SaveModelVersion
+│   │       │                                # Tipos: FinetuningRepository, JobFilters
+│   │       ├── 📄 memory_manager.go         # ✅ Implementado - Gerenciador de memória
+│   │       │                                # Função: NewMemoryManager, GenerateDataset, GenerateDatasetFromMemory, SaveDatasetToFile, ParseDatasetFile
+│   │       │                                # Tipos: MemorySource, TrainingExample
+│   │       ├── 📄 versioning.go             # ✅ Implementado - Versionamento
+│   │       │                                # Função: NewVersioning, CreateVersion, ActivateVersion, Rollback, CompareVersions
+│   │       │                                # Tipos: VersionComparison
+│   │       ├── 📄 finetuning_prompt_builder.go # ✅ Implementado - Builder de prompts
+│   │       │                                # Função: NewFinetuningPromptBuilder, BuildTrainingPrompt, BuildCompletionPrompt, BuildInstructionPrompt
+│   │       └── 📄 finetuning_store_test.go  # ✅ Testes unitários
 │   │
 │   ├── 📁 state/                            # BLOCO-3: STATE MANAGEMENT
 │   │   │                                    # Gerenciamento de Estado Distribuído
@@ -710,23 +831,97 @@ mcp-hulk/                                    # Raiz do projeto MCP-HULK
 │   │       ├── 📄 analytics.go              # Analytics engine
 │   │       └── 📄 collector.go              # Coletor de analytics
 │   │
-│   ├── 📁 versioning/                       # BLOCO-3: Versioning Service
-│   │   │                                    # Versionamento de conhecimento, modelos, dados
+│   ├── 📁 versioning/                       # BLOCO-5: VERSIONING & MIGRATION
+│   │   │                                    # Versionamento avançado: conhecimento, modelos, dados
+│   │   │                                    # Função: Controle de versões, migrações e evolução histórica
+│   │   │                                    # Responsabilidades: Reprodutibilidade, auditoria, rollback, migração
 │   │   │
 │   │   ├── 📁 knowledge/                    # Versionamento de conhecimento
-│   │   │   │                                # Versões de bases de conhecimento
-│   │   │   ├── 📄 knowledge_versioning.go   # Versionamento de knowledge
-│   │   │   └── 📄 migration_engine.go       # Motor de migração de conhecimento
+│   │   │   │                                # Versões de bases RAG, documentos, embeddings, grafos
+│   │   │   ├── 📄 knowledge_versioning.go   # ✅ Interface KnowledgeVersioning e InMemoryKnowledgeVersioning
+│   │   │   │                                # Função: CreateVersion, GetVersion, ListVersions, AddDocument,
+│   │   │   │                                #         GetDocument, ListDocuments, DeleteVersion,
+│   │   │   │                                #         GetLatestVersion, TagVersion
+│   │   │   │                                # Tipos: KnowledgeVersion, KnowledgeDocument
+│   │   │   │
+│   │   │   ├── 📄 version_comparator.go     # ✅ Interface VersionComparator e InMemoryVersionComparator
+│   │   │   │                                # Função: CompareVersions, CompareSemantic, CompareStructural,
+│   │   │   │                                #         GetDiffSummary
+│   │   │   │                                # Tipos: VersionDiff, DocumentChange
+│   │   │   │
+│   │   │   ├── 📄 rollback_manager.go       # ✅ Interface RollbackManager e InMemoryRollbackManager
+│   │   │   │                                # Função: RollbackToVersion, GetRollbackOperation,
+│   │   │   │                                #         ListRollbackOperations, ValidateRollback,
+│   │   │   │                                #         CancelRollback
+│   │   │   │                                # Tipos: RollbackOperation, RollbackStatus
+│   │   │   │
+│   │   │   ├── 📄 migration_engine.go       # ✅ Interface MigrationEngine e InMemoryMigrationEngine
+│   │   │   │                                # Função: MigrateKnowledge, MigrateEmbeddings, MigrateGraph,
+│   │   │   │                                #         GetMigration, ListMigrations, ValidateMigration,
+│   │   │   │                                #         RollbackMigration, ValidateIntegrity
+│   │   │   │                                # Tipos: Migration, MigrationStep, MigrationType, MigrationStatus
+│   │   │   │
+│   │   │   ├── 📄 knowledge_versioning_test.go # ✅ Testes unitários
+│   │   │   └── 📄 version_comparator_test.go   # ✅ Testes unitários
 │   │   │
 │   │   ├── 📁 models/                       # Versionamento de modelos
-│   │   │   │                                # Versões de modelos de IA
-│   │   │   ├── 📄 model_versioning.go       # Versionamento de modelos
-│   │   │   └── 📄 model_registry.go         # Registry de modelos
+│   │   │   │                                # Versões de modelos de IA, registro, deploy, A/B testing
+│   │   │   ├── 📄 model_registry.go         # ✅ Interface ModelRegistry e InMemoryModelRegistry
+│   │   │   │                                # Função: RegisterModel, GetModel, ListModels, UpdateModel,
+│   │   │   │                                #         DeleteModel, RegisterVersion, GetVersion,
+│   │   │   │                                #         ListVersions, GetLatestVersion, CalculateFingerprint
+│   │   │   │                                # Tipos: Model, ModelVersion, ModelVersionStatus
+│   │   │   │
+│   │   │   ├── 📄 model_versioning.go       # ✅ Interface ModelVersioning e InMemoryModelVersioning
+│   │   │   │                                # Função: CreateVersion, PromoteVersion, DeprecateVersion,
+│   │   │   │                                #         GetVersionHistory, CompareVersions, GetVersionLifecycle
+│   │   │   │                                # Estratégias: Semantic, Incremental, Timestamp
+│   │   │   │                                # Tipos: VersioningStrategy, VersionComparison, VersionLifecycle
+│   │   │   │
+│   │   │   ├── 📄 ab_testing.go             # ✅ Interface ABTesting e InMemoryABTesting
+│   │   │   │                                # Função: CreateTest, GetTest, StartTest, StopTest,
+│   │   │   │                                #         RecordRequest, GetMetrics, EvaluateTest,
+│   │   │   │                                #         SelectVersion, ListTests
+│   │   │   │                                # Tipos: ABTest, TrafficSplit, ABTestMetrics,
+│   │   │   │                                #        PromotionCriteria, TestEvaluation, ABTestStatus
+│   │   │   │
+│   │   │   ├── 📄 model_deployment.go       # ✅ Interface ModelDeployment e InMemoryModelDeployment
+│   │   │   │                                # Função: CreateDeployment, GetDeployment, StartDeployment,
+│   │   │   │                                #         StopDeployment, RollbackDeployment, GetDeploymentMetrics,
+│   │   │   │                                #         CheckHealth, ListDeployments, GetActiveDeployment
+│   │   │   │                                # Estratégias: Canary, BlueGreen, Rolling, AllAtOnce
+│   │   │   │                                # Tipos: Deployment, DeploymentTarget, HealthCheckConfig,
+│   │   │   │                                #        RollbackPolicy, DeploymentMetrics, DeploymentStrategy
+│   │   │   │
+│   │   │   ├── 📄 model_registry_test.go    # ✅ Testes unitários
+│   │   │   └── 📄 ab_testing_test.go        # ✅ Testes unitários
 │   │   │
 │   │   └── 📁 data/                         # Versionamento de dados
-│   │       │                                # Versões de dados e schemas
-│   │       ├── 📄 data_versioning.go        # Versionamento de dados
-│   │       └── 📄 schema_versioning.go      # Versionamento de schemas
+│   │       │                                # Versões de dados, schemas, linhagem, qualidade
+│   │       ├── 📄 data_versioning.go        # ✅ Interface DataVersioning e InMemoryDataVersioning
+│   │       │                                # Função: CreateVersion, GetVersion, ListVersions,
+│   │       │                                #         GetLatestVersion, CreateSnapshot, GetSnapshot,
+│   │       │                                #         ListSnapshots, TagVersion, DeleteVersion
+│   │       │                                # Tipos: DataVersion, DataSnapshot, SnapshotType
+│   │       │
+│   │       ├── 📄 schema_migration.go       # ✅ Interface SchemaMigrationEngine e InMemorySchemaMigrationEngine
+│   │       │                                # Função: CreateMigration, GetMigration, ListMigrations,
+│   │       │                                #         ExecuteMigration, RollbackMigration, ValidateMigration
+│   │       │                                # Tipos: SchemaMigration, MigrationStep, StepType, MigrationStatus
+│   │       │
+│   │       ├── 📄 data_lineage.go           # ✅ Interface DataLineageTracker e InMemoryDataLineageTracker
+│   │       │                                # Função: RecordLineage, GetLineage, TraceUpstream,
+│   │       │                                #         TraceDownstream, AddTransformation
+│   │       │                                # Tipos: DataLineage, LineageNode, Transformation,
+│   │       │                                #        NodeType, TransformationType
+│   │       │
+│   │       ├── 📄 data_quality.go          # ✅ Interface DataQuality e InMemoryDataQuality
+│   │       │                                # Função: RunCheck, GetCheck, ListChecks, ValidateVersion,
+│   │       │                                #         GetQualityScore
+│   │       │                                # Tipos: QualityCheck, CheckType, CheckStatus, QualityResult,
+│   │       │                                #        QualityIssue, ValidationResult, IssueSeverity
+│   │       │
+│   │       └── 📄 data_versioning_test.go  # ✅ Testes unitários
 │   │
 │   ├── 📁 services/                         # BLOCO-3: Application Services
 │   │   │                                    # Serviços de aplicação que orquestram casos de uso
@@ -1186,6 +1381,10 @@ mcp-hulk/                                    # Raiz do projeto MCP-HULK
 │   │   │                                    # Documentação oficial de cada bloco
 │   │   ├── 📄 BLOCO-1-BLUEPRINT.md          # Blueprint Bloco-1 (Core Platform)
 │   │   ├── 📄 BLOCO-2-BLUEPRINT.md          # Blueprint Bloco-2 (MCP Protocol)
+│   │   ├── 📄 BLOCO-5-BLUEPRINT.md          # Blueprint Bloco-5 (Versioning & Migration)
+│   │   ├── 📄 BLOCO-5-BLUEPRINT-GLM-4.6.md # Blueprint executivo Bloco-5
+│   │   ├── 📄 BLOCO-5-AUDITORIA-CONFORMIDADE-BLUEPRINT-IMPLEMENTACAO.md
+│   │   │                                    # Auditoria de conformidade Bloco-5 (100% conforme)
 │   │   ├── 📄 BLOCO-13-BLUEPRINT.md         # Blueprint Bloco-13 (Scripts & Automation)
 │   │   ├── 📄 BLOCO-13-BLUEPRINT-GLM-4.6.md # Blueprint executivo Bloco-13
 │   │   ├── 📄 BLOCO-13-AUDITORIA-CONFORMIDADE-BLUEPRINT-IMPLEMENTACAO.md
@@ -1265,7 +1464,8 @@ mcp-hulk/                                    # Raiz do projeto MCP-HULK
 |-------|----------------------|-----------|
 | **BLOCO-1** | `cmd/`, `internal/core/`, `internal/domain/`, `internal/application/`, `pkg/` | Core Platform |
 | **BLOCO-2** | `internal/mcp/` | MCP Protocol |
-| **BLOCO-3** | `internal/state/`, `internal/monitoring/`, `internal/versioning/`, `internal/services/` | State, Monitoring, Versioning |
+| **BLOCO-3** | `internal/state/`, `internal/monitoring/`, `internal/services/` | State Management, Monitoring |
+| **BLOCO-5** | `internal/versioning/` | Versioning & Migration |
 | **BLOCO-6** | `internal/ai/` | AI Layer |
 | **BLOCO-7** | `internal/infrastructure/` | Infrastructure Layer |
 | **BLOCO-8** | `internal/interfaces/` | Interface Layer |

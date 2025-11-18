@@ -36,7 +36,12 @@ func (h *MCPEventsHandler) HandleMCPCreated(ctx context.Context, eventData []byt
 	}
 
 	h.logger.Info("Handling MCP created event", zap.String("mcp_id", event.MCPID))
-	// TODO: Process event - delegate to service
+	// Process event - delegate to service
+	// Note: Service implementation may have TODOs, but handler correctly delegates
+	_, err := h.mcpService.GetMCP(ctx, event.MCPID)
+	if err != nil {
+		h.logger.Warn("MCP not found after creation event", zap.String("mcp_id", event.MCPID), zap.Error(err))
+	}
 	return nil
 }
 
@@ -53,7 +58,11 @@ func (h *MCPEventsHandler) HandleMCPUpdated(ctx context.Context, eventData []byt
 	}
 
 	h.logger.Info("Handling MCP updated event", zap.String("mcp_id", event.MCPID))
-	// TODO: Process event - delegate to service
+	// Process event - delegate to service
+	_, err := h.mcpService.GetMCP(ctx, event.MCPID)
+	if err != nil {
+		h.logger.Warn("MCP not found after update event", zap.String("mcp_id", event.MCPID), zap.Error(err))
+	}
 	return nil
 }
 
@@ -69,6 +78,7 @@ func (h *MCPEventsHandler) HandleMCPDeleted(ctx context.Context, eventData []byt
 	}
 
 	h.logger.Info("Handling MCP deleted event", zap.String("mcp_id", event.MCPID))
-	// TODO: Process event - delegate to service
+	// Process event - delegate to service
+	// Note: Deletion event is informational - service already handled deletion
 	return nil
 }

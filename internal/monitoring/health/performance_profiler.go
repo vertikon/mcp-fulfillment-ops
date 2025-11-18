@@ -18,30 +18,30 @@ import (
 type ProfileType string
 
 const (
-	ProfileTypeCPU    ProfileType = "cpu"
-	ProfileTypeMemory ProfileType = "memory"
+	ProfileTypeCPU       ProfileType = "cpu"
+	ProfileTypeMemory    ProfileType = "memory"
 	ProfileTypeGoroutine ProfileType = "goroutine"
-	ProfileTypeBlock  ProfileType = "block"
-	ProfileTypeMutex ProfileType = "mutex"
+	ProfileTypeBlock     ProfileType = "block"
+	ProfileTypeMutex     ProfileType = "mutex"
 )
 
 // ProfileData represents profiling data
 type ProfileData struct {
-	Type      ProfileType             `json:"type"`
-	Duration  time.Duration           `json:"duration"`
-	Timestamp time.Time               `json:"timestamp"`
-	Data      []byte                  `json:"data,omitempty"`
-	Metadata  map[string]interface{}   `json:"metadata,omitempty"`
+	Type      ProfileType            `json:"type"`
+	Duration  time.Duration          `json:"duration"`
+	Timestamp time.Time              `json:"timestamp"`
+	Data      []byte                 `json:"data,omitempty"`
+	Metadata  map[string]interface{} `json:"metadata,omitempty"`
 }
 
 // PerformanceProfiler provides performance profiling capabilities
 type PerformanceProfiler struct {
-	mu            sync.RWMutex
-	profiles      map[string]*ProfileData
-	profiling     bool
-	profileType   ProfileType
-	ctx           context.Context
-	cancel        context.CancelFunc
+	mu          sync.RWMutex
+	profiles    map[string]*ProfileData
+	profiling   bool
+	profileType ProfileType
+	ctx         context.Context
+	cancel      context.CancelFunc
 }
 
 // ProfilerConfig represents profiler configuration

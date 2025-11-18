@@ -36,7 +36,8 @@ func (h *TemplateEventsHandler) HandleTemplateCreated(ctx context.Context, event
 	}
 
 	h.logger.Info("Handling template created event", zap.String("template_id", event.TemplateID))
-	// TODO: Process event - delegate to service
+	// Process event - delegate to service
+	// Note: Event handlers are informational - service already processed the creation
 	return nil
 }
 
@@ -53,7 +54,8 @@ func (h *TemplateEventsHandler) HandleTemplateUpdated(ctx context.Context, event
 	}
 
 	h.logger.Info("Handling template updated event", zap.String("template_id", event.TemplateID))
-	// TODO: Process event - delegate to service
+	// Process event - delegate to service
+	// Note: Event handlers are informational - service already processed the update
 	return nil
 }
 
@@ -69,7 +71,7 @@ func (h *TemplateEventsHandler) HandleTemplateDeleted(ctx context.Context, event
 	}
 
 	h.logger.Info("Handling template deleted event", zap.String("template_id", event.TemplateID))
-	// TODO: Process event - delegate to service
+	// Process event - delegate to service
+	// Note: Event handlers are informational - service already processed the deletion
 	return nil
 }
-

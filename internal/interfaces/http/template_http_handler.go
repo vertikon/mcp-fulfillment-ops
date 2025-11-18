@@ -42,14 +42,24 @@ func (h *TemplateHandler) CreateTemplate(c echo.Context) error {
 	if err := req.Validate(); err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": err.Error()})
 	}
-	// TODO: Call service
-	return c.JSON(http.StatusCreated, map[string]interface{}{"id": "placeholder", "message": "Template creation endpoint"})
+	// Call service
+	template, err := h.templateService.CreateTemplate(c.Request().Context(), &req)
+	if err != nil {
+		h.logger.Error("Failed to create template", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "Failed to create template"})
+	}
+	return c.JSON(http.StatusCreated, template)
 }
 
 // ListTemplates handles GET /templates
 func (h *TemplateHandler) ListTemplates(c echo.Context) error {
-	// TODO: Call service
-	return c.JSON(http.StatusOK, map[string]interface{}{"templates": []interface{}{}, "total": 0})
+	// Call service
+	templates, err := h.templateService.ListTemplates(c.Request().Context())
+	if err != nil {
+		h.logger.Error("Failed to list templates", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "Failed to list templates"})
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{"templates": templates, "total": len(templates)})
 }
 
 // GetTemplate handles GET /templates/:id
@@ -58,8 +68,13 @@ func (h *TemplateHandler) GetTemplate(c echo.Context) error {
 	if id == "" {
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": "Template ID is required"})
 	}
-	// TODO: Call service
-	return c.JSON(http.StatusOK, map[string]interface{}{"id": id, "message": "Template retrieval endpoint"})
+	// Call service
+	template, err := h.templateService.GetTemplate(c.Request().Context(), id)
+	if err != nil {
+		h.logger.Error("Failed to get template", zap.String("id", id), zap.Error(err))
+		return c.JSON(http.StatusNotFound, map[string]string{"error": "Template not found"})
+	}
+	return c.JSON(http.StatusOK, template)
 }
 
 // UpdateTemplate handles PUT /templates/:id
@@ -72,8 +87,13 @@ func (h *TemplateHandler) UpdateTemplate(c echo.Context) error {
 	if err := c.Bind(&req); err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": "Invalid request body"})
 	}
-	// TODO: Call service
-	return c.JSON(http.StatusOK, map[string]interface{}{"id": id, "message": "Template update endpoint"})
+	// Call service
+	template, err := h.templateService.UpdateTemplate(c.Request().Context(), id, &req)
+	if err != nil {
+		h.logger.Error("Failed to update template", zap.String("id", id), zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "Failed to update template"})
+	}
+	return c.JSON(http.StatusOK, template)
 }
 
 // DeleteTemplate handles DELETE /templates/:id
@@ -82,6 +102,11 @@ func (h *TemplateHandler) DeleteTemplate(c echo.Context) error {
 	if id == "" {
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": "Template ID is required"})
 	}
-	// TODO: Call service
+	// Call service
+	err := h.templateService.DeleteTemplate(c.Request().Context(), id)
+	if err != nil {
+		h.logger.Error("Failed to delete template", zap.String("id", id), zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "Failed to delete template"})
+	}
 	return c.NoContent(http.StatusNoContent)
 }

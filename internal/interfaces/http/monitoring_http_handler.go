@@ -32,18 +32,33 @@ func (h *MonitoringHandler) RegisterRoutes(e *echo.Group) {
 
 // GetMetrics handles GET /metrics
 func (h *MonitoringHandler) GetMetrics(c echo.Context) error {
-	// TODO: Call service
-	return c.JSON(http.StatusOK, map[string]interface{}{"metrics": map[string]interface{}{}, "message": "Metrics endpoint - service implementation pending"})
+	// Call service
+	metrics, err := h.monitoringService.GetMetrics(c.Request().Context())
+	if err != nil {
+		h.logger.Error("Failed to get metrics", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "Failed to get metrics"})
+	}
+	return c.JSON(http.StatusOK, metrics)
 }
 
 // GetHealth handles GET /health
 func (h *MonitoringHandler) GetHealth(c echo.Context) error {
-	// TODO: Call service
-	return c.JSON(http.StatusOK, map[string]interface{}{"status": "healthy", "message": "Health endpoint - service implementation pending"})
+	// Call service
+	health, err := h.monitoringService.GetHealth(c.Request().Context())
+	if err != nil {
+		h.logger.Error("Failed to get health", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "Failed to get health"})
+	}
+	return c.JSON(http.StatusOK, health)
 }
 
 // GetStatus handles GET /status
 func (h *MonitoringHandler) GetStatus(c echo.Context) error {
-	// TODO: Call service
-	return c.JSON(http.StatusOK, map[string]interface{}{"status": "operational", "message": "Status endpoint - service implementation pending"})
+	// Call service
+	status, err := h.monitoringService.GetStatus(c.Request().Context())
+	if err != nil {
+		h.logger.Error("Failed to get status", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "Failed to get status"})
+	}
+	return c.JSON(http.StatusOK, status)
 }

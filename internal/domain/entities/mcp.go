@@ -99,6 +99,26 @@ func (m *MCP) Context() *KnowledgeContext {
 	}
 }
 
+// KnowledgeID returns the knowledge ID from context
+func (kc *KnowledgeContext) KnowledgeID() string {
+	return kc.knowledgeID
+}
+
+// Documents returns a copy of documents from context
+func (kc *KnowledgeContext) Documents() []string {
+	return append([]string{}, kc.documents...)
+}
+
+// Embeddings returns a copy of embeddings from context
+func (kc *KnowledgeContext) Embeddings() map[string][]float64 {
+	return copyEmbeddings(kc.embeddings)
+}
+
+// Metadata returns a copy of metadata from context
+func (kc *KnowledgeContext) Metadata() map[string]interface{} {
+	return copyMetadataMCP(kc.metadata)
+}
+
 // CreatedAt returns the creation timestamp
 func (m *MCP) CreatedAt() time.Time {
 	return m.createdAt

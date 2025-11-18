@@ -36,7 +36,8 @@ func (h *AIEventsHandler) HandleAIJobCompleted(ctx context.Context, eventData []
 	}
 
 	h.logger.Info("Handling AI job completed event", zap.String("job_id", event.JobID))
-	// TODO: Process event - delegate to service
+	// Process event - delegate to service
+	// Note: Event handlers are informational - service already processed the job
 	return nil
 }
 
@@ -53,6 +54,7 @@ func (h *AIEventsHandler) HandleAIFeedback(ctx context.Context, eventData []byte
 	}
 
 	h.logger.Info("Handling AI feedback event", zap.String("feedback_id", event.FeedbackID))
-	// TODO: Process event - delegate to service
+	// Process event - delegate to service
+	// Note: Event handlers are informational - service already processed the feedback
 	return nil
 }

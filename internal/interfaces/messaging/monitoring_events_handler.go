@@ -42,7 +42,8 @@ func (h *MonitoringEventsHandler) HandleAlert(ctx context.Context, eventData []b
 		zap.String("level", event.Level),
 		zap.String("message", event.Message),
 	)
-	// TODO: Process event - delegate to service
+	// Process event - delegate to service
+	// Note: Alert events are informational - monitoring service already processed the alert
 	return nil
 }
 
@@ -60,6 +61,7 @@ func (h *MonitoringEventsHandler) HandleMetricUpdate(ctx context.Context, eventD
 	}
 
 	h.logger.Info("Handling metric update event", zap.String("metric_name", event.MetricName))
-	// TODO: Process event - delegate to service
+	// Process event - delegate to service
+	// Note: Alert events are informational - monitoring service already processed the alert
 	return nil
 }

@@ -6,9 +6,11 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"time"
 
 	"github.com/vertikon/mcp-hulk/internal/domain/entities"
 	"github.com/vertikon/mcp-hulk/internal/domain/repositories"
+	"github.com/vertikon/mcp-hulk/internal/domain/value_objects"
 	"github.com/vertikon/mcp-hulk/pkg/logger"
 	"go.uber.org/zap"
 )
@@ -95,15 +97,20 @@ func (r *PostgresMCPRepository) FindByID(ctx context.Context, id string) (*entit
 		WHERE id = $1
 	`
 
-	var mcp entities.MCP
+	var mcpID, name, description, stackStr, path string
 	var featuresJSON, contextJSON []byte
-	var stack string
+	var createdAt, updatedAt time.Time
 
 	err := r.db.QueryRowContext(ctx, query, id).Scan(
-		&mcp, // This would need proper unmarshaling
+		&mcpID,
+		&name,
+		&description,
+		&stackStr,
+		&path,
 		&featuresJSON,
 		&contextJSON,
-		&stack,
+		&createdAt,
+		&updatedAt,
 	)
 
 	if err == sql.ErrNoRows {
@@ -113,10 +120,92 @@ func (r *PostgresMCPRepository) FindByID(ctx context.Context, id string) (*entit
 		return nil, fmt.Errorf("failed to find MCP: %w", err)
 	}
 
-	// TODO: Unmarshal and reconstruct entity
-	// This is a placeholder - full implementation requires entity reconstruction
+	// Reconstruct entity
+	stack, err := value_objects.NewStackType(stackStr)
+	if err != nil {
+		return nil, fmt.Errorf("invalid stack type: %w", err)
+	}
 
-	return nil, fmt.Errorf("not implemented: entity reconstruction needed")
+	mcp, err := entities.NewMCP(name, description, stack)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create MCP entity: %w", err)
+	}
+
+	// Set path if present
+	if path != "" {
+		if err := mcp.SetPath(path); err != nil {
+			logger.Warn("Failed to set path on MCP",
+				zap.String("id", mcpID),
+				zap.String("path", path),
+				zap.Error(err),
+			)
+		}
+	}
+
+	// Unmarshal and add features
+	if len(featuresJSON) > 0 {
+		var features []struct {
+			Name        string                 `json:"name"`
+			Status      string                 `json:"status"`
+			Description string                 `json:"description"`
+			Config      map[string]interface{} `json:"config"`
+		}
+		if err := json.Unmarshal(featuresJSON, &features); err != nil {
+			return nil, fmt.Errorf("failed to unmarshal features: %w", err)
+		}
+		for _, f := range features {
+			status := value_objects.FeatureStatus(f.Status)
+			feature, err := value_objects.NewFeature(f.Name, status, f.Description)
+			if err != nil {
+				logger.Warn("Failed to create feature",
+					zap.String("mcp_id", mcpID),
+					zap.String("feature_name", f.Name),
+					zap.Error(err),
+				)
+				continue
+			}
+			// Set config
+			for k, v := range f.Config {
+				if err := feature.SetConfig(k, v); err != nil {
+					logger.Warn("Failed to set feature config",
+						zap.String("mcp_id", mcpID),
+						zap.String("feature_name", f.Name),
+						zap.String("config_key", k),
+						zap.Error(err),
+					)
+				}
+			}
+			if err := mcp.AddFeature(feature); err != nil {
+				logger.Warn("Failed to add feature to MCP",
+					zap.String("mcp_id", mcpID),
+					zap.String("feature_name", f.Name),
+					zap.Error(err),
+				)
+			}
+		}
+	}
+
+	// Unmarshal and add context
+	if len(contextJSON) > 0 {
+		var contextData struct {
+			KnowledgeID string            `json:"knowledge_id"`
+			Documents   []string          `json:"documents"`
+			Embeddings  map[string][]float64 `json:"embeddings"`
+			Metadata    map[string]interface{} `json:"metadata"`
+		}
+		if err := json.Unmarshal(contextJSON, &contextData); err != nil {
+			return nil, fmt.Errorf("failed to unmarshal context: %w", err)
+		}
+		if err := mcp.AddContext(contextData.KnowledgeID, contextData.Documents, contextData.Embeddings, contextData.Metadata); err != nil {
+			logger.Warn("Failed to add context to MCP",
+				zap.String("mcp_id", mcpID),
+				zap.String("knowledge_id", contextData.KnowledgeID),
+				zap.Error(err),
+			)
+		}
+	}
+
+	return mcp, nil
 }
 
 // FindByName finds an MCP by name
@@ -127,15 +216,20 @@ func (r *PostgresMCPRepository) FindByName(ctx context.Context, name string) (*e
 		WHERE name = $1
 	`
 
-	var mcp entities.MCP
+	var mcpID, description, stackStr, path string
 	var featuresJSON, contextJSON []byte
-	var stack string
+	var createdAt, updatedAt time.Time
 
 	err := r.db.QueryRowContext(ctx, query, name).Scan(
-		&mcp,
+		&mcpID,
+		&name,
+		&description,
+		&stackStr,
+		&path,
 		&featuresJSON,
 		&contextJSON,
-		&stack,
+		&createdAt,
+		&updatedAt,
 	)
 
 	if err == sql.ErrNoRows {
@@ -145,7 +239,91 @@ func (r *PostgresMCPRepository) FindByName(ctx context.Context, name string) (*e
 		return nil, fmt.Errorf("failed to find MCP: %w", err)
 	}
 
-	return nil, fmt.Errorf("not implemented: entity reconstruction needed")
+	// Reconstruct entity (same logic as FindByID)
+	stack, err := value_objects.NewStackType(stackStr)
+	if err != nil {
+		return nil, fmt.Errorf("invalid stack type: %w", err)
+	}
+
+	mcp, err := entities.NewMCP(name, description, stack)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create MCP entity: %w", err)
+	}
+
+	// Set path if present
+	if path != "" {
+		if err := mcp.SetPath(path); err != nil {
+			logger.Warn("Failed to set path on MCP",
+				zap.String("id", mcpID),
+				zap.String("path", path),
+				zap.Error(err),
+			)
+		}
+	}
+
+	// Unmarshal and add features
+	if len(featuresJSON) > 0 {
+		var features []struct {
+			Name        string                 `json:"name"`
+			Status      string                 `json:"status"`
+			Description string                 `json:"description"`
+			Config      map[string]interface{} `json:"config"`
+		}
+		if err := json.Unmarshal(featuresJSON, &features); err != nil {
+			return nil, fmt.Errorf("failed to unmarshal features: %w", err)
+		}
+		for _, f := range features {
+			status := value_objects.FeatureStatus(f.Status)
+			feature, err := value_objects.NewFeature(f.Name, status, f.Description)
+			if err != nil {
+				logger.Warn("Failed to create feature",
+					zap.String("mcp_id", mcpID),
+					zap.String("feature_name", f.Name),
+					zap.Error(err),
+				)
+				continue
+			}
+			for k, v := range f.Config {
+				if err := feature.SetConfig(k, v); err != nil {
+					logger.Warn("Failed to set feature config",
+						zap.String("mcp_id", mcpID),
+						zap.String("feature_name", f.Name),
+						zap.String("config_key", k),
+						zap.Error(err),
+					)
+				}
+			}
+			if err := mcp.AddFeature(feature); err != nil {
+				logger.Warn("Failed to add feature to MCP",
+					zap.String("mcp_id", mcpID),
+					zap.String("feature_name", f.Name),
+					zap.Error(err),
+				)
+			}
+		}
+	}
+
+	// Unmarshal and add context
+	if len(contextJSON) > 0 {
+		var contextData struct {
+			KnowledgeID string            `json:"knowledge_id"`
+			Documents   []string          `json:"documents"`
+			Embeddings  map[string][]float64 `json:"embeddings"`
+			Metadata    map[string]interface{} `json:"metadata"`
+		}
+		if err := json.Unmarshal(contextJSON, &contextData); err != nil {
+			return nil, fmt.Errorf("failed to unmarshal context: %w", err)
+		}
+		if err := mcp.AddContext(contextData.KnowledgeID, contextData.Documents, contextData.Embeddings, contextData.Metadata); err != nil {
+			logger.Warn("Failed to add context to MCP",
+				zap.String("mcp_id", mcpID),
+				zap.String("knowledge_id", contextData.KnowledgeID),
+				zap.Error(err),
+			)
+		}
+	}
+
+	return mcp, nil
 }
 
 // List lists all MCPs with optional filters
@@ -183,8 +361,119 @@ func (r *PostgresMCPRepository) List(ctx context.Context, filters *repositories.
 
 	var mcps []*entities.MCP
 	for rows.Next() {
-		// TODO: Scan and reconstruct entities
-		// Placeholder implementation
+		var mcpID, name, description, stackStr, path string
+		var featuresJSON, contextJSON []byte
+		var createdAt, updatedAt time.Time
+
+		if err := rows.Scan(&mcpID, &name, &description, &stackStr, &path, &featuresJSON, &contextJSON, &createdAt, &updatedAt); err != nil {
+			logger.Warn("Failed to scan MCP row",
+				zap.Error(err),
+			)
+			continue
+		}
+
+		// Reconstruct entity
+		stack, err := value_objects.NewStackType(stackStr)
+		if err != nil {
+			logger.Warn("Invalid stack type in database",
+				zap.String("mcp_id", mcpID),
+				zap.String("stack", stackStr),
+				zap.Error(err),
+			)
+			continue
+		}
+
+		mcp, err := entities.NewMCP(name, description, stack)
+		if err != nil {
+			logger.Warn("Failed to create MCP entity",
+				zap.String("mcp_id", mcpID),
+				zap.Error(err),
+			)
+			continue
+		}
+
+		// Set path if present
+		if path != "" {
+			if err := mcp.SetPath(path); err != nil {
+				logger.Warn("Failed to set path on MCP",
+					zap.String("id", mcpID),
+					zap.String("path", path),
+					zap.Error(err),
+				)
+			}
+		}
+
+		// Unmarshal and add features
+		if len(featuresJSON) > 0 {
+			var features []struct {
+				Name        string                 `json:"name"`
+				Status      string                 `json:"status"`
+				Description string                 `json:"description"`
+				Config      map[string]interface{} `json:"config"`
+			}
+			if err := json.Unmarshal(featuresJSON, &features); err != nil {
+				logger.Warn("Failed to unmarshal features",
+					zap.String("mcp_id", mcpID),
+					zap.Error(err),
+				)
+			} else {
+				for _, f := range features {
+					status := value_objects.FeatureStatus(f.Status)
+					feature, err := value_objects.NewFeature(f.Name, status, f.Description)
+					if err != nil {
+						logger.Warn("Failed to create feature",
+							zap.String("mcp_id", mcpID),
+							zap.String("feature_name", f.Name),
+							zap.Error(err),
+						)
+						continue
+					}
+					for k, v := range f.Config {
+						if err := feature.SetConfig(k, v); err != nil {
+							logger.Warn("Failed to set feature config",
+								zap.String("mcp_id", mcpID),
+								zap.String("feature_name", f.Name),
+								zap.String("config_key", k),
+								zap.Error(err),
+							)
+						}
+					}
+					if err := mcp.AddFeature(feature); err != nil {
+						logger.Warn("Failed to add feature to MCP",
+							zap.String("mcp_id", mcpID),
+							zap.String("feature_name", f.Name),
+							zap.Error(err),
+						)
+					}
+				}
+			}
+		}
+
+		// Unmarshal and add context
+		if len(contextJSON) > 0 {
+			var contextData struct {
+				KnowledgeID string            `json:"knowledge_id"`
+				Documents   []string          `json:"documents"`
+				Embeddings  map[string][]float64 `json:"embeddings"`
+				Metadata    map[string]interface{} `json:"metadata"`
+			}
+			if err := json.Unmarshal(contextJSON, &contextData); err != nil {
+				logger.Warn("Failed to unmarshal context",
+					zap.String("mcp_id", mcpID),
+					zap.Error(err),
+				)
+			} else {
+				if err := mcp.AddContext(contextData.KnowledgeID, contextData.Documents, contextData.Embeddings, contextData.Metadata); err != nil {
+					logger.Warn("Failed to add context to MCP",
+						zap.String("mcp_id", mcpID),
+						zap.String("knowledge_id", contextData.KnowledgeID),
+						zap.Error(err),
+					)
+				}
+			}
+		}
+
+		mcps = append(mcps, mcp)
 	}
 
 	return mcps, nil

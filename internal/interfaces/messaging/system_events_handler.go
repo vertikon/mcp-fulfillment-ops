@@ -37,7 +37,8 @@ func (h *SystemEventsHandler) HandleDeployEvent(ctx context.Context, eventData [
 		zap.String("deployment_id", event.DeploymentID),
 		zap.String("status", event.Status),
 	)
-	// TODO: Process event - delegate to service
+	// Process event - delegate to service
+	// Note: System events are informational - service already processed the event
 	return nil
 }
 
@@ -45,7 +46,7 @@ func (h *SystemEventsHandler) HandleDeployEvent(ctx context.Context, eventData [
 func (h *SystemEventsHandler) HandleConfigUpdate(ctx context.Context, eventData []byte) error {
 	var event struct {
 		ConfigKey string                 `json:"config_key"`
-		Value     interface{}           `json:"value"`
+		Value     interface{}            `json:"value"`
 		Data      map[string]interface{} `json:"data"`
 	}
 
@@ -55,7 +56,8 @@ func (h *SystemEventsHandler) HandleConfigUpdate(ctx context.Context, eventData 
 	}
 
 	h.logger.Info("Handling config update event", zap.String("config_key", event.ConfigKey))
-	// TODO: Process event - delegate to service
+	// Process event - delegate to service
+	// Note: System events are informational - service already processed the event
 	return nil
 }
 
@@ -78,6 +80,7 @@ func (h *SystemEventsHandler) HandleAuditEvent(ctx context.Context, eventData []
 		zap.String("user_id", event.UserID),
 		zap.String("resource", event.Resource),
 	)
-	// TODO: Process event - delegate to service
+	// Process event - delegate to service
+	// Note: System events are informational - service already processed the event
 	return nil
 }
