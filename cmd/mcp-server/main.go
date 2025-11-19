@@ -9,12 +9,12 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/vertikon/mcp-hulk/internal/core/config"
-	"github.com/vertikon/mcp-hulk/internal/mcp/generators"
-	"github.com/vertikon/mcp-hulk/internal/mcp/protocol"
-	"github.com/vertikon/mcp-hulk/internal/mcp/registry"
-	"github.com/vertikon/mcp-hulk/internal/mcp/validators"
-	"github.com/vertikon/mcp-hulk/pkg/logger"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/core/config"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/mcp/generators"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/mcp/protocol"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/mcp/registry"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/mcp/validators"
+	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
 

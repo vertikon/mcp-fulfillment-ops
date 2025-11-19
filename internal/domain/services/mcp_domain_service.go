@@ -4,8 +4,8 @@ package services
 import (
 	"fmt"
 
-	"github.com/vertikon/mcp-hulk/internal/domain/entities"
-	"github.com/vertikon/mcp-hulk/internal/domain/value_objects"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/domain/entities"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/domain/value_objects"
 )
 
 // MCPDomainService provides domain logic for MCP operations

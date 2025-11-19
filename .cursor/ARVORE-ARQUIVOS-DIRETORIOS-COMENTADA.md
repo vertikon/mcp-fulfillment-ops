@@ -15,7 +15,7 @@ Este documento apresenta a estrutura completa de arquivos e diretórios do proje
 ## 🗂️ ESTRUTURA COMPLETA COMENTADA
 
 ```
-mcp-hulk/                                				    # Raiz do projeto MCP-HULK
+mcp-fulfillment-ops/                                				    # Raiz do projeto MCP-HULK
 │
 ├── 📁 cmd/                                  				# BLOCO-1: Application Entry Points
 │   │                                        				# Contém todos os pontos de entrada da aplicação (main.go)
@@ -1597,7 +1597,7 @@ mcp-hulk/                                				    # Raiz do projeto MCP-HULK
 │   └── 📄 ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md # Este arquivo
 │
 ├── 📄 go.mod                                				# Módulo Go e dependências
-│                                				            # Define módulo: github.com/vertikon/mcp-hulk
+│                                				            # Define módulo: github.com/vertikon/mcp-fulfillment-ops
 │
 ├── 📄 go.sum                                				# Checksums das dependências Go
 │                                				            # Garante integridade das dependências

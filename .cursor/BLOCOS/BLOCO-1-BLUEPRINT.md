@@ -246,7 +246,7 @@ O Bloco-1 executa as funções essenciais:
 
 ```
 BLOCO-1 — CORE PLATFORM
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 
 ├── cmd/
 │   ├── main.go                       # Servidor HTTP principal

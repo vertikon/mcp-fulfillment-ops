@@ -155,7 +155,7 @@ HULK_NATS_URLS=nats://server1:4222,nats://server2:4222
 
 | Variável | Descrição | Default | Obrigatório |
 |----------|-----------|---------|-------------|
-| `HULK_MCP_SERVER_NAME` | Nome do servidor MCP | `mcp-hulk` | Não |
+| `HULK_MCP_SERVER_NAME` | Nome do servidor MCP | `mcp-fulfillment-ops` | Não |
 | `HULK_MCP_SERVER_VERSION` | Versão do servidor MCP | `1.0.0` | Não |
 | `HULK_MCP_SERVER_PROTOCOL` | Versão do protocolo MCP | `2024-11-05` | Não |
 | `HULK_MCP_SERVER_TRANSPORT` | Transporte MCP (stdio, sse) | `stdio` | Não |

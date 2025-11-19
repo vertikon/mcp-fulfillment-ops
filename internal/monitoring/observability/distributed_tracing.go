@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/trace"
-	"github.com/vertikon/mcp-hulk/pkg/logger"
+	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
 
@@ -31,7 +31,7 @@ type TraceConfig struct {
 // DefaultTraceConfig returns default tracing configuration
 func DefaultTraceConfig() *TraceConfig {
 	return &TraceConfig{
-		ServiceName:      "mcp-hulk",
+		ServiceName:      "mcp-fulfillment-ops",
 		ServiceVersion:   "1.0.0",
 		Environment:      "production",
 		SamplingRate:     1.0,

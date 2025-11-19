@@ -8,7 +8,7 @@
 
 ## 📋 SUMÁRIO EXECUTIVO
 
-Esta auditoria compara os requisitos definidos nos blueprints oficiais do BLOCO-13 com a implementação real no projeto `mcp-hulk`. O BLOCO-13 é responsável por ser o **"Braço Operacional do Hulk"**, orquestrando todo o ciclo de vida operacional através de scripts de automação.
+Esta auditoria compara os requisitos definidos nos blueprints oficiais do BLOCO-13 com a implementação real no projeto `mcp-fulfillment-ops`. O BLOCO-13 é responsável por ser o **"Braço Operacional do Hulk"**, orquestrando todo o ciclo de vida operacional através de scripts de automação.
 
 ### Fontes de Referência
 

@@ -8,10 +8,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/vertikon/mcp-hulk/internal/domain/entities"
-	"github.com/vertikon/mcp-hulk/internal/domain/repositories"
-	"github.com/vertikon/mcp-hulk/internal/domain/value_objects"
-	"github.com/vertikon/mcp-hulk/pkg/logger"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/domain/entities"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/domain/repositories"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/domain/value_objects"
+	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
 

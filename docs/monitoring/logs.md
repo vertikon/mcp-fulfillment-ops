@@ -93,7 +93,7 @@ monitoring:
     format: "json"  # json, text
     output: "stdout"  # stdout, file, syslog
     file:
-      path: "/var/log/mcp-hulk/app.log"
+      path: "/var/log/mcp-fulfillment-ops/app.log"
       max_size: "100MB"
       max_backups: 10
       max_age: 30

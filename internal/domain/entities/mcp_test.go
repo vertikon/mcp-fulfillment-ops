@@ -4,7 +4,7 @@ package entities
 import (
 	"testing"
 
-	"github.com/vertikon/mcp-hulk/internal/domain/value_objects"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/domain/value_objects"
 )
 
 func TestNewMCP(t *testing.T) {

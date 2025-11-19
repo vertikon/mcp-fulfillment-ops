@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/vertikon/mcp-hulk/internal/domain/entities"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/domain/entities"
 )
 
 // MemorySource defines where to get training data from memory

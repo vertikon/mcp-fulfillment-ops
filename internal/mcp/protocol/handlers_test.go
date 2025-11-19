@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/vertikon/mcp-hulk/internal/mcp/generators"
-	"github.com/vertikon/mcp-hulk/internal/mcp/registry"
-	"github.com/vertikon/mcp-hulk/internal/mcp/validators"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/mcp/generators"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/mcp/registry"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/mcp/validators"
 )
 
 func TestNewHandlerManager(t *testing.T) {

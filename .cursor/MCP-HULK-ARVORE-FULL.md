@@ -1,7 +1,7 @@
-analise# Estrutura de Diretórios templates MCP mcp-hulk - Fonte Única da Verdade
+analise# Estrutura de Diretórios templates MCP mcp-fulfillment-ops - Fonte Única da Verdade
 
 ## BLOCO-1 CORE PLATFORM
-E:\vertikon\.templates\mcp-hulk\									
+E:\vertikon\.templates\mcp-fulfillment-ops\									
 │     
 ├── cmd/
 │   ├── main.go                                            			# Servidor HTTP principal
@@ -84,7 +84,7 @@ E:\vertikon\.templates\mcp-hulk\
 
 
 ## BLOCO-2 AI & KNOWLEDGE
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 └── internal/
     └── ai/                                                        # Módulo de IA do Hulk
         ├── core/                                                  # Núcleo genérico de IA
@@ -117,7 +117,7 @@ E:\vertikon\.templates\mcp-hulk\
 
 
 ## BLOCO-3 STATE MANAGEMENT
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 └── internal/
     └── state/                                                     # Gerenciamento de estado
         ├── store/                                                 # Store distribuído
@@ -139,7 +139,7 @@ E:\vertikon\.templates\mcp-hulk\
 
 
 ## BLOCO-4 MONITORING & OBSERVABILITY
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 └── internal/
 	└── monitoring/                                              	# Monitoramento completo
 		├── observability/                                       	# Observabilidade
@@ -162,7 +162,7 @@ E:\vertikon\.templates\mcp-hulk\
 
 
 ## BLOCO-5 VERSIONING & MIGRATION
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 └── internal/
     └── versioning/                                               	# Versionamento avançado
 		├── knowledge/                                           	# Versionamento de conhecimento
@@ -184,7 +184,7 @@ E:\vertikon\.templates\mcp-hulk\
 			└── data_quality.go                                 	# Função: Qualidade de dados
 
 ## BLOCO-6 MCP PROTOCOL & GENERATION
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 └── internal/
 	├── mcp/                                                      	# Lógica específica MCP (engine)
 	│   ├── protocol/                                            	# Protocolo MCP
@@ -266,7 +266,7 @@ E:\vertikon\.templates\mcp-hulk\
 
 
 ## BLOCO-7 INFRASTRUCTURE LAYER
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 └── internal/
 	└── infrastructure/                                          	# Camada de infraestrutura (drivers/conectores)
 		├── persistence/                                         	# Persistência de dados
@@ -397,7 +397,7 @@ E:\vertikon\.templates\mcp-hulk\
 
 
 ## BLOCO-8 INTERFACES LAYER
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 └── internal/
 	└── interfaces/                                              	# Camada de interfaces/adapters (entrada/saída)
 		├── http/                                                	# Handlers HTTP (REST/API)
@@ -453,7 +453,7 @@ E:\vertikon\.templates\mcp-hulk\
 	
 	
 ## BLOCO-9 SECURITY LAYER
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 └── internal/
 	└── security/                                                	# Núcleo de segurança da aplicação
 		├── auth/                                                	# Autenticação e Identidade
@@ -476,7 +476,7 @@ E:\vertikon\.templates\mcp-hulk\
 
 
 ## BLOCO-10 TEMPLATES
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 └── templates/                                                    	# Templates de geração (Assets - Não compilados)
     ├── base/                                                     	# Template Clean Arch Base (Genérico)
     │
@@ -543,7 +543,7 @@ E:\vertikon\.templates\mcp-hulk\
 
 
 ## BLOCO-11 TOOLS & UTILITIES
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 └── tools/                                                        	# Utilitários de desenvolvimento / automação
 	├── generators/                                              	# Geradores de código e artefatos
 	│   ├── mcp_generator.go                                     	# Função: CLI/Tool para gerar MCPs (orquestra internal/mcp/generators)
@@ -577,7 +577,7 @@ E:\vertikon\.templates\mcp-hulk\
 
 
 ## BLOCO-12 CONFIGURATION
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 └── config/                                                        # Arquivos de configuração (fonte única)
 	├── core/                                                     # Configs do core/runtime do Hulk
 	│   ├── engine.yaml                                           # Configuração do motor (concorrência, timeouts, filas internas)
@@ -642,7 +642,7 @@ E:\vertikon\.templates\mcp-hulk\
 
 
 ## BLOCO-13 SCRIPTS & AUTOMATION
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 └── scripts/                                                       # Scripts de automação (DevOps + IA + Infra)
 	├── setup/                                                    # Scripts de setup inicial
 	│   ├── setup_infrastructure.sh                               # Setup de infraestrutura (DBs, Cache, Messaging, Cloud)
@@ -699,7 +699,7 @@ E:\vertikon\.templates\mcp-hulk\
 
 
 ## BLOCO-14 DOCUMENTATION
-E:\vertikon\.templates\mcp-hulk\
+E:\vertikon\.templates\mcp-fulfillment-ops\
 ├── docs/                                                          # Documentação do ecossistema Hulk
 │   ├── architecture/                                              # Arquitetura
 │   │   ├── blueprint.md                                           # Arquitetura geral (BLOCOS 1–13)

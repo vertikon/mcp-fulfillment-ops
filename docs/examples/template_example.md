@@ -33,7 +33,7 @@ package main
 
 import (
     "context"
-    "github.com/vertikon/mcp-hulk/tools/generators"
+    "github.com/vertikon/mcp-fulfillment-ops/tools/generators"
 )
 
 func main() {

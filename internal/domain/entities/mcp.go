@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/vertikon/mcp-hulk/internal/domain/value_objects"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/domain/value_objects"
 )
 
 // MCP represents a Model Context Protocol entity
