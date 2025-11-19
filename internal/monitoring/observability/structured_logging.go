@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/vertikon/mcp-hulk/pkg/logger"
+	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
 
@@ -56,7 +56,7 @@ func DefaultLogConfig() *LogConfig {
 		Level:      LogLevelInfo,
 		Format:     "json",
 		Output:     "stdout",
-		Service:    "mcp-hulk",
+		Service:    "mcp-fulfillment-ops",
 		Component:  "monitoring",
 		EnableTrace: true,
 	}

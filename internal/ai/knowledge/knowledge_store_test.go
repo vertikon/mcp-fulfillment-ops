@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/vertikon/mcp-hulk/internal/domain/entities"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/domain/entities"
 )
 
 // mockKnowledgeRepository is a mock implementation of KnowledgeRepository

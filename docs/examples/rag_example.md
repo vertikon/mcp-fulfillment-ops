@@ -13,7 +13,7 @@ package main
 
 import (
     "context"
-    "github.com/vertikon/mcp-hulk/internal/ai/knowledge"
+    "github.com/vertikon/mcp-fulfillment-ops/internal/ai/knowledge"
 )
 
 func main() {
@@ -46,7 +46,7 @@ package main
 
 import (
     "context"
-    "github.com/vertikon/mcp-hulk/internal/ai/rag"
+    "github.com/vertikon/mcp-fulfillment-ops/internal/ai/rag"
 )
 
 func main() {
@@ -76,7 +76,7 @@ package main
 
 import (
     "context"
-    "github.com/vertikon/mcp-hulk/internal/ai/rag"
+    "github.com/vertikon/mcp-fulfillment-ops/internal/ai/rag"
 )
 
 func main() {

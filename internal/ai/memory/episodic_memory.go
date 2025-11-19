@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/vertikon/mcp-hulk/internal/domain/entities"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/domain/entities"
 )
 
 // EpisodicMemoryManager manages episodic memory operations

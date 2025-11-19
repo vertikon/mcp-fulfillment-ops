@@ -1,7 +1,7 @@
 # 🔍 Análise de Arquivos Vazios (0 bytes)
 
 **Data da Análise:** 2025-01-27  
-**Diretório Analisado:** `E:\vertikon\.templates\mcp-hulk`
+**Diretório Analisado:** `E:\vertikon\.templates\mcp-fulfillment-ops`
 
 ---
 

@@ -8,7 +8,7 @@
 
 ## 📋 SUMÁRIO EXECUTIVO
 
-Esta auditoria compara os requisitos definidos nos blueprints oficiais do BLOCO-14 com a implementação real no projeto `mcp-hulk`. O BLOCO-14 é responsável por ser a **"FONTE DE VERDADE CONCEITUAL"** do ecossistema Hulk, documentando toda a arquitetura, integrações e guias operacionais.
+Esta auditoria compara os requisitos definidos nos blueprints oficiais do BLOCO-14 com a implementação real no projeto `mcp-fulfillment-ops`. O BLOCO-14 é responsável por ser a **"FONTE DE VERDADE CONCEITUAL"** do ecossistema Hulk, documentando toda a arquitetura, integrações e guias operacionais.
 
 ### Fontes de Referência
 

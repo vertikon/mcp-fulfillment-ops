@@ -35,7 +35,7 @@ MCP_HULK_JWT_SECRET_KEY=change-me-in-production-use-strong-random-key-32-bytes-m
 ## Uso do Auth0 Provider
 
 ```go
-import "github.com/vertikon/mcp-hulk/internal/security/auth"
+import "github.com/vertikon/mcp-fulfillment-ops/internal/security/auth"
 
 // Criar configuração Auth0
 auth0Config := auth.OAuthProviderConfig{

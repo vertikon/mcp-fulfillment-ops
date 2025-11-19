@@ -105,7 +105,7 @@ func NewLoader() *Loader {
 	v.SetConfigName("config")
 	v.AddConfigPath(".")
 	v.AddConfigPath("./config")
-	v.AddConfigPath("$HOME/.mcp-hulk")
+	v.AddConfigPath("$HOME/.mcp-fulfillment-ops")
 
 	// Environment variables - prefix HULK_ as per blueprint
 	v.SetEnvPrefix("HULK")

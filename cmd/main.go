@@ -10,14 +10,14 @@ import (
 	"time"
 
 	"github.com/nats-io/nats.go"
-	"github.com/vertikon/mcp-hulk/internal/core/cache"
-	"github.com/vertikon/mcp-hulk/internal/core/config"
-	"github.com/vertikon/mcp-hulk/internal/core/engine"
-	"github.com/vertikon/mcp-hulk/internal/core/events"
-	"github.com/vertikon/mcp-hulk/internal/core/scheduler"
-	"github.com/vertikon/mcp-hulk/internal/observability"
-	"github.com/vertikon/mcp-hulk/pkg/httpserver"
-	"github.com/vertikon/mcp-hulk/pkg/logger"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/core/cache"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/core/config"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/core/engine"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/core/events"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/core/scheduler"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/observability"
+	"github.com/vertikon/mcp-fulfillment-ops/pkg/httpserver"
+	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
 
@@ -43,7 +43,7 @@ func main() {
 	// Initialize observability
 	var tracerProvider *observability.TracerProvider
 	if cfg.Telemetry.Tracing.Enabled {
-		tracerProvider, err = observability.InitTracing("mcp-hulk", cfg.Telemetry.Tracing.Endpoint)
+		tracerProvider, err = observability.InitTracing("mcp-fulfillment-ops", cfg.Telemetry.Tracing.Endpoint)
 		if err != nil {
 			logger.Error("Failed to initialize tracing", zap.Error(err))
 		} else {

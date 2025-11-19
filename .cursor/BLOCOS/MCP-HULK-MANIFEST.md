@@ -2,8 +2,8 @@
     "schema_version":  "1.0.0",
     "metadata":  {
                      "generated_at_utc":  "2025-11-17T22:16:33.1810677Z",
-                     "root_path":  "E:\\vertikon\\.templates\\mcp-hulk",
-                     "root_path_resolved":  "E:\\vertikon\\.templates\\mcp-hulk",
+                     "root_path":  "E:\\vertikon\\.templates\\mcp-fulfillment-ops",
+                     "root_path_resolved":  "E:\\vertikon\\.templates\\mcp-fulfillment-ops",
                      "generator":  "Generate-Manifest.ps1@v1.2.3",
                      "environment":  {
                                          "pwsh_version":  "5.1.26100.6899",

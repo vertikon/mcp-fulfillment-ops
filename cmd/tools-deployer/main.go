@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/vertikon/mcp-hulk/tools/deployers"
+	"github.com/vertikon/mcp-fulfillment-ops/tools/deployers"
 )
 
 func main() {

@@ -3,8 +3,8 @@ package services
 import (
 	"context"
 
-	"github.com/vertikon/mcp-hulk/internal/application/dtos"
-	"github.com/vertikon/mcp-hulk/pkg/logger"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/application/dtos"
+	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
 

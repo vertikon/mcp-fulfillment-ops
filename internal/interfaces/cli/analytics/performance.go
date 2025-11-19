@@ -2,7 +2,7 @@ package analytics
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/vertikon/mcp-hulk/pkg/logger"
+	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 )
 
 // performanceCmd represents the performance command

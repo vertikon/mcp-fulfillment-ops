@@ -223,7 +223,7 @@ func (l *Loader) Load() (*Config, error) {
 	// Initialize observability
 	var tracerProvider *observability.TracerProvider
 	if cfg.Telemetry.Tracing.Enabled {
-		tracerProvider, err = observability.InitTracing("mcp-hulk", cfg.Telemetry.Tracing.Endpoint)
+		tracerProvider, err = observability.InitTracing("mcp-fulfillment-ops", cfg.Telemetry.Tracing.Endpoint)
 		if err != nil {
 			logger.Error("Failed to initialize tracing", zap.Error(err))
 		} else {
@@ -279,7 +279,7 @@ func main() {
 	// Initialize observability
 	var tracerProvider *observability.TracerProvider
 	if cfg.Telemetry.Tracing.Enabled {
-		tracerProvider, err = observability.InitTracing("mcp-hulk", cfg.Telemetry.Tracing.Endpoint)
+		tracerProvider, err = observability.InitTracing("mcp-fulfillment-ops", cfg.Telemetry.Tracing.Endpoint)
 		if err != nil {
 			logger.Error("Failed to initialize tracing", zap.Error(err))
 		} else {

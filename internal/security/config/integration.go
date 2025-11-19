@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/vertikon/mcp-hulk/internal/security/auth"
-	"github.com/vertikon/mcp-hulk/internal/security/encryption"
-	"github.com/vertikon/mcp-hulk/internal/security/rbac"
-	"github.com/vertikon/mcp-hulk/pkg/logger"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/security/auth"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/security/encryption"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/security/rbac"
+	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
 

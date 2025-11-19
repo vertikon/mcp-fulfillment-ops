@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/spf13/viper"
-	"github.com/vertikon/mcp-hulk/pkg/logger"
+	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
 
@@ -164,7 +164,7 @@ func NewLoader() *Loader {
 	v.SetConfigName("config")
 	v.AddConfigPath(".")
 	v.AddConfigPath("./config")
-	v.AddConfigPath("$HOME/.mcp-hulk")
+	v.AddConfigPath("$HOME/.mcp-fulfillment-ops")
 
 	// Environment variables - prefix HULK_ as per blueprint
 	v.SetEnvPrefix("HULK")
@@ -330,7 +330,7 @@ func (l *Loader) setDefaults() {
 	l.viper.SetDefault("mcp.registry.cache_ttl", 3600) // 1 hour in seconds
 
 	// MCP Server defaults
-	l.viper.SetDefault("mcp.server.name", "mcp-hulk")
+	l.viper.SetDefault("mcp.server.name", "mcp-fulfillment-ops")
 	l.viper.SetDefault("mcp.server.version", "1.0.0")
 	l.viper.SetDefault("mcp.server.protocol", "2024-11-05")
 	l.viper.SetDefault("mcp.server.transport", "stdio")

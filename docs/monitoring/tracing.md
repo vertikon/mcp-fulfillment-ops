@@ -71,7 +71,7 @@ Traces exportados para Jaeger:
 tracing:
   exporter: "jaeger"
   endpoint: "http://jaeger:14268/api/traces"
-  service_name: "mcp-hulk"
+  service_name: "mcp-fulfillment-ops"
 ```
 
 ### OpenTelemetry
@@ -82,7 +82,7 @@ Traces exportados via OpenTelemetry:
 tracing:
   exporter: "otlp"
   endpoint: "http://otel-collector:4317"
-  service_name: "mcp-hulk"
+  service_name: "mcp-fulfillment-ops"
 ```
 
 ## Configuração

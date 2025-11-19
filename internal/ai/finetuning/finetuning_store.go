@@ -3,7 +3,7 @@ package finetuning
 import (
 	"context"
 
-	"github.com/vertikon/mcp-hulk/internal/domain/entities"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/domain/entities"
 )
 
 // FinetuningRepository defines interface for fine-tuning persistence

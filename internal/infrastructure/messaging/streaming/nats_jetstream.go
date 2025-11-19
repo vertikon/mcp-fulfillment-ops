@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/nats-io/nats.go"
-	"github.com/vertikon/mcp-hulk/pkg/logger"
+	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
 
@@ -57,7 +57,7 @@ type natsJetStreamClient struct {
 // NewNATSJetStreamClient creates a new NATS JetStream client
 func NewNATSJetStreamClient(urls []string, user, password string) (JetStreamClient, error) {
 	opts := []nats.Option{
-		nats.Name("mcp-hulk-jetstream"),
+		nats.Name("mcp-fulfillment-ops-jetstream"),
 		nats.ReconnectWait(2 * time.Second),
 		nats.MaxReconnects(-1),
 		nats.DisconnectErrHandler(func(nc *nats.Conn, err error) {

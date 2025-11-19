@@ -7,9 +7,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/vertikon/mcp-hulk/cmd/mcp-init/internal/config"
-	"github.com/vertikon/mcp-hulk/cmd/mcp-init/internal/handlers"
-	"github.com/vertikon/mcp-hulk/pkg/logger"
+	"github.com/vertikon/mcp-fulfillment-ops/cmd/mcp-init/internal/config"
+	"github.com/vertikon/mcp-fulfillment-ops/cmd/mcp-init/internal/handlers"
+	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
 

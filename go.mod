@@ -1,4 +1,4 @@
-module github.com/vertikon/mcp-hulk
+module github.com/vertikon/mcp-fulfillment-ops
 
 go 1.24.0
 
