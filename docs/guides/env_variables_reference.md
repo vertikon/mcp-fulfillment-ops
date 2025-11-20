@@ -1,6 +1,6 @@
-# Referência de Variáveis de Ambiente - MCP-HULK
+# Referência de Variáveis de Ambiente - mcp-fulfillment-ops
 
-Este documento lista todas as variáveis de ambiente disponíveis no MCP-HULK.
+Este documento lista todas as variáveis de ambiente disponíveis no mcp-fulfillment-ops.
 
 **IMPORTANTE:** Copie este conteúdo para um arquivo `.env` na raiz do projeto e ajuste os valores conforme necessário.
 

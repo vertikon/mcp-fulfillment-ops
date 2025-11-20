@@ -1,6 +1,6 @@
 
 
-Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-11 — TOOLS & UTILITIES**, que traduz a arquitetura técnica do Bloco-11 para uma visão estratégica focada em seu papel como o motor de execução e automação do ecossistema MCP-HULK.
+Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-11 — TOOLS & UTILITIES**, que traduz a arquitetura técnica do Bloco-11 para uma visão estratégica focada em seu papel como o motor de execução e automação do ecossistema mcp-fulfillment-ops.
 
 ---
 
@@ -14,7 +14,7 @@ Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-11 �
 
 ## **1. Visão Estratégica: O Motor de Execução e Automação**
 
-O **Bloco-11 (Tools & Utilities)** é o **braço operacional do MCP-HULK**. Enquanto outros blocos definem a arquitetura, o domínio e os padrões, o Bloco-11 é a força que **coloca o Hulk para trabalhar**. Ele é o motor que transforma a intenção (um novo projeto, uma validação, uma integração) em uma ação concreta, automática e repetível.
+O **Bloco-11 (Tools & Utilities)** é o **braço operacional do mcp-fulfillment-ops**. Enquanto outros blocos definem a arquitetura, o domínio e os padrões, o Bloco-11 é a força que **coloca o Hulk para trabalhar**. Ele é o motor que transforma a intenção (um novo projeto, uma validação, uma integração) em uma ação concreta, automática e repetível.
 
 Sua missão estratégica é **industrializar o ciclo de vida do software** dentro do ecossistema. Ele elimina o trabalho manual, reduz a chance de erro humano e acelera drasticamente a passagem da ideia para o artefato funcional. Sem o Bloco-11, o Hulk seria um conjunto de blueprints brilhantes, mas incapaz de construir nada.
 
@@ -64,7 +64,7 @@ O Bloco-11 é o componente que conecta e ativa os outros blocos estratégicos:
 
 ## **5. Conclusão e Diretrizes Estratégicas**
 
-O **Bloco-11 é o coração operacional que dá vida ao MCP-HULK**. Ele é a ponte entre a teoria arquitetural e a prática de engenharia, garantindo que o sistema não seja apenas bem projetado, mas também produtivo, seguro e integrado.
+O **Bloco-11 é o coração operacional que dá vida ao mcp-fulfillment-ops**. Ele é a ponte entre a teoria arquitetural e a prática de engenharia, garantindo que o sistema não seja apenas bem projetado, mas também produtivo, seguro e integrado.
 
 **Diretrizes Estratégicas:**
 1.  **Tratar Ferramentas como Produtos de Primeira Classe:** As ferramentas do Bloco-11 devem ter versionamento, testes automatizados, documentação e SLAs, assim como qualquer outro software crítico.

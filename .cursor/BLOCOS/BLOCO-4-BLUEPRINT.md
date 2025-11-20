@@ -4,7 +4,7 @@ Aqui está **a ANÁLISE OFICIAL do BLOCO-4 (DOMAIN LAYER)**, totalmente fundamen
 
 # 🟩 **BLOCO-4 — DOMAIN LAYER (ANÁLISE OFICIAL)**
 
-Segundo o documento de integrações **MCP-HULK-INTEGRACOES.md**, o BLOCO-4 é a **camada de Domínio**, responsável por **regras de negócio puras**, **entidades**, **value objects**, e **interfaces de repositório**.
+Segundo o documento de integrações **mcp-fulfillment-ops-INTEGRACOES.md**, o BLOCO-4 é a **camada de Domínio**, responsável por **regras de negócio puras**, **entidades**, **value objects**, e **interfaces de repositório**.
 
 Ele é a **espinha dorsal do sistema**, pois absolutamente todos os blocos “de dentro” dependem dele.
 
@@ -139,14 +139,14 @@ Perfeito.
 A seguir está o **DOCUMENTO OFICIAL – BLOCO-4 (DOMAIN LAYER)**, no **padrão formal Vertikon / Hulk**, pronto para entrar no repositório em:
 
 ```
-docs/blueprints/MCP-HULK-BLOCO-4.md
+docs/blueprints/mcp-fulfillment-ops-BLOCO-4.md
 ```
 
-Este é o **documento final, normativo, canônico e estável**, considerado **fonte única da verdade** para o Domínio do MCP-Hulk.
+Este é o **documento final, normativo, canônico e estável**, considerado **fonte única da verdade** para o Domínio do mcp-fulfillment-ops.
 
 ---
 
-# 🟦 **MCP-HULK — BLOCO-4 BLUEPRINT OFICIAL**
+# 🟦 **mcp-fulfillment-ops — BLOCO-4 BLUEPRINT OFICIAL**
 
 **Camada de Domínio (Domain Layer)**
 **Versão:** 1.0
@@ -158,7 +158,7 @@ Este é o **documento final, normativo, canônico e estável**, considerado **fo
 
 # 🔷 **1. Propósito do Bloco-4**
 
-O **Bloco-4 (Domain Layer)** é a fundação lógica do MCP-Hulk.
+O **Bloco-4 (Domain Layer)** é a fundação lógica do mcp-fulfillment-ops.
 Aqui vivem:
 
 * **Entidades (Entities)**
@@ -352,7 +352,7 @@ sempre atualizam `UpdatedAt`.
 
 # 🔷 **5. Integrações Oficiais**
 
-Segundo **MCP-HULK-INTEGRACOES.md**:
+Segundo **mcp-fulfillment-ops-INTEGRACOES.md**:
 
 ### BLOCO-4 integra com:
 
@@ -459,6 +459,6 @@ Posso gerar imediatamente:
 ou
 ✅ **BLOCO-3 — BLUEPRINT OFICIAL (State Management)**
 ou
-📘 **MCP-HULK-BLUEPRINT-FULL.md (v1)**
+📘 **mcp-fulfillment-ops-BLUEPRINT-FULL.md (v1)**
 
 Diga qual prefere.

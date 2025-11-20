@@ -1,6 +1,6 @@
 # Exemplo de Template
 
-Este documento demonstra como usar templates no MCP-HULK.
+Este documento demonstra como usar templates no mcp-fulfillment-ops.
 
 ## Cenário
 

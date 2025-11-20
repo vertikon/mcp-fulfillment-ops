@@ -1,6 +1,6 @@
 
 
-Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-7 — INFRASTRUCTURE LAYER**, que traduz a arquitetura técnica do Bloco-7 para uma visão estratégica focada em seu papel como alicerce tecnológico e viabilizador de execução do ecossistema MCP-HULK.
+Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-7 — INFRASTRUCTURE LAYER**, que traduz a arquitetura técnica do Bloco-7 para uma visão estratégica focada em seu papel como alicerce tecnológico e viabilizador de execução do ecossistema mcp-fulfillment-ops.
 
 ---
 
@@ -14,7 +14,7 @@ Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-7 —
 
 ## **1. Visão Estratégica: O Alicerce Concreto do Hulk**
 
-O **Bloco-7 (Infrastructure Layer)** é a **espinha dorsal tecnológica** do MCP-HULK. Enquanto os outros blocos definem *o quê* o sistema faz (regras de negócio, orquestração, inteligência), o Bloco-7 define *como* isso é feito no mundo real. Ele é a ponte que transforma a arquitetura limpa e abstrata em um sistema robusto, performático e operável.
+O **Bloco-7 (Infrastructure Layer)** é a **espinha dorsal tecnológica** do mcp-fulfillment-ops. Enquanto os outros blocos definem *o quê* o sistema faz (regras de negócio, orquestração, inteligência), o Bloco-7 define *como* isso é feito no mundo real. Ele é a ponte que transforma a arquitetura limpa e abstrata em um sistema robusto, performático e operável.
 
 Sua missão estratégica é **isolar a complexidade tecnológica** do resto da aplicação, garantindo que o "cérebro" (Bloco-6) e o "coração" (Bloco-4/5) possam evoluir independentemente das mudanças em bancos de dados, provedores de nuvem ou tecnologias de mensageria. Em resumo: **o Bloco-7 compra liberdade e agilidade para o negócio.**
 
@@ -55,7 +55,7 @@ O Bloco-7 não é apenas uma coleção de tecnologias; ele faz um conjunto de pr
 
 ---
 
-## **4. O Papel do Bloco-7 no Ecossistema MCP-HULK**
+## **4. O Papel do Bloco-7 no Ecossistema mcp-fulfillment-ops**
 
 *   **Para o Bloco-6 (AI Layer):** Ele é o **fornecedor de combustível e usina de energia**. Fornece os dados (VectorDB, GraphDB), o estado (Redis) e o poder de fogo (RunPod) para que a inteligência artificial funcione.
 

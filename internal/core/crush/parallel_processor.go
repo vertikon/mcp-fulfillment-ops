@@ -622,16 +622,4 @@ func (as *AutoScaler) scaleDown(ctx context.Context, pool *WorkerPool) {
 	as.stats.LastScalingTime = &now
 }
 
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
+// Helper functions min/max are defined in utils.go

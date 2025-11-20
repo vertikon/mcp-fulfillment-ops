@@ -6,7 +6,7 @@ Perfeito. A seguir está a **Matriz de Risco e Conformidade** para o **BLOCO-9 S
 
 # **MATRIZ DE RISCO E CONFORMIDADE: BLOCO-9 SECURITY LAYER**
 
-**Objetivo:** Mapear os riscos de negócio mais críticos do ecossistema MCP-HULK aos controles técnicos e estratégicos implementados pelo Bloco-9. Esta matriz serve como ferramenta para gestão de riscos, comunicação com stakeholders e planejamento de investimentos em segurança.
+**Objetivo:** Mapear os riscos de negócio mais críticos do ecossistema mcp-fulfillment-ops aos controles técnicos e estratégicos implementados pelo Bloco-9. Esta matriz serve como ferramenta para gestão de riscos, comunicação com stakeholders e planejamento de investimentos em segurança.
 
 ---
 
@@ -47,4 +47,4 @@ Perfeito. A seguir está a **Matriz de Risco e Conformidade** para o **BLOCO-9 S
 
 ## **Conclusão Estratégica**
 
-Esta matriz solidifica o papel do **Bloco-9 não como um centro de custo, mas como um investimento estratégico e direto na resiliência e na sustentabilidade do negócio**. Cada componente do Bloco-9 é uma resposta tangível a um risco que, se materializado, poderia comprometer a operação, a reputação e a viabilidade financeira do MCP-HULK.
+Esta matriz solidifica o papel do **Bloco-9 não como um centro de custo, mas como um investimento estratégico e direto na resiliência e na sustentabilidade do negócio**. Cada componente do Bloco-9 é uma resposta tangível a um risco que, se materializado, poderia comprometer a operação, a reputação e a viabilidade financeira do mcp-fulfillment-ops.

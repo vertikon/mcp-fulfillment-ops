@@ -1,6 +1,6 @@
 # Prompts de IA
 
-Este documento descreve o sistema de prompts de IA do MCP-HULK.
+Este documento descreve o sistema de prompts de IA do mcp-fulfillment-ops.
 
 ## Visão Geral
 

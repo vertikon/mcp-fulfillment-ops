@@ -1,6 +1,6 @@
 
 
-Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-14 — DOCUMENTATION**, que traduz a arquitetura técnica do Bloco-14 para uma visão estratégica focada em seu papel como a Carta Magna e o principal habilitador de governança, produtividade e conformidade do ecossistema MCP-HULK.
+Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-14 — DOCUMENTATION**, que traduz a arquitetura técnica do Bloco-14 para uma visão estratégica focada em seu papel como a Carta Magna e o principal habilitador de governança, produtividade e conformidade do ecossistema mcp-fulfillment-ops.
 
 ---
 
@@ -8,13 +8,13 @@ Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-14 �
 
 **Versão:** 1.0
 **Status:** Executivo • Estratégico
-**Foco:** Definir o papel do Bloco-14 como a fonte única da verdade conceitual que governa, alinha e capacita todo o ecossistema MCP-HULK.
+**Foco:** Definir o papel do Bloco-14 como a fonte única da verdade conceitual que governa, alinha e capacita todo o ecossistema mcp-fulfillment-ops.
 
 ---
 
 ## **1. Visão Estratégica: A Carta Magna do Hulk**
 
-O **Bloco-14 (Documentation Layer)** é a **Carta Magna do MCP-HULK**. Ele não é um repositório de arquivos estáticos; é a **fonte viva e central da verdade conceitual** que define o porquê e o como do sistema. Sua missão estratégica é traduzir a complexidade arquitetural em clareza, alinhar todas as equipes sob uma única visão e capacitar cada indivíduo a operar, evoluir e inovar sobre o Hulk com confiança e autonomia.
+O **Bloco-14 (Documentation Layer)** é a **Carta Magna do mcp-fulfillment-ops**. Ele não é um repositório de arquivos estáticos; é a **fonte viva e central da verdade conceitual** que define o porquê e o como do sistema. Sua missão estratégica é traduzir a complexidade arquitetural em clareza, alinhar todas as equipes sob uma única visão e capacitar cada indivíduo a operar, evoluir e inovar sobre o Hulk com confiança e autonomia.
 
 Em essência, o Bloco-14 é o que transforma um conjunto de blocos tecnológicos complexos em uma plataforma compreensível, governável e, acima de tudo, humana. Sem ele, o Hulk seria uma fortaleza intransponível; com ele, ele se torna uma cidade aberta e organizada, com mapas, leis e guias para todos os seus cidadãos.
 
@@ -64,7 +64,7 @@ O Bloco-14 é o componente que dá sentido e propósito a todos os outros blocos
 
 ## **5. Conclusão e Diretrizes Estratégicas**
 
-O **Bloco-14 é o ativo intangível mais crítico do MCP-HULK**. Ele é o catalisador que transforma a complexidade em clareza, o caos em ordem e o potencial em capacidade. Investir na documentação não é um custo operacional; é um investimento direto na agilidade, na governança e na sustentabilidade de todo o ecossistema.
+O **Bloco-14 é o ativo intangível mais crítico do mcp-fulfillment-ops**. Ele é o catalisador que transforma a complexidade em clareza, o caos em ordem e o potencial em capacidade. Investir na documentação não é um custo operacional; é um investimento direto na agilidade, na governança e na sustentabilidade de todo o ecossistema.
 
 **Diretrizes Estratégicas:**
 1.  **Tratar Documentação como Produto de Primeira Classe:** A documentação deve ter donos, um roadmap, versionamento e métricas de qualidade, assim como qualquer outro software crítico.

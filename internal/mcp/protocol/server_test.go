@@ -293,8 +293,8 @@ func TestMCPServer_IsRunning(t *testing.T) {
 func TestServerConfig_Defaults(t *testing.T) {
 	server := NewMCPServer(nil)
 
-	if server.config.Name != "MCP-Hulk" {
-		t.Errorf("Expected default name 'MCP-Hulk', got '%s'", server.config.Name)
+	if server.config.Name != "mcp-fulfillment-ops" {
+		t.Errorf("Expected default name 'mcp-fulfillment-ops', got '%s'", server.config.Name)
 	}
 	if server.config.Version != "1.0.0" {
 		t.Errorf("Expected default version '1.0.0', got '%s'", server.config.Version)

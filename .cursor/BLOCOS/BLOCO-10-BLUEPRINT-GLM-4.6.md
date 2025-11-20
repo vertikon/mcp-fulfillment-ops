@@ -1,6 +1,6 @@
 
 
-Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-10 — TEMPLATES**, que traduz a arquitetura técnica do Bloco-10 para uma visão estratégica focada em seu papel como o molde canônico e acelerador de valor do ecossistema MCP-HULK.
+Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-10 — TEMPLATES**, que traduz a arquitetura técnica do Bloco-10 para uma visão estratégica focada em seu papel como o molde canônico e acelerador de valor do ecossistema mcp-fulfillment-ops.
 
 ---
 
@@ -14,7 +14,7 @@ Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-10 �
 
 ## **1. Visão Estratégica: O Molde Canônico do Hulk**
 
-O **Bloco-10 (Templates)** é o **DNA de software do MCP-HULK**. Ele não contém lógica ou código executável; ele contém os **padrões, as estruturas e as melhores práticas** que definem como todo software dentro do ecossistema deve nascer. Sua missão estratégica é transformar a criação de um novo projeto — seja um microsserviço, um frontend ou um agente de IA — de um processo artesanal, demorado e propenso a erros, para um ato industrializado, rápido e consistente.
+O **Bloco-10 (Templates)** é o **DNA de software do mcp-fulfillment-ops**. Ele não contém lógica ou código executável; ele contém os **padrões, as estruturas e as melhores práticas** que definem como todo software dentro do ecossistema deve nascer. Sua missão estratégica é transformar a criação de um novo projeto — seja um microsserviço, um frontend ou um agente de IA — de um processo artesanal, demorado e propenso a erros, para um ato industrializado, rápido e consistente.
 
 Em essência, o Bloco-10 é o **molde canônico** que garante que, não importa quem construa ou qual seja a finalidade, o resultado final seja inconfundivelmente "Hulk": seguro, escalável, observável e alinhado à arquitetura central.
 

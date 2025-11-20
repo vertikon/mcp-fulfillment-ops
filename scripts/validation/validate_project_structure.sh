@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script de validação de estrutura do projeto MCP-HULK
+# Script de validação de estrutura do projeto mcp-fulfillment-ops
 # Uso: ./scripts/validation/validate_project_structure.sh [--strict] [--format json|markdown|text]
 
 set -e
@@ -12,7 +12,7 @@ NC='\033[0m' # No Color
 
 # Configurações
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-ORIGINAL_TREE="${PROJECT_ROOT}/.cursor/MCP-HULK-ARVORE-FULL.md"
+ORIGINAL_TREE="${PROJECT_ROOT}/.cursor/mcp-fulfillment-ops-ARVORE-FULL.md"
 COMMENTED_TREE="${PROJECT_ROOT}/.cursor/ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md"
 VALIDATE_TOOL="${PROJECT_ROOT}/bin/validate-tree"
 OUTPUT_FORMAT="${OUTPUT_FORMAT:-markdown}"
@@ -37,7 +37,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-echo -e "${GREEN}🔍 Validando estrutura do projeto MCP-HULK...${NC}"
+echo -e "${GREEN}🔍 Validando estrutura do projeto mcp-fulfillment-ops...${NC}"
 echo ""
 
 # Verificar se a ferramenta existe

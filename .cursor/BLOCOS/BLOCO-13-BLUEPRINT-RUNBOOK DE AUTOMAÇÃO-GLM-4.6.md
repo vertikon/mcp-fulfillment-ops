@@ -1,12 +1,12 @@
 
 
-Com base no Blueprint Executivo do Bloco-13, aqui está o **RUNBOOK DE AUTOMAÇÃO**, um documento vivo e prático projetado para ser a principal ferramenta de operação do ecossistema MCP-HULK.
+Com base no Blueprint Executivo do Bloco-13, aqui está o **RUNBOOK DE AUTOMAÇÃO**, um documento vivo e prático projetado para ser a principal ferramenta de operação do ecossistema mcp-fulfillment-ops.
 
 ---
 
 # **RUNBOOK DE AUTOMAÇÃO: BLOCO-13 — SCRIPTS & AUTOMATION**
 
-**Propósito:** Este documento serve como a fonte única da verdade para a execução de todas as tarefas operacionais, automações e scripts do ecossistema MCP-HULK. Ele foi projetado para ser usado por equipes de DevOps, SREs e engenheeros, garantindo que as operações sejam **repetíveis, seguras e eficientes**.
+**Propósito:** Este documento serve como a fonte única da verdade para a execução de todas as tarefas operacionais, automações e scripts do ecossistema mcp-fulfillment-ops. Ele foi projetado para ser usado por equipes de DevOps, SREs e engenheeros, garantindo que as operações sejam **repetíveis, seguras e eficientes**.
 
 **Princípios Fundamentais:**
 1.  **Scripts como Código:** Todo script aqui descrito é versionado, testado e tratado como parte do produto.
@@ -147,7 +147,7 @@ Cada script é descrito usando o seguinte template padrão:
 
 ## **6. Glossário e Links Úteis**
 
-*   **MCP-HULK:** Nome do ecossistema.
+*   **mcp-fulfillment-ops:** Nome do ecossistema.
 *   **Bloco-11:** Ferramentas & Utilitários (geradores, validadores).
 *   **K8s/Kubernetes:** Orquestrador de contêineres.
 *   **Feature Flag:** Mecanismo para ligar/desligar funcionalidades sem deploy.
@@ -156,4 +156,4 @@ Cada script é descrito usando o seguinte template padrão:
 
 ---
 
-**Nota Final:** Este é um **documento vivo**. Sempre que um script for adicionado, modificado ou removido, este runbook deve ser atualizado. A precisão aqui é a chave para a operação segura e eficiente do MCP-HULK.
+**Nota Final:** Este é um **documento vivo**. Sempre que um script for adicionado, modificado ou removido, este runbook deve ser atualizado. A precisão aqui é a chave para a operação segura e eficiente do mcp-fulfillment-ops.

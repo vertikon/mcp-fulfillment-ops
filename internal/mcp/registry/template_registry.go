@@ -13,8 +13,9 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// TemplateInfo holds information about a registered template
-type TemplateInfo struct {
+// TemplateRegistryInfo holds information about a registered template in TemplateRegistry
+// This is distinct from TemplateInfo in mcp_registry.go which has a different structure
+type TemplateRegistryInfo struct {
 	Name         string            `json:"name"`
 	Stack        string            `json:"stack"`
 	Version      string            `json:"version"`
@@ -28,7 +29,7 @@ type TemplateInfo struct {
 
 // TemplateRegistry manages registration and discovery of templates
 type TemplateRegistry struct {
-	templates map[string]*TemplateInfo
+	templates map[string]*TemplateRegistryInfo
 	mu        sync.RWMutex
 	logger    *zap.Logger
 	basePath  string
@@ -37,7 +38,7 @@ type TemplateRegistry struct {
 // NewTemplateRegistry creates a new template registry
 func NewTemplateRegistry(basePath string) *TemplateRegistry {
 	return &TemplateRegistry{
-		templates: make(map[string]*TemplateInfo),
+		templates: make(map[string]*TemplateRegistryInfo),
 		basePath:  basePath,
 		logger:    logger.GetLogger(),
 	}
@@ -91,7 +92,7 @@ func (tr *TemplateRegistry) LoadTemplates(ctx context.Context) error {
 }
 
 // loadTemplateFromManifest loads template information from manifest.yaml
-func (tr *TemplateRegistry) loadTemplateFromManifest(manifestPath string) (*TemplateInfo, error) {
+func (tr *TemplateRegistry) loadTemplateFromManifest(manifestPath string) (*TemplateRegistryInfo, error) {
 	data, err := fs.ReadFile(nil, manifestPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read manifest: %w", err)
@@ -117,7 +118,7 @@ func (tr *TemplateRegistry) loadTemplateFromManifest(manifestPath string) (*Temp
 		return nil, fmt.Errorf("template stack is required")
 	}
 
-	templateInfo := &TemplateInfo{
+	templateInfo := &TemplateRegistryInfo{
 		Name:         manifest.Name,
 		Stack:        manifest.Stack,
 		Version:      manifest.Version,
@@ -131,7 +132,7 @@ func (tr *TemplateRegistry) loadTemplateFromManifest(manifestPath string) (*Temp
 }
 
 // GetTemplate returns a template by name
-func (tr *TemplateRegistry) GetTemplate(name string) (*TemplateInfo, error) {
+func (tr *TemplateRegistry) GetTemplate(name string) (*TemplateRegistryInfo, error) {
 	tr.mu.RLock()
 	defer tr.mu.RUnlock()
 
@@ -144,11 +145,11 @@ func (tr *TemplateRegistry) GetTemplate(name string) (*TemplateInfo, error) {
 }
 
 // ListTemplates returns all registered templates
-func (tr *TemplateRegistry) ListTemplates() []*TemplateInfo {
+func (tr *TemplateRegistry) ListTemplates() []*TemplateRegistryInfo {
 	tr.mu.RLock()
 	defer tr.mu.RUnlock()
 
-	templates := make([]*TemplateInfo, 0, len(tr.templates))
+		templates := make([]*TemplateRegistryInfo, 0, len(tr.templates))
 	for _, template := range tr.templates {
 		templates = append(templates, template)
 	}
@@ -157,11 +158,11 @@ func (tr *TemplateRegistry) ListTemplates() []*TemplateInfo {
 }
 
 // ListTemplatesByStack returns templates filtered by stack
-func (tr *TemplateRegistry) ListTemplatesByStack(stack string) []*TemplateInfo {
+func (tr *TemplateRegistry) ListTemplatesByStack(stack string) []*TemplateRegistryInfo {
 	tr.mu.RLock()
 	defer tr.mu.RUnlock()
 
-	var templates []*TemplateInfo
+		var templates []*TemplateRegistryInfo
 	for _, template := range tr.templates {
 		if template.Stack == stack {
 			templates = append(templates, template)
@@ -190,12 +191,12 @@ func (tr *TemplateRegistry) GetAvailableStacks() []string {
 }
 
 // SearchTemplates searches templates by name or summary
-func (tr *TemplateRegistry) SearchTemplates(query string) []*TemplateInfo {
+func (tr *TemplateRegistry) SearchTemplates(query string) []*TemplateRegistryInfo {
 	tr.mu.RLock()
 	defer tr.mu.RUnlock()
 
 	query = strings.ToLower(query)
-	var results []*TemplateInfo
+		var results []*TemplateRegistryInfo
 
 	for _, template := range tr.templates {
 		if strings.Contains(strings.ToLower(template.Name), query) ||
@@ -208,7 +209,7 @@ func (tr *TemplateRegistry) SearchTemplates(query string) []*TemplateInfo {
 }
 
 // ValidateTemplate checks if a template meets minimum requirements
-func (tr *TemplateRegistry) ValidateTemplate(templateInfo *TemplateInfo) error {
+func (tr *TemplateRegistry) ValidateTemplate(templateInfo *TemplateRegistryInfo) error {
 	if templateInfo.Name == "" {
 		return fmt.Errorf("template name is required")
 	}
@@ -238,7 +239,7 @@ func (tr *TemplateRegistry) ValidateTemplate(templateInfo *TemplateInfo) error {
 }
 
 // RegisterTemplate manually registers a template
-func (tr *TemplateRegistry) RegisterTemplate(templateInfo *TemplateInfo) error {
+func (tr *TemplateRegistry) RegisterTemplate(templateInfo *TemplateRegistryInfo) error {
 	tr.mu.Lock()
 	defer tr.mu.Unlock()
 

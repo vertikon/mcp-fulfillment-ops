@@ -210,7 +210,7 @@ Sempre validar antes de registrar.
 # 🟦 **7. Conclusão**
 
 O **BLOCO-2 é o cérebro operacional da geração e da comunicação agente-sistema**.
-É o bloco mais estratégico para MCP-Hulk, pois permite:
+É o bloco mais estratégico para mcp-fulfillment-ops, pois permite:
 
 * Autogeração de código
 * Autoexpansão de stacks
@@ -225,9 +225,9 @@ Ele está corretamente definido e segue perfeitamente a **Política Hulk v1.0**,
 Aqui está o **DOCUMENTO OFICIAL — BLOCO-2 BLUEPRINT (MCP Protocol & Generation)**.
 Formato **Vertikon | Hulk v1.0 | Documento Normativo**, pronto para entrar em:
 
-`docs/blueprints/MCP-HULK-BLOCO-2.md`
+`docs/blueprints/mcp-fulfillment-ops-BLOCO-2.md`
 ou
-`MCP-HULK-BLUEPRINT-FULL.md`
+`mcp-fulfillment-ops-BLUEPRINT-FULL.md`
 
 ---
 

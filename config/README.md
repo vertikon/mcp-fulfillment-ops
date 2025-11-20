@@ -1,6 +1,6 @@
-# Configuração do MCP-HULK
+# Configuração do mcp-fulfillment-ops
 
-Esta pasta contém todos os arquivos de configuração do MCP-HULK.
+Esta pasta contém todos os arquivos de configuração do mcp-fulfillment-ops.
 
 ## Estrutura
 

@@ -1,6 +1,6 @@
 # Exemplo de RAG (Retrieval-Augmented Generation)
 
-Este documento demonstra como usar o sistema RAG do MCP-HULK.
+Este documento demonstra como usar o sistema RAG do mcp-fulfillment-ops.
 
 ## Cenário
 
@@ -25,8 +25,8 @@ func main() {
     // Documentos sobre MCP
     documents := []string{
         "MCP (Model Context Protocol) é um protocolo para criar projetos de IA...",
-        "O MCP-HULK implementa o protocolo MCP usando Go...",
-        "A arquitetura do MCP-HULK segue Clean Architecture...",
+        "O mcp-fulfillment-ops implementa o protocolo MCP usando Go...",
+        "A arquitetura do mcp-fulfillment-ops segue Clean Architecture...",
     }
     
     // Criar base de conhecimento
@@ -86,7 +86,7 @@ func main() {
     ragService := rag.NewRAGServiceWithLLM(...)
     
     // Query com contexto
-    query := "Explique a arquitetura do MCP-HULK"
+    query := "Explique a arquitetura do mcp-fulfillment-ops"
     
     // Executar query RAG
     response, err := ragService.QueryWithContext(ctx, query, knowledgeBaseID, rag.QueryOptions{
@@ -106,7 +106,7 @@ func main() {
 ## Resultado Esperado
 
 ```
-Response: O MCP-HULK implementa o protocolo MCP usando Go e segue Clean Architecture...
+Response: O mcp-fulfillment-ops implementa o protocolo MCP usando Go e segue Clean Architecture...
 Relevant Documents: 3
 ```
 

@@ -1,21 +1,21 @@
-# 🌳 ÁRVORE DE ARQUIVOS E DIRETÓRIOS COMENTADA - MCP-HULK
+# 🌳 ÁRVORE DE ARQUIVOS E DIRETÓRIOS COMENTADA - mcp-fulfillment-ops
 
 **Data de Geração:** 2025-01-27  
 **Versão:** 1.0  
-**Projeto:** MCP-HULK (Model Context Protocol - Hulk)
+**Projeto:** mcp-fulfillment-ops (Model Context Protocol - Hulk)
 
 ---
 
 ## 📋 SUMÁRIO
 
-Este documento apresenta a estrutura completa de arquivos e diretórios do projeto MCP-HULK com comentários explicativos sobre cada componente. A estrutura segue os princípios de **Clean Architecture** e está organizada em **14 blocos principais**.
+Este documento apresenta a estrutura completa de arquivos e diretórios do projeto mcp-fulfillment-ops com comentários explicativos sobre cada componente. A estrutura segue os princípios de **Clean Architecture** e está organizada em **14 blocos principais**.
 
 ---
 
 ## 🗂️ ESTRUTURA COMPLETA COMENTADA
 
 ```
-mcp-fulfillment-ops/                                				    # Raiz do projeto MCP-HULK
+mcp-fulfillment-ops/                                				    # Raiz do projeto mcp-fulfillment-ops
 │
 ├── 📁 cmd/                                  				# BLOCO-1: Application Entry Points
 │   │                                        				# Contém todos os pontos de entrada da aplicação (main.go)
@@ -932,7 +932,7 @@ mcp-fulfillment-ops/                                				    # Raiz do projeto MC
 │   │   └── 📄 monitoring_service.go        				# Serviço de aplicação Monitoring
 │   │
 │   └── 📁 security/                         				# BLOCO-9: Security Layer (Defense in Depth)
-│       │                                				    # Sistema imunológico do MCP-HULK
+│       │                                				    # Sistema imunológico do mcp-fulfillment-ops
 │       │                                				    # Cross-Cutting Concern: Auth, RBAC, Encryption
 │       │
 │       ├── 📁 auth/                         				# Autenticação e Autorização
@@ -1591,8 +1591,8 @@ mcp-fulfillment-ops/                                				    # Raiz do projeto MC
 │   │   │                                				    # Auditoria de conformidade Bloco-14
 │   │   └── 📄 ...                           				# Outros blueprints e auditorias
 │   │
-│   ├── 📄 MCP-HULK-ARVORE-FULL.md          				# Árvore oficial completa do projeto
-│   ├── 📄 MCP-HULK-INTEGRACOES.md          				# Documentação de integrações entre blocos
+│   ├── 📄 mcp-fulfillment-ops-ARVORE-FULL.md          				# Árvore oficial completa do projeto
+│   ├── 📄 mcp-fulfillment-ops-INTEGRACOES.md          				# Documentação de integrações entre blocos
 │   ├── 📄 ANALISE-ARQUIVOS-VAZIOS.md        				# Análise de arquivos vazios
 │   └── 📄 ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md # Este arquivo
 │
@@ -1732,8 +1732,8 @@ mcp-fulfillment-ops/                                				    # Raiz do projeto MC
 
 1. **Clean Architecture**: O projeto segue rigorosamente Clean Architecture com separação de camadas
 2. **14 Blocos**: Arquitetura dividida em 14 blocos funcionais bem definidos
-3. **Fonte Única da Verdade**: A árvore oficial está em `.cursor/MCP-HULK-ARVORE-FULL.md`
-4. **Política de Estrutura**: Regras rígidas de nomenclatura e organização em `.cursor/MCP-HULK – POLÍTICA DE ESTRUTURA & NOMENCLATURA.md`
+3. **Fonte Única da Verdade**: A árvore oficial está em `.cursor/mcp-fulfillment-ops-ARVORE-FULL.md`
+4. **Política de Estrutura**: Regras rígidas de nomenclatura e organização em `.cursor/mcp-fulfillment-ops – POLÍTICA DE ESTRUTURA & NOMENCLATURA.md`
 5. **Documentação Completa**: Todos os 14 blocos têm blueprints e auditorias de conformidade
 
 ---

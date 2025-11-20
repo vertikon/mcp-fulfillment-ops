@@ -22,12 +22,12 @@ E:.
 |           
 +---.cursor
 |   |   ANALISE-ARQUIVOS-VAZIOS.md
-|   |   MCP-HULK � POL�TICA DE ESTRUTURA & NOMENCLATURA.md
-|   |   MCP-HULK-ANALISE-GEMINI-2.5.md
-|   |   MCP-HULK-ANALISE-GLM-4.6.md
-|   |   MCP-HULK-ANALISE-OPUS-4.1.md
-|   |   MCP-HULK-ARVORE-FULL.md
-|   |   MCP-HULK-INTEGRACOES.md
+|   |   mcp-fulfillment-ops � POL�TICA DE ESTRUTURA & NOMENCLATURA.md
+|   |   mcp-fulfillment-ops-ANALISE-GEMINI-2.5.md
+|   |   mcp-fulfillment-ops-ANALISE-GLM-4.6.md
+|   |   mcp-fulfillment-ops-ANALISE-OPUS-4.1.md
+|   |   mcp-fulfillment-ops-ARVORE-FULL.md
+|   |   mcp-fulfillment-ops-INTEGRACOES.md
 |   |   
 |   +---ANTIGOS
 |   |       mcp-thor-.cursor-blueprint-fine-tuning-v1.md
@@ -90,7 +90,7 @@ E:.
 |           BLOCO-9-BLUEPRINT-GLM-4.6.md
 |           BLOCO-9-BLUEPRINT-MATRIZ DE RISCO E CONFORMIDADE-GLM-4.6.md
 |           BLOCO-9-BLUEPRINT.md
-|           MCP-HULK-MANIFEST.md
+|           mcp-fulfillment-ops-MANIFEST.md
 |           
 +---.vscode
 |       settings.json

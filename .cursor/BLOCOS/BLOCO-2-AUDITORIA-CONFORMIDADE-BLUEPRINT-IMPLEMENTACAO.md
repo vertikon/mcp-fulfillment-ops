@@ -10,7 +10,7 @@
 
 ## 📋 **SUMÁRIO EXECUTIVO**
 
-Esta auditoria compara a implementação real do **BLOCO-2 (MCP Protocol & Generation)** do projeto **MCP-Hulk** com os blueprints oficiais:
+Esta auditoria compara a implementação real do **BLOCO-2 (MCP Protocol & Generation)** do projeto **mcp-fulfillment-ops** com os blueprints oficiais:
 
 - **BLOCO-2-BLUEPRINT.md** — Blueprint oficial do MCP Protocol & Generation
 - **BLOCO-2-BLUEPRINT-GLM-4.6.md** — Blueprint executivo GLM-4.6

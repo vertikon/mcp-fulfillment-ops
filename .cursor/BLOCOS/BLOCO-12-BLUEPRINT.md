@@ -4,7 +4,7 @@ Aqui está **a ANÁLISE OFICIAL DO BLOCO-12 (CONFIGURATION)** — totalmente fun
 
 # 🟦 **BLOCO-12 — ANÁLISE OFICIAL (CONFIGURATION)**
 
-Segundo os documentos recuperados — especialmente **`BLOCO-12-BLUEPRINT.md`** e **`MCP-HULK-INTEGRACOES.md`** — o BLOCO-12 é o **centro de configuração do Hulk**, responsável por **todos os YAMLs, ENVs, feature flags e parâmetros operacionais** do ecossistema.
+Segundo os documentos recuperados — especialmente **`BLOCO-12-BLUEPRINT.md`** e **`mcp-fulfillment-ops-INTEGRACOES.md`** — o BLOCO-12 é o **centro de configuração do Hulk**, responsável por **todos os YAMLs, ENVs, feature flags e parâmetros operacionais** do ecossistema.
 
 Ele define **como o Hulk se comporta**, **com quais limites**, **em qual infraestrutura**, **com quais providers**, e **como cada bloco deve ser inicializado**.
 
@@ -88,7 +88,7 @@ Isso confirma que BLOCO-12 é o **orquestrador mestre de configuração**, com s
 
 # 🧩 **4. Integrações do BLOCO-12**
 
-O documento **MCP-HULK-INTEGRACOES.md** define exatamente como o Bloco-12 se relaciona com os outros:
+O documento **mcp-fulfillment-ops-INTEGRACOES.md** define exatamente como o Bloco-12 se relaciona com os outros:
 
 ### **A) Configuration → Bloco 1 (Core)**
 
@@ -177,17 +177,17 @@ ou
 O que deseja?
 
 Perfeito.
-A seguir está **o BLUEPRINT OFICIAL — BLOCO-12 (CONFIGURATION)**, no mesmo padrão formal utilizado nos blocos B1–B11, 100% fundamentado nos arquivos encontrados (`BLOCO-12-BLUEPRINT.md`) e nas integrações (`MCP-HULK-INTEGRACOES.md`).
+A seguir está **o BLUEPRINT OFICIAL — BLOCO-12 (CONFIGURATION)**, no mesmo padrão formal utilizado nos blocos B1–B11, 100% fundamentado nos arquivos encontrados (`BLOCO-12-BLUEPRINT.md`) e nas integrações (`mcp-fulfillment-ops-INTEGRACOES.md`).
 
 Este é **um documento normativo, canônico, estável**, e deve ser salvo como:
 
 ```
-docs/blueprints/MCP-HULK-BLOCO-12.md
+docs/blueprints/mcp-fulfillment-ops-BLOCO-12.md
 ```
 
 ---
 
-# 🟦 **MCP-HULK — BLOCO-12 BLUEPRINT OFICIAL**
+# 🟦 **mcp-fulfillment-ops — BLOCO-12 BLUEPRINT OFICIAL**
 
 ## **CONFIGURATION LAYER — YAML • .env • Features • Environment Overrides**
 
@@ -196,7 +196,7 @@ docs/blueprints/MCP-HULK-BLOCO-12.md
 **Última atualização:** 2025-11-17
 **Fontes primárias:**
 – `BLOCO-12-BLUEPRINT.md` 
-– `MCP-HULK-INTEGRACOES.md` 
+– `mcp-fulfillment-ops-INTEGRACOES.md` 
 – Política de Estrutura & Nomenclatura v1.0
 
 ---
@@ -338,7 +338,7 @@ Converte tudo para `Config`.
 
 ---
 
-# 🔷 **6. Integrações Oficiais (Fonte: MCP-HULK-INTEGRACOES)**
+# 🔷 **6. Integrações Oficiais (Fonte: mcp-fulfillment-ops-INTEGRACOES)**
 
 ## **6.1 Configuration → Bloco 1 (Core Engine)**
 

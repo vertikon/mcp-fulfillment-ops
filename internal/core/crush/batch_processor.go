@@ -792,17 +792,4 @@ func (abp *AsyncBatchProcessor) Start(ctx context.Context) {
 	abp.workerPool.Start(ctx)
 }
 
-// Additional helper functions
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
+// Helper functions min/max are defined in utils.go

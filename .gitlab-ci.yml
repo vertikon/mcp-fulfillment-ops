@@ -1,4 +1,4 @@
-# GitLab CI Configuration for MCP-HULK
+# GitLab CI Configuration for mcp-fulfillment-ops
 # Validates tree structure on merge requests and main branch
 
 stages:
@@ -22,7 +22,7 @@ validate_tree:
   before_script:
     - go version
     - |
-      if [ ! -f ".cursor/MCP-HULK-ARVORE-FULL.md" ]; then
+      if [ ! -f ".cursor/mcp-fulfillment-ops-ARVORE-FULL.md" ]; then
         echo "❌ Original tree file not found"
         exit 1
       fi
@@ -42,7 +42,7 @@ validate_tree:
     - echo "🔍 Running tree validation..."
     - |
       ./bin/validate-tree \
-        --original .cursor/MCP-HULK-ARVORE-FULL.md \
+        --original .cursor/mcp-fulfillment-ops-ARVORE-FULL.md \
         --commented .cursor/ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md \
         --root . \
         --format json > validation-report.json || VALIDATION_EXIT=$?

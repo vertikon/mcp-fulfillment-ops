@@ -1,0 +1,1265 @@
+﻿{
+    "schema_version":  "1.0.0-dirs",
+    "metadata":  {
+                     "generated_at_utc":  "2025-11-19T21:01:07.0178813Z",
+                     "root_path":  ".",
+                     "generator":  "quick-dir-manifest"
+                 },
+    "summary":  {
+                    "total_directories":  205,
+                    "directories_by_depth":  [
+                                                 {
+                                                     "0":  1
+                                                 },
+                                                 {
+                                                     "1":  11
+                                                 },
+                                                 {
+                                                     "2":  74
+                                                 },
+                                                 {
+                                                     "3":  62
+                                                 },
+                                                 {
+                                                     "4":  46
+                                                 },
+                                                 {
+                                                     "5":  11
+                                                 }
+                                             ]
+                },
+    "structure":  {
+                      "directories":  [
+                                          {
+                                              "path":  ".",
+                                              "name":  "mcp-fulfillment-ops",
+                                              "depth":  0,
+                                              "last_write_time_utc":  "2025-11-19T20:50:52.0226532Z"
+                                          },
+                                          {
+                                              "path":  ".cursor",
+                                              "name":  ".cursor",
+                                              "depth":  1,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.3445855Z"
+                                          },
+                                          {
+                                              "path":  ".github",
+                                              "name":  ".github",
+                                              "depth":  1,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.3445855Z"
+                                          },
+                                          {
+                                              "path":  ".vscode",
+                                              "name":  ".vscode",
+                                              "depth":  1,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.3477440Z"
+                                          },
+                                          {
+                                              "path":  "cmd",
+                                              "name":  "cmd",
+                                              "depth":  1,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4376061Z"
+                                          },
+                                          {
+                                              "path":  "config",
+                                              "name":  "config",
+                                              "depth":  1,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4480667Z"
+                                          },
+                                          {
+                                              "path":  "docs",
+                                              "name":  "docs",
+                                              "depth":  1,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4810642Z"
+                                          },
+                                          {
+                                              "path":  "internal",
+                                              "name":  "internal",
+                                              "depth":  1,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6582532Z"
+                                          },
+                                          {
+                                              "path":  "pkg",
+                                              "name":  "pkg",
+                                              "depth":  1,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6716241Z"
+                                          },
+                                          {
+                                              "path":  "scripts",
+                                              "name":  "scripts",
+                                              "depth":  1,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6845044Z"
+                                          },
+                                          {
+                                              "path":  "templates",
+                                              "name":  "templates",
+                                              "depth":  1,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7716228Z"
+                                          },
+                                          {
+                                              "path":  "tools",
+                                              "name":  "tools",
+                                              "depth":  1,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7980983Z"
+                                          },
+                                          {
+                                              "path":  ".cursor\\ANTIGOS",
+                                              "name":  "ANTIGOS",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.2949890Z"
+                                          },
+                                          {
+                                              "path":  ".cursor\\BLOCOS",
+                                              "name":  "BLOCOS",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.3289431Z"
+                                          },
+                                          {
+                                              "path":  ".github\\workflows",
+                                              "name":  "workflows",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.3445855Z"
+                                          },
+                                          {
+                                              "path":  "cmd\\mcp-cli",
+                                              "name":  "mcp-cli",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4273462Z"
+                                          },
+                                          {
+                                              "path":  "cmd\\mcp-init",
+                                              "name":  "mcp-init",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4273462Z"
+                                          },
+                                          {
+                                              "path":  "cmd\\mcp-server",
+                                              "name":  "mcp-server",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4273462Z"
+                                          },
+                                          {
+                                              "path":  "cmd\\thor",
+                                              "name":  "thor",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4359563Z"
+                                          },
+                                          {
+                                              "path":  "cmd\\tools-deployer",
+                                              "name":  "tools-deployer",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4376061Z"
+                                          },
+                                          {
+                                              "path":  "cmd\\tools-generator",
+                                              "name":  "tools-generator",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4376061Z"
+                                          },
+                                          {
+                                              "path":  "cmd\\tools-validator",
+                                              "name":  "tools-validator",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4376061Z"
+                                          },
+                                          {
+                                              "path":  "cmd\\mcp-init\\internal",
+                                              "name":  "internal",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4273462Z"
+                                          },
+                                          {
+                                              "path":  "cmd\\mcp-init\\internal\\config",
+                                              "name":  "config",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4273462Z"
+                                          },
+                                          {
+                                              "path":  "cmd\\mcp-init\\internal\\handlers",
+                                              "name":  "handlers",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4273462Z"
+                                          },
+                                          {
+                                              "path":  "cmd\\mcp-init\\internal\\processor",
+                                              "name":  "processor",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4273462Z"
+                                          },
+                                          {
+                                              "path":  "config\\ai",
+                                              "name":  "ai",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4397050Z"
+                                          },
+                                          {
+                                              "path":  "config\\core",
+                                              "name":  "core",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4417091Z"
+                                          },
+                                          {
+                                              "path":  "config\\environments",
+                                              "name":  "environments",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4437121Z"
+                                          },
+                                          {
+                                              "path":  "config\\infrastructure",
+                                              "name":  "infrastructure",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4437121Z"
+                                          },
+                                          {
+                                              "path":  "config\\mcp",
+                                              "name":  "mcp",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4437121Z"
+                                          },
+                                          {
+                                              "path":  "config\\monitoring",
+                                              "name":  "monitoring",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4437121Z"
+                                          },
+                                          {
+                                              "path":  "config\\security",
+                                              "name":  "security",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4480667Z"
+                                          },
+                                          {
+                                              "path":  "config\\state",
+                                              "name":  "state",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4480667Z"
+                                          },
+                                          {
+                                              "path":  "config\\templates",
+                                              "name":  "templates",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4480667Z"
+                                          },
+                                          {
+                                              "path":  "config\\versioning",
+                                              "name":  "versioning",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4522237Z"
+                                          },
+                                          {
+                                              "path":  "docs\\ai",
+                                              "name":  "ai",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4522237Z"
+                                          },
+                                          {
+                                              "path":  "docs\\api",
+                                              "name":  "api",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4583544Z"
+                                          },
+                                          {
+                                              "path":  "docs\\architecture",
+                                              "name":  "architecture",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4583544Z"
+                                          },
+                                          {
+                                              "path":  "docs\\compute",
+                                              "name":  "compute",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4583544Z"
+                                          },
+                                          {
+                                              "path":  "docs\\examples",
+                                              "name":  "examples",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4583544Z"
+                                          },
+                                          {
+                                              "path":  "docs\\guides",
+                                              "name":  "guides",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4685446Z"
+                                          },
+                                          {
+                                              "path":  "docs\\mcp",
+                                              "name":  "mcp",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4685446Z"
+                                          },
+                                          {
+                                              "path":  "docs\\monitoring",
+                                              "name":  "monitoring",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4770431Z"
+                                          },
+                                          {
+                                              "path":  "docs\\state",
+                                              "name":  "state",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4790488Z"
+                                          },
+                                          {
+                                              "path":  "docs\\validation",
+                                              "name":  "validation",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4810642Z"
+                                          },
+                                          {
+                                              "path":  "docs\\versioning",
+                                              "name":  "versioning",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4836137Z"
+                                          },
+                                          {
+                                              "path":  "docs\\validation\\raw",
+                                              "name":  "raw",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4810642Z"
+                                          },
+                                          {
+                                              "path":  "docs\\validation\\reports",
+                                              "name":  "reports",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4810642Z"
+                                          },
+                                          {
+                                              "path":  "internal\\ai",
+                                              "name":  "ai",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4894016Z"
+                                          },
+                                          {
+                                              "path":  "internal\\application",
+                                              "name":  "application",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5038459Z"
+                                          },
+                                          {
+                                              "path":  "internal\\core",
+                                              "name":  "core",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5199414Z"
+                                          },
+                                          {
+                                              "path":  "internal\\domain",
+                                              "name":  "domain",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5311706Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure",
+                                              "name":  "infrastructure",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5594777Z"
+                                          },
+                                          {
+                                              "path":  "internal\\interfaces",
+                                              "name":  "interfaces",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6043338Z"
+                                          },
+                                          {
+                                              "path":  "internal\\mcp",
+                                              "name":  "mcp",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6123763Z"
+                                          },
+                                          {
+                                              "path":  "internal\\monitoring",
+                                              "name":  "monitoring",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6226885Z"
+                                          },
+                                          {
+                                              "path":  "internal\\observability",
+                                              "name":  "observability",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6267681Z"
+                                          },
+                                          {
+                                              "path":  "internal\\security",
+                                              "name":  "security",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6373317Z"
+                                          },
+                                          {
+                                              "path":  "internal\\services",
+                                              "name":  "services",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6435169Z"
+                                          },
+                                          {
+                                              "path":  "internal\\state",
+                                              "name":  "state",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6536122Z"
+                                          },
+                                          {
+                                              "path":  "internal\\versioning",
+                                              "name":  "versioning",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6582532Z"
+                                          },
+                                          {
+                                              "path":  "internal\\ai\\core",
+                                              "name":  "core",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4894016Z"
+                                          },
+                                          {
+                                              "path":  "internal\\ai\\finetuning",
+                                              "name":  "finetuning",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4894016Z"
+                                          },
+                                          {
+                                              "path":  "internal\\ai\\knowledge",
+                                              "name":  "knowledge",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.4894016Z"
+                                          },
+                                          {
+                                              "path":  "internal\\ai\\memory",
+                                              "name":  "memory",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5000605Z"
+                                          },
+                                          {
+                                              "path":  "internal\\application\\dtos",
+                                              "name":  "dtos",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5000605Z"
+                                          },
+                                          {
+                                              "path":  "internal\\application\\ports",
+                                              "name":  "ports",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5038459Z"
+                                          },
+                                          {
+                                              "path":  "internal\\application\\use_cases",
+                                              "name":  "use_cases",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5038459Z"
+                                          },
+                                          {
+                                              "path":  "internal\\core\\cache",
+                                              "name":  "cache",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5038459Z"
+                                          },
+                                          {
+                                              "path":  "internal\\core\\config",
+                                              "name":  "config",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5038459Z"
+                                          },
+                                          {
+                                              "path":  "internal\\core\\crush",
+                                              "name":  "crush",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5097310Z"
+                                          },
+                                          {
+                                              "path":  "internal\\core\\engine",
+                                              "name":  "engine",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5149045Z"
+                                          },
+                                          {
+                                              "path":  "internal\\core\\events",
+                                              "name":  "events",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5154677Z"
+                                          },
+                                          {
+                                              "path":  "internal\\core\\metrics",
+                                              "name":  "metrics",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5154677Z"
+                                          },
+                                          {
+                                              "path":  "internal\\core\\scheduler",
+                                              "name":  "scheduler",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5154677Z"
+                                          },
+                                          {
+                                              "path":  "internal\\core\\state",
+                                              "name":  "state",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5199414Z"
+                                          },
+                                          {
+                                              "path":  "internal\\core\\transformer",
+                                              "name":  "transformer",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5199414Z"
+                                          },
+                                          {
+                                              "path":  "internal\\domain\\entities",
+                                              "name":  "entities",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5199414Z"
+                                          },
+                                          {
+                                              "path":  "internal\\domain\\repositories",
+                                              "name":  "repositories",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5199414Z"
+                                          },
+                                          {
+                                              "path":  "internal\\domain\\services",
+                                              "name":  "services",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5311706Z"
+                                          },
+                                          {
+                                              "path":  "internal\\domain\\value_objects",
+                                              "name":  "value_objects",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5311706Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\cloud",
+                                              "name":  "cloud",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5311706Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\compute",
+                                              "name":  "compute",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5405668Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\llm",
+                                              "name":  "llm",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5470199Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\messaging",
+                                              "name":  "messaging",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5534607Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\network",
+                                              "name":  "network",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5574740Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\persistence",
+                                              "name":  "persistence",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5631289Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\cloud\\docker",
+                                              "name":  "docker",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5311706Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\cloud\\kubernetes",
+                                              "name":  "kubernetes",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5311706Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\cloud\\serverless",
+                                              "name":  "serverless",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5405668Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\compute\\cpu",
+                                              "name":  "cpu",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5405668Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\compute\\distributed",
+                                              "name":  "distributed",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5405668Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\compute\\gpu",
+                                              "name":  "gpu",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5405668Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\compute\\serverless",
+                                              "name":  "serverless",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5470199Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\messaging\\pubsub",
+                                              "name":  "pubsub",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5507682Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\messaging\\rpc",
+                                              "name":  "rpc",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5534607Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\messaging\\streaming",
+                                              "name":  "streaming",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5554697Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\network\\cdn",
+                                              "name":  "cdn",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5574740Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\network\\load_balancer",
+                                              "name":  "load_balancer",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5574740Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\network\\security",
+                                              "name":  "security",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5594777Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\persistence\\cache",
+                                              "name":  "cache",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5609809Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\persistence\\document",
+                                              "name":  "document",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5631289Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\persistence\\graph",
+                                              "name":  "graph",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5631289Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\persistence\\relational",
+                                              "name":  "relational",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5631289Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\persistence\\time_series",
+                                              "name":  "time_series",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5631289Z"
+                                          },
+                                          {
+                                              "path":  "internal\\infrastructure\\persistence\\vector",
+                                              "name":  "vector",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5713563Z"
+                                          },
+                                          {
+                                              "path":  "internal\\interfaces\\cli",
+                                              "name":  "cli",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5947499Z"
+                                          },
+                                          {
+                                              "path":  "internal\\interfaces\\grpc",
+                                              "name":  "grpc",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5947499Z"
+                                          },
+                                          {
+                                              "path":  "internal\\interfaces\\http",
+                                              "name":  "http",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6043338Z"
+                                          },
+                                          {
+                                              "path":  "internal\\interfaces\\messaging",
+                                              "name":  "messaging",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6043338Z"
+                                          },
+                                          {
+                                              "path":  "internal\\interfaces\\cli\\analytics",
+                                              "name":  "analytics",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5814538Z"
+                                          },
+                                          {
+                                              "path":  "internal\\interfaces\\cli\\ci",
+                                              "name":  "ci",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5919608Z"
+                                          },
+                                          {
+                                              "path":  "internal\\interfaces\\cli\\config",
+                                              "name":  "config",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5919608Z"
+                                          },
+                                          {
+                                              "path":  "internal\\interfaces\\cli\\repo",
+                                              "name":  "repo",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5947499Z"
+                                          },
+                                          {
+                                              "path":  "internal\\interfaces\\cli\\server",
+                                              "name":  "server",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5947499Z"
+                                          },
+                                          {
+                                              "path":  "internal\\interfaces\\grpc\\interceptors",
+                                              "name":  "interceptors",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.5947499Z"
+                                          },
+                                          {
+                                              "path":  "internal\\interfaces\\http\\middleware",
+                                              "name":  "middleware",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6022137Z"
+                                          },
+                                          {
+                                              "path":  "internal\\mcp\\generators",
+                                              "name":  "generators",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6102430Z"
+                                          },
+                                          {
+                                              "path":  "internal\\mcp\\protocol",
+                                              "name":  "protocol",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6123763Z"
+                                          },
+                                          {
+                                              "path":  "internal\\mcp\\registry",
+                                              "name":  "registry",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6123763Z"
+                                          },
+                                          {
+                                              "path":  "internal\\mcp\\validators",
+                                              "name":  "validators",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6123763Z"
+                                          },
+                                          {
+                                              "path":  "internal\\monitoring\\analytics",
+                                              "name":  "analytics",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6226885Z"
+                                          },
+                                          {
+                                              "path":  "internal\\monitoring\\health",
+                                              "name":  "health",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6226885Z"
+                                          },
+                                          {
+                                              "path":  "internal\\monitoring\\observability",
+                                              "name":  "observability",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6261972Z"
+                                          },
+                                          {
+                                              "path":  "internal\\security\\auth",
+                                              "name":  "auth",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6331154Z"
+                                          },
+                                          {
+                                              "path":  "internal\\security\\config",
+                                              "name":  "config",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6331154Z"
+                                          },
+                                          {
+                                              "path":  "internal\\security\\encryption",
+                                              "name":  "encryption",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6373317Z"
+                                          },
+                                          {
+                                              "path":  "internal\\security\\rbac",
+                                              "name":  "rbac",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6425025Z"
+                                          },
+                                          {
+                                              "path":  "internal\\state\\cache",
+                                              "name":  "cache",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6435169Z"
+                                          },
+                                          {
+                                              "path":  "internal\\state\\events",
+                                              "name":  "events",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6536122Z"
+                                          },
+                                          {
+                                              "path":  "internal\\state\\store",
+                                              "name":  "store",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6576188Z"
+                                          },
+                                          {
+                                              "path":  "internal\\versioning\\data",
+                                              "name":  "data",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6582532Z"
+                                          },
+                                          {
+                                              "path":  "internal\\versioning\\knowledge",
+                                              "name":  "knowledge",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6582532Z"
+                                          },
+                                          {
+                                              "path":  "internal\\versioning\\models",
+                                              "name":  "models",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6638438Z"
+                                          },
+                                          {
+                                              "path":  "pkg\\glm",
+                                              "name":  "glm",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6638438Z"
+                                          },
+                                          {
+                                              "path":  "pkg\\httpserver",
+                                              "name":  "httpserver",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6638438Z"
+                                          },
+                                          {
+                                              "path":  "pkg\\knowledge",
+                                              "name":  "knowledge",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6638438Z"
+                                          },
+                                          {
+                                              "path":  "pkg\\logger",
+                                              "name":  "logger",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6638438Z"
+                                          },
+                                          {
+                                              "path":  "pkg\\mcp",
+                                              "name":  "mcp",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6638438Z"
+                                          },
+                                          {
+                                              "path":  "pkg\\optimizer",
+                                              "name":  "optimizer",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6716241Z"
+                                          },
+                                          {
+                                              "path":  "pkg\\profiler",
+                                              "name":  "profiler",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6716241Z"
+                                          },
+                                          {
+                                              "path":  "pkg\\validator",
+                                              "name":  "validator",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6716241Z"
+                                          },
+                                          {
+                                              "path":  "scripts\\deployment",
+                                              "name":  "deployment",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6741870Z"
+                                          },
+                                          {
+                                              "path":  "scripts\\features",
+                                              "name":  "features",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6741870Z"
+                                          },
+                                          {
+                                              "path":  "scripts\\generation",
+                                              "name":  "generation",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6741870Z"
+                                          },
+                                          {
+                                              "path":  "scripts\\maintenance",
+                                              "name":  "maintenance",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6741870Z"
+                                          },
+                                          {
+                                              "path":  "scripts\\migration",
+                                              "name":  "migration",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6741870Z"
+                                          },
+                                          {
+                                              "path":  "scripts\\optimization",
+                                              "name":  "optimization",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6741870Z"
+                                          },
+                                          {
+                                              "path":  "scripts\\setup",
+                                              "name":  "setup",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6845044Z"
+                                          },
+                                          {
+                                              "path":  "scripts\\validation",
+                                              "name":  "validation",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6897672Z"
+                                          },
+                                          {
+                                              "path":  "templates\\base",
+                                              "name":  "base",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6897672Z"
+                                          },
+                                          {
+                                              "path":  "templates\\ci-cd",
+                                              "name":  "ci-cd",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6947716Z"
+                                          },
+                                          {
+                                              "path":  "templates\\docker-compose",
+                                              "name":  "docker-compose",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6947716Z"
+                                          },
+                                          {
+                                              "path":  "templates\\go",
+                                              "name":  "go",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7461304Z"
+                                          },
+                                          {
+                                              "path":  "templates\\k8s",
+                                              "name":  "k8s",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7461304Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium",
+                                              "name":  "mcp-go-premium",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\tinygo",
+                                              "name":  "tinygo",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7669857Z"
+                                          },
+                                          {
+                                              "path":  "templates\\wasm",
+                                              "name":  "wasm",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7716228Z"
+                                          },
+                                          {
+                                              "path":  "templates\\web",
+                                              "name":  "web",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7875084Z"
+                                          },
+                                          {
+                                              "path":  "templates\\ci-cd\\.github",
+                                              "name":  ".github",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6897672Z"
+                                          },
+                                          {
+                                              "path":  "templates\\ci-cd\\.github\\workflows",
+                                              "name":  "workflows",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6897672Z"
+                                          },
+                                          {
+                                              "path":  "templates\\go\\cmd",
+                                              "name":  "cmd",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6947716Z"
+                                          },
+                                          {
+                                              "path":  "templates\\go\\internal",
+                                              "name":  "internal",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7258109Z"
+                                          },
+                                          {
+                                              "path":  "templates\\go\\cmd\\server",
+                                              "name":  "server",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.6947716Z"
+                                          },
+                                          {
+                                              "path":  "templates\\go\\internal\\application",
+                                              "name":  "application",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7258109Z"
+                                          },
+                                          {
+                                              "path":  "templates\\go\\internal\\config",
+                                              "name":  "config",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7258109Z"
+                                          },
+                                          {
+                                              "path":  "templates\\go\\internal\\domain",
+                                              "name":  "domain",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7258109Z"
+                                          },
+                                          {
+                                              "path":  "templates\\go\\internal\\infrastructure",
+                                              "name":  "infrastructure",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7258109Z"
+                                          },
+                                          {
+                                              "path":  "templates\\go\\internal\\interfaces",
+                                              "name":  "interfaces",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7461304Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\cmd",
+                                              "name":  "cmd",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7536928Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\configs",
+                                              "name":  "configs",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7536928Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal",
+                                              "name":  "internal",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal\\ai",
+                                              "name":  "ai",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal\\core",
+                                              "name":  "core",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal\\infrastructure",
+                                              "name":  "infrastructure",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal\\interfaces",
+                                              "name":  "interfaces",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal\\monitoring",
+                                              "name":  "monitoring",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal\\state",
+                                              "name":  "state",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal\\ai\\agents",
+                                              "name":  "agents",
+                                              "depth":  5,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal\\ai\\core",
+                                              "name":  "core",
+                                              "depth":  5,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal\\ai\\rag",
+                                              "name":  "rag",
+                                              "depth":  5,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal\\core\\cache",
+                                              "name":  "cache",
+                                              "depth":  5,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal\\core\\engine",
+                                              "name":  "engine",
+                                              "depth":  5,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal\\infrastructure\\http",
+                                              "name":  "http",
+                                              "depth":  5,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\mcp-go-premium\\internal\\interfaces\\http",
+                                              "name":  "http",
+                                              "depth":  5,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\tinygo\\cmd",
+                                              "name":  "cmd",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\tinygo\\wasm",
+                                              "name":  "wasm",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7669857Z"
+                                          },
+                                          {
+                                              "path":  "templates\\tinygo\\cmd\\__NAME__",
+                                              "name":  "__NAME__",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7564839Z"
+                                          },
+                                          {
+                                              "path":  "templates\\wasm\\src",
+                                              "name":  "src",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7716228Z"
+                                          },
+                                          {
+                                              "path":  "templates\\web\\bloco1",
+                                              "name":  "bloco1",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7736307Z"
+                                          },
+                                          {
+                                              "path":  "templates\\web\\public",
+                                              "name":  "public",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7756351Z"
+                                          },
+                                          {
+                                              "path":  "templates\\web\\src",
+                                              "name":  "src",
+                                              "depth":  3,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7864784Z"
+                                          },
+                                          {
+                                              "path":  "templates\\web\\src\\components",
+                                              "name":  "components",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7812128Z"
+                                          },
+                                          {
+                                              "path":  "templates\\web\\src\\hooks",
+                                              "name":  "hooks",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7847231Z"
+                                          },
+                                          {
+                                              "path":  "templates\\web\\src\\types",
+                                              "name":  "types",
+                                              "depth":  4,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7875084Z"
+                                          },
+                                          {
+                                              "path":  "templates\\web\\src\\components\\charts",
+                                              "name":  "charts",
+                                              "depth":  5,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7771384Z"
+                                          },
+                                          {
+                                              "path":  "templates\\web\\src\\components\\layouts",
+                                              "name":  "layouts",
+                                              "depth":  5,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7792078Z"
+                                          },
+                                          {
+                                              "path":  "templates\\web\\src\\components\\sections",
+                                              "name":  "sections",
+                                              "depth":  5,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7812128Z"
+                                          },
+                                          {
+                                              "path":  "templates\\web\\src\\components\\ui",
+                                              "name":  "ui",
+                                              "depth":  5,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7832176Z"
+                                          },
+                                          {
+                                              "path":  "tools\\analyzers",
+                                              "name":  "analyzers",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7875084Z"
+                                          },
+                                          {
+                                              "path":  "tools\\converters",
+                                              "name":  "converters",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7875084Z"
+                                          },
+                                          {
+                                              "path":  "tools\\deployers",
+                                              "name":  "deployers",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7875084Z"
+                                          },
+                                          {
+                                              "path":  "tools\\generators",
+                                              "name":  "generators",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7875084Z"
+                                          },
+                                          {
+                                              "path":  "tools\\validators",
+                                              "name":  "validators",
+                                              "depth":  2,
+                                              "last_write_time_utc":  "2025-11-19T19:39:57.7980983Z"
+                                          }
+                                      ]
+                  }
+}

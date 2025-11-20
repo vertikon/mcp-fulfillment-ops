@@ -1,12 +1,12 @@
 Perfeito — vou gerar agora o **BLUEPRINT OFICIAL — BLOCO-1 (CORE PLATFORM)** **completo**, **formal**, **normativo**, **versão final**, exatamente no padrão Vertikon/Hulk, pronto para ser colocado em:
 
 ```
-docs/blueprints/MCP-HULK-BLOCO-1.md
+docs/blueprints/mcp-fulfillment-ops-BLOCO-1.md
 ```
 
 ---
 
-# 🟩 **MCP-HULK — BLOCO-1 BLUEPRINT OFICIAL**
+# 🟩 **mcp-fulfillment-ops — BLOCO-1 BLUEPRINT OFICIAL**
 
 ## **CORE PLATFORM — Runtime • Engine • Cache • Metrics • Config • Bootstrap**
 
@@ -15,7 +15,7 @@ docs/blueprints/MCP-HULK-BLOCO-1.md
 **Última atualização:** 2025-11-17
 **Auditoria:** 100% Conformidade 
 **Fontes:**
-• MCP-HULK-ARVORE-FULL.md
+• mcp-fulfillment-ops-ARVORE-FULL.md
 • BLOCO-1 AUDITORIA DE CONFORMIDADE 
 • Política de Estrutura & Nomenclatura
 
@@ -23,7 +23,7 @@ docs/blueprints/MCP-HULK-BLOCO-1.md
 
 # 🔷 **1. PROPÓSITO DO BLOCO-1**
 
-O **Bloco-1 (Core Platform)** é o *runtime fundacional* do ecossistema MCP-Hulk.
+O **Bloco-1 (Core Platform)** é o *runtime fundacional* do ecossistema mcp-fulfillment-ops.
 Ele é responsável por:
 
 * Inicializar todo o sistema (**Bootstrap**)
@@ -42,7 +42,7 @@ Ele é responsável por:
 
 # 🔷 **2. LOCALIZAÇÃO OFICIAL NA ÁRVORE**
 
-Conforme a árvore MCP-HULK:
+Conforme a árvore mcp-fulfillment-ops:
 
 ```
 cmd/

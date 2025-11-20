@@ -1,4 +1,4 @@
-Aqui está **a ANÁLISE OFICIAL DO BLOCO-6 – AI LAYER (Core, Knowledge, Memory, Finetuning)**, fundamentada diretamente nos arquivos encontrados — especialmente `MCP-HULK-INTEGRACOES.md` e `BLOCO-6-BLUEPRINT.md`.
+Aqui está **a ANÁLISE OFICIAL DO BLOCO-6 – AI LAYER (Core, Knowledge, Memory, Finetuning)**, fundamentada diretamente nos arquivos encontrados — especialmente `mcp-fulfillment-ops-INTEGRACOES.md` e `BLOCO-6-BLUEPRINT.md`.
 
 ---
 
@@ -7,7 +7,7 @@ Aqui está **a ANÁLISE OFICIAL DO BLOCO-6 – AI LAYER (Core, Knowledge, Memory
 **Segundo os documentos oficiais**, o BLOCO-6 é o **cérebro do Hulk**.
 Ele reúne todos os mecanismos cognitivos, motores de linguagem, memória e aprendizado contínuo.
 
-A confirmação do escopo aparece claramente nas linhas **L29–L37** de `MCP-HULK-INTEGRACOES.md`, definindo:
+A confirmação do escopo aparece claramente nas linhas **L29–L37** de `mcp-fulfillment-ops-INTEGRACOES.md`, definindo:
 
 > “Inclui:
 > • AI Core
@@ -166,12 +166,12 @@ A seguir está o **DOCUMENTO OFICIAL — BLOCO-6 (AI LAYER)**, no padrão **Vert
 Este documento é **canônico**, **normativo**, **estável**, e deve ser salvo como:
 
 ```
-docs/blueprints/MCP-HULK-BLOCO-6.md
+docs/blueprints/mcp-fulfillment-ops-BLOCO-6.md
 ```
 
 ---
 
-# 🟦 **MCP-HULK — BLOCO-6 BLUEPRINT OFICIAL**
+# 🟦 **mcp-fulfillment-ops — BLOCO-6 BLUEPRINT OFICIAL**
 
 ### **AI LAYER — Core • Knowledge (RAG) • Memory • Finetuning**
 
@@ -181,7 +181,7 @@ docs/blueprints/MCP-HULK-BLOCO-6.md
 **Fonte da Verdade:**
 
 * Estrutura confirmada pela Árvore Oficial Hulk
-* Integrações oficiais `MCP-HULK-INTEGRACOES.md`
+* Integrações oficiais `mcp-fulfillment-ops-INTEGRACOES.md`
 * Implementações modelo `BLOCO-6-BLUEPRINT.md`
 
 ---
@@ -363,7 +363,7 @@ Serviços / Use Cases
 | **14 – Documentation** | Define estratégias, prompts, fluxos              |
 
 Integrações confirmadas em
-`MCP-HULK-INTEGRACOES.md` (linhas 29–53 para AI Core, Knowledge, Memory e Finetuning).
+`mcp-fulfillment-ops-INTEGRACOES.md` (linhas 29–53 para AI Core, Knowledge, Memory e Finetuning).
 
 ---
 

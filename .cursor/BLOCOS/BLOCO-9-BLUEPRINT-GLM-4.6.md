@@ -1,6 +1,6 @@
 
 
-Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-9 — SECURITY LAYER**, que traduz a arquitetura técnica do Bloco-9 para uma visão estratégica focada em seu papel como o sistema de proteção e confiança do ecossistema MCP-HULK.
+Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-9 — SECURITY LAYER**, que traduz a arquitetura técnica do Bloco-9 para uma visão estratégica focada em seu papel como o sistema de proteção e confiança do ecossistema mcp-fulfillment-ops.
 
 ---
 
@@ -14,7 +14,7 @@ Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-9 —
 
 ## **1. Visão Estratégica: O Sistema Imunológico do Hulk**
 
-O **Bloco-9 (Security Layer)** não é uma simples camada de tecnologia; ele é o **sistema imunológico do MCP-HULK**. Sua missão é proteger o ativo mais valioso da organização — a lógica de negócio, os dados dos clientes e a inteligência gerada pelo sistema — contra ameaças internas e externas.
+O **Bloco-9 (Security Layer)** não é uma simples camada de tecnologia; ele é o **sistema imunológico do mcp-fulfillment-ops**. Sua missão é proteger o ativo mais valioso da organização — a lógica de negócio, os dados dos clientes e a inteligência gerada pelo sistema — contra ameaças internas e externas.
 
 Mais do que um bloqueador, o Bloco-9 é um **habilitador de confiança**. Ele cria um ambiente seguro onde o negócio pode inovar, escalar e se conectar com clientes e parceiros com a certeza de que a integridade, a confidencialidade e a conformidade estão garantidas. Sem ele, a expansão do Hulk seria um risco inaceitável; com ele, torna-se uma vantagem competitiva.
 
@@ -65,7 +65,7 @@ O Bloco-9 permeia toda a arquitetura, atuando como um guardião em diferentes po
 
 ## **5. Conclusão e Diretrizes Estratégicas**
 
-O **Bloco-9 é o alicerce invisível que torna toda a grandeza do MCP-HULK possível e sustentável**. Ele transforma a segurança de um centro de custo em um motor de confiança e um diferencial competitivo.
+O **Bloco-9 é o alicerce invisível que torna toda a grandeza do mcp-fulfillment-ops possível e sustentável**. Ele transforma a segurança de um centro de custo em um motor de confiança e um diferencial competitivo.
 
 **Diretrizes Estratégicas:**
 1.  **Segurança por Design (Security by Design):** A participação do Bloco-9 deve ser obrigatória desde a concepção de qualquer novo recurso ou fluxo, não como uma etapa final de validação.

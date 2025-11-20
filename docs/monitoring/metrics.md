@@ -1,6 +1,6 @@
 # Metrics (Métricas)
 
-Este documento descreve o sistema de métricas do MCP-HULK.
+Este documento descreve o sistema de métricas do mcp-fulfillment-ops.
 
 ## Visão Geral
 

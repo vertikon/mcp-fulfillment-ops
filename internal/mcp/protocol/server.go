@@ -55,7 +55,7 @@ type ToolHandler interface {
 func NewMCPServer(config *ServerConfig) *MCPServer {
 	if config == nil {
 		config = &ServerConfig{
-			Name:       "MCP-Hulk",
+			Name:       "mcp-fulfillment-ops",
 			Version:    "1.0.0",
 			Protocol:   "json-rpc-2.0",
 			Transport:  "stdio",

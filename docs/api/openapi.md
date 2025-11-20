@@ -1,10 +1,10 @@
 # OpenAPI Documentation
 
-Este documento descreve a documentação OpenAPI do MCP-HULK.
+Este documento descreve a documentação OpenAPI do mcp-fulfillment-ops.
 
 ## Visão Geral
 
-A API HTTP do MCP-HULK é documentada usando OpenAPI 3.0, permitindo geração automática de clientes e documentação interativa.
+A API HTTP do mcp-fulfillment-ops é documentada usando OpenAPI 3.0, permitindo geração automática de clientes e documentação interativa.
 
 ## Especificação
 

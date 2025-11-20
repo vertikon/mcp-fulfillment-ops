@@ -1,8 +1,8 @@
-# 🔍 Ferramenta de Validação de Árvore - MCP-HULK
+# 🔍 Ferramenta de Validação de Árvore - mcp-fulfillment-ops
 
 **Ferramenta:** `validate-tree`  
 **Versão:** 1.0  
-**Propósito:** Validar conformidade estrutural do projeto MCP-HULK
+**Propósito:** Validar conformidade estrutural do projeto mcp-fulfillment-ops
 
 ---
 
@@ -10,7 +10,7 @@
 
 A ferramenta `validate-tree` compara três camadas do projeto:
 
-1. **Árvore Original** (`MCP-HULK-ARVORE-FULL.md`) - Fonte única da verdade
+1. **Árvore Original** (`mcp-fulfillment-ops-ARVORE-FULL.md`) - Fonte única da verdade
 2. **Árvore Comentada** (`ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md`) - Documentação comentada
 3. **Implementação Real** - Arquivos reais no sistema de arquivos
 
@@ -38,7 +38,7 @@ go install ./tools/validate_tree.go
 
 # Validação com caminhos customizados
 ./bin/validate-tree \
-  --original .cursor/MCP-HULK-ARVORE-FULL.md \
+  --original .cursor/mcp-fulfillment-ops-ARVORE-FULL.md \
   --commented .cursor/ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md \
   --root .
 ```
@@ -177,7 +177,7 @@ validate_tree:
 
 | Flag | Descrição | Padrão |
 |------|-----------|--------|
-| `--original`, `-o` | Caminho para árvore original | `.cursor/MCP-HULK-ARVORE-FULL.md` |
+| `--original`, `-o` | Caminho para árvore original | `.cursor/mcp-fulfillment-ops-ARVORE-FULL.md` |
 | `--commented`, `-c` | Caminho para árvore comentada | `.cursor/ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md` |
 | `--root`, `-r` | Diretório raiz do projeto | `.` |
 | `--format`, `-f` | Formato de saída (json/markdown/text) | `json` |
@@ -247,7 +247,7 @@ mail -s "Tree Compliance Report" team@example.com < compliance-report.md
 **Solução:**
 ```bash
 # Verificar se o arquivo existe
-ls -la .cursor/MCP-HULK-ARVORE-FULL.md
+ls -la .cursor/mcp-fulfillment-ops-ARVORE-FULL.md
 
 # Especificar caminho correto
 ./bin/validate-tree --original /caminho/correto/ARVORE-FULL.md
@@ -280,7 +280,7 @@ cat report.md
 
 ## 📚 Documentação Relacionada
 
-- `.cursor/MAPA-DIFERENCAS-MCP-HULK.md` - Mapa completo de diferenças
+- `.cursor/MAPA-DIFERENCAS-mcp-fulfillment-ops.md` - Mapa completo de diferenças
 - `.cursor/CHECKLIST-AUDITORIA.md` - Checklist de auditoria
 - `.cursor/RELATORIO-EXECUTIVO-CONSOLIDADO.md` - Relatório executivo
 

@@ -15,7 +15,7 @@ Ele é responsável por **inicializar**, **configurar** e **manter o runtime** d
 
 # 📌 **1. O que o BLOCO-1 contém (da Árvore Oficial)**
 
-Conforme `MCP-HULK-ARVORE-FULL.md`, o Bloco-1 engloba:
+Conforme `mcp-fulfillment-ops-ARVORE-FULL.md`, o Bloco-1 engloba:
 
 ### ✔ `cmd/`
 
@@ -191,8 +191,8 @@ Perfeito. Vou gerar agora o **DOCUMENTO OFICIAL — BLOCO-1 BLUEPRINT (Core Plat
 Ele será um documento **completo**, **normativo**, **estável**, e pronto para entrar em:
 
 * `docs/blueprints/`
-* `MCP-HULK-BLOCO-1.md`
-* Ou como seção dentro de `MCP-HULK-BLUEPRINT-FULL.md`
+* `mcp-fulfillment-ops-BLOCO-1.md`
+* Ou como seção dentro de `mcp-fulfillment-ops-BLUEPRINT-FULL.md`
 
 ---
 
@@ -206,7 +206,7 @@ Ele será um documento **completo**, **normativo**, **estável**, e pronto para 
 
 ## **1. Propósito do Bloco-1**
 
-O **Bloco-1 (Core Platform)** é a camada fundamental que sustenta todo o ecossistema **MCP-Hulk**. Ele é responsável por:
+O **Bloco-1 (Core Platform)** é a camada fundamental que sustenta todo o ecossistema **mcp-fulfillment-ops**. Ele é responsável por:
 
 * inicializar o sistema (**bootstrap**),
 * carregar e validar configurações,
@@ -367,7 +367,7 @@ O Bloco-1 expõe executáveis:
 
 ## **6. Integrações Oficiais do BLOCO-1**
 
-*(Conforme `MCP-HULK-INTEGRACOES.md`)*
+*(Conforme `mcp-fulfillment-ops-INTEGRACOES.md`)*
 
 | ORIGEM (Bloco-1) | INTEGRA  | MOTIVO                                   |
 | ---------------- | -------- | ---------------------------------------- |

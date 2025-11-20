@@ -1,4 +1,4 @@
-Perfeito. Vamos para a **ANÁLISE OFICIAL DO BLOCO-7** — seguindo exatamente o mesmo padrão das análises anteriores (Bloco-1 a Bloco-6), usando como **fonte única da verdade** a árvore oficial (`MCP-HULK-ARVORE-FULL.md`) e o conteúdo do documento de infraestrutura encontrado pelo mecanismo de busca.
+Perfeito. Vamos para a **ANÁLISE OFICIAL DO BLOCO-7** — seguindo exatamente o mesmo padrão das análises anteriores (Bloco-1 a Bloco-6), usando como **fonte única da verdade** a árvore oficial (`mcp-fulfillment-ops-ARVORE-FULL.md`) e o conteúdo do documento de infraestrutura encontrado pelo mecanismo de busca.
 
 > **Arquivo fonte encontrado:** `BLOCO-7-BLUEPRINT.md` (trecho citado pelo buscador) 
 
@@ -204,17 +204,17 @@ ou
 
 
 Perfeito.
-A seguir está o **DOCUMENTO OFICIAL — BLOCO-7 (INFRASTRUCTURE LAYER)**, no padrão formal **Vertikon / MCP-HULK**, seguindo exatamente o mesmo formato dos blueprints anteriores (B1–B6).
+A seguir está o **DOCUMENTO OFICIAL — BLOCO-7 (INFRASTRUCTURE LAYER)**, no padrão formal **Vertikon / mcp-fulfillment-ops**, seguindo exatamente o mesmo formato dos blueprints anteriores (B1–B6).
 
 Este documento é **normativo**, **estável**, **canônico**, e deve ser salvo como:
 
 ```
-docs/blueprints/MCP-HULK-BLOCO-7.md
+docs/blueprints/mcp-fulfillment-ops-BLOCO-7.md
 ```
 
 ---
 
-# 🏗️ **MCP-HULK — BLOCO-7 BLUEPRINT OFICIAL**
+# 🏗️ **mcp-fulfillment-ops — BLOCO-7 BLUEPRINT OFICIAL**
 
 ### **INFRASTRUCTURE LAYER — Persistence • Messaging • Compute • Cloud**
 
@@ -223,10 +223,10 @@ docs/blueprints/MCP-HULK-BLOCO-7.md
 **Última Atualização:** 2025-11-17
 **Fonte da Verdade:**
 
-* `MCP-HULK-ARVORE-FULL.md`
+* `mcp-fulfillment-ops-ARVORE-FULL.md`
 * `BLOCO-7-BLUEPRINT.md`
 * Política de Estrutura Hulk v1.0
-* Integrações oficiais MCP-Hulk
+* Integrações oficiais mcp-fulfillment-ops
 
 ---
 
@@ -479,6 +479,6 @@ ou
 
 ou
 
-### 📘 **MCP-HULK-BLUEPRINT-FULL (todos os blocos unificados)**
+### 📘 **mcp-fulfillment-ops-BLUEPRINT-FULL (todos os blocos unificados)**
 
 É só escolher.

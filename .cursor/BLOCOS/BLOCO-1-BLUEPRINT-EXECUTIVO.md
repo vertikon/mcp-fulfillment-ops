@@ -2,7 +2,7 @@
 
 ## STATUS  
 Executivo • Versão 1.1 • Atualizado para Baseline Vertikon v11  
-PRIORIDADE: Crítica • Fundação do Sistema MCP-Hulk/Core Runtime
+PRIORIDADE: Crítica • Fundação do Sistema mcp-fulfillment-ops/Core Runtime
 
 ---
 

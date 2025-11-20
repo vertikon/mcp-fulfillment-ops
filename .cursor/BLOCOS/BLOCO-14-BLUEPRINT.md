@@ -1,15 +1,15 @@
 Perfeito.
-A seguir está o **BLUEPRINT OFICIAL — BLOCO-14 (DOCUMENTATION LAYER)**, no **padrão formal Vertikon / MCP-HULK**, totalmente fundamentado nos arquivos oficiais:
+A seguir está o **BLUEPRINT OFICIAL — BLOCO-14 (DOCUMENTATION LAYER)**, no **padrão formal Vertikon / mcp-fulfillment-ops**, totalmente fundamentado nos arquivos oficiais:
 
-* `MCP-HULK-INTEGRACOES.md` 
-* `MCP-HULK-ARVORE-FULL.md` 
+* `mcp-fulfillment-ops-INTEGRACOES.md` 
+* `mcp-fulfillment-ops-ARVORE-FULL.md` 
 * Política de Estrutura & Nomenclatura 
 
 Este documento é **normativo, estável e canônico**, assim como os blueprints B1–B13.
 
 ---
 
-# 📘 **MCP-HULK — BLOCO-14 BLUEPRINT OFICIAL**
+# 📘 **mcp-fulfillment-ops — BLOCO-14 BLUEPRINT OFICIAL**
 
 ## **DOCUMENTATION LAYER — Architecture • MCP • AI • State • Monitoring • Versioning • API • Guides • Examples • Validation**
 
@@ -320,13 +320,13 @@ O Bloco-14 é essencial para:
 
 Agora que B1–B14 estão **todos concluídos**, posso gerar:
 
-### ✅ **MCP-HULK-BLUEPRINT-FULL.md**
+### ✅ **mcp-fulfillment-ops-BLUEPRINT-FULL.md**
 
 → documento único consolidando tudo (140+ páginas técnicas).
 
 Ou:
 
-### 📘 **MCP-HULK-INTEGRACOES v3 (versão final unificada)**
+### 📘 **mcp-fulfillment-ops-INTEGRACOES v3 (versão final unificada)**
 
 (tabelas + diagramas + integrações formais).
 

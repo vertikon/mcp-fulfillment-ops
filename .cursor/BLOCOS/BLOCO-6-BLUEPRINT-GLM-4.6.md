@@ -8,7 +8,7 @@ Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-6 —
 
 **Versão:** 1.0
 **Status:** Executivo • Estratégico
-**Foco:** Definir o papel do Bloco-6 como o motor de geração e cognição do ecossistema MCP-HULK.
+**Foco:** Definir o papel do Bloco-6 como o motor de geração e cognição do ecossistema mcp-fulfillment-ops.
 
 ---
 
@@ -106,7 +106,7 @@ O Bloco-6 se comunica com o resto do ecossistema através de interfaces bem defi
 
 ## **6. Conclusão e Próximos Passos**
 
-O **Bloco-6 é a encarnação do Protocolo de Geração do MCP-HULK**. Ele transforma o framework abstrato em um motor cognitivo concreto, capaz de entender, contextualizar, gerar e evoluir. Sua arquitetura modular garante que cada fase do protocolo seja tratada por um componente especializado, resultando em um sistema robusto, escalável e inteligente.
+O **Bloco-6 é a encarnação do Protocolo de Geração do mcp-fulfillment-ops**. Ele transforma o framework abstrato em um motor cognitivo concreto, capaz de entender, contextualizar, gerar e evoluir. Sua arquitetura modular garante que cada fase do protocolo seja tratada por um componente especializado, resultando em um sistema robusto, escalável e inteligente.
 
 **Próximo Passo Recomendado:**
 Definir o **contrato de API detalhado para a Interface de Entrada (MCP-In)**, validando todos os campos de `intent`, `context` e `parameters` que o AI Core do Bloco-6 deve suportar para cobrir todos os casos de uso do ecossistema Hulk.

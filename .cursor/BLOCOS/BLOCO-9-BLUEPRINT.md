@@ -4,7 +4,7 @@ Aqui está **a ANÁLISE OFICIAL DO BLOCO-9 (SECURITY LAYER)**, totalmente fundam
 
 # ✅ **BLOCO-9 — SECURITY LAYER (Análise Oficial)**
 
-**De acordo com os documentos encontrados — especialmente `MCP-HULK-INTEGRACOES.md` e `BLOCO-9-BLUEPRINT.md` — o BLOCO-9 é o módulo de segurança transversal do Hulk**, responsável por:
+**De acordo com os documentos encontrados — especialmente `mcp-fulfillment-ops-INTEGRACOES.md` e `BLOCO-9-BLUEPRINT.md` — o BLOCO-9 é o módulo de segurança transversal do Hulk**, responsável por:
 
 * **Autenticação (Auth)**
 * **Tokens (JWT / Sessions)**
@@ -21,7 +21,7 @@ Aqui está **a ANÁLISE OFICIAL DO BLOCO-9 (SECURITY LAYER)**, totalmente fundam
 
 ## 🔹 Estrutura oficial do BLOCO-9
 
-Segundo a árvore completa (`MCP-HULK-ARVORE-FULL.md`):
+Segundo a árvore completa (`mcp-fulfillment-ops-ARVORE-FULL.md`):
 
 > O BLOCO-9 está localizado em
 > `internal/security/`
@@ -42,7 +42,7 @@ Segundo a árvore completa (`MCP-HULK-ARVORE-FULL.md`):
 
 ## 🔹 Integrações oficiais (fonte única)
 
-O documento `MCP-HULK-INTEGRACOES.md` define as integrações de forma explícita:
+O documento `mcp-fulfillment-ops-INTEGRACOES.md` define as integrações de forma explícita:
 
 ### ✔ Auth Manager
 
@@ -173,17 +173,17 @@ ou
 
 
 Perfeito.
-Aqui está o **DOCUMENTO OFICIAL – BLOCO-9 (SECURITY LAYER)** no **padrão formal Vertikon / MCP-HULK**, pronto para ser salvo em:
+Aqui está o **DOCUMENTO OFICIAL – BLOCO-9 (SECURITY LAYER)** no **padrão formal Vertikon / mcp-fulfillment-ops**, pronto para ser salvo em:
 
 ```
-docs/blueprints/MCP-HULK-BLOCO-9.md
+docs/blueprints/mcp-fulfillment-ops-BLOCO-9.md
 ```
 
 Este documento é **normativo**, **congelado**, **fonte única da verdade**, e segue exatamente o mesmo nível e estilo dos blueprints oficiais dos blocos 1–8.
 
 ---
 
-# 🛡️ **MCP-HULK — BLOCO-9 BLUEPRINT OFICIAL**
+# 🛡️ **mcp-fulfillment-ops — BLOCO-9 BLUEPRINT OFICIAL**
 
 ## **SECURITY LAYER — Auth • Tokens • Encryption • RBAC • Policies**
 
@@ -192,8 +192,8 @@ Este documento é **normativo**, **congelado**, **fonte única da verdade**, e s
 **Última Atualização:** 2025-11-17
 **Fonte de Verdade:**
 
-* `MCP-HULK-ARVORE-FULL.md`
-* `MCP-HULK-INTEGRACOES.md`
+* `mcp-fulfillment-ops-ARVORE-FULL.md`
+* `mcp-fulfillment-ops-INTEGRACOES.md`
 * `BLOCO-9-BLUEPRINT.md`
 * Política de Estrutura & Nomenclatura
 
@@ -201,7 +201,7 @@ Este documento é **normativo**, **congelado**, **fonte única da verdade**, e s
 
 # 🔷 **1. Propósito do Bloco-9**
 
-O **Bloco-9 (Security Layer)** é o **Sistema Imunológico** do MCP-Hulk.
+O **Bloco-9 (Security Layer)** é o **Sistema Imunológico** do mcp-fulfillment-ops.
 Diferente dos demais blocos — que são módulos verticais — a Segurança é um **Cross-Cutting Concern**, atuando:
 
 * **Na entrada** (Interfaces Layer – B8)
@@ -417,7 +417,7 @@ Aplica-se tanto em Services quanto em Interfaces.
 
 ---
 
-# 🔷 **6. Integrações Oficiais (fonte: MCP-HULK-INTEGRACOES.md)**
+# 🔷 **6. Integrações Oficiais (fonte: mcp-fulfillment-ops-INTEGRACOES.md)**
 
 ### Segurança integra com:
 
@@ -488,7 +488,7 @@ Para o Bloco-9 estar **completo**, deve conter:
 
 # 🔷 **10. Conclusão Oficial**
 
-O **Bloco-9 é a barreira de proteção integral do MCP-Hulk**.
+O **Bloco-9 é a barreira de proteção integral do mcp-fulfillment-ops**.
 Ele garante segurança, confidencialidade, integridade e permissão de acesso em todas as etapas do pipeline, mantendo o sistema conforme o padrão Vertikon de alto rigor.
 
 Este é o documento final e oficial do **BLOCO-9 SECURITY LAYER**.

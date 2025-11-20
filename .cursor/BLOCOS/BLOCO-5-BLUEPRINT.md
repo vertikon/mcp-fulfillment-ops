@@ -5,7 +5,7 @@ Aqui está a **ANÁLISE OFICIAL DO BLOCO-5 (VERSIONING & MIGRATION)** — totalm
 # 🟪 **BLOCO-5 – VERSIONING & MIGRATION (ANÁLISE OFICIAL)**
 
 A análise abaixo está **totalmente fundamentada** nos trechos encontrados em
-**`MCP-HULK-ARVORE-FULL.md`**, nas linhas **L29–L49**, que definem a estrutura e responsabilidade do BLOCO-5.
+**`mcp-fulfillment-ops-ARVORE-FULL.md`**, nas linhas **L29–L49**, que definem a estrutura e responsabilidade do BLOCO-5.
 Citação direta:
 
 > “`internal/versioning/` — versionamento avançado:
@@ -189,12 +189,12 @@ Aqui está o **DOCUMENTO OFICIAL — BLOCO-5 (VERSIONING & MIGRATION)** no **pad
 Este documento é **normativo**, **fonte única da verdade**, e pronto para ser salvo como:
 
 ```
-docs/blueprints/MCP-HULK-BLOCO-5.md
+docs/blueprints/mcp-fulfillment-ops-BLOCO-5.md
 ```
 
 ---
 
-# 🟪 **MCP-HULK — BLOCO-5 BLUEPRINT OFICIAL**
+# 🟪 **mcp-fulfillment-ops — BLOCO-5 BLUEPRINT OFICIAL**
 
 ### **VERSIONING & MIGRATION LAYER**
 
@@ -203,7 +203,7 @@ docs/blueprints/MCP-HULK-BLOCO-5.md
 **Última Atualização:** 2025-11-17
 **Baseado na Árvore Oficial:**
 `internal/versioning/` (estrutura confirmada em MDF)
-**Fonte de verdade:** MCP-HULK-ARVORE-FULL.md
+**Fonte de verdade:** mcp-fulfillment-ops-ARVORE-FULL.md
 
 ---
 

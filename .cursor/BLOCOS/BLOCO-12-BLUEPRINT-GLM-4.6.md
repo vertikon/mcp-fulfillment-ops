@@ -1,6 +1,6 @@
 
 
-Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-12 — CONFIGURATION**, que traduz a arquitetura técnica do Bloco-12 para uma visão estratégica focada em seu papel como o painel de controle central e alavanca de agilidade do ecossistema MCP-HULK.
+Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-12 — CONFIGURATION**, que traduz a arquitetura técnica do Bloco-12 para uma visão estratégica focada em seu papel como o painel de controle central e alavanca de agilidade do ecossistema mcp-fulfillment-ops.
 
 ---
 
@@ -14,7 +14,7 @@ Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-12 �
 
 ## **1. Visão Estratégica: O Painel de Controle Central do Hulk**
 
-O **Bloco-12 (Configuration Layer)** é o **painel de controle central do MCP-HULK**. Ele é o único lugar onde o comportamento operacional do sistema é definido e ajustado. Sua missão estratégica é **desacoplar o comportamento do código**, permitindo que o Hulk mude sua operação, se adapte a novos ambientes e ligue/desligue funcionalidades críticas de forma instantânea e segura, sem a necessidade de um novo ciclo de desenvolvimento e deploy.
+O **Bloco-12 (Configuration Layer)** é o **painel de controle central do mcp-fulfillment-ops**. Ele é o único lugar onde o comportamento operacional do sistema é definido e ajustado. Sua missão estratégica é **desacoplar o comportamento do código**, permitindo que o Hulk mude sua operação, se adapte a novos ambientes e ligue/desligue funcionalidades críticas de forma instantânea e segura, sem a necessidade de um novo ciclo de desenvolvimento e deploy.
 
 Em essência, o Bloco-12 transforma o sistema de uma entidade estática para um organismo dinâmico, que pode ser "sintonizado" em tempo real para responder às demandas do negócio, do mercado e da infraestrutura.
 

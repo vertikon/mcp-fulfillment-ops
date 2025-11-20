@@ -1,6 +1,6 @@
 
 
-Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-8 — INTERFACES LAYER**, que traduz a arquitetura técnica do Bloco-8 para uma visão estratégica focada em seu papel como porta de entrada e embaixada do ecossistema MCP-HULK.
+Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-8 — INTERFACES LAYER**, que traduz a arquitetura técnica do Bloco-8 para uma visão estratégica focada em seu papel como porta de entrada e embaixada do ecossistema mcp-fulfillment-ops.
 
 ---
 
@@ -14,7 +14,7 @@ Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-8 —
 
 ## **1. Visão Estratégica: A Embaixada do Hulk no Mundo Digital**
 
-O **Bloco-8 (Interfaces Layer)** é a **embaixada oficial do MCP-HULK**. Ele é o único ponto de contato controlado e seguro através do qual o mundo externo — usuários, sistemas de parceiros e nossas próprias equipes — interagem com o poder do Hulk. Sua função não é pensar ou executar a lógica de negócio, mas sim **traduzir, validar e direcionar** cada solicitação para o núcleo do sistema de forma padronizada.
+O **Bloco-8 (Interfaces Layer)** é a **embaixada oficial do mcp-fulfillment-ops**. Ele é o único ponto de contato controlado e seguro através do qual o mundo externo — usuários, sistemas de parceiros e nossas próprias equipes — interagem com o poder do Hulk. Sua função não é pensar ou executar a lógica de negócio, mas sim **traduzir, validar e direcionar** cada solicitação para o núcleo do sistema de forma padronizada.
 
 Em essência, o Bloco-8 garante que, não importa *como* você fala com o Hulk (via site, app, linha de comando ou sistema interno), a mensagem seja sempre compreendida da mesma forma, com as mesmas regras de segurança e o mesmo nível de serviço.
 
@@ -61,7 +61,7 @@ O Bloco-8 não é um mero roteador; ele é um componente ativo na estratégia de
 
 ## **5. Conclusão e Diretrizes Estratégicas**
 
-O **Bloco-8 é a fronteira estratégica do MCP-HULK**. Ele define como o poder interno é exposto e consumido, garantindo que essa exposição seja segura, consistente, escalável e alinhada às necessidades de diferentes públicos. Ele não adiciona funcionalidade de negócio, mas **multiplica o valor** da funcionalidade existente, tornando-a acessível e confiável.
+O **Bloco-8 é a fronteira estratégica do mcp-fulfillment-ops**. Ele define como o poder interno é exposto e consumido, garantindo que essa exposição seja segura, consistente, escalável e alinhada às necessidades de diferentes públicos. Ele não adiciona funcionalidade de negócio, mas **multiplica o valor** da funcionalidade existente, tornando-a acessível e confiável.
 
 **Diretrizes Estratégicas:**
 1.  **Governança de Experiência (API/CLI Design):** Tratar o design das interfaces como um produto. A clareza, a documentação e a facilidade de uso são tão importantes quanto a funcionalidade que elas expõem.

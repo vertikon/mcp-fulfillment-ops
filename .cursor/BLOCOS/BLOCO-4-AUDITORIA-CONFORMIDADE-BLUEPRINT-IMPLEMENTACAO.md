@@ -3,7 +3,7 @@
 **Data da Auditoria:** 2025-01-27  
 **Versão do Blueprint:** 1.0  
 **Status:** ✅ **100% CONFORME**  
-**Auditor:** Sistema de Auditoria Automatizada MCP-HULK
+**Auditor:** Sistema de Auditoria Automatizada mcp-fulfillment-ops
 
 ---
 
@@ -819,4 +819,4 @@ internal/domain/                                    # BLOCO-4: Domain Layer
 
 ---
 
-*Este relatório foi gerado automaticamente pelo Sistema de Auditoria MCP-HULK.*
+*Este relatório foi gerado automaticamente pelo Sistema de Auditoria mcp-fulfillment-ops.*

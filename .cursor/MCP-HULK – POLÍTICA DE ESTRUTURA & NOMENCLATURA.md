@@ -1,4 +1,4 @@
-# MCP-HULK – POLÍTICA DE ESTRUTURA & NOMENCLATURA
+# mcp-fulfillment-ops – POLÍTICA DE ESTRUTURA & NOMENCLATURA
 
 STATUS: **CONGELADO v1.0**
 
@@ -6,7 +6,7 @@ Este documento define as **regras obrigatórias** de estrutura de diretórios, n
 
 A árvore oficial do projeto está em:
 
-- `MCP-HULK-ARVORE-FULL.md`  
+- `mcp-fulfillment-ops-ARVORE-FULL.md`  
 - Local: `E:\vertikon\.templates\mcp-fulfillment-ops\`  
 
 Essa árvore é a **fonte única da verdade** da estrutura de arquivos do template. :contentReference[oaicite:1]{index=1}  
@@ -17,7 +17,7 @@ Qualquer desvio dessas regras torna o template **inválido**.
 
 ## 1. Fonte Única da Verdade
 
-1. A árvore definida em `MCP-HULK-ARVORE-FULL.md` é a **estrutura oficial** do projeto.
+1. A árvore definida em `mcp-fulfillment-ops-ARVORE-FULL.md` é a **estrutura oficial** do projeto.
 2. **É proibido**:
    - criar arquivos/diretórios fora dos caminhos previstos;
    - renomear arquivos/diretórios sem atualizar a árvore oficial;
@@ -68,10 +68,10 @@ Qualquer desvio dessas regras torna o template **inválido**.
 
 ## 3. É PROIBIDO
 
-1. Criar arquivos/diretórios **não previstos** em `MCP-HULK-ARVORE-FULL.md`.
+1. Criar arquivos/diretórios **não previstos** em `mcp-fulfillment-ops-ARVORE-FULL.md`.
 2. Renomear arquivos/diretórios sem:
    - atualizar a árvore oficial;
-   - atualizar `MCP-HULK-STRUCTURE-POLICY.md` se a mudança for estrutural.
+   - atualizar `mcp-fulfillment-ops-STRUCTURE-POLICY.md` se a mudança for estrutural.
 3. Escrever código Go diretamente:
    - em `cmd/` (além dos `main.go` previstos);
    - em `templates/**` fora dos placeholders declarados.
@@ -89,7 +89,7 @@ Qualquer desvio dessas regras torna o template **inválido**.
 Para adicionar **qualquer nova funcionalidade estrutural**:
 
 1. **Propor alteração na árvore**:
-   - Atualizar `MCP-HULK-ARVORE-FULL.md` com:
+   - Atualizar `mcp-fulfillment-ops-ARVORE-FULL.md` com:
      - novo caminho,
      - novo arquivo,
      - comentário de função.
@@ -135,7 +135,7 @@ Fica definido que:
 
 devem ser estendidos para:
 
-1. Verificar se a árvore real do filesystem **bate** com `MCP-HULK-ARVORE-FULL.md`.
+1. Verificar se a árvore real do filesystem **bate** com `mcp-fulfillment-ops-ARVORE-FULL.md`.
 2. Bloquear PRs/commits que:
    - criem arquivos não previstos;
    - removam/renomeiem arquivos sem atualização da árvore.
@@ -144,7 +144,7 @@ devem ser estendidos para:
 
 ## 7. Governança de Versão da Árvore
 
-- Alterações neste arquivo (`MCP-HULK-STRUCTURE-POLICY.md`) e em `MCP-HULK-ARVORE-FULL.md`:
+- Alterações neste arquivo (`mcp-fulfillment-ops-STRUCTURE-POLICY.md`) e em `mcp-fulfillment-ops-ARVORE-FULL.md`:
   - devem ser versionadas com tag clara (ex.: `ARVORE_v1`, `ARVORE_v2`);
   - exigem review estrutural (arquitetura) antes de merge.
 

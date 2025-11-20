@@ -1,0 +1,1143 @@
+{
+  "project_name": "mcp-fulfillment-ops",
+  "project_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops",
+  "timestamp": "2025-11-20 09:15:40",
+  "validator_version": "9.4",
+  "critical": [
+    {
+      "type": "Dependencias resolvidas",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Erro ao baixar dependencias",
+      "suggestion": "Execute: go mod tidy",
+      "fixability": {
+        "safe": true,
+        "rollback_easy": true,
+        "affects_behavior": false,
+        "requires_review": false,
+        "auto_fix_command": "go mod tidy",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "1-2 minutos",
+        "confidence": 0.9
+      },
+      "examples": [
+        "-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\go.uber.org\\mock\\@v\\v0.6.0.zip: mkdir C:\\Users\\Notebook\\go\\pkg\\mod\\go.uber.org\\mock@v0.6.0\\mockgen\\internal\\tests\\mock_name\\user: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\go.opentelemetry.io\\otel\\@v\\v1.36.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\go.opentelemetry.io\\otel@v1.36.0\\semconv\\v1.12.0\\trace.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\exp\\@v\\v0.0.0-20250408133849-7e4ce0ab07d0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\exp@v0.0.0-20250408133849-7e4ce0ab07d0\\apidiff\\testdata\\order.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\mod\\@v\\v0.27.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\mod@v0.27.0\\modfile\\read.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\crypto\\@v\\v0.41.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\crypto@v0.41.0\\bn256\\twist.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\sync\\@v\\v0.17.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\sync@v0.17.0\\semaphore\\semaphore.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\mobile\\@v\\v0.0.0-20190719004257-d2bd2a29d028.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\mobile@v0.0.0-20190719004257-d2bd2a29d028\\asset\\asset_android.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\time\\@v\\v0.11.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\time@v0.11.0\\LICENSE: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\xerrors\\@v\\v0.0.0-20220907171357-04be3eba64a2.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\xerrors@v0.0.0-20220907171357-04be3eba64a2\\LICENSE: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\genproto\\googleapis\\api\\@v\\v0.0.0-20250528174236-200df99c418a.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\google.golang.org\\genproto\\googleapis\\api@v0.0.0-20250528174236-200df99c418a\\configchange\\config_change.pb.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\sys\\@v\\v0.36.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\sys@v0.36.0\\unix\\asm_bsd_arm64.s: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\grpc\\cmd\\protoc-gen-go-grpc\\@v\\v1.5.1.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\google.golang.org\\grpc\\cmd\\protoc-gen-go-grpc@v1.5.1\\unimpl_test.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\alecthomas\\kingpin.v2\\@v\\v2.2.6.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\gopkg.in\\alecthomas\\kingpin.v2@v2.2.6\\values_generated.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\go.opentelemetry.io\\otel\\@v\\v1.36.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\go.opentelemetry.io\\otel@v1.36.0\\semconv\\v1.12.0\\trace.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\go.uber.org\\mock\\@v\\v0.6.0.zip: mkdir C:\\Users\\Notebook\\go\\pkg\\mod\\go.uber.org\\mock@v0.6.0\\mockgen\\internal\\tests\\mock_name\\user: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\crypto\\@v\\v0.41.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\crypto@v0.41.0\\bn256\\twist.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\exp\\@v\\v0.0.0-20250408133849-7e4ce0ab07d0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\exp@v0.0.0-20250408133849-7e4ce0ab07d0\\apidiff\\testdata\\order.go: There is not enough space on the disk.\ngo: golang.org/x/image@v0.0.0-20190802002840-cff245a6509b: read \"https://proxy.golang.org/golang.org/x/image/@v/v0.0.0-20190802002840-cff245a6509b.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\image\\@v\\v0.0.0-20190802002840-cff245a6509b.zip529109355.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\mobile\\@v\\v0.0.0-20190719004257-d2bd2a29d028.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\mobile@v0.0.0-20190719004257-d2bd2a29d028\\asset\\asset_android.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\mod\\@v\\v0.27.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\mod@v0.27.0\\modfile\\read.go: There is not enough space on the disk.\ngo: golang.org/x/net@v0.43.0: read \"https://proxy.golang.org/golang.org/x/net/@v/v0.43.0.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\net\\@v\\v0.43.0.zip895296714.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\sync\\@v\\v0.17.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\sync@v0.17.0\\semaphore\\semaphore.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\sys\\@v\\v0.36.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\sys@v0.36.0\\unix\\asm_bsd_arm64.s: There is not enough space on the disk.\ngo: golang.org/x/telemetry@v0.0.0-20250807160809-1a19826ec488: read \"https://proxy.golang.org/golang.org/x/telemetry/@v/v0.0.0-20250807160809-1a19826ec488.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\telemetry\\@v\\v0.0.0-20250807160809-1a19826ec488.zip389938446.tmp: There is not enough space on the disk.\ngo: golang.org/x/text@v0.28.0: read \"https://proxy.golang.org/golang.org/x/text/@v/v0.28.0.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\text\\@v\\v0.28.0.zip332314983.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\time\\@v\\v0.11.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\time@v0.11.0\\LICENSE: There is not enough space on the disk.\ngo: golang.org/x/tools@v0.36.0: read \"https://proxy.golang.org/golang.org/x/tools/@v/v0.36.0.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\tools\\@v\\v0.36.0.zip474374411.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\xerrors\\@v\\v0.0.0-20220907171357-04be3eba64a2.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\xerrors@v0.0.0-20220907171357-04be3eba64a2\\LICENSE: There is not enough space on the disk.\ngo: google.golang.org/genproto@v0.0.0-20230913181813-007df8e322eb: read \"https://proxy.golang.org/google.golang.org/genproto/@v/v0.0.0-20230913181813-007df8e322eb.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\genproto\\@v\\v0.0.0-20230913181813-007df8e322eb.zip904528985.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\genproto\\googleapis\\api\\@v\\v0.0.0-20250528174236-200df99c418a.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\google.golang.org\\genproto\\googleapis\\api@v0.0.0-20250528174236-200df99c418a\\configchange\\config_change.pb.go: There is not enough space on the disk.\ngo: google.golang.org/grpc@v1.74.2: read \"https://proxy.golang.org/google.golang.org/grpc/@v/v1.74.2.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\grpc\\@v\\v1.74.2.zip800698346.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\grpc\\cmd\\protoc-gen-go-grpc\\@v\\v1.5.1.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\google.golang.org\\grpc\\cmd\\protoc-gen-go-grpc@v1.5.1\\unimpl_test.go: There is not enough space on the disk.\ngo: google.golang.org/protobuf@v1.36.6: read \"https://proxy.golang.org/google.golang.org/protobuf/@v/v1.36.6.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\protobuf\\@v\\v1.36.6.zip677010090.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\alecthomas\\kingpin.v2\\@v\\v2.2.6.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\gopkg.in\\alecthomas\\kingpin.v2@v2.2.6\\values_generated.go: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\cenkalti\\backoff.v2\\@v\\v2.2.1.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\errgo.v2\\@v\\v2.1.0.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\evanphx\\json-patch.v4\\@v\\v4.12.0.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\fsnotify.v1\\@v\\v1.4.7.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\gemnasium\\logrus-airbrake-hook.v2\\@v\\v2.1.2.lock: There is not enough space on the disk.\ngo: gopkg.in/rethinkdb/rethinkdb-go.v6@v6.2.1: read \"https://proxy.golang.org/gopkg.in/rethinkdb/rethinkdb-go.v6/@v/v6.2.1.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\rethinkdb\\rethinkdb-go.v6\\@v\\v6.2.1.zip245666089.tmp: There is not enough space on the disk.\ngo: gotest.tools/v3@v3.5.2: read \"https://proxy.golang.org/gotest.tools/v3/@v/v3.5.2.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gotest.tools\\v3\\@v\\v3.5.2.zip307716998.tmp: There is not enough space on the disk.\ngo: honnef.co/go/tools@v0.0.1-2020.1.4: read \"https://proxy.golang.org/honnef.co/go/tools/@v/v0.0.1-2020.1.4.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\honnef.co\\go\\tools\\@v\\v0.0.1-2020.1.4.zip113487018.tmp: There is not enough space on the disk.\ngo: k8s.io/api@v0.32.3: read \"https://proxy.golang.org/k8s.io/api/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\api\\@v\\v0.32.3.zip145202484.tmp: There is not enough space on the disk.\ngo: k8s.io/apimachinery@v0.32.3: read \"https://proxy.golang.org/k8s.io/apimachinery/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\apimachinery\\@v\\v0.32.3.zip222687365.tmp: There is not enough space on the disk.\ngo: k8s.io/apiserver@v0.32.3: read \"https://proxy.golang.org/k8s.io/apiserver/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\apiserver\\@v\\v0.32.3.zip66172274.tmp: There is not enough space on the disk.\ngo: k8s.io/client-go@v0.32.3: read \"https://proxy.golang.org/k8s.io/client-go/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\client-go\\@v\\v0.32.3.zip248835011.tmp: There is not enough space on the disk.\ngo: k8s.io/cri-api@v0.32.3: read \"https://proxy.golang.org/k8s.io/cri-api/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\cri-api\\@v\\v0.32.3.zip236536116.tmp: There is not enough space on the disk.\ngo: k8s.io/gengo@v0.0.0-20230829151522-9cce18d56c01: read \"https://proxy.golang.org/k8s.io/gengo/@v/v0.0.0-20230829151522-9cce18d56c01.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\gengo\\@v\\v0.0.0-20230829151522-9cce18d56c01.zip962089003.tmp: There is not enough space on the disk.\ngo: k8s.io/gengo/v2@v2.0.0-20240826214909-a7b603a56eb7: read \"https://proxy.golang.org/k8s.io/gengo/v2/@v/v2.0.0-20240826214909-a7b603a56eb7.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\gengo\\v2\\@v\\v2.0.0-20240826214909-a7b603a56eb7.zip330621053.tmp: There is not enough space on the disk.\ngo: k8s.io/klog/v2@v2.130.1: read \"https://proxy.golang.org/k8s.io/klog/v2/@v/v2.130.1.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\klog\\v2\\@v\\v2.130.1.zip799573258.tmp: There is not enough space on the disk.\ngo: k8s.io/kube-openapi@v0.0.0-20241105132330-32ad38e42d3f: read \"https://proxy.golang.org/k8s.io/kube-openapi/@v/v0.0.0-20241105132330-32ad38e42d3f.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\kube-openapi\\@v\\v0.0.0-20241105132330-32ad38e42d3f.zip787245936.tmp: There is not enough space on the disk.\ngo: k8s.io/kubelet@v0.32.3: read \"https://proxy.golang.org/k8s.io/kubelet/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\kubelet\\@v\\v0.32.3.zip63286596.tmp: There is not enough space on the disk.\ngo: k8s.io/utils@v0.0.0-20241104100929-3ea5e8cea738: read \"https://proxy.golang.org/k8s.io/utils/@v/v0.0.0-20241104100929-3ea5e8cea738.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\utils\\@v\\v0.0.0-20241104100929-3ea5e8cea738.zip274370049.tmp: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\kernel.org\\pub\\linux\\libs\\security\\libcap\\cap\\@v\\v1.2.76.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\kernel.org\\pub\\linux\\libs\\security\\libcap\\psx\\@v\\v1.2.76.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\rsc.io\\binaryregexp\\@v\\v0.2.0.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\rsc.io\\quote\\v3\\@v\\v3.1.0.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\rsc.io\\sampler\\@v\\v1.3.0.lock: There is not enough space on the disk.\ngo: sigs.k8s.io/json@v0.0.0-20241010143419-9aa6b5e7a4b3: read \"https://proxy.golang.org/sigs.k8s.io/json/@v/v0.0.0-20241010143419-9aa6b5e7a4b3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\sigs.k8s.io\\json\\@v\\v0.0.0-20241010143419-9aa6b5e7a4b3.zip982240516.tmp: There is not enough space on the disk.\ngo: sigs.k8s.io/structured-merge-diff/v4@v4.4.2: read \"https://proxy.golang.org/sigs.k8s.io/structured-merge-diff/v4/@v/v4.4.2.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\sigs.k8s.io\\structured-merge-diff\\v4\\@v\\v4.4.2.zip535822458.tmp: There is not enough space on the disk.\ngo: sigs.k8s.io/yaml@v1.4.0: read \"https://proxy.golang.org/sigs.k8s.io/yaml/@v/v1.4.0.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\sigs.k8s.io\\yaml\\@v\\v1.4.0.zip312703357.tmp: There is not enough space on the disk.\ngo: tags.cncf.io/container-device-interface@v1.0.1: read \"https://proxy.golang.org/tags.cncf.io/container-device-interface/@v/v1.0.1.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\tags.cncf.io\\container-device-interface\\@v\\v1.0.1.zip87091987.tmp: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\tags.cncf.io\\container-device-interface\\specs-go\\@v\\v1.0.0.lock: There is not enough space on the disk.\n"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Testes PASSAM",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Testes falharam",
+      "suggestion": "Corrija os testes. Use 'go test -v ./...'",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": [
+        "📄 Log: E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\2025-11-20-09-14-17-tests.log"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Nil Pointer Check",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "1 potencial(is) nil pointer issue(s)",
+      "suggestion": "Adicione nil checks",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": [
+        "multi_level_cache.go:180"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Formatacao (gofmt)",
+      "severity": "low",
+      "location": "multiplos arquivos",
+      "description": "Erro ao verificar formatacao",
+      "suggestion": "",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": null,
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "NATS subjects documentados",
+      "severity": "low",
+      "location": "multiplos arquivos",
+      "description": "NATS subjects nao documentados",
+      "suggestion": "Crie docs/NATS_SUBJECTS.md",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": null,
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    }
+  ],
+  "high": null,
+  "medium": null,
+  "low": [
+    {
+      "type": "Formatacao (gofmt)",
+      "severity": "low",
+      "location": "multiplos arquivos",
+      "description": "Erro ao verificar formatacao",
+      "suggestion": "",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": null,
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "NATS subjects documentados",
+      "severity": "low",
+      "location": "multiplos arquivos",
+      "description": "NATS subjects nao documentados",
+      "suggestion": "Crie docs/NATS_SUBJECTS.md",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": null,
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    }
+  ],
+  "total_gaps": 7,
+  "score": 65,
+  "auto_fixable": 1,
+  "manual": 6,
+  "top_priorities": [
+    {
+      "type": "Dependencias resolvidas",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Erro ao baixar dependencias",
+      "suggestion": "Execute: go mod tidy",
+      "fixability": {
+        "safe": true,
+        "rollback_easy": true,
+        "affects_behavior": false,
+        "requires_review": false,
+        "auto_fix_command": "go mod tidy",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "1-2 minutos",
+        "confidence": 0.9
+      },
+      "examples": [
+        "-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\go.uber.org\\mock\\@v\\v0.6.0.zip: mkdir C:\\Users\\Notebook\\go\\pkg\\mod\\go.uber.org\\mock@v0.6.0\\mockgen\\internal\\tests\\mock_name\\user: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\go.opentelemetry.io\\otel\\@v\\v1.36.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\go.opentelemetry.io\\otel@v1.36.0\\semconv\\v1.12.0\\trace.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\exp\\@v\\v0.0.0-20250408133849-7e4ce0ab07d0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\exp@v0.0.0-20250408133849-7e4ce0ab07d0\\apidiff\\testdata\\order.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\mod\\@v\\v0.27.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\mod@v0.27.0\\modfile\\read.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\crypto\\@v\\v0.41.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\crypto@v0.41.0\\bn256\\twist.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\sync\\@v\\v0.17.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\sync@v0.17.0\\semaphore\\semaphore.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\mobile\\@v\\v0.0.0-20190719004257-d2bd2a29d028.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\mobile@v0.0.0-20190719004257-d2bd2a29d028\\asset\\asset_android.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\time\\@v\\v0.11.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\time@v0.11.0\\LICENSE: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\xerrors\\@v\\v0.0.0-20220907171357-04be3eba64a2.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\xerrors@v0.0.0-20220907171357-04be3eba64a2\\LICENSE: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\genproto\\googleapis\\api\\@v\\v0.0.0-20250528174236-200df99c418a.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\google.golang.org\\genproto\\googleapis\\api@v0.0.0-20250528174236-200df99c418a\\configchange\\config_change.pb.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\sys\\@v\\v0.36.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\sys@v0.36.0\\unix\\asm_bsd_arm64.s: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\grpc\\cmd\\protoc-gen-go-grpc\\@v\\v1.5.1.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\google.golang.org\\grpc\\cmd\\protoc-gen-go-grpc@v1.5.1\\unimpl_test.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\alecthomas\\kingpin.v2\\@v\\v2.2.6.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\gopkg.in\\alecthomas\\kingpin.v2@v2.2.6\\values_generated.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\go.opentelemetry.io\\otel\\@v\\v1.36.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\go.opentelemetry.io\\otel@v1.36.0\\semconv\\v1.12.0\\trace.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\go.uber.org\\mock\\@v\\v0.6.0.zip: mkdir C:\\Users\\Notebook\\go\\pkg\\mod\\go.uber.org\\mock@v0.6.0\\mockgen\\internal\\tests\\mock_name\\user: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\crypto\\@v\\v0.41.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\crypto@v0.41.0\\bn256\\twist.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\exp\\@v\\v0.0.0-20250408133849-7e4ce0ab07d0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\exp@v0.0.0-20250408133849-7e4ce0ab07d0\\apidiff\\testdata\\order.go: There is not enough space on the disk.\ngo: golang.org/x/image@v0.0.0-20190802002840-cff245a6509b: read \"https://proxy.golang.org/golang.org/x/image/@v/v0.0.0-20190802002840-cff245a6509b.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\image\\@v\\v0.0.0-20190802002840-cff245a6509b.zip529109355.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\mobile\\@v\\v0.0.0-20190719004257-d2bd2a29d028.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\mobile@v0.0.0-20190719004257-d2bd2a29d028\\asset\\asset_android.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\mod\\@v\\v0.27.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\mod@v0.27.0\\modfile\\read.go: There is not enough space on the disk.\ngo: golang.org/x/net@v0.43.0: read \"https://proxy.golang.org/golang.org/x/net/@v/v0.43.0.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\net\\@v\\v0.43.0.zip895296714.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\sync\\@v\\v0.17.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\sync@v0.17.0\\semaphore\\semaphore.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\sys\\@v\\v0.36.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\sys@v0.36.0\\unix\\asm_bsd_arm64.s: There is not enough space on the disk.\ngo: golang.org/x/telemetry@v0.0.0-20250807160809-1a19826ec488: read \"https://proxy.golang.org/golang.org/x/telemetry/@v/v0.0.0-20250807160809-1a19826ec488.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\telemetry\\@v\\v0.0.0-20250807160809-1a19826ec488.zip389938446.tmp: There is not enough space on the disk.\ngo: golang.org/x/text@v0.28.0: read \"https://proxy.golang.org/golang.org/x/text/@v/v0.28.0.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\text\\@v\\v0.28.0.zip332314983.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\time\\@v\\v0.11.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\time@v0.11.0\\LICENSE: There is not enough space on the disk.\ngo: golang.org/x/tools@v0.36.0: read \"https://proxy.golang.org/golang.org/x/tools/@v/v0.36.0.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\tools\\@v\\v0.36.0.zip474374411.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\xerrors\\@v\\v0.0.0-20220907171357-04be3eba64a2.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\xerrors@v0.0.0-20220907171357-04be3eba64a2\\LICENSE: There is not enough space on the disk.\ngo: google.golang.org/genproto@v0.0.0-20230913181813-007df8e322eb: read \"https://proxy.golang.org/google.golang.org/genproto/@v/v0.0.0-20230913181813-007df8e322eb.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\genproto\\@v\\v0.0.0-20230913181813-007df8e322eb.zip904528985.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\genproto\\googleapis\\api\\@v\\v0.0.0-20250528174236-200df99c418a.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\google.golang.org\\genproto\\googleapis\\api@v0.0.0-20250528174236-200df99c418a\\configchange\\config_change.pb.go: There is not enough space on the disk.\ngo: google.golang.org/grpc@v1.74.2: read \"https://proxy.golang.org/google.golang.org/grpc/@v/v1.74.2.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\grpc\\@v\\v1.74.2.zip800698346.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\grpc\\cmd\\protoc-gen-go-grpc\\@v\\v1.5.1.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\google.golang.org\\grpc\\cmd\\protoc-gen-go-grpc@v1.5.1\\unimpl_test.go: There is not enough space on the disk.\ngo: google.golang.org/protobuf@v1.36.6: read \"https://proxy.golang.org/google.golang.org/protobuf/@v/v1.36.6.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\protobuf\\@v\\v1.36.6.zip677010090.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\alecthomas\\kingpin.v2\\@v\\v2.2.6.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\gopkg.in\\alecthomas\\kingpin.v2@v2.2.6\\values_generated.go: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\cenkalti\\backoff.v2\\@v\\v2.2.1.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\errgo.v2\\@v\\v2.1.0.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\evanphx\\json-patch.v4\\@v\\v4.12.0.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\fsnotify.v1\\@v\\v1.4.7.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\gemnasium\\logrus-airbrake-hook.v2\\@v\\v2.1.2.lock: There is not enough space on the disk.\ngo: gopkg.in/rethinkdb/rethinkdb-go.v6@v6.2.1: read \"https://proxy.golang.org/gopkg.in/rethinkdb/rethinkdb-go.v6/@v/v6.2.1.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\rethinkdb\\rethinkdb-go.v6\\@v\\v6.2.1.zip245666089.tmp: There is not enough space on the disk.\ngo: gotest.tools/v3@v3.5.2: read \"https://proxy.golang.org/gotest.tools/v3/@v/v3.5.2.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gotest.tools\\v3\\@v\\v3.5.2.zip307716998.tmp: There is not enough space on the disk.\ngo: honnef.co/go/tools@v0.0.1-2020.1.4: read \"https://proxy.golang.org/honnef.co/go/tools/@v/v0.0.1-2020.1.4.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\honnef.co\\go\\tools\\@v\\v0.0.1-2020.1.4.zip113487018.tmp: There is not enough space on the disk.\ngo: k8s.io/api@v0.32.3: read \"https://proxy.golang.org/k8s.io/api/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\api\\@v\\v0.32.3.zip145202484.tmp: There is not enough space on the disk.\ngo: k8s.io/apimachinery@v0.32.3: read \"https://proxy.golang.org/k8s.io/apimachinery/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\apimachinery\\@v\\v0.32.3.zip222687365.tmp: There is not enough space on the disk.\ngo: k8s.io/apiserver@v0.32.3: read \"https://proxy.golang.org/k8s.io/apiserver/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\apiserver\\@v\\v0.32.3.zip66172274.tmp: There is not enough space on the disk.\ngo: k8s.io/client-go@v0.32.3: read \"https://proxy.golang.org/k8s.io/client-go/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\client-go\\@v\\v0.32.3.zip248835011.tmp: There is not enough space on the disk.\ngo: k8s.io/cri-api@v0.32.3: read \"https://proxy.golang.org/k8s.io/cri-api/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\cri-api\\@v\\v0.32.3.zip236536116.tmp: There is not enough space on the disk.\ngo: k8s.io/gengo@v0.0.0-20230829151522-9cce18d56c01: read \"https://proxy.golang.org/k8s.io/gengo/@v/v0.0.0-20230829151522-9cce18d56c01.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\gengo\\@v\\v0.0.0-20230829151522-9cce18d56c01.zip962089003.tmp: There is not enough space on the disk.\ngo: k8s.io/gengo/v2@v2.0.0-20240826214909-a7b603a56eb7: read \"https://proxy.golang.org/k8s.io/gengo/v2/@v/v2.0.0-20240826214909-a7b603a56eb7.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\gengo\\v2\\@v\\v2.0.0-20240826214909-a7b603a56eb7.zip330621053.tmp: There is not enough space on the disk.\ngo: k8s.io/klog/v2@v2.130.1: read \"https://proxy.golang.org/k8s.io/klog/v2/@v/v2.130.1.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\klog\\v2\\@v\\v2.130.1.zip799573258.tmp: There is not enough space on the disk.\ngo: k8s.io/kube-openapi@v0.0.0-20241105132330-32ad38e42d3f: read \"https://proxy.golang.org/k8s.io/kube-openapi/@v/v0.0.0-20241105132330-32ad38e42d3f.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\kube-openapi\\@v\\v0.0.0-20241105132330-32ad38e42d3f.zip787245936.tmp: There is not enough space on the disk.\ngo: k8s.io/kubelet@v0.32.3: read \"https://proxy.golang.org/k8s.io/kubelet/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\kubelet\\@v\\v0.32.3.zip63286596.tmp: There is not enough space on the disk.\ngo: k8s.io/utils@v0.0.0-20241104100929-3ea5e8cea738: read \"https://proxy.golang.org/k8s.io/utils/@v/v0.0.0-20241104100929-3ea5e8cea738.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\utils\\@v\\v0.0.0-20241104100929-3ea5e8cea738.zip274370049.tmp: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\kernel.org\\pub\\linux\\libs\\security\\libcap\\cap\\@v\\v1.2.76.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\kernel.org\\pub\\linux\\libs\\security\\libcap\\psx\\@v\\v1.2.76.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\rsc.io\\binaryregexp\\@v\\v0.2.0.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\rsc.io\\quote\\v3\\@v\\v3.1.0.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\rsc.io\\sampler\\@v\\v1.3.0.lock: There is not enough space on the disk.\ngo: sigs.k8s.io/json@v0.0.0-20241010143419-9aa6b5e7a4b3: read \"https://proxy.golang.org/sigs.k8s.io/json/@v/v0.0.0-20241010143419-9aa6b5e7a4b3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\sigs.k8s.io\\json\\@v\\v0.0.0-20241010143419-9aa6b5e7a4b3.zip982240516.tmp: There is not enough space on the disk.\ngo: sigs.k8s.io/structured-merge-diff/v4@v4.4.2: read \"https://proxy.golang.org/sigs.k8s.io/structured-merge-diff/v4/@v/v4.4.2.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\sigs.k8s.io\\structured-merge-diff\\v4\\@v\\v4.4.2.zip535822458.tmp: There is not enough space on the disk.\ngo: sigs.k8s.io/yaml@v1.4.0: read \"https://proxy.golang.org/sigs.k8s.io/yaml/@v/v1.4.0.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\sigs.k8s.io\\yaml\\@v\\v1.4.0.zip312703357.tmp: There is not enough space on the disk.\ngo: tags.cncf.io/container-device-interface@v1.0.1: read \"https://proxy.golang.org/tags.cncf.io/container-device-interface/@v/v1.0.1.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\tags.cncf.io\\container-device-interface\\@v\\v1.0.1.zip87091987.tmp: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\tags.cncf.io\\container-device-interface\\specs-go\\@v\\v1.0.0.lock: There is not enough space on the disk.\n"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Testes PASSAM",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Testes falharam",
+      "suggestion": "Corrija os testes. Use 'go test -v ./...'",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": [
+        "📄 Log: E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\2025-11-20-09-14-17-tests.log"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Nil Pointer Check",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "1 potencial(is) nil pointer issue(s)",
+      "suggestion": "Adicione nil checks",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": [
+        "multi_level_cache.go:180"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Formatacao (gofmt)",
+      "severity": "low",
+      "location": "multiplos arquivos",
+      "description": "Erro ao verificar formatacao",
+      "suggestion": "",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": null,
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "NATS subjects documentados",
+      "severity": "low",
+      "location": "multiplos arquivos",
+      "description": "NATS subjects nao documentados",
+      "suggestion": "Crie docs/NATS_SUBJECTS.md",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": null,
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    }
+  ],
+  "quick_wins": [
+    {
+      "type": "Dependencias resolvidas",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Erro ao baixar dependencias",
+      "suggestion": "Execute: go mod tidy",
+      "fixability": {
+        "safe": true,
+        "rollback_easy": true,
+        "affects_behavior": false,
+        "requires_review": false,
+        "auto_fix_command": "go mod tidy",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "1-2 minutos",
+        "confidence": 0.9
+      },
+      "examples": [
+        "-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\go.uber.org\\mock\\@v\\v0.6.0.zip: mkdir C:\\Users\\Notebook\\go\\pkg\\mod\\go.uber.org\\mock@v0.6.0\\mockgen\\internal\\tests\\mock_name\\user: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\go.opentelemetry.io\\otel\\@v\\v1.36.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\go.opentelemetry.io\\otel@v1.36.0\\semconv\\v1.12.0\\trace.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\exp\\@v\\v0.0.0-20250408133849-7e4ce0ab07d0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\exp@v0.0.0-20250408133849-7e4ce0ab07d0\\apidiff\\testdata\\order.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\mod\\@v\\v0.27.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\mod@v0.27.0\\modfile\\read.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\crypto\\@v\\v0.41.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\crypto@v0.41.0\\bn256\\twist.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\sync\\@v\\v0.17.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\sync@v0.17.0\\semaphore\\semaphore.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\mobile\\@v\\v0.0.0-20190719004257-d2bd2a29d028.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\mobile@v0.0.0-20190719004257-d2bd2a29d028\\asset\\asset_android.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\time\\@v\\v0.11.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\time@v0.11.0\\LICENSE: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\xerrors\\@v\\v0.0.0-20220907171357-04be3eba64a2.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\xerrors@v0.0.0-20220907171357-04be3eba64a2\\LICENSE: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\genproto\\googleapis\\api\\@v\\v0.0.0-20250528174236-200df99c418a.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\google.golang.org\\genproto\\googleapis\\api@v0.0.0-20250528174236-200df99c418a\\configchange\\config_change.pb.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\sys\\@v\\v0.36.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\sys@v0.36.0\\unix\\asm_bsd_arm64.s: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\grpc\\cmd\\protoc-gen-go-grpc\\@v\\v1.5.1.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\google.golang.org\\grpc\\cmd\\protoc-gen-go-grpc@v1.5.1\\unimpl_test.go: There is not enough space on the disk.\n-\u003e unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\alecthomas\\kingpin.v2\\@v\\v2.2.6.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\gopkg.in\\alecthomas\\kingpin.v2@v2.2.6\\values_generated.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\go.opentelemetry.io\\otel\\@v\\v1.36.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\go.opentelemetry.io\\otel@v1.36.0\\semconv\\v1.12.0\\trace.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\go.uber.org\\mock\\@v\\v0.6.0.zip: mkdir C:\\Users\\Notebook\\go\\pkg\\mod\\go.uber.org\\mock@v0.6.0\\mockgen\\internal\\tests\\mock_name\\user: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\crypto\\@v\\v0.41.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\crypto@v0.41.0\\bn256\\twist.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\exp\\@v\\v0.0.0-20250408133849-7e4ce0ab07d0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\exp@v0.0.0-20250408133849-7e4ce0ab07d0\\apidiff\\testdata\\order.go: There is not enough space on the disk.\ngo: golang.org/x/image@v0.0.0-20190802002840-cff245a6509b: read \"https://proxy.golang.org/golang.org/x/image/@v/v0.0.0-20190802002840-cff245a6509b.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\image\\@v\\v0.0.0-20190802002840-cff245a6509b.zip529109355.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\mobile\\@v\\v0.0.0-20190719004257-d2bd2a29d028.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\mobile@v0.0.0-20190719004257-d2bd2a29d028\\asset\\asset_android.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\mod\\@v\\v0.27.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\mod@v0.27.0\\modfile\\read.go: There is not enough space on the disk.\ngo: golang.org/x/net@v0.43.0: read \"https://proxy.golang.org/golang.org/x/net/@v/v0.43.0.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\net\\@v\\v0.43.0.zip895296714.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\sync\\@v\\v0.17.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\sync@v0.17.0\\semaphore\\semaphore.go: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\sys\\@v\\v0.36.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\sys@v0.36.0\\unix\\asm_bsd_arm64.s: There is not enough space on the disk.\ngo: golang.org/x/telemetry@v0.0.0-20250807160809-1a19826ec488: read \"https://proxy.golang.org/golang.org/x/telemetry/@v/v0.0.0-20250807160809-1a19826ec488.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\telemetry\\@v\\v0.0.0-20250807160809-1a19826ec488.zip389938446.tmp: There is not enough space on the disk.\ngo: golang.org/x/text@v0.28.0: read \"https://proxy.golang.org/golang.org/x/text/@v/v0.28.0.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\text\\@v\\v0.28.0.zip332314983.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\time\\@v\\v0.11.0.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\time@v0.11.0\\LICENSE: There is not enough space on the disk.\ngo: golang.org/x/tools@v0.36.0: read \"https://proxy.golang.org/golang.org/x/tools/@v/v0.36.0.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\tools\\@v\\v0.36.0.zip474374411.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\golang.org\\x\\xerrors\\@v\\v0.0.0-20220907171357-04be3eba64a2.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\golang.org\\x\\xerrors@v0.0.0-20220907171357-04be3eba64a2\\LICENSE: There is not enough space on the disk.\ngo: google.golang.org/genproto@v0.0.0-20230913181813-007df8e322eb: read \"https://proxy.golang.org/google.golang.org/genproto/@v/v0.0.0-20230913181813-007df8e322eb.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\genproto\\@v\\v0.0.0-20230913181813-007df8e322eb.zip904528985.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\genproto\\googleapis\\api\\@v\\v0.0.0-20250528174236-200df99c418a.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\google.golang.org\\genproto\\googleapis\\api@v0.0.0-20250528174236-200df99c418a\\configchange\\config_change.pb.go: There is not enough space on the disk.\ngo: google.golang.org/grpc@v1.74.2: read \"https://proxy.golang.org/google.golang.org/grpc/@v/v1.74.2.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\grpc\\@v\\v1.74.2.zip800698346.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\grpc\\cmd\\protoc-gen-go-grpc\\@v\\v1.5.1.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\google.golang.org\\grpc\\cmd\\protoc-gen-go-grpc@v1.5.1\\unimpl_test.go: There is not enough space on the disk.\ngo: google.golang.org/protobuf@v1.36.6: read \"https://proxy.golang.org/google.golang.org/protobuf/@v/v1.36.6.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\google.golang.org\\protobuf\\@v\\v1.36.6.zip677010090.tmp: There is not enough space on the disk.\ngo: unzip C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\alecthomas\\kingpin.v2\\@v\\v2.2.6.zip: write C:\\Users\\Notebook\\go\\pkg\\mod\\gopkg.in\\alecthomas\\kingpin.v2@v2.2.6\\values_generated.go: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\cenkalti\\backoff.v2\\@v\\v2.2.1.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\errgo.v2\\@v\\v2.1.0.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\evanphx\\json-patch.v4\\@v\\v4.12.0.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\fsnotify.v1\\@v\\v1.4.7.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\gemnasium\\logrus-airbrake-hook.v2\\@v\\v2.1.2.lock: There is not enough space on the disk.\ngo: gopkg.in/rethinkdb/rethinkdb-go.v6@v6.2.1: read \"https://proxy.golang.org/gopkg.in/rethinkdb/rethinkdb-go.v6/@v/v6.2.1.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gopkg.in\\rethinkdb\\rethinkdb-go.v6\\@v\\v6.2.1.zip245666089.tmp: There is not enough space on the disk.\ngo: gotest.tools/v3@v3.5.2: read \"https://proxy.golang.org/gotest.tools/v3/@v/v3.5.2.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\gotest.tools\\v3\\@v\\v3.5.2.zip307716998.tmp: There is not enough space on the disk.\ngo: honnef.co/go/tools@v0.0.1-2020.1.4: read \"https://proxy.golang.org/honnef.co/go/tools/@v/v0.0.1-2020.1.4.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\honnef.co\\go\\tools\\@v\\v0.0.1-2020.1.4.zip113487018.tmp: There is not enough space on the disk.\ngo: k8s.io/api@v0.32.3: read \"https://proxy.golang.org/k8s.io/api/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\api\\@v\\v0.32.3.zip145202484.tmp: There is not enough space on the disk.\ngo: k8s.io/apimachinery@v0.32.3: read \"https://proxy.golang.org/k8s.io/apimachinery/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\apimachinery\\@v\\v0.32.3.zip222687365.tmp: There is not enough space on the disk.\ngo: k8s.io/apiserver@v0.32.3: read \"https://proxy.golang.org/k8s.io/apiserver/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\apiserver\\@v\\v0.32.3.zip66172274.tmp: There is not enough space on the disk.\ngo: k8s.io/client-go@v0.32.3: read \"https://proxy.golang.org/k8s.io/client-go/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\client-go\\@v\\v0.32.3.zip248835011.tmp: There is not enough space on the disk.\ngo: k8s.io/cri-api@v0.32.3: read \"https://proxy.golang.org/k8s.io/cri-api/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\cri-api\\@v\\v0.32.3.zip236536116.tmp: There is not enough space on the disk.\ngo: k8s.io/gengo@v0.0.0-20230829151522-9cce18d56c01: read \"https://proxy.golang.org/k8s.io/gengo/@v/v0.0.0-20230829151522-9cce18d56c01.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\gengo\\@v\\v0.0.0-20230829151522-9cce18d56c01.zip962089003.tmp: There is not enough space on the disk.\ngo: k8s.io/gengo/v2@v2.0.0-20240826214909-a7b603a56eb7: read \"https://proxy.golang.org/k8s.io/gengo/v2/@v/v2.0.0-20240826214909-a7b603a56eb7.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\gengo\\v2\\@v\\v2.0.0-20240826214909-a7b603a56eb7.zip330621053.tmp: There is not enough space on the disk.\ngo: k8s.io/klog/v2@v2.130.1: read \"https://proxy.golang.org/k8s.io/klog/v2/@v/v2.130.1.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\klog\\v2\\@v\\v2.130.1.zip799573258.tmp: There is not enough space on the disk.\ngo: k8s.io/kube-openapi@v0.0.0-20241105132330-32ad38e42d3f: read \"https://proxy.golang.org/k8s.io/kube-openapi/@v/v0.0.0-20241105132330-32ad38e42d3f.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\kube-openapi\\@v\\v0.0.0-20241105132330-32ad38e42d3f.zip787245936.tmp: There is not enough space on the disk.\ngo: k8s.io/kubelet@v0.32.3: read \"https://proxy.golang.org/k8s.io/kubelet/@v/v0.32.3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\kubelet\\@v\\v0.32.3.zip63286596.tmp: There is not enough space on the disk.\ngo: k8s.io/utils@v0.0.0-20241104100929-3ea5e8cea738: read \"https://proxy.golang.org/k8s.io/utils/@v/v0.0.0-20241104100929-3ea5e8cea738.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\k8s.io\\utils\\@v\\v0.0.0-20241104100929-3ea5e8cea738.zip274370049.tmp: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\kernel.org\\pub\\linux\\libs\\security\\libcap\\cap\\@v\\v1.2.76.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\kernel.org\\pub\\linux\\libs\\security\\libcap\\psx\\@v\\v1.2.76.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\rsc.io\\binaryregexp\\@v\\v0.2.0.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\rsc.io\\quote\\v3\\@v\\v3.1.0.lock: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\rsc.io\\sampler\\@v\\v1.3.0.lock: There is not enough space on the disk.\ngo: sigs.k8s.io/json@v0.0.0-20241010143419-9aa6b5e7a4b3: read \"https://proxy.golang.org/sigs.k8s.io/json/@v/v0.0.0-20241010143419-9aa6b5e7a4b3.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\sigs.k8s.io\\json\\@v\\v0.0.0-20241010143419-9aa6b5e7a4b3.zip982240516.tmp: There is not enough space on the disk.\ngo: sigs.k8s.io/structured-merge-diff/v4@v4.4.2: read \"https://proxy.golang.org/sigs.k8s.io/structured-merge-diff/v4/@v/v4.4.2.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\sigs.k8s.io\\structured-merge-diff\\v4\\@v\\v4.4.2.zip535822458.tmp: There is not enough space on the disk.\ngo: sigs.k8s.io/yaml@v1.4.0: read \"https://proxy.golang.org/sigs.k8s.io/yaml/@v/v1.4.0.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\sigs.k8s.io\\yaml\\@v\\v1.4.0.zip312703357.tmp: There is not enough space on the disk.\ngo: tags.cncf.io/container-device-interface@v1.0.1: read \"https://proxy.golang.org/tags.cncf.io/container-device-interface/@v/v1.0.1.zip\": write C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\tags.cncf.io\\container-device-interface\\@v\\v1.0.1.zip87091987.tmp: There is not enough space on the disk.\ngo: open C:\\Users\\Notebook\\go\\pkg\\mod\\cache\\download\\tags.cncf.io\\container-device-interface\\specs-go\\@v\\v1.0.0.lock: There is not enough space on the disk.\n"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    }
+  ],
+  "blockers": [
+    {
+      "type": "No Code Conflicts",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Conflitos de declaracao detectados",
+      "suggestion": "Remova ou renomeie as declaracoes duplicadas",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": true,
+        "requires_review": true,
+        "manual_steps": "1. Identifique qual declaracao manter\n2. Remova ou renomeie as duplicatas\n3. Atualize referencias",
+        "non_fixable_reason": "ARCHITECTURAL",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "15-30 minutos",
+        "confidence": 0
+      },
+      "examples": [
+        "pubsub: 'PubSubClient' declarado em nats_pubsub.go, pubsub_client.go",
+        "protocol: 'parseParams' declarado em handlers.go, router.go",
+        "transformer: 'FeedForwardConfig' declarado em feedforward.go, transformer.go",
+        "transformer: 'NewEmbeddingLayer' declarado em embeddings.go, transformer.go",
+        "transformer: 'RotaryEmbeddings' declarado em attention.go, embeddings.go, positional_encoding.go",
+        "transformer: 'PositionalEncodingLayer' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'PositionalEncodingStats' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'FeedForwardNetwork' declarado em feedforward.go, transformer.go",
+        "transformer: 'NewPositionalEncodingLayer' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'EmbeddingLayer' declarado em embeddings.go, transformer.go",
+        "transformer: 'MultiHeadAttention' declarado em attention.go, transformer.go",
+        "transformer: 'NewMultiHeadAttention' declarado em attention.go, transformer.go",
+        "transformer: 'PositionalEncodingConfig' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'NewFeedForwardNetwork' declarado em feedforward.go, transformer.go",
+        "crush: 'min' declarado em batch_processor.go, parallel_processor.go",
+        "crush: 'max' declarado em batch_processor.go, parallel_processor.go",
+        "encryption: 'Manager' declarado em certificate_manager.go, encryption_manager.go, key_manager.go",
+        "nats: 'Logger' declarado em event_publisher.go, fulfillment_subscriber.go, inventory_command_client.go",
+        "validators: 'ValidationResult' declarado em structure_validator.go, template_validator.go",
+        "cli: 'init' declarado em ai.go, generate.go, monitor.go, root.go, state.go, template.go, version.go",
+        "analytics: 'init' declarado em metrics.go, performance.go",
+        "registry: 'TemplateInfo' declarado em mcp_registry.go, template_registry.go"
+      ],
+      "non_fixable_reason": "ARCHITECTURAL",
+      "code_contexts": [
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\infrastructure\\messaging\\pubsub\\pubsub_client.go",
+          "line_number": 9,
+          "code_snippet": "     4 | import (\r\n     5 | \t\"context\"\r\n     6 | )\r\n     7 | \r\n     8 | // PubSubClient provides generic pub/sub interface\r\n→    9 | type PubSubClient interface {\r\n    10 | \t// Publish publishes a message to a topic\r\n    11 | \tPublish(ctx context.Context, topic string, message []byte) error\r\n    12 | \r\n    13 | \t// Subscribe subscribes to a topic\r\n    14 | \tSubscribe(ctx context.Context, topic string, handler func([]byte) error) error\r\n",
+          "full_function": "type PubSubClient interface {\r\n\t// Publish publishes a message to a topic\r\n\tPublish(ctx context.Context, topic string, message []byte) error\r\n\r\n\t// Subscribe subscribes to a topic\r\n\tSubscribe(ctx context.Context, topic string, handler func([]byte) error) error\r\n\r\n\t// Close closes the client connection\r\n\tClose() error\r\n}\r",
+          "symbol_name": "PubSubClient",
+          "package_name": "pubsub",
+          "dependencies": [
+            "context"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\mcp\\protocol\\router.go",
+          "line_number": 215,
+          "code_snippet": "   210 | \r\n   211 | \treturn nil\r\n   212 | }\r\n   213 | \r\n   214 | // parseParams parses parameters from a JSON-RPC request\r\n→  215 | func parseParams(params interface{}, target interface{}) error {\r\n   216 | \tif params == nil {\r\n   217 | \t\treturn nil\r\n   218 | \t}\r\n   219 | \r\n   220 | \t// This is a simplified parameter parsing\r\n",
+          "full_function": "",
+          "symbol_name": "parseParams",
+          "package_name": "protocol",
+          "dependencies": [
+            "context",
+            "fmt",
+            "strings",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\embeddings.go",
+          "line_number": 82,
+          "code_snippet": "    77 | \tstats         *PositionalEncodingStats\r\n    78 | \tmu            sync.RWMutex\r\n    79 | }\r\n    80 | \r\n    81 | // RotaryEmbeddings implements rotary positional embeddings (RoPE)\r\n→   82 | type RotaryEmbeddings struct {\r\n    83 | \tdim          int\r\n    84 | \tmaxSeqLen    int\r\n    85 | \tbase         float64\r\n    86 | \tscale        bool\r\n    87 | \tcache        map[int]*RotaryCache\r\n",
+          "full_function": "type RotaryEmbeddings struct {\r\n\tdim          int\r\n\tmaxSeqLen    int\r\n\tbase         float64\r\n\tscale        bool\r\n\tcache        map[int]*RotaryCache\r\n\tsinCosCache  *Tensor\r\n\tmu           sync.RWMutex\r\n}\r",
+          "symbol_name": "RotaryEmbeddings",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 28,
+          "code_snippet": "    23 | \tPosEncodingTypeALiBi      PositionalEncodingType = \"alibi\"\r\n    24 | \tPosEncodingTypeXPos       PositionalEncodingType = \"xpos\"\r\n    25 | )\r\n    26 | \r\n    27 | // PositionalEncodingConfig represents positional encoding configuration\r\n→   28 | type PositionalEncodingConfig struct {\r\n    29 | \tType         PositionalEncodingType `json:\"type\"`\r\n    30 | \tMaxSeqLen    int                   `json:\"max_seq_len\"`\r\n    31 | \tHiddenSize   int                   `json:\"hidden_size\"`\r\n    32 | \tHeadDim      int                   `json:\"head_dim,omitempty\"`\r\n    33 | \tBase         float64                `json:\"base\"`\r\n",
+          "full_function": "type PositionalEncodingConfig struct {\r\n\tType         PositionalEncodingType `json:\"type\"`\r\n\tMaxSeqLen    int                   `json:\"max_seq_len\"`\r\n\tHiddenSize   int                   `json:\"hidden_size\"`\r\n\tHeadDim      int                   `json:\"head_dim,omitempty\"`\r\n\tBase         float64                `json:\"base\"`\r\n\tScale        bool                   `json:\"scale\"`\r\n\tNormalize    bool                   `json:\"normalize\"`\r\n\tConcatenate  bool                   `json:\"concatenate\"`\r\n\tRotateHalf   bool                   `json:\"rotate_half\"`\r\n\tUseRoPE      bool                   `json:\"use_rope\"`\r\n\tUseXPos      bool                   `json:\"use_xpos\"`\r\n}\r",
+          "symbol_name": "PositionalEncodingConfig",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 43,
+          "code_snippet": "    38 | \tUseRoPE      bool                   `json:\"use_rope\"`\r\n    39 | \tUseXPos      bool                   `json:\"use_xpos\"`\r\n    40 | }\r\n    41 | \r\n    42 | // PositionalEncodingLayer implements various positional encoding strategies\r\n→   43 | type PositionalEncodingLayer struct {\r\n    44 | \tconfig         PositionalEncodingConfig\r\n    45 | \tencoding       *Tensor\r\n    46 | \trotaryEmbeds   *RotaryEmbeddings\r\n    47 | \talibiBias      *ALiBiBias\r\n    48 | \txposEmbeds     *XPosembeddings\r\n",
+          "full_function": "type PositionalEncodingLayer struct {\r\n\tconfig         PositionalEncodingConfig\r\n\tencoding       *Tensor\r\n\trotaryEmbeds   *RotaryEmbeddings\r\n\talibiBias      *ALiBiBias\r\n\txposEmbeds     *XPosembeddings\r\n\tlearnedPos     *Tensor\r\n\trelativePos    *RelativePositionBias\r\n\tstats          *PositionalEncodingStats\r\n\tmu             sync.RWMutex\r\n\tcache          map[int]*Tensor\r\n}\r",
+          "symbol_name": "PositionalEncodingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 57,
+          "code_snippet": "    52 | \tmu             sync.RWMutex\r\n    53 | \tcache          map[int]*Tensor\r\n    54 | }\r\n    55 | \r\n    56 | // RotaryEmbeddings implements rotary positional embeddings (RoPE)\r\n→   57 | type RotaryEmbeddings struct {\r\n    58 | \tdim          int\r\n    59 | \tmaxSeqLen    int\r\n    60 | \tbase         float64\r\n    61 | \tscale        bool\r\n    62 | \tcache        map[int]*RotaryCache\r\n",
+          "full_function": "type RotaryEmbeddings struct {\r\n\tdim          int\r\n\tmaxSeqLen    int\r\n\tbase         float64\r\n\tscale        bool\r\n\tcache        map[int]*RotaryCache\r\n\tsinCosCache  *Tensor\r\n\tmu           sync.RWMutex\r\n}\r",
+          "symbol_name": "RotaryEmbeddings",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 95,
+          "code_snippet": "    90 | \tmaxDistance   int\r\n    91 | \tbias          *Tensor\r\n    92 | }\r\n    93 | \r\n    94 | // PositionalEncodingStats tracks positional encoding performance\r\n→   95 | type PositionalEncodingStats struct {\r\n    96 | \tTotalEncodings    int64   `json:\"total_encodings\"`\r\n    97 | \tAvgEncodingTime   float64  `json:\"avg_encoding_time\"`\r\n    98 | \tCacheHitRate      float64  `json:\"cache_hit_rate\"`\r\n    99 | \tRoPEUsage         float64  `json:\"rope_usage\"`\r\n   100 | \tALiBiUsage        float64  `json:\"alibi_usage\"`\r\n",
+          "full_function": "type PositionalEncodingStats struct {\r\n\tTotalEncodings    int64   `json:\"total_encodings\"`\r\n\tAvgEncodingTime   float64  `json:\"avg_encoding_time\"`\r\n\tCacheHitRate      float64  `json:\"cache_hit_rate\"`\r\n\tRoPEUsage         float64  `json:\"rope_usage\"`\r\n\tALiBiUsage        float64  `json:\"alibi_usage\"`\r\n\tXPosUsage         float64  `json:\"xpos_usage\"`\r\n\tLastUpdated       int64    `json:\"last_updated\"`\r\n}\r",
+          "symbol_name": "PositionalEncodingStats",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 106,
+          "code_snippet": "   101 | \tXPosUsage         float64  `json:\"xpos_usage\"`\r\n   102 | \tLastUpdated       int64    `json:\"last_updated\"`\r\n   103 | }\r\n   104 | \r\n   105 | // NewPositionalEncodingLayer creates a new positional encoding layer\r\n→  106 | func NewPositionalEncodingLayer(config PositionalEncodingConfig) *PositionalEncodingLayer {\r\n   107 | \tlogger.Info(\"Creating positional encoding layer\",\r\n   108 | \t\tzap.String(\"type\", string(config.Type)),\r\n   109 | \t\tzap.Int(\"max_seq_len\", config.MaxSeqLen),\r\n   110 | \t\tzap.Int(\"hidden_size\", config.HiddenSize),\r\n   111 | \t\tzap.Bool(\"use_rope\", config.UseRoPE),\r\n",
+          "full_function": "func NewPositionalEncodingLayer(config PositionalEncodingConfig) *PositionalEncodingLayer {\r\n\tlogger.Info(\"Creating positional encoding layer\",\r\n\t\tzap.String(\"type\", string(config.Type)),\r\n\t\tzap.Int(\"max_seq_len\", config.MaxSeqLen),\r\n\t\tzap.Int(\"hidden_size\", config.HiddenSize),\r\n\t\tzap.Bool(\"use_rope\", config.UseRoPE),\r\n\t\tzap.Bool(\"use_xpos\", config.UseXPos),\r\n\t)\r\n\r\n\tlayer := \u0026PositionalEncodingLayer{\r\n\t\tconfig: config,\r\n\t\tstats:  \u0026PositionalEncodingStats{},\r\n\t\tcache:  make(map[int]*Tensor),\r\n\t}\r\n\r\n\t// Initialize based on type\r\n\tswitch config.Type {\r\n\tcase PosEncodingTypeSinusoidal:\r\n\t\tlayer.encoding = layer.createSinusoidalEncoding()\r\n\tcase PosEncodingTypeLearned:\r\n\t\tlayer.learnedPos = t.randn(config.MaxSeqLen, config.HiddenSize)\r\n\tcase PosEncodingTypeRotary:\r\n\t\tlayer.rotaryEmbeds = NewRotaryEmbeddingsWithConfig(config)\r\n\tcase PosEncodingTypeALiBi:\r\n\t\tlayer.alibiBias = NewALiBiBiasWithConfig(config)\r\n\tcase PosEncodingTypeXPos:\r\n\t\tlayer.xposEmbeds = NewXPosembeddingsWithConfig(config)\r\n\tcase PosEncodingTypeRelative:\r\n\t\tlayer.relativePos = NewRelativePositionBias(config.HiddenSize/12, config.MaxSeqLen)\r\n\tdefault:\r\n\t\tlayer.encoding = layer.createSinusoidalEncoding()\r\n\t}\r\n\r\n\treturn layer\r\n}\r",
+          "symbol_name": "NewPositionalEncodingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 24,
+          "code_snippet": "    19 | \tUseFlash      bool    `json:\"use_flash\"`\r\n    20 | \tScale         float64 `json:\"scale\"`\r\n    21 | }\r\n    22 | \r\n    23 | // FeedForwardConfig represents feed-forward network configuration\r\n→   24 | type FeedForwardConfig struct {\r\n    25 | \tHiddenSize    int     `json:\"hidden_size\"`\r\n    26 | \tIntermediate  int     `json:\"intermediate_size\"`\r\n    27 | \tDropout       float64 `json:\"dropout\"`\r\n    28 | \tActivation    string  `json:\"activation\"`\r\n    29 | \tUseBias       bool    `json:\"use_bias\"`\r\n",
+          "full_function": "type FeedForwardConfig struct {\r\n\tHiddenSize    int     `json:\"hidden_size\"`\r\n\tIntermediate  int     `json:\"intermediate_size\"`\r\n\tDropout       float64 `json:\"dropout\"`\r\n\tActivation    string  `json:\"activation\"`\r\n\tUseBias       bool    `json:\"use_bias\"`\r\n}\r",
+          "symbol_name": "FeedForwardConfig",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 74,
+          "code_snippet": "    69 | \tShape    []int     `json:\"shape\"`\r\n    70 | \tRequiresGrad bool   `json:\"requires_grad\"`\r\n    71 | }\r\n    72 | \r\n    73 | // MultiHeadAttention implements multi-head attention mechanism\r\n→   74 | type MultiHeadAttention struct {\r\n    75 | \tconfig       AttentionConfig\r\n    76 | \thiddenSize   int\r\n    77 | \theadDim      int\r\n    78 | \tqueryWeights *Tensor\r\n    79 | \tkeyWeights   *Tensor\r\n",
+          "full_function": "type MultiHeadAttention struct {\r\n\tconfig       AttentionConfig\r\n\thiddenSize   int\r\n\theadDim      int\r\n\tqueryWeights *Tensor\r\n\tkeyWeights   *Tensor\r\n\tvalueWeights *Tensor\r\n\toutputWeights *Tensor\r\n\tbias         *Tensor\r\n}\r",
+          "symbol_name": "MultiHeadAttention",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 86,
+          "code_snippet": "    81 | \toutputWeights *Tensor\r\n    82 | \tbias         *Tensor\r\n    83 | }\r\n    84 | \r\n    85 | // FeedForwardNetwork implements the position-wise feed-forward network\r\n→   86 | type FeedForwardNetwork struct {\r\n    87 | \tconfig      FeedForwardConfig\r\n    88 | \tweight1     *Tensor\r\n    89 | \tbias1       *Tensor\r\n    90 | \tweight2     *Tensor\r\n    91 | \tbias2       *Tensor\r\n",
+          "full_function": "type FeedForwardNetwork struct {\r\n\tconfig      FeedForwardConfig\r\n\tweight1     *Tensor\r\n\tbias1       *Tensor\r\n\tweight2     *Tensor\r\n\tbias2       *Tensor\r\n\thiddenSize  int\r\n\tintermediate int\r\n}\r",
+          "symbol_name": "FeedForwardNetwork",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 97,
+          "code_snippet": "    92 | \thiddenSize  int\r\n    93 | \tintermediate int\r\n    94 | }\r\n    95 | \r\n    96 | // EmbeddingLayer represents token embeddings\r\n→   97 | type EmbeddingLayer struct {\r\n    98 | \tvocabSize  int\r\n    99 | \thiddenSize int\r\n   100 | \tweight     *Tensor\r\n   101 | }\r\n   102 | \r\n",
+          "full_function": "type EmbeddingLayer struct {\r\n\tvocabSize  int\r\n\thiddenSize int\r\n\tweight     *Tensor\r\n}\r",
+          "symbol_name": "EmbeddingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 249,
+          "code_snippet": "   244 | \r\n   245 | \treturn output, nil\r\n   246 | }\r\n   247 | \r\n   248 | // NewMultiHeadAttention creates a new multi-head attention mechanism\r\n→  249 | func NewMultiHeadAttention(config AttentionConfig, hiddenSize int) *MultiHeadAttention {\r\n   250 | \theadDim := config.HeadDim\r\n   251 | \tif headDim == 0 {\r\n   252 | \t\theadDim = hiddenSize / config.NumHeads\r\n   253 | \t}\r\n   254 | \r\n",
+          "full_function": "func NewMultiHeadAttention(config AttentionConfig, hiddenSize int) *MultiHeadAttention {\r\n\theadDim := config.HeadDim\r\n\tif headDim == 0 {\r\n\t\theadDim = hiddenSize / config.NumHeads\r\n\t}\r\n\r\n\treturn \u0026MultiHeadAttention{\r\n\t\tconfig:     config,\r\n\t\thiddenSize: hiddenSize,\r\n\t\theadDim:    headDim,\r\n\t\tqueryWeights: t.randn(hiddenSize, hiddenSize),\r\n\t\tkeyWeights:   t.randn(hiddenSize, hiddenSize),\r\n\t\tvalueWeights: t.randn(hiddenSize, hiddenSize),\r\n\t\toutputWeights: t.randn(hiddenSize, hiddenSize),\r\n\t\tbias:         t.zeros(hiddenSize),\r\n\t}\r\n}\r",
+          "symbol_name": "NewMultiHeadAttention",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 322,
+          "code_snippet": "   317 | \r\n   318 | \treturn output, nil\r\n   319 | }\r\n   320 | \r\n   321 | // NewFeedForwardNetwork creates a new feed-forward network\r\n→  322 | func NewFeedForwardNetwork(config FeedForwardConfig, hiddenSize int) *FeedForwardNetwork {\r\n   323 | \treturn \u0026FeedForwardNetwork{\r\n   324 | \t\tconfig:      config,\r\n   325 | \t\tweight1:     t.randn(hiddenSize, config.Intermediate),\r\n   326 | \t\tbias1:       t.zeros(config.Intermediate),\r\n   327 | \t\tweight2:     t.randn(config.Intermediate, hiddenSize),\r\n",
+          "full_function": "func NewFeedForwardNetwork(config FeedForwardConfig, hiddenSize int) *FeedForwardNetwork {\r\n\treturn \u0026FeedForwardNetwork{\r\n\t\tconfig:      config,\r\n\t\tweight1:     t.randn(hiddenSize, config.Intermediate),\r\n\t\tbias1:       t.zeros(config.Intermediate),\r\n\t\tweight2:     t.randn(config.Intermediate, hiddenSize),\r\n\t\tbias2:       t.zeros(hiddenSize),\r\n\t\thiddenSize:  hiddenSize,\r\n\t\tintermediate: config.Intermediate,\r\n\t}\r\n}\r",
+          "symbol_name": "NewFeedForwardNetwork",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 357,
+          "code_snippet": "   352 | \r\n   353 | \treturn output, nil\r\n   354 | }\r\n   355 | \r\n   356 | // NewEmbeddingLayer creates a new embedding layer\r\n→  357 | func NewEmbeddingLayer(vocabSize, hiddenSize int) *EmbeddingLayer {\r\n   358 | \treturn \u0026EmbeddingLayer{\r\n   359 | \t\tvocabSize:  vocabSize,\r\n   360 | \t\thiddenSize: hiddenSize,\r\n   361 | \t\tweight:     t.randn(vocabSize, hiddenSize),\r\n   362 | \t}\r\n",
+          "full_function": "func NewEmbeddingLayer(vocabSize, hiddenSize int) *EmbeddingLayer {\r\n\treturn \u0026EmbeddingLayer{\r\n\t\tvocabSize:  vocabSize,\r\n\t\thiddenSize: hiddenSize,\r\n\t\tweight:     t.randn(vocabSize, hiddenSize),\r\n\t}\r\n}\r",
+          "symbol_name": "NewEmbeddingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\crush\\parallel_processor.go",
+          "line_number": 625,
+          "code_snippet": "   620 | \tas.stats.ScaleDownEvents++\r\n   621 | \tnow := time.Now()\r\n   622 | \tas.stats.LastScalingTime = \u0026now\r\n   623 | }\r\n   624 | \r\n→  625 | func min(a, b int) int {\r\n   626 | \tif a \u003c b {\r\n   627 | \t\treturn a\r\n   628 | \t}\r\n   629 | \treturn b\r\n   630 | }\r\n",
+          "full_function": "func min(a, b int) int {\r\n\tif a \u003c b {\r\n\t\treturn a\r\n\t}\r\n\treturn b\r\n}\r",
+          "symbol_name": "min",
+          "package_name": "crush",
+          "dependencies": [
+            "context",
+            "fmt",
+            "runtime",
+            "sync",
+            "sync/atomic",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\crush\\parallel_processor.go",
+          "line_number": 632,
+          "code_snippet": "   627 | \t\treturn a\r\n   628 | \t}\r\n   629 | \treturn b\r\n   630 | }\r\n   631 | \r\n→  632 | func max(a, b int) int {\r\n   633 | \tif a \u003e b {\r\n   634 | \t\treturn a\r\n   635 | \t}\r\n   636 | \treturn b\r\n   637 | }\n",
+          "full_function": "func max(a, b int) int {\r\n\tif a \u003e b {\r\n\t\treturn a\r\n\t}\r\n\treturn b\r\n}",
+          "symbol_name": "max",
+          "package_name": "crush",
+          "dependencies": [
+            "context",
+            "fmt",
+            "runtime",
+            "sync",
+            "sync/atomic",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\state\\store\\conflict_resolver.go",
+          "line_number": 622,
+          "code_snippet": "   617 | \t\treturn a\r\n   618 | \t}\r\n   619 | \treturn b\r\n   620 | }\r\n   621 | \r\n→  622 | func max(a, b time.Time) time.Time {\r\n   623 | \tif a.After(b) {\r\n   624 | \t\treturn a\r\n   625 | \t}\r\n   626 | \treturn b\r\n   627 | }\n",
+          "full_function": "func max(a, b time.Time) time.Time {\r\n\tif a.After(b) {\r\n\t\treturn a\r\n\t}\r\n\treturn b\r\n}",
+          "symbol_name": "max",
+          "package_name": "store",
+          "dependencies": [
+            "context",
+            "fmt",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\security\\encryption\\encryption_manager.go",
+          "line_number": 56,
+          "code_snippet": "    51 | \t// Verify verifies a signature using RSA\r\n    52 | \tVerify(data, signature []byte, publicKey *rsa.PublicKey) bool\r\n    53 | }\r\n    54 | \r\n    55 | // Manager implements EncryptionManager\r\n→   56 | type Manager struct {\r\n    57 | \tkeyManager KeyManager\r\n    58 | \tlogger     *zap.Logger\r\n    59 | }\r\n    60 | \r\n    61 | // NewEncryptionManager creates a new EncryptionManager\r\n",
+          "full_function": "type Manager struct {\r\n\tkeyManager KeyManager\r\n\tlogger     *zap.Logger\r\n}\r",
+          "symbol_name": "Manager",
+          "package_name": "encryption",
+          "dependencies": [
+            "crypto",
+            "crypto/aes",
+            "crypto/cipher",
+            "crypto/rand",
+            "crypto/rsa",
+            "crypto/sha256",
+            "errors",
+            "io",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap",
+            "golang.org/x/crypto/argon2",
+            "golang.org/x/crypto/bcrypt"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\security\\encryption\\key_manager.go",
+          "line_number": 52,
+          "code_snippet": "    47 | \t// LoadKeyFromFile loads key from file\r\n    48 | \tLoadKeyFromFile(filePath string) error\r\n    49 | }\r\n    50 | \r\n    51 | // Manager implements KeyManager\r\n→   52 | type Manager struct {\r\n    53 | \tencryptionKey []byte\r\n    54 | \tkeyVersion    string\r\n    55 | \trsaPrivateKey *rsa.PrivateKey\r\n    56 | \trsaPublicKey  *rsa.PublicKey\r\n    57 | \trotationTTL  time.Duration\r\n",
+          "full_function": "type Manager struct {\r\n\tencryptionKey []byte\r\n\tkeyVersion    string\r\n\trsaPrivateKey *rsa.PrivateKey\r\n\trsaPublicKey  *rsa.PublicKey\r\n\trotationTTL  time.Duration\r\n\tlastRotation  time.Time\r\n\tmu            sync.RWMutex\r\n\tlogger        *zap.Logger\r\n}\r",
+          "symbol_name": "Manager",
+          "package_name": "encryption",
+          "dependencies": [
+            "crypto/rand",
+            "crypto/rsa",
+            "crypto/x509",
+            "encoding/base64",
+            "encoding/hex",
+            "encoding/pem",
+            "errors",
+            "fmt",
+            "os",
+            "path/filepath",
+            "strings",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\adapters\\nats\\fulfillment_subscriber.go",
+          "line_number": 24,
+          "code_snippet": "    19 | \tuseCase *app.ShipOrderUseCase\r\n    20 | \tlogger  Logger\r\n    21 | }\r\n    22 | \r\n    23 | // Logger define o contrato para logging\r\n→   24 | type Logger interface {\r\n    25 | \tInfo(msg string, fields ...zap.Field)\r\n    26 | \tError(msg string, fields ...zap.Field)\r\n    27 | \tWarn(msg string, fields ...zap.Field)\r\n    28 | }\r\n    29 | \r\n",
+          "full_function": "type Logger interface {\r\n\tInfo(msg string, fields ...zap.Field)\r\n\tError(msg string, fields ...zap.Field)\r\n\tWarn(msg string, fields ...zap.Field)\r\n}\r",
+          "symbol_name": "Logger",
+          "package_name": "nats",
+          "dependencies": [
+            "context",
+            "encoding/json",
+            "fmt",
+            "time",
+            "github.com/nats-io/nats.go/jetstream",
+            "go.uber.org/zap",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/app",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/domain/fulfillment"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\adapters\\nats\\inventory_command_client.go",
+          "line_number": 25,
+          "code_snippet": "    20 | \thttpClient *http.Client\r\n    21 | \tlogger     Logger\r\n    22 | }\r\n    23 | \r\n    24 | // Logger define o contrato para logging\r\n→   25 | type Logger interface {\r\n    26 | \tInfo(msg string, fields ...zap.Field)\r\n    27 | \tError(msg string, fields ...zap.Field)\r\n    28 | \tWarn(msg string, fields ...zap.Field)\r\n    29 | }\r\n    30 | \r\n",
+          "full_function": "type Logger interface {\r\n\tInfo(msg string, fields ...zap.Field)\r\n\tError(msg string, fields ...zap.Field)\r\n\tWarn(msg string, fields ...zap.Field)\r\n}\r",
+          "symbol_name": "Logger",
+          "package_name": "nats",
+          "dependencies": [
+            "bytes",
+            "context",
+            "encoding/json",
+            "fmt",
+            "io",
+            "net/http",
+            "time",
+            "go.uber.org/zap",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/domain/fulfillment"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\mcp\\validators\\template_validator.go",
+          "line_number": 28,
+          "code_snippet": "    23 | \t\tlogger: logger.GetLogger(),\r\n    24 | \t}\r\n    25 | }\r\n    26 | \r\n    27 | // ValidationResult represents the result of template validation\r\n→   28 | type ValidationResult struct {\r\n    29 | \tValid  bool     `json:\"valid\"`\r\n    30 | \tErrors []string `json:\"errors\"`\r\n    31 | \tWarnings []string `json:\"warnings\"`\r\n    32 | }\r\n    33 | \r\n",
+          "full_function": "type ValidationResult struct {\r\n\tValid  bool     `json:\"valid\"`\r\n\tErrors []string `json:\"errors\"`\r\n\tWarnings []string `json:\"warnings\"`\r\n}\r",
+          "symbol_name": "ValidationResult",
+          "package_name": "registry",
+          "dependencies": [
+            "fmt",
+            "os",
+            "path/filepath",
+            "regexp",
+            "strings",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap",
+            "gopkg.in/yaml.v3"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\generate.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"MCP project generation initiated\")\r\n    40 | \t\treturn nil\r\n    41 | \t},\r\n    42 | }\r\n    43 | \r\n→   44 | func init() {\r\n    45 | \trootCmd.AddCommand(generateCmd)\r\n    46 | \tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\r\n    47 | \tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\r\n    48 | \tgenerateCmd.MarkFlagRequired(\"template\")\r\n    49 | }\r\n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(generateCmd)\r\n\tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\r\n\tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\r\n\tgenerateCmd.MarkFlagRequired(\"template\")\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\monitor.go",
+          "line_number": 24,
+          "code_snippet": "    19 | \t\tcmd.Println(\"System status: Operational\")\r\n    20 | \t\treturn nil\r\n    21 | \t},\r\n    22 | }\r\n    23 | \r\n→   24 | func init() {\r\n    25 | \trootCmd.AddCommand(monitorCmd)\r\n    26 | }\r\n    27 | \r\n    28 | // SetMonitoringService sets the monitoring service\r\n    29 | func SetMonitoringService(service *services.MonitoringAppService) {\r\n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(monitorCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\root.go",
+          "line_number": 37,
+          "code_snippet": "    32 | \t\tos.Exit(1)\r\n    33 | \t}\r\n    34 | }\r\n    35 | \r\n    36 | // init initializes the CLI\r\n→   37 | func init() {\r\n    38 | \trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\r\n    39 | \trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\r\n    40 | \t\r\n    41 | \t// Add subcommand groups\r\n    42 | \trootCmd.AddCommand(analytics.AnalyticsCmd)\r\n",
+          "full_function": "func init() {\r\n\trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\r\n\trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\r\n\t\r\n\t// Add subcommand groups\r\n\trootCmd.AddCommand(analytics.AnalyticsCmd)\r\n\trootCmd.AddCommand(ci.CICmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "os",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\state.go",
+          "line_number": 20,
+          "code_snippet": "    15 | \t\tcmd.Println(\"State management - service implementation pending\")\r\n    16 | \t\treturn nil\r\n    17 | \t},\r\n    18 | }\r\n    19 | \r\n→   20 | func init() {\r\n    21 | \trootCmd.AddCommand(stateCmd)\r\n    22 | }\r\n    23 | \n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(stateCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\template.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"Template created\")\r\n    40 | \t\treturn nil\r\n    41 | \t},\r\n    42 | }\r\n    43 | \r\n→   44 | func init() {\r\n    45 | \trootCmd.AddCommand(templateCmd)\r\n    46 | \ttemplateCmd.AddCommand(templateListCmd)\r\n    47 | \ttemplateCmd.AddCommand(templateCreateCmd)\r\n    48 | \ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\r\n    49 | \ttemplateCreateCmd.MarkFlagRequired(\"name\")\r\n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(templateCmd)\r\n\ttemplateCmd.AddCommand(templateListCmd)\r\n\ttemplateCmd.AddCommand(templateCreateCmd)\r\n\ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\r\n\ttemplateCreateCmd.MarkFlagRequired(\"name\")\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\version.go",
+          "line_number": 21,
+          "code_snippet": "    16 | \t\tfmt.Printf(\"Version: %s\\n\", Version)\r\n    17 | \t\tfmt.Printf(\"Build Date: %s\\n\", BuildDate)\r\n    18 | \t},\r\n    19 | }\r\n    20 | \r\n→   21 | func init() {\r\n    22 | \trootCmd.AddCommand(versionCmd)\r\n    23 | }\r\n    24 | \n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(versionCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\analytics\\performance.go",
+          "line_number": 23,
+          "code_snippet": "    18 | \t\tcmd.Println(\"  P95 Latency: 0ms\")\r\n    19 | \t\treturn nil\r\n    20 | \t},\r\n    21 | }\r\n    22 | \r\n→   23 | func init() {\r\n    24 | \tAnalyticsCmd.AddCommand(performanceCmd)\r\n    25 | }\r\n    26 | \n",
+          "full_function": "func init() {\r\n\tAnalyticsCmd.AddCommand(performanceCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "analytics",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\mcp\\registry\\template_registry.go",
+          "line_number": 17,
+          "code_snippet": "    12 | \t\"go.uber.org/zap\"\r\n    13 | \t\"gopkg.in/yaml.v3\"\r\n    14 | )\r\n    15 | \r\n    16 | // TemplateInfo holds information about a registered template\r\n→   17 | type TemplateInfo struct {\r\n    18 | \tName         string            `json:\"name\"`\r\n    19 | \tStack        string            `json:\"stack\"`\r\n    20 | \tVersion      string            `json:\"version\"`\r\n    21 | \tSummary      string            `json:\"summary\"`\r\n    22 | \tPlaceholders []string          `json:\"placeholders\"`\r\n",
+          "full_function": "type TemplateInfo struct {\r\n\tName         string            `json:\"name\"`\r\n\tStack        string            `json:\"stack\"`\r\n\tVersion      string            `json:\"version\"`\r\n\tSummary      string            `json:\"summary\"`\r\n\tPlaceholders []string          `json:\"placeholders\"`\r\n\tFiles        []string          `json:\"files\"`\r\n\tPath         string            `json:\"path\"`\r\n\tMetadata     map[string]string `json:\"metadata\"`\r\n\tLastModified string            `json:\"last_modified\"`\r\n}\r",
+          "symbol_name": "TemplateInfo",
+          "package_name": "registry",
+          "dependencies": [
+            "context",
+            "fmt",
+            "io/fs",
+            "path/filepath",
+            "strings",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap",
+            "gopkg.in/yaml.v3"
+          ],
+          "related_files": null
+        }
+      ],
+      "impact_analysis": {
+        "severity": "critical",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": true,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "10-30 minutos",
+        "priority": 1,
+        "risk_level": "high",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Codigo compila",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Nao compila: pattern ./...: directory prefix . does not contain modules listed in go.work or their selected dependencies\n",
+      "suggestion": "Corrija os erros de compilacao listados",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "non_fixable_reason": "BUSINESS_LOGIC",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "Variavel - depende dos erros",
+        "confidence": 0
+      },
+      "examples": [
+        "📄 Log completo: E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\2025-11-20-09-14-14-compilation.log",
+        "",
+        "pattern ./...: directory prefix . does not contain modules listed in go.work or their selected dependencies",
+        ""
+      ],
+      "non_fixable_reason": "BUSINESS_LOGIC",
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "critical",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": true,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "5-15 minutos",
+        "priority": 1,
+        "risk_level": "high",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    }
+  ],
+  "technical_debt": null,
+  "recommended_tools": null,
+  "next_steps": [
+    "🔴 URGENTE: Resolver 2 bloqueador(es)",
+    "⚡ Quick wins: 1 GAP(s) faceis",
+    "🤖 Auto-fixavel: 1 GAP(s)"
+  ],
+  "estimated_effort": "45m"
+}

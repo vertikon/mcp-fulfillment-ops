@@ -2,13 +2,13 @@
 
 **Data de Geração:** 2025-01-27  
 **Versão:** 1.0  
-**Projeto:** MCP-HULK
+**Projeto:** mcp-fulfillment-ops
 
 ---
 
 ## 📋 SUMÁRIO EXECUTIVO
 
-Este relatório compara a **árvore original oficial** (`MCP-HULK-ARVORE-FULL.md`) com a **árvore comentada** (`ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md`) para identificar:
+Este relatório compara a **árvore original oficial** (`mcp-fulfillment-ops-ARVORE-FULL.md`) com a **árvore comentada** (`ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md`) para identificar:
 
 - ✅ Arquivos presentes em ambas as árvores
 - ⚠️ Arquivos previstos na árvore original que estão faltando na comentada
@@ -199,8 +199,8 @@ Estes arquivos estão na árvore comentada mas não estavam previstos na árvore
 - `BLOCO-14-AUDITORIA-CONFORMIDADE-BLUEPRINT-IMPLEMENTACAO.md`
 - `BLOCO-2-BLUEPRINT.md`
 - `CRUSH.md`
-- `MCP-HULK-ARVORE-FULL.md`
-- `MCP-HULK-INTEGRACOES.md`
+- `mcp-fulfillment-ops-ARVORE-FULL.md`
+- `mcp-fulfillment-ops-INTEGRACOES.md`
 - `README-BLOCO-1.md`
 - `coverage`
 - `crush.db`

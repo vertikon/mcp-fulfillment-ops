@@ -1,10 +1,10 @@
-# CRUSH - MCP-HULK Development Guide
+# CRUSH - mcp-fulfillment-ops Development Guide
 
-This document contains essential information for agents working with the MCP-HULK codebase.
+This document contains essential information for agents working with the mcp-fulfillment-ops codebase.
 
 ## Project Overview
 
-MCP-HULK is a comprehensive Model Context Protocol (MCP) template and generation engine. It's a Go-based system that follows Clean Architecture principles with 14 main blocks covering everything from core execution engines to AI integration and monitoring.
+mcp-fulfillment-ops is a comprehensive Model Context Protocol (MCP) template and generation engine. It's a Go-based system that follows Clean Architecture principles with 14 main blocks covering everything from core execution engines to AI integration and monitoring.
 
 ## Development Commands
 

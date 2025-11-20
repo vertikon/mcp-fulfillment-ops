@@ -1,4 +1,4 @@
-# 📘 **MAPA DE DIFERENÇAS — MCP-HULK**
+# 📘 **MAPA DE DIFERENÇAS — mcp-fulfillment-ops**
 
 ### Comparação Tridimensional
 
@@ -10,7 +10,7 @@
 
 Este documento consolida todas as diferenças estruturais entre:
 
-1. **Árvore Original (`MCP-HULK-ARVORE-FULL.md`)**
+1. **Árvore Original (`mcp-fulfillment-ops-ARVORE-FULL.md`)**
    → A referência normativa, fonte única da verdade.
 
 2. **Árvore Comentada (`ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md`)**
@@ -338,7 +338,7 @@ Mover todos os 142 arquivos excedentes para:
 Transformá-la em:
 
 ```
-MCP-HULK-ARVORE-FULL-COMENTADA.md
+mcp-fulfillment-ops-ARVORE-FULL-COMENTADA.md
 ```
 
 ### **3. Criar script automático de verificação**
@@ -364,7 +364,7 @@ Toda PR precisa:
 
 # 🏁 **8. Conclusão**
 
-O MCP-HULK está estruturalmente sólido.
+O mcp-fulfillment-ops está estruturalmente sólido.
 
 As únicas divergências reais são **documentais**, não **técnicas**, e agora estão completamente mapeadas.
 

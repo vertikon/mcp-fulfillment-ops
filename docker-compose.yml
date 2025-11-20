@@ -1,0 +1,103 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: fulfillment-postgres
+    environment:
+      POSTGRES_USER: fulfillment
+      POSTGRES_PASSWORD: fulfillment123
+      POSTGRES_DB: fulfillment
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./internal/adapters/postgres/migrations:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fulfillment"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - fulfillment-network
+
+  nats:
+    image: nats:2.10-alpine
+    container_name: fulfillment-nats
+    command: ["-js", "-m", "8222"]
+    ports:
+      - "4222:4222"  # NATS client
+      - "8222:8222"  # HTTP monitoring
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8222/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - fulfillment-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: fulfillment-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - fulfillment-network
+
+  fulfillment-ops:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mcp-fulfillment-ops
+    environment:
+      # Database
+      DATABASE_URL: postgres://fulfillment:fulfillment123@postgres:5432/fulfillment?sslmode=disable
+      
+      # NATS
+      NATS_URL: nats://nats:4222
+      
+      # Redis
+      REDIS_URL: redis://redis:6379
+      
+      # Core Inventory (ajustar conforme necessário)
+      CORE_INVENTORY_URL: http://host.docker.internal:8081
+      
+      # HTTP Server
+      HTTP_PORT: :8080
+      
+      # Environment
+      ENV: development
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - fulfillment-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  fulfillment-network:
+    driver: bridge
+

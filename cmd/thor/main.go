@@ -12,8 +12,8 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:   "thor",
-	Short: "MCP-Hulk Thor CLI",
-	Long:  "Command-line interface for MCP-Hulk administration and management",
+	Short: "mcp-fulfillment-ops Thor CLI",
+	Long:  "Command-line interface for mcp-fulfillment-ops administration and management",
 }
 
 func init() {

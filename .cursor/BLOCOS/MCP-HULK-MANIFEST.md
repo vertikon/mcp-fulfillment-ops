@@ -1,4 +1,4 @@
-﻿{
+{
     "schema_version":  "1.0.0",
     "metadata":  {
                      "generated_at_utc":  "2025-11-17T22:16:33.1810677Z",
@@ -1337,8 +1337,8 @@
                                         "last_write_time_utc":  "2025-11-17T11:09:49.3084482Z"
                                     },
                                     {
-                                        "path":  ".cursor\\MCP-HULK – POLÍTICA DE ESTRUTURA \u0026 NOMENCLATURA.md",
-                                        "name":  "MCP-HULK – POLÍTICA DE ESTRUTURA \u0026 NOMENCLATURA.md",
+                                        "path":  ".cursor\\mcp-fulfillment-ops – POLÍTICA DE ESTRUTURA \u0026 NOMENCLATURA.md",
+                                        "name":  "mcp-fulfillment-ops – POLÍTICA DE ESTRUTURA \u0026 NOMENCLATURA.md",
                                         "extension":  ".md",
                                         "category":  "Documentation",
                                         "size_bytes":  5644,
@@ -1346,8 +1346,8 @@
                                         "last_write_time_utc":  "2025-11-17T00:26:57.6839922Z"
                                     },
                                     {
-                                        "path":  ".cursor\\MCP-HULK-ANALISE-GEMINI-2.5.md",
-                                        "name":  "MCP-HULK-ANALISE-GEMINI-2.5.md",
+                                        "path":  ".cursor\\mcp-fulfillment-ops-ANALISE-GEMINI-2.5.md",
+                                        "name":  "mcp-fulfillment-ops-ANALISE-GEMINI-2.5.md",
                                         "extension":  ".md",
                                         "category":  "Documentation",
                                         "size_bytes":  7229,
@@ -1355,8 +1355,8 @@
                                         "last_write_time_utc":  "2025-11-17T01:15:46.4642793Z"
                                     },
                                     {
-                                        "path":  ".cursor\\MCP-HULK-ANALISE-GLM-4.6.md",
-                                        "name":  "MCP-HULK-ANALISE-GLM-4.6.md",
+                                        "path":  ".cursor\\mcp-fulfillment-ops-ANALISE-GLM-4.6.md",
+                                        "name":  "mcp-fulfillment-ops-ANALISE-GLM-4.6.md",
                                         "extension":  ".md",
                                         "category":  "Documentation",
                                         "size_bytes":  7535,
@@ -1364,8 +1364,8 @@
                                         "last_write_time_utc":  "2025-11-17T01:18:14.6106479Z"
                                     },
                                     {
-                                        "path":  ".cursor\\MCP-HULK-ANALISE-OPUS-4.1.md",
-                                        "name":  "MCP-HULK-ANALISE-OPUS-4.1.md",
+                                        "path":  ".cursor\\mcp-fulfillment-ops-ANALISE-OPUS-4.1.md",
+                                        "name":  "mcp-fulfillment-ops-ANALISE-OPUS-4.1.md",
                                         "extension":  ".md",
                                         "category":  "Documentation",
                                         "size_bytes":  5475,
@@ -1373,8 +1373,8 @@
                                         "last_write_time_utc":  "2025-11-17T01:21:11.7464388Z"
                                     },
                                     {
-                                        "path":  ".cursor\\MCP-HULK-ARVORE-FULL.md",
-                                        "name":  "MCP-HULK-ARVORE-FULL.md",
+                                        "path":  ".cursor\\mcp-fulfillment-ops-ARVORE-FULL.md",
+                                        "name":  "mcp-fulfillment-ops-ARVORE-FULL.md",
                                         "extension":  ".md",
                                         "category":  "Documentation",
                                         "size_bytes":  68013,
@@ -1382,8 +1382,8 @@
                                         "last_write_time_utc":  "2025-11-17T03:14:55.3063433Z"
                                     },
                                     {
-                                        "path":  ".cursor\\MCP-HULK-INTEGRACOES.md",
-                                        "name":  "MCP-HULK-INTEGRACOES.md",
+                                        "path":  ".cursor\\mcp-fulfillment-ops-INTEGRACOES.md",
+                                        "name":  "mcp-fulfillment-ops-INTEGRACOES.md",
                                         "extension":  ".md",
                                         "category":  "Documentation",
                                         "size_bytes":  80610,

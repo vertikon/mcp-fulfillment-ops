@@ -26,8 +26,8 @@ Esta auditoria compara os **blueprints oficiais** do BLOCO-11 com a **implementa
 2. `BLOCO-11-BLUEPRINT-GLM-4.6.md` - Blueprint executivo estratégico
 
 ### Fontes de Verdade:
-- `MCP-HULK-ARVORE-FULL.md` - Árvore oficial
-- `MCP-HULK-INTEGRACOES.md` - Integrações oficiais
+- `mcp-fulfillment-ops-ARVORE-FULL.md` - Árvore oficial
+- `mcp-fulfillment-ops-INTEGRACOES.md` - Integrações oficiais
 - `ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md` - Estrutura comentada
 
 ---
@@ -465,7 +465,7 @@ O **BLOCO-11 (Tools & Utilities)** está **100% conforme** com os blueprints ofi
 
 ---
 
-**Auditoria realizada por:** Sistema de Auditoria Automatizada MCP-HULK  
+**Auditoria realizada por:** Sistema de Auditoria Automatizada mcp-fulfillment-ops  
 **Aprovado para produção:** ✅ **SIM**  
 **Próxima revisão:** Conforme necessidade ou mudanças nos blueprints
 

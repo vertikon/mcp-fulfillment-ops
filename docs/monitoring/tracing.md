@@ -1,6 +1,6 @@
 # Tracing (Rastreamento)
 
-Este documento descreve o sistema de tracing do MCP-HULK.
+Este documento descreve o sistema de tracing do mcp-fulfillment-ops.
 
 ## Visão Geral
 

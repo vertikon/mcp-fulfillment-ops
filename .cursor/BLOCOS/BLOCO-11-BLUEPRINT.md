@@ -1,4 +1,4 @@
-Aqui está a **ANÁLISE OFICIAL DO BLOCO-11 — TOOLS & UTILITIES**, totalmente fundamentada em **MCP-HULK-INTEGRACOES.md** e **MCP-HULK-ARVORE-FULL.md**, com todas as citações formais conforme solicitado.
+Aqui está a **ANÁLISE OFICIAL DO BLOCO-11 — TOOLS & UTILITIES**, totalmente fundamentada em **mcp-fulfillment-ops-INTEGRACOES.md** e **mcp-fulfillment-ops-ARVORE-FULL.md**, com todas as citações formais conforme solicitado.
 
 ---
 
@@ -15,7 +15,7 @@ O BLOCO-11 é a **ferramentaria completa do Hulk**.
 
 # 🧩 **1. Comprovação direta nas fontes**
 
-Segundo o documento **MCP-HULK-ARVORE-FULL.md**:
+Segundo o documento **mcp-fulfillment-ops-ARVORE-FULL.md**:
 
 > “tools/ — utilitários de desenvolvimento e automação:
 > generators, validators, converters, deployers.”
@@ -47,7 +47,7 @@ tools/
 
 # 🧩 **2. Integrações oficiais do BLOCO-11**
 
-Diretamente de **MCP-HULK-INTEGRACOES.md**:
+Diretamente de **mcp-fulfillment-ops-INTEGRACOES.md**:
 
 ## **2.1. Generators**
 
@@ -166,17 +166,17 @@ Com base nos documentos analisados:
 
 ### 👉 **Quer que eu gere agora o BLUEPRINT OFICIAL — BLOCO-11 (documento formal completo)?**
 Perfeito.
-A seguir está o **DOCUMENTO OFICIAL — BLOCO-11 (TOOLS & UTILITIES)** no **padrão formal Vertikon / MCP-HULK**, totalmente alinhado à **Árvore Oficial**, **MCP-HULK-INTEGRACOES**, **Política de Estrutura & Nomenclatura**, e aos blueprints anteriores (B1–B10).
+A seguir está o **DOCUMENTO OFICIAL — BLOCO-11 (TOOLS & UTILITIES)** no **padrão formal Vertikon / mcp-fulfillment-ops**, totalmente alinhado à **Árvore Oficial**, **mcp-fulfillment-ops-INTEGRACOES**, **Política de Estrutura & Nomenclatura**, e aos blueprints anteriores (B1–B10).
 
 Este documento é **normativo**, **congelado**, **fonte única da verdade**, e deve ser salvo em:
 
 ```
-docs/blueprints/MCP-HULK-BLOCO-11.md
+docs/blueprints/mcp-fulfillment-ops-BLOCO-11.md
 ```
 
 ---
 
-# 🟦 **MCP-HULK — BLOCO-11 BLUEPRINT OFICIAL**
+# 🟦 **mcp-fulfillment-ops — BLOCO-11 BLUEPRINT OFICIAL**
 
 ## **TOOLS & UTILITIES — Generators • Validators • Converters • Deployers**
 
@@ -184,8 +184,8 @@ docs/blueprints/MCP-HULK-BLOCO-11.md
 **Status:** Oficial • Estável • Congelado
 **Última atualização:** 2025-11-17
 **Fonte de Verdade:**
-– `MCP-HULK-ARVORE-FULL.md`
-– `MCP-HULK-INTEGRACOES.md`
+– `mcp-fulfillment-ops-ARVORE-FULL.md`
+– `mcp-fulfillment-ops-INTEGRACOES.md`
 – Política Estrutural Hulk v1.0
 – Blueprints B2, B5, B10
 
@@ -333,7 +333,7 @@ Quando presentes, são chamados via:
 
 # 🔷 **4. Dependências e Integrações (Oficial)**
 
-Extraído literalmente de `MCP-HULK-INTEGRACOES.md`:
+Extraído literalmente de `mcp-fulfillment-ops-INTEGRACOES.md`:
 
 ### **Generators integram com:**
 
@@ -467,4 +467,4 @@ Se quiser, posso gerar agora:
 
 ou
 
-### 👉 **MCP-HULK-BLUEPRINT-FULL.md (consolidação dos 14 blocos)**
+### 👉 **mcp-fulfillment-ops-BLUEPRINT-FULL.md (consolidação dos 14 blocos)**

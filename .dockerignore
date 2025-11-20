@@ -1,0 +1,70 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+docs/
+.cursor/
+
+# Build artifacts
+bin/
+dist/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test files
+*_test.go
+tests/
+coverage/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Scripts (não necessários no container)
+scripts/
+
+# Templates
+templates/
+
+# Tools
+tools/
+
+# Config (será injetado via env)
+config/
+
+# Coverage
+coverage/
+
+# Analysis
+ANALYSIS.md
+CRUSH.md
+validation-report.md
+validation-result.json
+tree_output.txt
+

@@ -1,4 +1,4 @@
-# 📚 ÍNDICE DE DOCUMENTOS DE AUDITORIA - MCP-HULK
+# 📚 ÍNDICE DE DOCUMENTOS DE AUDITORIA - mcp-fulfillment-ops
 
 **Data de Criação:** 2025-01-27  
 **Versão:** 1.0  
@@ -10,8 +10,8 @@
 
 ### 🎯 Documentos Normativos
 
-#### 1. **MAPA DE DIFERENÇAS — MCP-HULK**
-📄 `.cursor/MAPA-DIFERENCAS-MCP-HULK.md`
+#### 1. **MAPA DE DIFERENÇAS — mcp-fulfillment-ops**
+📄 `.cursor/MAPA-DIFERENCAS-mcp-fulfillment-ops.md`
 
 **Descrição:** Documento normativo oficial que consolida todas as diferenças estruturais entre:
 - Árvore Original (O)
@@ -143,9 +143,9 @@
 ## 📊 ÁRVORES DE REFERÊNCIA
 
 ### 9. **ÁRVORE ORIGINAL (Fonte Única da Verdade)**
-📄 `.cursor/MCP-HULK-ARVORE-FULL.md`
+📄 `.cursor/mcp-fulfillment-ops-ARVORE-FULL.md`
 
-**Descrição:** Árvore oficial normativa do projeto MCP-HULK
+**Descrição:** Árvore oficial normativa do projeto mcp-fulfillment-ops
 
 **Status:** ✅ Fonte Única da Verdade
 
@@ -167,13 +167,13 @@
 1. **Iniciar:** `.cursor/CHECKLIST-AUDITORIA.md`
 2. **Executar:** `tools/validate_tree.go`
 3. **Analisar:** `.cursor/RELATORIO-VERIFICACAO-ARQUIVOS-FALTANTES.md`
-4. **Consultar:** `.cursor/MAPA-DIFERENCAS-MCP-HULK.md`
+4. **Consultar:** `.cursor/MAPA-DIFERENCAS-mcp-fulfillment-ops.md`
 
 ### Para Decisões Executivas
 
 1. **Consultar:** `.cursor/RELATORIO-EXECUTIVO-CONSOLIDADO.md`
 2. **Visualizar:** `.cursor/MAPA-DIFERENCAS-VISUAL.md`
-3. **Referenciar:** `.cursor/MAPA-DIFERENCAS-MCP-HULK.md`
+3. **Referenciar:** `.cursor/MAPA-DIFERENCAS-mcp-fulfillment-ops.md`
 
 ### Para CI/CD
 
@@ -183,7 +183,7 @@
 
 ### Para Desenvolvimento
 
-1. **Referenciar:** `.cursor/MCP-HULK-ARVORE-FULL.md` (árvore oficial)
+1. **Referenciar:** `.cursor/mcp-fulfillment-ops-ARVORE-FULL.md` (árvore oficial)
 2. **Consultar:** `.cursor/ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md` (comentários)
 3. **Validar:** Executar `validate-tree` antes de commit
 

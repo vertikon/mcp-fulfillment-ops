@@ -1,6 +1,6 @@
 # RAG (Retrieval-Augmented Generation)
 
-Este documento descreve o sistema RAG (Retrieval-Augmented Generation) do MCP-HULK.
+Este documento descreve o sistema RAG (Retrieval-Augmented Generation) do mcp-fulfillment-ops.
 
 ## Visão Geral
 

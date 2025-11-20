@@ -1,4 +1,4 @@
-# 📐 MAPA VISUAL DE DIFERENÇAS - MCP-HULK
+# 📐 MAPA VISUAL DE DIFERENÇAS - mcp-fulfillment-ops
 
 **Data de Geração:** 2025-01-27  
 **Versão:** 1.0  
@@ -181,7 +181,7 @@ flowchart TD
 
 ```mermaid
 gantt
-    title Evolução da Conformidade MCP-HULK
+    title Evolução da Conformidade mcp-fulfillment-ops
     dateFormat YYYY-MM-DD
     section Auditoria Inicial
     Identificação de Divergências    :2025-01-27, 1d

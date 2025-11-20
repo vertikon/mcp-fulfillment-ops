@@ -13,7 +13,7 @@ Os templates NÃO têm lógica; são **assets estáticos**, com placeholders (`{
 
 # 📌 **1. Onde o BLOCO-10 está definido?**
 
-A estrutura oficial está na **Árvore MCP-HULK**, em:
+A estrutura oficial está na **Árvore mcp-fulfillment-ops**, em:
 
 > `templates/`
 > Confirmado em:
@@ -70,7 +70,7 @@ templates/
 
 # 📌 **3. O que o BLOCO-10 faz?**
 
-Segundo **MCP-HULK-INTEGRACOES**:
+Segundo **mcp-fulfillment-ops-INTEGRACOES**:
 
 > “Templates definem as *bases* para stacks base, Go, TinyGo, WASM e Web.”
 >
@@ -132,7 +132,7 @@ Relação mais importante: **Generators consomem templates**.
 
 # 📌 **5. Tipos de Template suportados oficialmente**
 
-Conforme MCP-HULK-INTEGRACOES:
+Conforme mcp-fulfillment-ops-INTEGRACOES:
 
 ### ✔ Base (Clean Architecture)
 
@@ -229,17 +229,17 @@ ou
 Como deseja prosseguir?
 
 Perfeito.
-A seguir está o **DOCUMENTO OFICIAL — BLOCO-10 (TEMPLATES)**, totalmente normativo, no **padrão Vertikon / MCP-HULK**, pronto para ser incluído em:
+A seguir está o **DOCUMENTO OFICIAL — BLOCO-10 (TEMPLATES)**, totalmente normativo, no **padrão Vertikon / mcp-fulfillment-ops**, pronto para ser incluído em:
 
 ```
-docs/blueprints/MCP-HULK-BLOCO-10.md
+docs/blueprints/mcp-fulfillment-ops-BLOCO-10.md
 ```
 
-Este documento está **congelado**, **estável**, **canônico**, e segue rigorosamente a **Árvore Oficial**, o documento **MCP-HULK-INTEGRACOES.md** e os blueprints **BLOCO-10-11-V1/V2**.
+Este documento está **congelado**, **estável**, **canônico**, e segue rigorosamente a **Árvore Oficial**, o documento **mcp-fulfillment-ops-INTEGRACOES.md** e os blueprints **BLOCO-10-11-V1/V2**.
 
 ---
 
-# 🟦 **MCP-HULK — BLOCO-10 BLUEPRINT OFICIAL**
+# 🟦 **mcp-fulfillment-ops — BLOCO-10 BLUEPRINT OFICIAL**
 
 ## **TEMPLATES — Base, Go, TinyGo, Web, WASM, MCP Premium**
 
@@ -247,8 +247,8 @@ Este documento está **congelado**, **estável**, **canônico**, e segue rigoros
 **Status:** Oficial • Estável • Congelado
 **Última atualização:** 2025-11-17
 **Fonte da Verdade:**
-– `MCP-HULK-ARVORE-FULL.md`
-– `MCP-HULK-INTEGRACOES.md`
+– `mcp-fulfillment-ops-ARVORE-FULL.md`
+– `mcp-fulfillment-ops-INTEGRACOES.md`
 – `BLOCO-10-11-BLUEPRINT.md` / `BLOCO-10-11-BLUEPRINT-V2.md`
 
 ---
@@ -464,7 +464,7 @@ Integra:
 
 # 🔷 **5. Integrações do Bloco-10**
 
-Extraído diretamente de **MCP-HULK-INTEGRACOES.md**.
+Extraído diretamente de **mcp-fulfillment-ops-INTEGRACOES.md**.
 
 ### 🔹 **BLOCO-10 → BLOCO-11 (Generators)**
 
@@ -591,4 +591,4 @@ Se quiser, posso seguir agora com:
 
 ou
 
-### 👉 **Gerar o MCP-HULK-BLUEPRINT-FULL.md (versão consolidada)**
+### 👉 **Gerar o mcp-fulfillment-ops-BLUEPRINT-FULL.md (versão consolidada)**

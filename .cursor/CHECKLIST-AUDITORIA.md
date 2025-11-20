@@ -1,4 +1,4 @@
-# ✅ CHECKLIST DE AUDITORIA - MCP-HULK
+# ✅ CHECKLIST DE AUDITORIA - mcp-fulfillment-ops
 
 **Data de Criação:** 2025-01-27  
 **Versão:** 1.0  
@@ -17,7 +17,7 @@
 
 ### Execução da Auditoria
 
-- [ ] Executar `validate-tree --original .cursor/MCP-HULK-ARVORE-FULL.md --commented .cursor/ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md`
+- [ ] Executar `validate-tree --original .cursor/mcp-fulfillment-ops-ARVORE-FULL.md --commented .cursor/ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md`
 - [ ] Verificar compliance geral ≥ 95%
 - [ ] Revisar relatório de conformidade por BLOCO
 - [ ] Identificar arquivos faltantes

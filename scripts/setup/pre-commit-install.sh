@@ -29,7 +29,7 @@ fi
 cp "${PROJECT_ROOT}/.git/hooks/pre-commit" "${HOOK_TARGET}" 2>/dev/null || \
 cat > "${HOOK_TARGET}" << 'HOOK_CONTENT'
 #!/bin/bash
-# Pre-commit hook for MCP-HULK tree structure validation
+# Pre-commit hook for mcp-fulfillment-ops tree structure validation
 # This hook validates the project structure before allowing commits
 
 set -e
@@ -66,7 +66,7 @@ fi
 echo -e "${GREEN}📊 Validating tree structure...${NC}"
 
 $VALIDATE_TOOL \
-    --original .cursor/MCP-HULK-ARVORE-FULL.md \
+    --original .cursor/mcp-fulfillment-ops-ARVORE-FULL.md \
     --commented .cursor/ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md \
     --root . \
     --format text > /tmp/tree-validation.txt 2>&1 || VALIDATION_EXIT=$?

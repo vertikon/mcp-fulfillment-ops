@@ -1,4 +1,4 @@
-// Package main provides the HTTP server entry point for MCP-Hulk
+// Package main provides the HTTP server entry point for mcp-fulfillment-ops
 package main
 
 import (
@@ -38,7 +38,7 @@ func main() {
 	}
 	defer logger.Sync()
 
-	logger.Info("Starting MCP-Hulk server")
+	logger.Info("Starting mcp-fulfillment-ops server")
 
 	// Initialize observability
 	var tracerProvider *observability.TracerProvider
@@ -129,7 +129,7 @@ func main() {
 		"port":    cfg.Server.Port,
 	})
 
-	logger.Info("MCP-Hulk server started",
+	logger.Info("mcp-fulfillment-ops server started",
 		zap.Int("port", cfg.Server.Port),
 		zap.Int("workers", workers),
 	)

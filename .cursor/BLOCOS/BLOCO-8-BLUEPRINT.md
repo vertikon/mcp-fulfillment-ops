@@ -160,30 +160,30 @@ ou
 ➡ **Seguir para BLOCO-9 — SECURITY LAYER?**
 
 Perfeito.
-Aqui está o **DOCUMENTO OFICIAL — BLOCO-8 (INTERFACES LAYER)**, no **padrão formal Vertikon / MCP-HULK**, seguindo exatamente os mesmos padrões dos blueprints anteriores (B1–B7).
+Aqui está o **DOCUMENTO OFICIAL — BLOCO-8 (INTERFACES LAYER)**, no **padrão formal Vertikon / mcp-fulfillment-ops**, seguindo exatamente os mesmos padrões dos blueprints anteriores (B1–B7).
 
 Este documento é **normativo**, **estável**, e deve ser salvo como:
 
 ```
-docs/blueprints/MCP-HULK-BLOCO-8.md
+docs/blueprints/mcp-fulfillment-ops-BLOCO-8.md
 ```
 
 ---
 
-# 🟦 **MCP-HULK — BLOCO-8 BLUEPRINT OFICIAL**
+# 🟦 **mcp-fulfillment-ops — BLOCO-8 BLUEPRINT OFICIAL**
 
 ### **INTERFACES LAYER — HTTP • gRPC • CLI • Messaging**
 
 **Versão:** 1.0
 **Status:** Oficial • Estável • Congelado
 **Última Atualização:** 2025-11-17
-**Fonte de Verdade:** Árvore Oficial + Integrações MCP-HULK
+**Fonte de Verdade:** Árvore Oficial + Integrações mcp-fulfillment-ops
 
 ---
 
 # 🔷 **1. Propósito do Bloco-8**
 
-O **Bloco-8 (Interfaces Layer)** é a **porta de entrada** do MCP-Hulk.
+O **Bloco-8 (Interfaces Layer)** é a **porta de entrada** do mcp-fulfillment-ops.
 Ele conecta o sistema ao mundo externo através de quatro interfaces fundamentais:
 
 1. **HTTP (REST/API)**
@@ -439,7 +439,7 @@ Regra de ouro:
 # 🔷 **8. Conclusão Oficial**
 
 O **Bloco-8** é a camada responsável pela **tradução**, **validação de formato**, **entrada unificada**, e **exposição de serviços**.
-Ele não contém lógica de negócio e serve como **gateway padronizado** para o MCP-Hulk.
+Ele não contém lógica de negócio e serve como **gateway padronizado** para o mcp-fulfillment-ops.
 
 Com este documento, o BLOCO-8 está:
 
@@ -447,7 +447,7 @@ Com este documento, o BLOCO-8 está:
 ✔ Congruente com a árvore
 ✔ Coerente com todas as integrações
 ✔ Pronto para auditoria interna
-✔ Pronto para envio ao **MCP-HULK-BLUEPRINT-FULL**
+✔ Pronto para envio ao **mcp-fulfillment-ops-BLUEPRINT-FULL**
 
 ---
 
@@ -457,4 +457,4 @@ Se quiser, posso gerar agora:
 
 ou
 
-### 👉 **Consolidar tudo no MCP-HULK-BLUEPRINT-FULL.md**
+### 👉 **Consolidar tudo no mcp-fulfillment-ops-BLUEPRINT-FULL.md**

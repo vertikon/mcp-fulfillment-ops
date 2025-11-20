@@ -1,4 +1,4 @@
-// Package main provides tree validation tool for MCP-HULK
+// Package main provides tree validation tool for mcp-fulfillment-ops
 // Validates project structure against official tree definitions
 package main
 
@@ -25,13 +25,13 @@ var (
 
 var rootCmd = &cobra.Command{
 	Use:   "validate-tree",
-	Short: "Validate MCP-HULK project structure",
+	Short: "Validate mcp-fulfillment-ops project structure",
 	Long:  "Validates project structure against original and commented tree definitions",
 	RunE:  runValidation,
 }
 
 func init() {
-	rootCmd.Flags().StringVarP(&originalTreePath, "original", "o", ".cursor/MCP-HULK-ARVORE-FULL.md", "Path to original tree file")
+	rootCmd.Flags().StringVarP(&originalTreePath, "original", "o", ".cursor/mcp-fulfillment-ops-ARVORE-FULL.md", "Path to original tree file")
 	rootCmd.Flags().StringVarP(&commentedTreePath, "commented", "c", ".cursor/ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md", "Path to commented tree file")
 	rootCmd.Flags().StringVarP(&projectRoot, "root", "r", ".", "Project root directory")
 	rootCmd.Flags().StringVarP(&outputFormat, "format", "f", "json", "Output format: json, markdown, text")

@@ -1,4 +1,4 @@
-# ✅ ENTREGAS COMPLETAS - SISTEMA DE VALIDAÇÃO MCP-HULK
+# ✅ ENTREGAS COMPLETAS - SISTEMA DE VALIDAÇÃO mcp-fulfillment-ops
 
 **Data:** 2025-01-27  
 **Status:** ✅ Sistema Completo e Funcional
@@ -7,7 +7,7 @@
 
 ## 📦 RESUMO EXECUTIVO
 
-Sistema completo de validação e auditoria de conformidade estrutural do projeto MCP-HULK foi implementado, incluindo:
+Sistema completo de validação e auditoria de conformidade estrutural do projeto mcp-fulfillment-ops foi implementado, incluindo:
 
 - ✅ **6 Documentos Normativos** completos
 - ✅ **1 Ferramenta CLI** funcional (`validate-tree`)
@@ -22,7 +22,7 @@ Sistema completo de validação e auditoria de conformidade estrutural do projet
 
 ### Documentos Normativos
 
-1. **MAPA-DIFERENCAS-MCP-HULK.md** (9KB)
+1. **MAPA-DIFERENCAS-mcp-fulfillment-ops.md** (9KB)
    - Comparação tridimensional oficial
    - Análise por BLOCO
    - Recomendações normativas
@@ -185,7 +185,7 @@ go build -o bin/validate-tree ./tools/validate_tree.go
 
 ```
 .cursor/
-├── MAPA-DIFERENCAS-MCP-HULK.md          ✅ Normativo principal
+├── MAPA-DIFERENCAS-mcp-fulfillment-ops.md          ✅ Normativo principal
 ├── MAPA-DIFERENCAS-VISUAL.md            ✅ Visualizações
 ├── RELATORIO-EXECUTIVO-CONSOLIDADO.md   ✅ Executivo
 ├── CHECKLIST-AUDITORIA.md               ✅ Operacional
@@ -253,7 +253,7 @@ scripts/validation/
 - **Ferramenta:** `tools/README-VALIDATE-TREE.md`
 
 ### Referências
-- **Mapa de Diferenças:** `.cursor/MAPA-DIFERENCAS-MCP-HULK.md`
+- **Mapa de Diferenças:** `.cursor/MAPA-DIFERENCAS-mcp-fulfillment-ops.md`
 - **Checklist:** `.cursor/CHECKLIST-AUDITORIA.md`
 - **Roadmap:** `.cursor/ROADMAP-VALIDACAO.md`
 

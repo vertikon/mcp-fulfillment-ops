@@ -12,7 +12,7 @@ var versionCmd = &cobra.Command{
 	Short: "Print version information",
 	Long:  `Print the version number and build information`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("MCP-Hulk CLI\n")
+		fmt.Printf("mcp-fulfillment-ops CLI\n")
 		fmt.Printf("Version: %s\n", Version)
 		fmt.Printf("Build Date: %s\n", BuildDate)
 	},

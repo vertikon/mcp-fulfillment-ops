@@ -126,7 +126,7 @@ func (r *ToolRouter) handleInitialize(ctx context.Context, request *JSONRPCReque
 			},
 		},
 		ServerInfo: map[string]interface{}{
-			"name":    "MCP-Hulk",
+			"name":    "mcp-fulfillment-ops",
 			"version": "1.0.0",
 		},
 	}
@@ -139,7 +139,7 @@ func (r *ToolRouter) handlePing(ctx context.Context, request *JSONRPCRequest) *J
 	result := map[string]interface{}{
 		"message": "pong",
 		"status":  "healthy",
-		"server":  "MCP-Hulk",
+		"server":  "mcp-fulfillment-ops",
 	}
 
 	return NewSuccessResponse(request.ID, result)
@@ -211,30 +211,7 @@ func (r *ToolRouter) validateParams(params interface{}, schema map[string]interf
 	return nil
 }
 
-// parseParams parses parameters from a JSON-RPC request
-func parseParams(params interface{}, target interface{}) error {
-	if params == nil {
-		return nil
-	}
-
-	// This is a simplified parameter parsing
-	// In a production environment, you would use proper JSON unmarshaling with type checking
-	
-	switch v := params.(type) {
-	case map[string]interface{}:
-		// Simple map conversion for basic types
-		if targetMap, ok := target.(*map[string]interface{}); ok {
-			*targetMap = v
-			return nil
-		}
-		
-		// For specific request types, you would implement proper unmarshaling
-		// This is a placeholder implementation
-		return fmt.Errorf("parameter parsing not fully implemented for this type")
-	default:
-		return fmt.Errorf("invalid parameter type")
-	}
-}
+// parseParams is defined in handlers.go
 
 // GetRegisteredTools returns a list of all registered tools
 func (r *ToolRouter) GetRegisteredTools() []string {

@@ -10,7 +10,7 @@
 
 ## 📋 **SUMÁRIO EXECUTIVO**
 
-Esta auditoria compara a implementação real do **BLOCO-1 (Core Platform)** do projeto **MCP-Hulk** com os blueprints oficiais:
+Esta auditoria compara a implementação real do **BLOCO-1 (Core Platform)** do projeto **mcp-fulfillment-ops** com os blueprints oficiais:
 
 - **BLOCO-1-BLUEPRINT.md** — Blueprint oficial do Core Platform
 - **BLOCO-1-BLUEPRINT-GLM-4.6.md** — Blueprint específico GLM-4.6 (não aplicável ao BLOCO-1)
@@ -274,7 +274,7 @@ func main() {
 	}
 	defer logger.Sync()
 
-	logger.Info("Starting MCP-Hulk server")
+	logger.Info("Starting mcp-fulfillment-ops server")
 
 	// Initialize observability
 	var tracerProvider *observability.TracerProvider

@@ -228,14 +228,14 @@ Segue agora o **DOCUMENTO OFICIAL — BLOCO-3 BLUEPRINT (STATE MANAGEMENT)** no 
 Este documento é **normativo**, **estável** e pode ser salvo diretamente como:
 
 ```
-docs/blueprints/MCP-HULK-BLOCO-3-STATE-MANAGEMENT.md
+docs/blueprints/mcp-fulfillment-ops-BLOCO-3-STATE-MANAGEMENT.md
 ou
-MCP-HULK-BLOCO-3.md
+mcp-fulfillment-ops-BLOCO-3.md
 ```
 
 ---
 
-# 🟦 **MCP-HULK — BLOCO-3 BLUEPRINT (Oficial v1.0)**
+# 🟦 **mcp-fulfillment-ops — BLOCO-3 BLUEPRINT (Oficial v1.0)**
 
 **State Management Layer**
 **Status:** Congelado • Fonte Única da Verdade
@@ -245,7 +245,7 @@ MCP-HULK-BLOCO-3.md
 
 # **1. Propósito do Bloco-3**
 
-O **Bloco-3 (State Management)** é a **fundação de consistência** do MCP-Hulk.
+O **Bloco-3 (State Management)** é a **fundação de consistência** do mcp-fulfillment-ops.
 Ele garante que todos os módulos, serviços e agentes possuam:
 
 * **estado distribuído confiável**,

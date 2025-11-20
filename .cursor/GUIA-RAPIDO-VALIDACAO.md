@@ -1,4 +1,4 @@
-# ⚡ GUIA RÁPIDO DE VALIDAÇÃO - MCP-HULK
+# ⚡ GUIA RÁPIDO DE VALIDAÇÃO - mcp-fulfillment-ops
 
 **Para uso imediato da ferramenta de validação**
 
@@ -48,7 +48,7 @@ chmod +x scripts/validation/validate_project_structure.sh
 
 ```bash
 ./bin/validate-tree \
-  --original .cursor/MCP-HULK-ARVORE-FULL.md \
+  --original .cursor/mcp-fulfillment-ops-ARVORE-FULL.md \
   --commented .cursor/ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md \
   --root . \
   --format markdown \
@@ -94,7 +94,7 @@ fi
 ### Erro: "failed to load original tree"
 ```bash
 # Verificar se arquivo existe
-ls -la .cursor/MCP-HULK-ARVORE-FULL.md
+ls -la .cursor/mcp-fulfillment-ops-ARVORE-FULL.md
 
 # Especificar caminho correto
 ./bin/validate-tree --original /caminho/correto/ARVORE-FULL.md
@@ -122,7 +122,7 @@ cat report.md
 
 - **Ferramenta:** `tools/README-VALIDATE-TREE.md`
 - **Checklist:** `.cursor/CHECKLIST-AUDITORIA.md`
-- **Mapa de Diferenças:** `.cursor/MAPA-DIFERENCAS-MCP-HULK.md`
+- **Mapa de Diferenças:** `.cursor/MAPA-DIFERENCAS-mcp-fulfillment-ops.md`
 
 ---
 

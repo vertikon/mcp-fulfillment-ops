@@ -37,7 +37,7 @@ jobs:
       
       - name: Verify tree files exist
         run: |
-          if [ ! -f ".cursor/MCP-HULK-ARVORE-FULL.md" ]; then
+          if [ ! -f ".cursor/mcp-fulfillment-ops-ARVORE-FULL.md" ]; then
             echo "❌ Original tree file not found"
             exit 1
           fi
@@ -65,7 +65,7 @@ jobs:
           
           echo "🔍 Running tree validation..."
           ./bin/validate-tree \
-            --original .cursor/MCP-HULK-ARVORE-FULL.md \
+            --original .cursor/mcp-fulfillment-ops-ARVORE-FULL.md \
             --commented .cursor/ARVORE-ARQUIVOS-DIRETORIOS-COMENTADA.md \
             --root . \
             --format markdown \

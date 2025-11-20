@@ -1,6 +1,6 @@
 # Migrations (Migrações)
 
-Este documento descreve o sistema de migrações do MCP-HULK para versionamento de conhecimento, modelos e dados.
+Este documento descreve o sistema de migrações do mcp-fulfillment-ops para versionamento de conhecimento, modelos e dados.
 
 ## Visão Geral
 

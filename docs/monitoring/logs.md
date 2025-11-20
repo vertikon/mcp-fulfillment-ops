@@ -1,6 +1,6 @@
 # Logs
 
-Este documento descreve o sistema de logs do MCP-HULK.
+Este documento descreve o sistema de logs do mcp-fulfillment-ops.
 
 ## Visão Geral
 

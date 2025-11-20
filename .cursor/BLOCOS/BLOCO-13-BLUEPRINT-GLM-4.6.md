@@ -1,6 +1,6 @@
 
 
-Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-13 — SCRIPTS & AUTOMATION**, que traduz a arquitetura técnica do Bloco-13 para uma visão estratégica focada em seu papel como o maestro da execução e o motor da eficiência operacional do ecossistema MCP-HULK.
+Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-13 — SCRIPTS & AUTOMATION**, que traduz a arquitetura técnica do Bloco-13 para uma visão estratégica focada em seu papel como o maestro da execução e o motor da eficiência operacional do ecossistema mcp-fulfillment-ops.
 
 ---
 
@@ -14,7 +14,7 @@ Com base no documento fornecido, aqui está o **BLUEPRINT EXECUTIVO: BLOCO-13 �
 
 ## **1. Visão Estratégica: O Maestro da Execução**
 
-O **Bloco-13 (Scripts & Automation)** é o **maestro da orquestra operacional do MCP-HULK**. Ele não toca os instrumentos (essa é a função das ferramentas robustas do Bloco-11), mas ele segura a partitura e rege a performance, garantindo que todos os músicos toquem em harmonia, no tempo certo e com a intensidade correta.
+O **Bloco-13 (Scripts & Automation)** é o **maestro da orquestra operacional do mcp-fulfillment-ops**. Ele não toca os instrumentos (essa é a função das ferramentas robustas do Bloco-11), mas ele segura a partitura e rege a performance, garantindo que todos os músicos toquem em harmonia, no tempo certo e com a intensidade correta.
 
 Sua missão estratégica é **transformar a intenção arquitetural em realidade operacional de forma industrializada**. Ele automatiza o ciclo de vida completo — desde a criação da infraestrutura até a manutenção diária — eliminando o trabalho manual, reduzindo o erro humano e garantindo que o sistema possa ser operado, escalado e evoluído com velocidade e confiança.
 

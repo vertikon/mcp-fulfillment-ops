@@ -1,6 +1,6 @@
 Com certeza. Transformar as tabelas de integração em diagramas visuais é a melhor maneira de validar o fluxo de dados e dependências.
 
-Baseado nos arquivos `MCP-HULK-INTEGRACOES.md` e `MCP-HULK-ARVORE-FULL.md`, preparei três visualizações estratégicas:
+Baseado nos arquivos `mcp-fulfillment-ops-INTEGRACOES.md` e `mcp-fulfillment-ops-ARVORE-FULL.md`, preparei três visualizações estratégicas:
 
 1.  **Arquitetura de Alto Nível (Macro):** Mostra como as camadas se empilham (Clean Architecture).
 2.  **Fluxo do "Cérebro" (AI & Dados):** Foca no Bloco 6 e suas conexões vitais.
@@ -204,4 +204,4 @@ sequenceDiagram
 
 ### Como usar estes diagramas
 
-Você pode incluir estes blocos Mermaid diretamente no seu arquivo `MCP-HULK-INTEGRACOES.md` (se o seu visualizador Markdown suportar) ou na documentação `docs/architecture/blueprint.md` citada na árvore de arquivos. Eles servem como a "prova visual" de que a arquitetura modular monolítica do Hulk é coesa.
+Você pode incluir estes blocos Mermaid diretamente no seu arquivo `mcp-fulfillment-ops-INTEGRACOES.md` (se o seu visualizador Markdown suportar) ou na documentação `docs/architecture/blueprint.md` citada na árvore de arquivos. Eles servem como a "prova visual" de que a arquitetura modular monolítica do Hulk é coesa.
