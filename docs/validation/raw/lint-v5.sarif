@@ -1,0 +1,857 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "cmd/main.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/logger/logger.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/logger/fields.go"
+                },
+                "region": {
+                  "startColumn": 8,
+                  "startLine": 4
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/logger/logger.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/core/config/config.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/metrics.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/metrics.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/httpserver/server.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/httpserver/server.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "cmd/fulfillment-ops/main.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "cmd/fulfillment-ops/main.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "cmd/fulfillment-ops/main.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/domain/fulfillment/cycle_count_task.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/adapters/redis/redis_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "cmd/mcp-cli/main.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "cmd/mcp-init/internal/config/config.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 15
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 17
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 19
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/core/state/store.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/interfaces/grpc/ai_grpc_server.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/interfaces/grpc/interceptors/auth_interceptor.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/interfaces/grpc/interceptors/auth_interceptor.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/interfaces/grpc/interceptors/auth_interceptor.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/monitoring/observability/distributed_tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/monitoring/observability/distributed_tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/security/auth/token_manager.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/security/auth/auth_manager.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/security/auth/oauth_provider.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/security/encryption/encryption_manager.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 15
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified."
+          },
+          "ruleId": "govet"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "informationUri": "https://github.com/vertikon/mcp-validator",
+          "name": "MCP Validator V9.1",
+          "version": "9.4"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

@@ -6,24 +6,31 @@ This document contains essential information for agents working with the mcp-ful
 
 mcp-fulfillment-ops is a comprehensive Model Context Protocol (MCP) template and generation engine. It's a Go-based system that follows Clean Architecture principles with 14 main blocks covering everything from core execution engines to AI integration and monitoring.
 
+The project has two main entry points:
+- `cmd/main.go` - Core HTTP server with observability and execution engine
+- `cmd/fulfillment-ops/main.go` - Fulfillment operations service with PostgreSQL, NATS, and Redis integration
+
 ## Development Commands
 
 ### Build & Run
 ```bash
-# Build the application
+# Build the main application
 make build
 
-# Run with default configuration
+# Run the main HTTP server with config loading
 make run
+
+# Run fulfillment-ops service directly
+go run ./cmd/fulfillment-ops/main.go
 
 # Install dependencies
 make deps
 
-# Build for production
-make build-prod
-
 # Development setup (installs golangci-lint)
 make dev-setup
+
+# Install locally
+make install
 ```
 
 ### Testing
@@ -34,8 +41,17 @@ make test
 # Run tests with coverage
 make test-coverage
 
-# Run all checks (lint, vet, test)
+# Run integration tests
+make test-integration
+
+# Run load tests (requires k6)
+make test-load
+
+# Run all checks (lint, security, test)
 make check
+
+# Prepare for release
+make release
 ```
 
 ### Code Quality
@@ -48,6 +64,9 @@ make fmt
 
 # Vet code for potential issues
 make vet
+
+# Security scan (requires gosec)
+make security
 ```
 
 ### Docker
@@ -63,9 +82,6 @@ make docker-run
 ```bash
 # Generate code (go generate)
 make generate
-
-# Install locally
-make install
 ```
 
 ## Project Structure
@@ -119,51 +135,67 @@ Support for multiple technology stacks:
 
 ## Configuration
 
-Configuration is managed through YAML files in `config/` directory:
+Configuration is managed through YAML files in `config/` directory with two approaches:
+
+1. **Main Application** (`cmd/main.go`): Uses Viper with HULK_ prefixed environment variables
+2. **Fulfillment Service** (`cmd/fulfillment-ops/main.go`): Uses direct environment variables
 
 ### Primary Config
 - `config/config.yaml` - Main application configuration
 - Uses Viper for loading with environment variable overrides
-- Prefix: `MCP_HULK_` for environment variables
+- Environment variables use `HULK_` prefix (see config.yaml)
+- For fulfillment-ops service: uses direct `getEnv()` with standard names
 
 ### Key Configuration Sections
 - **Server**: HTTP server settings (port, timeouts)
+- **Database**: PostgreSQL connection settings
+- **AI**: LLM provider configuration (OpenAI, Gemini, GLM)
 - **Engine**: Worker pool and execution settings
 - **NATS**: Message broker configuration
+- **Cache**: Multi-level caching settings
 - **Logging**: Structured logging with Zap
 - **Telemetry**: OpenTelemetry tracing and metrics
-- **MCP**: Protocol-specific settings
 
-### Default Values
-The system provides sensible defaults in `internal/core/config/config.go`:
-- Server port: 8080
-- Workers: "auto" (NumCPU * 2)
-- Queue size: 2000
-- Cache L1 size: 5000 entries
+### Environment Variables
+Key environment variables for fulfillment-ops service:
+- `DATABASE_URL` - PostgreSQL connection string
+- `NATS_URL` - NATS server URL (default: nats://localhost:4222)
+- `REDIS_URL` - Redis connection string
+- `CORE_INVENTORY_URL` - Core inventory service URL
+- `HTTP_PORT` - Server port (default: :8080)
+
+For main application, use `HULK_` prefixed variables as defined in config.
 
 ## Key Dependencies
 
 ### Core Runtime
-- **Echo v4**: HTTP server framework
-- **NATS**: Message broker and streaming
+- **Echo v4 & Gin**: HTTP server frameworks
+- **NATS**: Message broker and streaming with JetStream
 - **Viper**: Configuration management
 - **Cobra**: CLI framework
 - **Zap**: Structured logging
+- **PostgreSQL**: Primary database (lib/pq driver)
+- **Redis**: Caching and session storage
 
 ### Observability
 - **OpenTelemetry**: Distributed tracing
 - **Prometheus**: Metrics collection
 - **Jaeger**: Trace visualization
 
-### Data & Storage
-- **Badger**: Embedded key-value store
-- **PostgreSQL**: Primary relational database (via internal repos)
-- **Various clients**: Redis, MongoDB, Neo4j, etc.
+### Auth & Security
+- **JWT (golang-jwt/jwt)**: Token management
+- **OAuth2 (golang.org/x/oauth2)**: OAuth provider integration
+- **Crypto (golang.org/x/crypto)**: Encryption utilities
 
 ### AI/ML Integration
 - Multiple LLM provider clients (OpenAI, Gemini, GLM)
 - Vector database clients (Qdrant, Pinecone, Weaviate)
 - Knowledge graph capabilities
+
+### Infrastructure
+- **Kubernetes**: Client-go for K8s integration
+- **Badger**: Embedded key-value store
+- **UUID**: Unique identifier generation
 
 ## Naming Conventions
 
@@ -192,11 +224,19 @@ The system provides sensible defaults in `internal/core/config/config.go`:
 - Generic names like `utils.go`, `helpers.go` in critical layers
 - Creating unapproved top-level directories
 - Editing template files directly in `templates/` for specific cases
+- Deviating from the defined Clean Architecture layer separation
 
 ### Required
 - All new artifacts must be documented in the official tree
 - Standardized function comments for Go code
 - Follow the Clean Architecture layer separation
+- Use the HULK_ prefix for environment variables in main application
+- Use direct environment variables for fulfillment-ops service
+
+### Validation
+- The project includes automated tree validation in CI/CD
+- See `.gitlab-ci.yml` and `tools/validate_tree.go`
+- Original tree reference: `.cursor/MCP-HULK-ARVORE-FULL.md`
 
 ## Testing
 
@@ -231,6 +271,37 @@ The system provides sensible defaults in `internal/core/config/config.go`:
 2. Add defaults in `setDefaults()` method
 3. Update `config/config.yaml` with new sections
 4. Add validation rules where needed
+
+### Release Pipeline
+Use the automated PowerShell pipeline for releases:
+```powershell
+# Pipeline completo (validação, testes, build, deploy)
+.\pipeline-release.ps1
+
+# Pular testes (uso com cautela)
+.\pipeline-release.ps1 -SkipTests
+
+# Pular validação de estrutura
+.\pipeline-release.ps1 -SkipValidation
+
+# Fazer push automático para Git
+.\pipeline-release.ps1 -PushToGit
+```
+
+The pipeline:
+1. Validates project structure against .cursor rules
+2. Runs unit and integration tests with coverage
+3. Builds Windows and Linux binaries
+4. Creates Docker image
+5. Deploys via Docker Compose with health checks
+6. Commits changes with detailed messages
+7. Generates execution summaries
+
+### Docker Compose Services
+- **PostgreSQL**: `localhost:5435` (user: fulfillment, pass: fulfillment123)
+- **NATS**: `localhost:4225` (monitoring: `localhost:8225`)
+- **Redis**: `localhost:6381`
+- **Fulfillment Ops**: `http://localhost:8082`
 
 ## Performance Considerations
 
@@ -303,35 +374,98 @@ The system provides sensible defaults in `internal/core/config/config.go`:
 
 ## CLI Usage
 
-The CLI is accessible via the `hulk` command:
+### Multiple Entry Points
+
+The project provides multiple CLI entry points:
 
 ```bash
-# Generate new MCP project
-hulk generate --template go --name my-mcp
+# Main HTTP server (starts core services with observability)
+go run ./cmd/main.go
 
-# List available templates
-hulk template list
+# Fulfillment operations service (domain-specific logic)
+go run ./cmd/fulfillment-ops/main.go
 
-# Validate MCP structure
-hulk validate mcp ./my-mcp
+# MCP Server implementation
+go run ./cmd/mcp-server/main.go
 
-# Start monitoring
-hulk monitor start
+# MCP CLI for template generation
+go run ./cmd/mcp-cli/main.go
 
-# View application status
-hulk status
+# MCP initialization tool
+go run ./cmd/mcp-init/main.go
+
+# Development tools
+go run ./cmd/tools-generator/main.go
+go run ./cmd/tools-validator/main.go
+go run ./cmd/tools-deployer/main.go
+go run ./cmd/thor/main.go
+```
+
+### Quick Commands
+```bash
+# Build all binaries
+make build
+
+# Run the main application
+make run
+
+# Test all components
+make test
+
+# Full pipeline: clean, lint, security, test, build
+make release
 ```
 
 ## Troubleshooting
 
 ### Common Issues
 - **NATS connection failed**: Check NATS server is running on localhost:4222
+- **PostgreSQL connection failed**: Verify DATABASE_URL or individual DB env vars
+- **Redis connection failed**: Service continues without cache, check REDIS_URL
 - **Configuration not found**: Ensure `config/config.yaml` exists or set environment variables
 - **Build failures**: Run `make deps` to ensure dependencies are current
 - **Lint failures**: Install golangci-lint via `make dev-setup`
 
+### Service Dependencies
+Before running fulfillment-ops service, ensure:
+1. PostgreSQL is accessible (connection string via DATABASE_URL)
+2. NATS server is running (default: localhost:4222)
+3. Redis is available (optional, for caching)
+4. Core inventory service is running if needed
+
 ### Debug Mode
-Set `MCP_HULK_LOGGING_LEVEL=debug` for verbose logging output.
+Set environment variables for debug output:
+- Main app: `HULK_LOGGING_LEVEL=debug`
+- Fulfillment ops: Configure logger settings or modify logger initialization
 
 ### Health Checks
-The system provides health check endpoints for monitoring deployment status.
+Both services provide health endpoints for monitoring deployment status.
+
+### Development Workflow
+1. Use `make deps` to update Go modules
+2. Use `make test` to run unit tests
+3. Use `make test-integration` for integration tests
+4. Use `make check` for full validation before commits
+5. Use `.\pipeline-release.ps1` for complete release automation
+
+### Pipeline Automation
+The PowerShell pipeline script provides:
+- **Structure validation**: Checks against .cursor tree rules
+- **Automated testing**: Unit and integration tests with coverage
+- **Multi-platform builds**: Windows and Linux binaries
+- **Docker deployment**: Complete stack with health checks
+- **Git operations**: Smart commits with detailed messages
+- **Error handling**: Comprehensive error reporting and recovery
+
+### Service Dependencies
+Before running fulfillment-ops service, ensure:
+1. PostgreSQL is accessible (connection string via DATABASE_URL)
+2. NATS server is running (default: localhost:4222)
+3. Redis is available (optional, for caching)
+4. Core inventory service is running if needed
+
+### Performance Monitoring
+- Application metrics available at `/metrics` endpoint
+- Health check at `/health` endpoint
+- OpenTelemetry tracing if configured
+- Docker Compose includes health checks for all services

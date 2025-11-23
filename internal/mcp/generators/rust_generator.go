@@ -2,7 +2,6 @@ package generators
 
 import (
 	"fmt"
-	"path/filepath"
 )
 
 // RustGenerator generates Rust projects

@@ -1,4 +1,4 @@
-package registry
+package validators
 
 import (
 	"fmt"
@@ -20,20 +20,20 @@ type TemplateValidator struct {
 // NewTemplateValidator creates a new template validator
 func NewTemplateValidator() *TemplateValidator {
 	return &TemplateValidator{
-		logger: logger.GetLogger(),
+		logger: logger.Get(),
 	}
 }
 
-// ValidationResult represents the result of template validation
-type ValidationResult struct {
-	Valid  bool     `json:"valid"`
-	Errors []string `json:"errors"`
+// TemplateValidationResult represents the result of template validation
+type TemplateValidationResult struct {
+	Valid    bool     `json:"valid"`
+	Errors   []string `json:"errors"`
 	Warnings []string `json:"warnings"`
 }
 
 // ValidateTemplate validates a complete template directory
-func (tv *TemplateValidator) ValidateTemplate(templatePath string) *ValidationResult {
-	result := &ValidationResult{
+func (tv *TemplateValidator) ValidateTemplate(templatePath string) *TemplateValidationResult {
+	result := &TemplateValidationResult{
 		Valid:    true,
 		Errors:   []string{},
 		Warnings: []string{},
@@ -77,7 +77,7 @@ func (tv *TemplateValidator) ValidateTemplate(templatePath string) *ValidationRe
 }
 
 // validateManifest validates the manifest.yaml file
-func (tv *TemplateValidator) validateManifest(manifestPath string, result *ValidationResult) {
+func (tv *TemplateValidator) validateManifest(manifestPath string, result *TemplateValidationResult) {
 	// Check if manifest exists
 	if _, err := os.Stat(manifestPath); os.IsNotExist(err) {
 		result.AddError("manifest.yaml is required")
@@ -136,7 +136,7 @@ func (tv *TemplateValidator) loadManifest(manifestPath string) (map[string]inter
 }
 
 // validateTemplateFiles validates that all files listed in manifest exist
-func (tv *TemplateValidator) validateTemplateFiles(templatePath string, manifest map[string]interface{}, result *ValidationResult) {
+func (tv *TemplateValidator) validateTemplateFiles(templatePath string, manifest map[string]interface{}, result *TemplateValidationResult) {
 	files, ok := manifest["files"].([]interface{})
 	if !ok {
 		result.AddError("Files list is required in manifest.yaml")
@@ -158,7 +158,7 @@ func (tv *TemplateValidator) validateTemplateFiles(templatePath string, manifest
 }
 
 // validateRequiredFiles checks for required files based on stack type
-func (tv *TemplateValidator) validateRequiredFiles(templatePath string, manifest map[string]interface{}, result *ValidationResult) {
+func (tv *TemplateValidator) validateRequiredFiles(templatePath string, manifest map[string]interface{}, result *TemplateValidationResult) {
 	stack, _ := manifest["stack"].(string)
 
 	switch stack {
@@ -202,7 +202,7 @@ func (tv *TemplateValidator) validateRequiredFiles(templatePath string, manifest
 }
 
 // validatePlaceholders checks for valid placeholder usage in template files
-func (tv *TemplateValidator) validatePlaceholders(templatePath string, manifest map[string]interface{}, result *ValidationResult) {
+func (tv *TemplateValidator) validatePlaceholders(templatePath string, manifest map[string]interface{}, result *TemplateValidationResult) {
 	placeholders, ok := manifest["placeholders"].([]interface{})
 	if !ok {
 		result.AddWarning("No placeholders defined in manifest")
@@ -243,14 +243,14 @@ func (tv *TemplateValidator) validatePlaceholders(templatePath string, manifest 
 }
 
 // validateFilePlaceholders checks placeholder usage in a single template file
-func (tv *TemplateValidator) validateFilePlaceholders(filePath string, allowedPlaceholders map[string]bool, result *ValidationResult) {
+func (tv *TemplateValidator) validateFilePlaceholders(filePath string, allowedPlaceholders map[string]bool, result *TemplateValidationResult) {
 	data, err := os.ReadFile(filePath)
 	if err != nil {
 		return
 	}
 
 	content := string(data)
-	
+
 	// Find all placeholders using regex pattern
 	placeholderRegex := regexp.MustCompile(`\{\{\s*\.\s*([A-Za-z][A-Za-z0-9_]*)\s*\}\}`)
 	matches := placeholderRegex.FindAllStringSubmatch(content, -1)
@@ -266,18 +266,18 @@ func (tv *TemplateValidator) validateFilePlaceholders(filePath string, allowedPl
 }
 
 // AddError adds an error to the validation result
-func (vr *ValidationResult) AddError(error string) {
+func (vr *TemplateValidationResult) AddError(error string) {
 	vr.Errors = append(vr.Errors, error)
 }
 
 // AddWarning adds a warning to the validation result
-func (vr *ValidationResult) AddWarning(warning string) {
+func (vr *TemplateValidationResult) AddWarning(warning string) {
 	vr.Warnings = append(vr.Warnings, warning)
 }
 
 // ValidateAllTemplates validates all templates in the base directory
-func (tv *TemplateValidator) ValidateAllTemplates(basePath string) map[string]*ValidationResult {
-	results := make(map[string]*ValidationResult)
+func (tv *TemplateValidator) ValidateAllTemplates(basePath string) map[string]*TemplateValidationResult {
+	results := make(map[string]*TemplateValidationResult)
 
 	// Find all template directories (those with manifest.yaml)
 	err := filepath.Walk(basePath, func(path string, info os.FileInfo, err error) error {
@@ -288,7 +288,7 @@ func (tv *TemplateValidator) ValidateAllTemplates(basePath string) map[string]*V
 		if !info.IsDir() && info.Name() == "manifest.yaml" {
 			templateDir := filepath.Dir(path)
 			templateName := filepath.Base(templateDir)
-			
+
 			results[templateName] = tv.ValidateTemplate(templateDir)
 		}
 
@@ -298,9 +298,9 @@ func (tv *TemplateValidator) ValidateAllTemplates(basePath string) map[string]*V
 	if err != nil {
 		tv.logger.Error("Failed to walk templates directory", zap.Error(err))
 		// Add a general error result
-		results["general"] = &ValidationResult{
-			Valid:  false,
-			Errors: []string{fmt.Sprintf("Failed to scan templates: %v", err)},
+		results["general"] = &TemplateValidationResult{
+			Valid:    false,
+			Errors:   []string{fmt.Sprintf("Failed to scan templates: %v", err)},
 			Warnings: []string{},
 		}
 	}

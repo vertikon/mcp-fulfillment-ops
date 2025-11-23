@@ -42,4 +42,3 @@ func (uc *OpenCycleCountUseCase) OpenCycleCount(ctx context.Context, location st
 	uc.logger.Info("Cycle count task opened", "id", task.ID, "location", location)
 	return task, nil
 }
-

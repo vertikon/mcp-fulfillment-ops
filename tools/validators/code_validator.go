@@ -66,7 +66,7 @@ func (v *CodeValidator) ValidateCode(ctx context.Context, req CodeValidateReques
 		Path:       req.Path,
 		StrictMode: req.StrictMode,
 	})
-	
+
 	if err == nil {
 		errors = append(errors, structResult.Errors...)
 		warnings = append(warnings, structResult.Warnings...)
@@ -121,24 +121,24 @@ func (v *CodeValidator) validateImports(path string, errors *[]string, warnings 
 		if err != nil {
 			return err
 		}
-		
+
 		if !info.IsDir() && strings.HasSuffix(filePath, ".go") {
 			content, err := os.ReadFile(filePath)
 			if err != nil {
 				return err
 			}
-			
+
 			contentStr := string(content)
-			
+
 			// Check for unused imports (simplified check)
 			if strings.Contains(contentStr, "import (") {
 				*checks = append(*checks, fmt.Sprintf("imports:%s", filepath.Base(filePath)))
 			}
 		}
-		
+
 		return nil
 	})
-	
+
 	if err != nil {
 		return err
 	}
@@ -154,19 +154,19 @@ func (v *CodeValidator) validateNamingConventions(path string, errors *[]string,
 		if err != nil {
 			return err
 		}
-		
+
 		if !info.IsDir() && strings.HasSuffix(filePath, ".go") {
 			fileName := filepath.Base(filePath)
-			
+
 			// Go files should be lowercase with underscores
 			if strings.ToLower(fileName) != fileName && !strings.HasSuffix(fileName, "_test.go") {
 				*warnings = append(*warnings, fmt.Sprintf("file name should be lowercase: %s", fileName))
 			}
 		}
-		
+
 		return nil
 	})
-	
+
 	if err != nil {
 		return err
 	}

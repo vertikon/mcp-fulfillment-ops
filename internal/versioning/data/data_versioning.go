@@ -31,22 +31,22 @@ type DataVersion struct {
 
 // DataSnapshot represents a snapshot of data at a point in time
 type DataSnapshot struct {
-	ID            string                 `json:"id"`
-	DatasetID     string                 `json:"dataset_id"`
-	VersionID     string                 `json:"version_id"`
-	SnapshotType  SnapshotType           `json:"snapshot_type"`
-	Data          map[string]interface{} `json:"data,omitempty"`
-	Checksum      string                 `json:"checksum"`
-	CreatedAt     time.Time              `json:"created_at"`
-	CreatedBy     string                 `json:"created_by"`
+	ID           string                 `json:"id"`
+	DatasetID    string                 `json:"dataset_id"`
+	VersionID    string                 `json:"version_id"`
+	SnapshotType SnapshotType           `json:"snapshot_type"`
+	Data         map[string]interface{} `json:"data,omitempty"`
+	Checksum     string                 `json:"checksum"`
+	CreatedAt    time.Time              `json:"created_at"`
+	CreatedBy    string                 `json:"created_by"`
 }
 
 // SnapshotType represents snapshot type
 type SnapshotType string
 
 const (
-	SnapshotTypeFull       SnapshotType = "full"
-	SnapshotTypeIncremental SnapshotType = "incremental"
+	SnapshotTypeFull         SnapshotType = "full"
+	SnapshotTypeIncremental  SnapshotType = "incremental"
 	SnapshotTypeDifferential SnapshotType = "differential"
 )
 
@@ -54,39 +54,39 @@ const (
 type DataVersioning interface {
 	// CreateVersion creates a new version of a dataset
 	CreateVersion(ctx context.Context, datasetID string, metadata map[string]interface{}) (*DataVersion, error)
-	
+
 	// GetVersion retrieves a specific version
 	GetVersion(ctx context.Context, versionID string) (*DataVersion, error)
-	
+
 	// ListVersions lists all versions for a dataset
 	ListVersions(ctx context.Context, datasetID string) ([]*DataVersion, error)
-	
+
 	// GetLatestVersion gets the latest version
 	GetLatestVersion(ctx context.Context, datasetID string) (*DataVersion, error)
-	
+
 	// CreateSnapshot creates a snapshot of data
 	CreateSnapshot(ctx context.Context, versionID string, snapshotType SnapshotType, data map[string]interface{}) (*DataSnapshot, error)
-	
+
 	// GetSnapshot retrieves a snapshot
 	GetSnapshot(ctx context.Context, snapshotID string) (*DataSnapshot, error)
-	
+
 	// ListSnapshots lists snapshots for a version
 	ListSnapshots(ctx context.Context, versionID string) ([]*DataSnapshot, error)
-	
+
 	// TagVersion tags a version
 	TagVersion(ctx context.Context, versionID string, tags []string) error
-	
+
 	// DeleteVersion deletes a version (soft delete)
 	DeleteVersion(ctx context.Context, versionID string) error
 }
 
 // InMemoryDataVersioning implements DataVersioning in memory
 type InMemoryDataVersioning struct {
-	versions  map[string]*DataVersion
-	snapshots map[string]*DataSnapshot
+	versions         map[string]*DataVersion
+	snapshots        map[string]*DataSnapshot
 	versionSnapshots map[string][]string // versionID -> []snapshotID
-	mu        sync.RWMutex
-	logger    *zap.Logger
+	mu               sync.RWMutex
+	logger           *zap.Logger
 }
 
 // NewInMemoryDataVersioning creates a new in-memory data versioning instance
@@ -296,7 +296,7 @@ func (dv *InMemoryDataVersioning) TagVersion(ctx context.Context, versionID stri
 	}
 
 	version.Tags = append(version.Tags, tags...)
-	
+
 	// Remove duplicates
 	seen := make(map[string]bool)
 	result := []string{}

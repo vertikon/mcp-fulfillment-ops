@@ -35,8 +35,8 @@ Este documento descreve a implementação completa do BLOCO-1 (Core Platform) se
 
 ### Scheduler (`internal/core/scheduler/`)
 - ✅ `scheduler.go` - Scheduler com NATS JetStream
-  - Streams: `hulk.engine.tasks`, `hulk.engine.events`, `hulk.scheduler.queue`, `hulk.errors`
-  - Subjects: `hulk.task.*`, `hulk.scheduler.tick`, `hulk.runtime.health`
+  - Streams: `fulfillment.engine.tasks`, `fulfillment.engine.events`, `fulfillment.scheduler.queue`, `fulfillment.errors`
+  - Subjects: `fulfillment.task.*`, `fulfillment.scheduler.tick`, `fulfillment.runtime.health`
 
 ### Events (`internal/core/events/`)
 - ✅ `nats_events.go` - Publisher de eventos NATS JetStream

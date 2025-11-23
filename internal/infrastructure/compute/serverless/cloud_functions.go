@@ -16,3 +16,12 @@ type CloudFunctions interface {
 	// DeleteFunction deletes a cloud function
 	DeleteFunction(ctx context.Context, functionName string) error
 }
+
+// FunctionConfig represents the configuration required to deploy a serverless function.
+// The struct mirrors the cloud-specific versions so callers can share the same shape.
+type FunctionConfig struct {
+	Name    string
+	Runtime string
+	Code    []byte
+	Timeout int
+}

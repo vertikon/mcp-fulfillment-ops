@@ -1,0 +1,1457 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "cmd/main.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/logger/logger.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/logger/fields.go"
+                },
+                "region": {
+                  "startColumn": 8,
+                  "startLine": 4
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/logger/logger.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/core/config/config.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/metrics.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/metrics.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/observability/tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/httpserver/server.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/httpserver/server.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "cmd/fulfillment-ops/main.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "cmd/fulfillment-ops/main.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "cmd/fulfillment-ops/main.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/domain/fulfillment/cycle_count_task.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/adapters/redis/redis_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "cmd/mcp-cli/main.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "cmd/mcp-init/internal/config/config.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/mcp/validators/base_validator.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/mcp/protocol/client.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 15
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 17
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 18
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/kubernetes/k8s_client.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 19
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/application/ports/ai_port.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/application/use_cases/ai_assistance.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/core/state/store.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/docker/image_builder.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/cloud/serverless/faas_manager.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/compute/cpu/process_scheduler.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/compute/distributed/ray_cluster.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/compute/gpu/cuda_manager.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/compute/serverless/faas_manager.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/network/cdn/aws_cdn.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/network/load_balancer/envoy_lb.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/network/security/ddos_protection.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/persistence/cache/cache_client.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/persistence/document/couchdb_client.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/persistence/graph/graph_client.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/persistence/time_series/influxdb_client.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/infrastructure/persistence/vector/hybrid_search.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/interfaces/cli/ci/build.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/interfaces/cli/config/set.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/interfaces/cli/repo/clone.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/interfaces/cli/server/start.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/interfaces/grpc/ai_grpc_server.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/interfaces/grpc/interceptors/auth_interceptor.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/interfaces/grpc/interceptors/auth_interceptor.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/interfaces/grpc/interceptors/auth_interceptor.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/monitoring/analytics/cost_analytics.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/monitoring/observability/distributed_tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 11
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/monitoring/observability/distributed_tracing.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/security/auth/token_manager.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 9
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/security/auth/auth_manager.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/security/auth/oauth_provider.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/security/encryption/encryption_manager.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 15
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "github.com/vertikon/mcp-ultra@v0.0.0-00010101000000-000000000000 (replaced by E:\\vertikon\\implementador\\v3\\mcp-model): reading E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: open E:\\vertikon\\implementador\\v3\\mcp-model\\go.mod: The system cannot find the file specified."
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/glm/client.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/knowledge/knowledge.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/mcp/mcp.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/optimizer/optimizer.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/profiler/profiler.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/validator/validator.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/analyzers/dependency_analyzer.go"
+                },
+                "region": {
+                  "startColumn": 1,
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "illegal character U+0023 '#'"
+          },
+          "ruleId": "govet"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "informationUri": "https://github.com/vertikon/mcp-validator",
+          "name": "MCP Validator V9.1",
+          "version": "9.4"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

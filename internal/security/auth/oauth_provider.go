@@ -18,19 +18,19 @@ import (
 
 var (
 	ErrOAuthProviderNotFound = errors.New("oauth provider not found")
-	ErrOAuthStateMismatch     = errors.New("oauth state mismatch")
-	ErrOAuthCodeExchange      = errors.New("oauth code exchange failed")
+	ErrOAuthStateMismatch    = errors.New("oauth state mismatch")
+	ErrOAuthCodeExchange     = errors.New("oauth code exchange failed")
 )
 
 // OAuthProviderType represents supported OAuth providers
 type OAuthProviderType string
 
 const (
-	OAuthProviderGoogle   OAuthProviderType = "google"
-	OAuthProviderGitHub   OAuthProviderType = "github"
-	OAuthProviderAzureAD  OAuthProviderType = "azuread"
-	OAuthProviderAuth0    OAuthProviderType = "auth0"
-	OAuthProviderGeneric  OAuthProviderType = "generic"
+	OAuthProviderGoogle  OAuthProviderType = "google"
+	OAuthProviderGitHub  OAuthProviderType = "github"
+	OAuthProviderAzureAD OAuthProviderType = "azuread"
+	OAuthProviderAuth0   OAuthProviderType = "auth0"
+	OAuthProviderGeneric OAuthProviderType = "generic"
 )
 
 // OAuthUserInfo represents user information from OAuth provider
@@ -46,13 +46,13 @@ type OAuthUserInfo struct {
 type OAuthProvider interface {
 	// GetAuthURL returns the authorization URL for OAuth flow
 	GetAuthURL(ctx context.Context, state string) (string, error)
-	
+
 	// ExchangeCode exchanges authorization code for tokens
 	ExchangeCode(ctx context.Context, code string) (*OAuthTokens, error)
-	
+
 	// GetUserInfo retrieves user information from provider
 	GetUserInfo(ctx context.Context, accessToken string) (*OAuthUserInfo, error)
-	
+
 	// GetProviderType returns the provider type
 	GetProviderType() OAuthProviderType
 }
@@ -82,13 +82,13 @@ type OAuthProviderConfig struct {
 type OAuthManager interface {
 	// RegisterProvider registers an OAuth provider
 	RegisterProvider(providerType OAuthProviderType, provider OAuthProvider)
-	
+
 	// GetProvider returns an OAuth provider by type
 	GetProvider(providerType OAuthProviderType) (OAuthProvider, error)
-	
+
 	// GetAuthURL returns authorization URL for a provider
 	GetAuthURL(ctx context.Context, providerType OAuthProviderType, state string) (string, error)
-	
+
 	// HandleCallback processes OAuth callback
 	HandleCallback(ctx context.Context, providerType OAuthProviderType, code, state string) (*OAuthUserInfo, error)
 }
@@ -793,10 +793,10 @@ func (p *AzureADProvider) GetProviderType() OAuthProviderType {
 
 // Auth0Provider implements OAuthProvider for Auth0
 type Auth0Provider struct {
-	config     OAuthProviderConfig
+	config       OAuthProviderConfig
 	oauth2Config *oauth2.Config
-	logger     *zap.Logger
-	httpClient *http.Client
+	logger       *zap.Logger
+	httpClient   *http.Client
 }
 
 // NewAuth0Provider creates a new Auth0 OAuth provider

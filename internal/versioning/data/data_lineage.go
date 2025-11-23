@@ -13,34 +13,34 @@ import (
 
 // DataLineage represents data lineage information
 type DataLineage struct {
-	ID            string                 `json:"id"`
-	DatasetID     string                 `json:"dataset_id"`
-	VersionID     string                 `json:"version_id"`
-	Source        LineageNode            `json:"source"`
-	Transformations []Transformation     `json:"transformations"`
-	Output        LineageNode            `json:"output"`
-	CreatedAt     time.Time              `json:"created_at"`
-	Metadata      map[string]interface{} `json:"metadata"`
+	ID              string                 `json:"id"`
+	DatasetID       string                 `json:"dataset_id"`
+	VersionID       string                 `json:"version_id"`
+	Source          LineageNode            `json:"source"`
+	Transformations []Transformation       `json:"transformations"`
+	Output          LineageNode            `json:"output"`
+	CreatedAt       time.Time              `json:"created_at"`
+	Metadata        map[string]interface{} `json:"metadata"`
 }
 
 // LineageNode represents a node in the lineage graph
 type LineageNode struct {
-	ID          string                 `json:"id"`
-	Type        NodeType               `json:"type"`
-	Location    string                 `json:"location"`
-	Version     string                 `json:"version,omitempty"`
-	Metadata    map[string]interface{} `json:"metadata"`
+	ID       string                 `json:"id"`
+	Type     NodeType               `json:"type"`
+	Location string                 `json:"location"`
+	Version  string                 `json:"version,omitempty"`
+	Metadata map[string]interface{} `json:"metadata"`
 }
 
 // NodeType represents node type
 type NodeType string
 
 const (
-	NodeTypeDataset   NodeType = "dataset"
-	NodeTypeTable     NodeType = "table"
-	NodeTypeFile      NodeType = "file"
-	NodeTypeStream    NodeType = "stream"
-	NodeTypeModel     NodeType = "model"
+	NodeTypeDataset NodeType = "dataset"
+	NodeTypeTable   NodeType = "table"
+	NodeTypeFile    NodeType = "file"
+	NodeTypeStream  NodeType = "stream"
+	NodeTypeModel   NodeType = "model"
 )
 
 // Transformation represents a transformation step
@@ -48,7 +48,7 @@ type Transformation struct {
 	ID          string                 `json:"id"`
 	Type        TransformationType     `json:"type"`
 	Description string                 `json:"description"`
-	Inputs      []string               `json:"inputs"` // node IDs
+	Inputs      []string               `json:"inputs"`  // node IDs
 	Outputs     []string               `json:"outputs"` // node IDs
 	Metadata    map[string]interface{} `json:"metadata"`
 	Timestamp   time.Time              `json:"timestamp"`
@@ -69,16 +69,16 @@ const (
 type DataLineageTracker interface {
 	// RecordLineage records lineage information
 	RecordLineage(ctx context.Context, lineage *DataLineage) error
-	
+
 	// GetLineage retrieves lineage for a dataset version
 	GetLineage(ctx context.Context, versionID string) (*DataLineage, error)
-	
+
 	// TraceUpstream traces upstream dependencies
 	TraceUpstream(ctx context.Context, versionID string) ([]*DataLineage, error)
-	
+
 	// TraceDownstream traces downstream dependencies
 	TraceDownstream(ctx context.Context, versionID string) ([]*DataLineage, error)
-	
+
 	// AddTransformation adds a transformation step
 	AddTransformation(ctx context.Context, lineageID string, transformation *Transformation) error
 }

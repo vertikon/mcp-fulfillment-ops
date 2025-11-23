@@ -1,1 +1,0 @@
-# Função: Cluster Redis

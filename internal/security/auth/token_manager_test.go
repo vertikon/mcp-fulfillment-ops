@@ -61,10 +61,10 @@ func TestTokenManager_Validate(t *testing.T) {
 	manager := NewTokenManager(config)
 
 	tests := []struct {
-		name          string
-		setupToken    func() string
+		name           string
+		setupToken     func() string
 		expectedUserID string
-		expectedError error
+		expectedError  error
 	}{
 		{
 			name: "valid token",
@@ -202,4 +202,3 @@ func TestTokenManager_Revoke(t *testing.T) {
 	assert.Error(t, err)
 	assert.Equal(t, ErrInvalidToken, err)
 }
-

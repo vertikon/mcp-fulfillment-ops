@@ -15,10 +15,10 @@ import (
 type Config struct {
 	// Mappings define how to replace values in templates
 	Mappings map[string]string `yaml:"mappings"`
-	
+
 	// Rules define transformation rules
 	Rules []Rule `yaml:"rules"`
-	
+
 	// Exclusions define paths to exclude from processing
 	Exclusions []string `yaml:"exclusions"`
 }
@@ -27,10 +27,10 @@ type Config struct {
 type Rule struct {
 	// Pattern is the pattern to match
 	Pattern string `yaml:"pattern"`
-	
+
 	// Replacement is the replacement value
 	Replacement string `yaml:"replacement"`
-	
+
 	// FileTypes are the file types this rule applies to
 	FileTypes []string `yaml:"file_types"`
 }
@@ -135,4 +135,3 @@ func replaceAll(s, old, new string) string {
 	// Use strings.ReplaceAll for simple string replacement
 	return strings.ReplaceAll(s, old, new)
 }
-

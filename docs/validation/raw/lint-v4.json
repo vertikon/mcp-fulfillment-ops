@@ -1,0 +1,47 @@
+{
+  "linter_report_version": 4,
+  "modules": [
+    {
+      "module_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops",
+      "module_name": "mcp-fulfillment-ops",
+      "linter_results": [
+        {
+          "tool": "golangci-lint",
+          "exit_code": 3,
+          "issues": [],
+          "fail_count": 0,
+          "warn_count": 0,
+          "info_count": 0,
+          "raw_log_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\lint-temp.json"
+        },
+        {
+          "tool": "govet",
+          "exit_code": 1,
+          "issues": null,
+          "fail_count": 0,
+          "warn_count": 0,
+          "info_count": 0,
+          "raw_log_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\govet.txt"
+        },
+        {
+          "tool": "staticcheck",
+          "exit_code": 1,
+          "issues": null,
+          "fail_count": 0,
+          "warn_count": 0,
+          "info_count": 0,
+          "raw_log_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\staticcheck.txt"
+        }
+      ],
+      "total_fail": 0,
+      "total_warn": 0,
+      "total_info": 0,
+      "status": "PASS"
+    }
+  ],
+  "timestamp": "2025-11-20 10:18:13",
+  "total_fail": 0,
+  "total_info": 0,
+  "total_modules": 1,
+  "total_warn": 0
+}

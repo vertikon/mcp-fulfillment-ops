@@ -9,9 +9,9 @@ import (
 )
 
 type StartInboundRequest struct {
-	ReferenceID string            `json:"reference_id" binding:"required"`
-	Origin      string            `json:"origin" binding:"required"`
-	Destination string            `json:"destination" binding:"required"`
+	ReferenceID string             `json:"reference_id" binding:"required"`
+	Origin      string             `json:"origin" binding:"required"`
+	Destination string             `json:"destination" binding:"required"`
 	Items       []fulfillment.Item `json:"items" binding:"required"`
 }
 
@@ -53,4 +53,3 @@ func handleConfirmInbound(uc *app.ReceiveGoodsUseCase) gin.HandlerFunc {
 		c.JSON(http.StatusOK, gin.H{"status": "confirmed"})
 	}
 }
-

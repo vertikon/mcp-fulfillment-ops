@@ -31,4 +31,3 @@ func (l *ZapLoggerAdapter) Error(msg string, fields ...zap.Field) {
 func (l *ZapLoggerAdapter) Warn(msg string, fields ...zap.Field) {
 	l.logger.Warn(msg, fields...)
 }
-

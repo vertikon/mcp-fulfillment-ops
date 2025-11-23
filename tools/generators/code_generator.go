@@ -85,8 +85,8 @@ type CodeGenerateRequest struct {
 	Name       string                 `json:"name"`
 	Package    string                 `json:"package"`
 	OutputPath string                 `json:"output_path"`
-	Fields     []FieldDefinition     `json:"fields,omitempty"`
-	Methods    []MethodDefinition    `json:"methods,omitempty"`
+	Fields     []FieldDefinition      `json:"fields,omitempty"`
+	Methods    []MethodDefinition     `json:"methods,omitempty"`
 	Config     map[string]interface{} `json:"config,omitempty"`
 }
 
@@ -100,18 +100,18 @@ type CodeGenerateResult struct {
 
 // FieldDefinition represents a field in a struct
 type FieldDefinition struct {
-	Name     string `json:"name"`
-	Type     string `json:"type"`
-	Tag      string `json:"tag,omitempty"`
-	Comment  string `json:"comment,omitempty"`
+	Name    string `json:"name"`
+	Type    string `json:"type"`
+	Tag     string `json:"tag,omitempty"`
+	Comment string `json:"comment,omitempty"`
 }
 
 // MethodDefinition represents a method signature
 type MethodDefinition struct {
-	Name       string   `json:"name"`
-	Params     []string `json:"params,omitempty"`
-	Returns    []string `json:"returns,omitempty"`
-	Comment    string   `json:"comment,omitempty"`
+	Name    string   `json:"name"`
+	Params  []string `json:"params,omitempty"`
+	Returns []string `json:"returns,omitempty"`
+	Comment string   `json:"comment,omitempty"`
 }
 
 // Validate validates the code generation request
@@ -119,15 +119,15 @@ func (g *CodeGenerator) Validate(req CodeGenerateRequest) error {
 	if req.Type == "" {
 		return fmt.Errorf("code type is required")
 	}
-	
+
 	if req.Name == "" {
 		return fmt.Errorf("name is required")
 	}
-	
+
 	if req.OutputPath == "" {
 		return fmt.Errorf("output path is required")
 	}
-	
+
 	validTypes := []string{"handler", "entity", "repository", "service", "usecase", "dto"}
 	valid := false
 	for _, vt := range validTypes {
@@ -139,7 +139,7 @@ func (g *CodeGenerator) Validate(req CodeGenerateRequest) error {
 	if !valid {
 		return fmt.Errorf("invalid code type: %s (valid types: %v)", req.Type, validTypes)
 	}
-	
+
 	return nil
 }
 

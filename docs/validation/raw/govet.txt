@@ -1,1 +1,18 @@
-pattern ./...: directory prefix . does not contain modules listed in go.work or their selected dependencies
+# github.com/vertikon/mcp-fulfillment-ops/internal/ai/knowledge
+# [github.com/vertikon/mcp-fulfillment-ops/internal/ai/knowledge]
+vet.exe: internal\ai\knowledge\indexer_test.go:68:60: not enough arguments in call to NewIndexer
+	have (*mockVectorClient, *mockGraphClient, number, number)
+	want (VectorClient, GraphClient, Embedder, int, int)
+# github.com/vertikon/mcp-fulfillment-ops/internal/domain/value_objects
+# [github.com/vertikon/mcp-fulfillment-ops/internal/domain/value_objects]
+internal\domain\value_objects\validation_rule.go:69:22: non-constant format string in call to fmt.Errorf
+# github.com/vertikon/mcp-fulfillment-ops/internal/state/cache
+# [github.com/vertikon/mcp-fulfillment-ops/internal/state/cache]
+vet.exe: internal\state\cache\state_cache_test.go:127:6: assignment mismatch: 1 variable but cache.Get returns 2 values
+# github.com/vertikon/mcp-fulfillment-ops/internal/state/store
+# [github.com/vertikon/mcp-fulfillment-ops/internal/state/store]
+vet.exe: internal\state\store\conflict_resolver_test.go:161:14: invalid operation: stats == nil (mismatched types ConflictStats and untyped nil)
+# github.com/vertikon/mcp-fulfillment-ops/pkg/httpserver
+# [github.com/vertikon/mcp-fulfillment-ops/pkg/httpserver]
+pkg\httpserver\server_test.go:216:5: comparison of function healthHandler == nil is always false
+pkg\httpserver\server_test.go:224:5: comparison of function readyHandler == nil is always false

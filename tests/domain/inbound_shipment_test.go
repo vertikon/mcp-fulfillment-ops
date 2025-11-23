@@ -76,10 +76,10 @@ func TestInboundShipment_StartReceiving(t *testing.T) {
 	shipment, _ := fulfillment.NewInboundShipment("REF-001", "Origin", "Dest", []fulfillment.Item{{SKU: "SKU-001", Quantity: 10}})
 
 	tests := []struct {
-		name        string
-		setup       func(*fulfillment.InboundShipment)
-		wantErr     bool
-		wantStatus  fulfillment.Status
+		name       string
+		setup      func(*fulfillment.InboundShipment)
+		wantErr    bool
+		wantStatus fulfillment.Status
 	}{
 		{
 			name: "valid transition pending -> in_progress",
@@ -126,10 +126,10 @@ func TestInboundShipment_Complete(t *testing.T) {
 	shipment, _ := fulfillment.NewInboundShipment("REF-001", "Origin", "Dest", []fulfillment.Item{{SKU: "SKU-001", Quantity: 10}})
 
 	tests := []struct {
-		name        string
-		setup       func(*fulfillment.InboundShipment)
-		wantErr     bool
-		wantStatus  fulfillment.Status
+		name       string
+		setup      func(*fulfillment.InboundShipment)
+		wantErr    bool
+		wantStatus fulfillment.Status
 	}{
 		{
 			name: "valid transition in_progress -> completed",
@@ -188,4 +188,3 @@ func containsHelper(s, substr string) bool {
 	}
 	return false
 }
-

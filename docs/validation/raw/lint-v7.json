@@ -1,0 +1,178 @@
+{
+  "linter_report_version": 7,
+  "modules": [
+    {
+      "module_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops",
+      "module_name": "github.com/vertikon/gera-treina\ngithub.com/vertikon/model-router\ngithub.com/vertikon/claude-desktop-agent\ngithub.com/vertikon/mcp-go-architect-sdk-custom\ngithub.com/vertikon/mcp-core-inventory\ngithub.com/vertikon/mcp-fulfillment-ops\ngithub.com/vertikon/mcp-hulk\ngithub.com/vertikon/mcp-wa-auth\ngithub.com/docker/compose/v2\ngithub.com/vertikon/mcp-gateway-providers-ai",
+      "linter_results": [
+        {
+          "tool": "golangci-lint",
+          "exit_code": 3,
+          "issues": [],
+          "fail_count": 0,
+          "warn_count": 0,
+          "info_count": 0,
+          "raw_log_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\lint-temp.json"
+        },
+        {
+          "tool": "govet",
+          "exit_code": 1,
+          "issues": [
+            {
+              "tool": "govet",
+              "file": "internal/mcp/protocol/handlers.go",
+              "line": 344,
+              "col": 4,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "h.parseParams undefined (type *ListTemplatesHandler has no field or method parseParams)",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/mcp/protocol/handlers.go",
+              "line": 446,
+              "col": 4,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "h.parseParams undefined (type *ListProjectsHandler has no field or method parseParams)",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "tools/deployers/hybrid_deployer.go",
+              "line": 10,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "\"github.com/vertikon/mcp-fulfillment-ops/internal/infrastructure/cloud/kubernetes\" imported and not used",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "vet.exe: internal/ai/knowledge/indexer_test.go",
+              "line": 68,
+              "col": 60,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "not enough arguments in call to NewIndexer",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/domain/value_objects/validation_rule.go",
+              "line": 69,
+              "col": 22,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "non-constant format string in call to fmt.Errorf",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "vet.exe: internal/infrastructure/compute/serverless/cloud_functions.go",
+              "line": 14,
+              "col": 46,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "undefined: FunctionConfig",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "vet.exe: internal/mcp/protocol/handlers.go",
+              "line": 344,
+              "col": 4,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "h.parseParams undefined (type *ListTemplatesHandler has no field or method parseParams)",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "vet.exe: internal/state/events/event_replay.go",
+              "line": 249,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "declared and not used: snapshot",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "vet.exe: internal/state/cache/cache_coherency.go",
+              "line": 162,
+              "col": 11,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "cm.cache.Delete undefined (type *StateCache is pointer to interface, not interface)",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "vet.exe: internal/security/config/integration.go",
+              "line": 215,
+              "col": 26,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "ruleCfg.Resource undefined (type PolicyRuleConfig has no field or method Resource)",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "vet.exe: internal/state/store/conflict_resolver.go",
+              "line": 236,
+              "col": 10,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "not enough return values",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "pkg/httpserver/server_test.go",
+              "line": 216,
+              "col": 5,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "comparison of function healthHandler == nil is always false",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "pkg/httpserver/server_test.go",
+              "line": 224,
+              "col": 5,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "comparison of function readyHandler == nil is always false",
+              "snippet": ""
+            }
+          ],
+          "fail_count": 13,
+          "warn_count": 0,
+          "info_count": 0,
+          "raw_log_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\govet.txt"
+        },
+        {
+          "tool": "staticcheck",
+          "exit_code": 1,
+          "issues": null,
+          "fail_count": 0,
+          "warn_count": 0,
+          "info_count": 0,
+          "raw_log_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\staticcheck.txt"
+        }
+      ],
+      "total_fail": 13,
+      "total_warn": 0,
+      "total_info": 0,
+      "status": "FAIL"
+    }
+  ],
+  "timestamp": "2025-11-21 16:17:52",
+  "total_fail": 13,
+  "total_info": 0,
+  "total_modules": 1,
+  "total_warn": 0
+}

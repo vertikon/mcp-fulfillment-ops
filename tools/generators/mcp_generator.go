@@ -3,7 +3,6 @@ package generators
 import (
 	"context"
 	"fmt"
-	"path/filepath"
 
 	"github.com/vertikon/mcp-fulfillment-ops/internal/mcp/generators"
 	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
@@ -25,9 +24,9 @@ func NewMCPGenerator(templateRoot string) *MCPGenerator {
 		CacheEnabled:  true,
 		MaxConcurrent: 10,
 	}
-	
+
 	factory := generators.NewGeneratorFactory(config)
-	
+
 	return &MCPGenerator{
 		factory: factory,
 		logger:  logger.Get(),
@@ -90,20 +89,20 @@ func (g *MCPGenerator) Validate(req MCPGenerateRequest) error {
 	if req.Name == "" {
 		return fmt.Errorf("MCP name is required")
 	}
-	
+
 	if req.Path == "" {
 		return fmt.Errorf("output path is required")
 	}
-	
+
 	if req.Stack == "" {
 		req.Stack = "mcp-go-premium"
 	}
-	
+
 	// Validate stack is supported
 	if !g.factory.HasGenerator(req.Stack) {
 		return fmt.Errorf("unsupported stack: %s", req.Stack)
 	}
-	
+
 	return nil
 }
 

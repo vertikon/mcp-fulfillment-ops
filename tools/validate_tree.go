@@ -16,7 +16,7 @@ import (
 )
 
 var (
-	originalTreePath   string
+	originalTreePath  string
 	commentedTreePath string
 	projectRoot       string
 	outputFormat      string
@@ -52,28 +52,28 @@ func main() {
 
 // ValidationResult represents the validation results
 type ValidationResult struct {
-	Summary          SummaryResult              `json:"summary"`
-	OriginalOnly     []string                   `json:"original_only"`
-	CommentedOnly    []string                   `json:"commented_only"`
-	ImplementationOnly []string                  `json:"implementation_only"`
-	Missing          []MissingFile              `json:"missing"`
-	Extra            []ExtraFile                 `json:"extra"`
-	BlockCompliance  map[string]BlockCompliance `json:"block_compliance"`
-	Errors           []string                    `json:"errors,omitempty"`
+	Summary            SummaryResult              `json:"summary"`
+	OriginalOnly       []string                   `json:"original_only"`
+	CommentedOnly      []string                   `json:"commented_only"`
+	ImplementationOnly []string                   `json:"implementation_only"`
+	Missing            []MissingFile              `json:"missing"`
+	Extra              []ExtraFile                `json:"extra"`
+	BlockCompliance    map[string]BlockCompliance `json:"block_compliance"`
+	Errors             []string                   `json:"errors,omitempty"`
 }
 
 // SummaryResult contains summary statistics
 type SummaryResult struct {
-	TotalOriginalFiles      int `json:"total_original_files"`
-	TotalCommentedFiles     int `json:"total_commented_files"`
-	TotalImplementationFiles int `json:"total_implementation_files"`
-	CommonFiles             int `json:"common_files"`
-	OriginalOnlyCount      int `json:"original_only_count"`
-	CommentedOnlyCount     int `json:"commented_only_count"`
-	ImplementationOnlyCount int `json:"implementation_only_count"`
-	MissingCount           int `json:"missing_count"`
-	ExtraCount             int `json:"extra_count"`
-	CompliancePercent      float64 `json:"compliance_percent"`
+	TotalOriginalFiles       int     `json:"total_original_files"`
+	TotalCommentedFiles      int     `json:"total_commented_files"`
+	TotalImplementationFiles int     `json:"total_implementation_files"`
+	CommonFiles              int     `json:"common_files"`
+	OriginalOnlyCount        int     `json:"original_only_count"`
+	CommentedOnlyCount       int     `json:"commented_only_count"`
+	ImplementationOnlyCount  int     `json:"implementation_only_count"`
+	MissingCount             int     `json:"missing_count"`
+	ExtraCount               int     `json:"extra_count"`
+	CompliancePercent        float64 `json:"compliance_percent"`
 }
 
 // MissingFile represents a file that should exist but doesn't
@@ -93,12 +93,12 @@ type ExtraFile struct {
 
 // BlockCompliance represents compliance status for a block
 type BlockCompliance struct {
-	Block           string  `json:"block"`
-	ExpectedFiles   int     `json:"expected_files"`
-	FoundFiles      int     `json:"found_files"`
-	MissingFiles    int     `json:"missing_files"`
+	Block             string  `json:"block"`
+	ExpectedFiles     int     `json:"expected_files"`
+	FoundFiles        int     `json:"found_files"`
+	MissingFiles      int     `json:"missing_files"`
 	CompliancePercent float64 `json:"compliance_percent"`
-	Status          string  `json:"status"`
+	Status            string  `json:"status"`
 }
 
 func runValidation(cmd *cobra.Command, args []string) error {
@@ -171,7 +171,7 @@ func loadTreeFile(path string) (map[string]bool, error) {
 			// Remove emoji and clean
 			fileName = strings.TrimSpace(strings.TrimPrefix(fileName, "📄"))
 			fileName = strings.TrimSpace(strings.TrimPrefix(fileName, "📁"))
-			
+
 			if fileName != "" && !strings.Contains(fileName, "#") {
 				fullPath := filepath.Join(currentPath, fileName)
 				files[normalizePath(fullPath)] = true
@@ -192,13 +192,13 @@ func loadTreeFile(path string) (map[string]bool, error) {
 func scanImplementation(root string) (map[string]bool, error) {
 	files := make(map[string]bool)
 	ignoredDirs := map[string]bool{
-		".git": true,
+		".git":         true,
 		"node_modules": true,
-		".cache": true,
-		"vendor": true,
-		"bin": true,
-		"dist": true,
-		"build": true,
+		".cache":       true,
+		"vendor":       true,
+		"bin":          true,
+		"dist":         true,
+		"build":        true,
 	}
 
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
@@ -305,14 +305,14 @@ func validateTrees(original, commented, implementation map[string]bool) Validati
 
 	// Calculate summary
 	result.Summary = SummaryResult{
-		TotalOriginalFiles:      len(original),
-		TotalCommentedFiles:     len(commented),
+		TotalOriginalFiles:       len(original),
+		TotalCommentedFiles:      len(commented),
 		TotalImplementationFiles: len(implementation),
-		OriginalOnlyCount:       len(result.OriginalOnly),
-		CommentedOnlyCount:      len(result.CommentedOnly),
-		ImplementationOnlyCount: len(result.ImplementationOnly),
-		MissingCount:            len(result.Missing),
-		ExtraCount:              len(result.Extra),
+		OriginalOnlyCount:        len(result.OriginalOnly),
+		CommentedOnlyCount:       len(result.CommentedOnly),
+		ImplementationOnlyCount:  len(result.ImplementationOnly),
+		MissingCount:             len(result.Missing),
+		ExtraCount:               len(result.Extra),
 	}
 
 	// Calculate compliance
@@ -336,24 +336,24 @@ func validateTrees(original, commented, implementation map[string]bool) Validati
 // detectBlock detects which block a file belongs to
 func detectBlock(path string) string {
 	pathLower := strings.ToLower(path)
-	
+
 	blocks := map[string]string{
-		"cmd/":                    "BLOCO-1",
-		"internal/core/":          "BLOCO-1",
-		"internal/mcp/":           "BLOCO-2",
-		"internal/state/":         "BLOCO-3",
-		"internal/monitoring/":    "BLOCO-4",
-		"internal/versioning/":    "BLOCO-5",
-		"internal/ai/":            "BLOCO-6",
+		"cmd/":                     "BLOCO-1",
+		"internal/core/":           "BLOCO-1",
+		"internal/mcp/":            "BLOCO-2",
+		"internal/state/":          "BLOCO-3",
+		"internal/monitoring/":     "BLOCO-4",
+		"internal/versioning/":     "BLOCO-5",
+		"internal/ai/":             "BLOCO-6",
 		"internal/infrastructure/": "BLOCO-7",
-		"internal/interfaces/":    "BLOCO-8",
-		"internal/security/":      "BLOCO-9",
-		"templates/":              "BLOCO-10",
-		"tools/":                  "BLOCO-11",
-		"cmd/mcp-init/":           "BLOCO-11",
-		"config/":                 "BLOCO-12",
-		"scripts/":                "BLOCO-13",
-		"docs/":                   "BLOCO-14",
+		"internal/interfaces/":     "BLOCO-8",
+		"internal/security/":       "BLOCO-9",
+		"templates/":               "BLOCO-10",
+		"tools/":                   "BLOCO-11",
+		"cmd/mcp-init/":            "BLOCO-11",
+		"config/":                  "BLOCO-12",
+		"scripts/":                 "BLOCO-13",
+		"docs/":                    "BLOCO-14",
 	}
 
 	for prefix, block := range blocks {
@@ -373,7 +373,7 @@ func isCriticalFile(path string) bool {
 		"config.go",
 		"handler.go",
 	}
-	
+
 	pathLower := strings.ToLower(path)
 	for _, pattern := range criticalPatterns {
 		if strings.Contains(pathLower, pattern) {
@@ -386,7 +386,7 @@ func isCriticalFile(path string) bool {
 // categorizeExtraFile categorizes an extra file
 func categorizeExtraFile(path string) string {
 	pathLower := strings.ToLower(path)
-	
+
 	if strings.Contains(pathLower, ".cursor/") {
 		return "documentation"
 	}
@@ -402,7 +402,7 @@ func categorizeExtraFile(path string) string {
 	if strings.Contains(pathLower, ".cache") || strings.Contains(pathLower, "coverage") {
 		return "build_artifact"
 	}
-	
+
 	return "unknown"
 }
 
@@ -423,7 +423,7 @@ func getActionForExtraFile(category string) string {
 // calculateBlockCompliance calculates compliance per block
 func calculateBlockCompliance(original, implementation map[string]bool) map[string]BlockCompliance {
 	blockFiles := make(map[string]map[string]bool)
-	
+
 	// Group files by block
 	for file := range original {
 		block := detectBlock(file)
@@ -432,25 +432,25 @@ func calculateBlockCompliance(original, implementation map[string]bool) map[stri
 		}
 		blockFiles[block][file] = true
 	}
-	
+
 	compliance := make(map[string]BlockCompliance)
-	
+
 	for block, files := range blockFiles {
 		expected := len(files)
 		found := 0
-		
+
 		for file := range files {
 			if implementation[file] {
 				found++
 			}
 		}
-		
+
 		missing := expected - found
 		compliancePercent := 100.0
 		if expected > 0 {
 			compliancePercent = float64(found) / float64(expected) * 100.0
 		}
-		
+
 		status := "✅ Complete"
 		if missing > 0 {
 			status = "⚠️ Partial"
@@ -458,17 +458,17 @@ func calculateBlockCompliance(original, implementation map[string]bool) map[stri
 		if compliancePercent < 50 {
 			status = "❌ Incomplete"
 		}
-		
+
 		compliance[block] = BlockCompliance{
-			Block:            block,
-			ExpectedFiles:   expected,
-			FoundFiles:      found,
-			MissingFiles:    missing,
+			Block:             block,
+			ExpectedFiles:     expected,
+			FoundFiles:        found,
+			MissingFiles:      missing,
 			CompliancePercent: compliancePercent,
-			Status:          status,
+			Status:            status,
 		}
 	}
-	
+
 	return compliance
 }
 
@@ -508,7 +508,7 @@ func outputMarkdown(result ValidationResult) error {
 	fmt.Printf("- Missing Files: %d\n", result.Summary.MissingCount)
 	fmt.Printf("- Extra Files: %d\n", result.Summary.ExtraCount)
 	fmt.Println()
-	
+
 	if len(result.BlockCompliance) > 0 {
 		fmt.Println("## Block Compliance")
 		fmt.Println()
@@ -521,7 +521,7 @@ func outputMarkdown(result ValidationResult) error {
 		}
 		fmt.Println()
 	}
-	
+
 	return nil
 }
 
@@ -537,7 +537,7 @@ func outputText(result ValidationResult) error {
 	fmt.Printf("  Common Files: %d\n", result.Summary.CommonFiles)
 	fmt.Printf("  Missing Files: %d\n", result.Summary.MissingCount)
 	fmt.Printf("  Extra Files: %d\n\n", result.Summary.ExtraCount)
-	
+
 	if len(result.BlockCompliance) > 0 {
 		fmt.Println("Block Compliance:")
 		for _, block := range result.BlockCompliance {
@@ -546,7 +546,6 @@ func outputText(result ValidationResult) error {
 				block.FoundFiles, block.ExpectedFiles, block.Status)
 		}
 	}
-	
+
 	return nil
 }
-

@@ -1,1 +1,0 @@
-# Gerenciador FaaS genérico

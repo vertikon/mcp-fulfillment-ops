@@ -1,0 +1,85 @@
+{
+  "project1": {
+    "id": "project-project1-1763766018",
+    "name": "project1",
+    "stack": "go",
+    "path": "/tmp/project1",
+    "features": null,
+    "config": null,
+    "status": "active",
+    "created_at": "2025-11-21T20:00:18.2177225-03:00",
+    "updated_at": "2025-11-21T20:00:18.2177225-03:00",
+    "size": 0,
+    "files": 0
+  },
+  "project2": {
+    "id": "project-project2-1763766018",
+    "name": "project2",
+    "stack": "web",
+    "path": "/tmp/project2",
+    "features": null,
+    "config": null,
+    "status": "active",
+    "created_at": "2025-11-21T20:00:18.2177225-03:00",
+    "updated_at": "2025-11-21T20:00:18.2177225-03:00",
+    "size": 0,
+    "files": 0
+  },
+  "test-get": {
+    "id": "project-test-get-1763765975",
+    "name": "test-get",
+    "stack": "go",
+    "path": "/tmp/test-get",
+    "features": null,
+    "config": null,
+    "status": "active",
+    "created_at": "2025-11-21T19:59:35.5892995-03:00",
+    "updated_at": "2025-11-21T19:59:35.5892995-03:00",
+    "size": 0,
+    "files": 0
+  },
+  "test-path": {
+    "id": "project-test-path-1763892891",
+    "name": "test-path",
+    "stack": "go",
+    "path": "/tmp/test-path",
+    "features": null,
+    "config": null,
+    "status": "active",
+    "created_at": "2025-11-23T07:14:51.3002071-03:00",
+    "updated_at": "2025-11-23T07:14:51.3002071-03:00",
+    "size": 0,
+    "files": 0
+  },
+  "test-project": {
+    "id": "project-test-project-1763766018",
+    "name": "test-project",
+    "stack": "go",
+    "path": "/tmp/test-project",
+    "features": null,
+    "config": null,
+    "status": "active",
+    "created_at": "2025-11-21T20:00:18.1567814-03:00",
+    "updated_at": "2025-11-21T20:00:18.1567814-03:00",
+    "size": 0,
+    "files": 0
+  },
+  "test-update": {
+    "id": "project-test-update-1763752614",
+    "name": "test-update",
+    "stack": "go",
+    "path": "/tmp/test-update",
+    "features": [
+      "feature1",
+      "feature2"
+    ],
+    "config": {
+      "key": "value"
+    },
+    "status": "active",
+    "created_at": "2025-11-21T16:16:54.9570275-03:00",
+    "updated_at": "2025-11-23T07:17:57.4685212-03:00",
+    "size": 0,
+    "files": 0
+  }
+}

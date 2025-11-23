@@ -26,4 +26,3 @@ package auth
 // 	// 2. After user authorizes, handle callback
 // 	// userInfo, _ := oauthManager.HandleCallback(ctx, OAuthProviderAuth0, code, state)
 // }
-

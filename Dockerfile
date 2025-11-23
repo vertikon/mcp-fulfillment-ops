@@ -1,7 +1,5 @@
-cd "E:\vertikon\.ecosistema-claude\mcp-scan-validator\sdk\sdk-scan-validator\bin\"
-./validator_v9_enhanced.exe "E:\vertikon\.endurance\internal\services\bloco-1-core\mcp-fulfillment-ops"
 # Build stage
-FROM golang:1.23-alpine AS builder
+FROM golang:1.24-alpine AS builder
 
 WORKDIR /build
 
@@ -24,7 +22,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
 # Runtime stage
 FROM alpine:latest
 
-RUN apk --no-cache add ca-certificates tzdata
+RUN apk --no-cache add ca-certificates tzdata wget
 
 WORKDIR /app
 
@@ -50,4 +48,3 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 
 # Run binary
 CMD ["/app/mcp-fulfillment-ops"]
-

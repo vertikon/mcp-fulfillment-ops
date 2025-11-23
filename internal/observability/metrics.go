@@ -10,12 +10,12 @@ import (
 
 // Metrics provides Prometheus metrics
 type Metrics struct {
-	requestsTotal    *prometheus.CounterVec
-	requestDuration  *prometheus.HistogramVec
-	activeWorkers    prometheus.Gauge
-	queueSize        prometheus.Gauge
-	cacheHits        *prometheus.CounterVec
-	cacheMisses      *prometheus.CounterVec
+	requestsTotal   *prometheus.CounterVec
+	requestDuration *prometheus.HistogramVec
+	activeWorkers   prometheus.Gauge
+	queueSize       prometheus.Gauge
+	cacheHits       *prometheus.CounterVec
+	cacheMisses     *prometheus.CounterVec
 }
 
 // NewMetrics creates a new metrics instance
@@ -106,4 +106,3 @@ func (m *Metrics) RecordCacheHit(level string) {
 func (m *Metrics) RecordCacheMiss(level string) {
 	m.cacheMisses.WithLabelValues(level).Inc()
 }
-

@@ -1,1 +1,0 @@
-# Tipos e utilitários MCP

@@ -189,8 +189,8 @@ func TestIndexer_chunkDocument(t *testing.T) {
 	indexer := NewIndexer(nil, nil, 100, 20)
 
 	tests := []struct {
-		name    string
-		content string
+		name      string
+		content   string
 		minChunks int
 	}{
 		{
@@ -229,4 +229,3 @@ func TestIndexer_chunkDocument(t *testing.T) {
 		})
 	}
 }
-

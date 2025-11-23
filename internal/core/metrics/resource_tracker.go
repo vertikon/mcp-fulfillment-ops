@@ -12,24 +12,24 @@ import (
 
 // ResourceTracker tracks system resource usage
 type ResourceTracker struct {
-	mu             sync.RWMutex
-	resources      map[string]*ResourceUsage
-	limits         map[string]ResourceLimit
+	mu              sync.RWMutex
+	resources       map[string]*ResourceUsage
+	limits          map[string]ResourceLimit
 	collectInterval time.Duration
-	ctx            context.Context
-	cancel         context.CancelFunc
+	ctx             context.Context
+	cancel          context.CancelFunc
 }
 
 // ResourceUsage tracks usage for a specific resource
 type ResourceUsage struct {
-	Name         string    `json:"name"`
-	Type         string    `json:"type"` // cpu, memory, disk, network
-	Current      float64   `json:"current"`
-	Max          float64   `json:"max"`
-	Average      float64   `json:"average"`
-	LastUpdated  time.Time `json:"last_updated"`
-	AlertTriggered bool     `json:"alert_triggered"`
-	Samples      []float64 `json:"-"`
+	Name           string    `json:"name"`
+	Type           string    `json:"type"` // cpu, memory, disk, network
+	Current        float64   `json:"current"`
+	Max            float64   `json:"max"`
+	Average        float64   `json:"average"`
+	LastUpdated    time.Time `json:"last_updated"`
+	AlertTriggered bool      `json:"alert_triggered"`
+	Samples        []float64 `json:"-"`
 }
 
 // ResourceLimit defines limits for a resource
@@ -43,29 +43,29 @@ type ResourceLimit struct {
 
 // ResourceStats provides aggregated resource statistics
 type ResourceStats struct {
-	TotalResources    int                    `json:"total_resources"`
-	HealthyResources int                    `json:"healthy_resources"`
-	WarningResources int                    `json:"warning_resources"`
-	CriticalResources int                   `json:"critical_resources"`
-	Resources        map[string]ResourceUsage `json:"resources"`
-	LastUpdate       time.Time              `json:"last_update"`
+	TotalResources    int                      `json:"total_resources"`
+	HealthyResources  int                      `json:"healthy_resources"`
+	WarningResources  int                      `json:"warning_resources"`
+	CriticalResources int                      `json:"critical_resources"`
+	Resources         map[string]ResourceUsage `json:"resources"`
+	LastUpdate        time.Time                `json:"last_update"`
 }
 
 // NewResourceTracker creates a new resource tracker
 func NewResourceTracker(interval time.Duration) *ResourceTracker {
 	ctx, cancel := context.WithCancel(context.Background())
-	
+
 	rt := &ResourceTracker{
-		resources:      make(map[string]*ResourceUsage),
-		limits:         make(map[string]ResourceLimit),
+		resources:       make(map[string]*ResourceUsage),
+		limits:          make(map[string]ResourceLimit),
 		collectInterval: interval,
-		ctx:            ctx,
-		cancel:         cancel,
+		ctx:             ctx,
+		cancel:          cancel,
 	}
 
 	// Initialize default limits
 	rt.initDefaultLimits()
-	
+
 	return rt
 }
 
@@ -180,7 +180,7 @@ func (rt *ResourceTracker) calculateStats(resource *ResourceUsage) {
 
 	var sum float64
 	max := resource.Samples[0]
-	
+
 	for _, sample := range resource.Samples {
 		sum += sample
 		if sample > max {
@@ -223,19 +223,19 @@ func (rt *ResourceTracker) checkLimits(resource *ResourceUsage) {
 func (rt *ResourceTracker) getCPUUsage() float64 {
 	// In a real implementation, you'd use system calls to get actual CPU usage
 	// For now, return a simulated value
-	return 25.0 + (float64(time.Now().Unix() % 100) / 10)
+	return 25.0 + (float64(time.Now().Unix()%100) / 10)
 }
 
 // getMemoryUsage returns simulated memory usage percentage
 func (rt *ResourceTracker) getMemoryUsage() float64 {
 	// In a real implementation, you'd use system calls to get actual memory usage
-	return 60.0 + (float64(time.Now().Unix() % 50) / 10)
+	return 60.0 + (float64(time.Now().Unix()%50) / 10)
 }
 
 // getDiskUsage returns simulated disk usage percentage
 func (rt *ResourceTracker) getDiskUsage() float64 {
 	// In a real implementation, you'd use system calls to get actual disk usage
-	return 45.0 + (float64(time.Now().Unix() % 40) / 10)
+	return 45.0 + (float64(time.Now().Unix()%40) / 10)
 }
 
 // GetStats returns current resource statistics
@@ -245,12 +245,12 @@ func (rt *ResourceTracker) GetStats() ResourceStats {
 
 	stats := ResourceStats{
 		Resources:  make(map[string]ResourceUsage),
-		LastUpdate:  time.Now(),
+		LastUpdate: time.Now(),
 	}
 
 	for name, resource := range rt.resources {
 		stats.Resources[name] = *resource
-		
+
 		if resource.AlertTriggered {
 			stats.CriticalResources++
 		} else if limit, exists := rt.limits[name]; exists && resource.Current >= limit.Warning {

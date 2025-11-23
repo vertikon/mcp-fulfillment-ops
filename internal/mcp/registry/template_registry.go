@@ -40,7 +40,7 @@ func NewTemplateRegistry(basePath string) *TemplateRegistry {
 	return &TemplateRegistry{
 		templates: make(map[string]*TemplateRegistryInfo),
 		basePath:  basePath,
-		logger:    logger.GetLogger(),
+		logger:    logger.Get(),
 	}
 }
 
@@ -67,15 +67,15 @@ func (tr *TemplateRegistry) LoadTemplates(ctx context.Context) error {
 
 			templateInfo, err := tr.loadTemplateFromManifest(path)
 			if err != nil {
-				tr.logger.Error("Failed to load template", 
-					zap.String("path", path), 
+				tr.logger.Error("Failed to load template",
+					zap.String("path", path),
 					zap.Error(err))
 				return nil // Continue loading other templates
 			}
 
 			templateInfo.Path = relPath
 			tr.templates[templateInfo.Name] = templateInfo
-			tr.logger.Info("Loaded template", 
+			tr.logger.Info("Loaded template",
 				zap.String("name", templateInfo.Name),
 				zap.String("stack", templateInfo.Stack))
 		}
@@ -149,7 +149,7 @@ func (tr *TemplateRegistry) ListTemplates() []*TemplateRegistryInfo {
 	tr.mu.RLock()
 	defer tr.mu.RUnlock()
 
-		templates := make([]*TemplateRegistryInfo, 0, len(tr.templates))
+	templates := make([]*TemplateRegistryInfo, 0, len(tr.templates))
 	for _, template := range tr.templates {
 		templates = append(templates, template)
 	}
@@ -162,7 +162,7 @@ func (tr *TemplateRegistry) ListTemplatesByStack(stack string) []*TemplateRegist
 	tr.mu.RLock()
 	defer tr.mu.RUnlock()
 
-		var templates []*TemplateRegistryInfo
+	var templates []*TemplateRegistryInfo
 	for _, template := range tr.templates {
 		if template.Stack == stack {
 			templates = append(templates, template)
@@ -196,7 +196,7 @@ func (tr *TemplateRegistry) SearchTemplates(query string) []*TemplateRegistryInf
 	defer tr.mu.RUnlock()
 
 	query = strings.ToLower(query)
-		var results []*TemplateRegistryInfo
+	var results []*TemplateRegistryInfo
 
 	for _, template := range tr.templates {
 		if strings.Contains(strings.ToLower(template.Name), query) ||
@@ -248,7 +248,7 @@ func (tr *TemplateRegistry) RegisterTemplate(templateInfo *TemplateRegistryInfo)
 	}
 
 	tr.templates[templateInfo.Name] = templateInfo
-	tr.logger.Info("Template registered", 
+	tr.logger.Info("Template registered",
 		zap.String("name", templateInfo.Name),
 		zap.String("stack", templateInfo.Stack))
 

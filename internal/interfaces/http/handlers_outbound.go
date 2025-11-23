@@ -5,7 +5,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/vertikon/mcp-fulfillment-ops/internal/app"
-	"github.com/vertikon/mcp-fulfillment-ops/internal/domain/fulfillment"
 )
 
 type StartPickingRequest struct {
@@ -49,4 +48,3 @@ func handleShipOrder(uc *app.ShipOrderUseCase) gin.HandlerFunc {
 		c.JSON(http.StatusOK, gin.H{"status": "shipped"})
 	}
 }
-

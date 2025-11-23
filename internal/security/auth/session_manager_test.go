@@ -316,4 +316,3 @@ func TestSessionManager_GetByUserID(t *testing.T) {
 	assert.False(t, sessionIDs["session2"]) // Inactive
 	assert.False(t, sessionIDs["session3"]) // Expired
 }
-

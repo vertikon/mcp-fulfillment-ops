@@ -14,10 +14,10 @@ type JSONRPCRequest struct {
 
 // JSONRPCResponse represents a JSON-RPC 2.0 response
 type JSONRPCResponse struct {
-	JSONRPC string      `json:"jsonrpc"`
-	Result  interface{} `json:"result,omitempty"`
+	JSONRPC string        `json:"jsonrpc"`
+	Result  interface{}   `json:"result,omitempty"`
 	Error   *JSONRPCError `json:"error,omitempty"`
-	ID      interface{} `json:"id,omitempty"`
+	ID      interface{}   `json:"id,omitempty"`
 }
 
 // JSONRPCError represents a JSON-RPC 2.0 error
@@ -98,8 +98,8 @@ type ImageContent struct {
 
 // ResourceContent represents resource content
 type ResourceContent struct {
-	Type string `json:"type"`
-	URI  string `json:"uri"`
+	Type     string `json:"type"`
+	URI      string `json:"uri"`
 	MimeType string `json:"mimeType,omitempty"`
 }
 
@@ -110,7 +110,7 @@ type ListToolsRequest struct {
 
 // ListToolsResponse represents a list tools response
 type ListToolsResponse struct {
-	Tools []Tool `json:"tools"`
+	Tools      []Tool `json:"tools"`
 	NextCursor string `json:"nextCursor,omitempty"`
 }
 
@@ -122,7 +122,7 @@ type CallToolRequest struct {
 
 // InitializeParams represents initialize parameters
 type InitializeParams struct {
-	ProtocolVersion string            `json:"protocolVersion"`
+	ProtocolVersion string                 `json:"protocolVersion"`
 	Capabilities    map[string]interface{} `json:"capabilities"`
 	ClientInfo      map[string]interface{} `json:"clientInfo"`
 }

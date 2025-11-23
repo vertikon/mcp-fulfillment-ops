@@ -100,6 +100,7 @@ type CoherencyStatus struct {
 // InvalidationStats represents invalidation statistics
 type InvalidationStats struct {
 	TotalInvalidations      int64            `json:"total_invalidations"`
+	TotalUpdates            int64            `json:"total_updates"`
 	InvalidationsByReason   map[string]int64 `json:"invalidations_by_reason"`
 	AverageInvalidationTime time.Duration    `json:"average_invalidation_time"`
 	LastInvalidation        *time.Time       `json:"last_invalidation"`
@@ -109,7 +110,7 @@ type InvalidationStats struct {
 // CoherencyManagerImpl implements CoherencyManager interface
 type CoherencyManagerImpl struct {
 	config               *CoherencyConfig
-	cache                *StateCache
+	cache                StateCache
 	store                interface{} // DistributedStore interface
 	eventStore           interface{} // EventStore interface
 	stats                *InvalidationStats
@@ -122,7 +123,7 @@ type CoherencyManagerImpl struct {
 }
 
 // NewCoherencyManager creates a new cache coherency manager
-func NewCoherencyManager(config *CoherencyConfig, cache *StateCache) *CoherencyManagerImpl {
+func NewCoherencyManager(config *CoherencyConfig, cache StateCache) *CoherencyManagerImpl {
 	if config == nil {
 		config = DefaultCoherencyConfig()
 	}
@@ -158,8 +159,14 @@ func (cm *CoherencyManagerImpl) Invalidate(ctx context.Context, key string, reas
 	cm.stats.InvalidationsByReason[reason]++
 	cm.mu.Unlock()
 
-	// Delete from cache
-	cm.cache.Delete(key)
+	// Delete from cache if available
+	if cm.cache != nil {
+		if err := cm.cache.Delete(ctx, key); err != nil {
+			cm.logger.Warn("Failed to delete cache entry during invalidation",
+				zap.String("key", key),
+				zap.Error(err))
+		}
+	}
 
 	// Create invalidation event
 	event := &InvalidationEvent{
@@ -338,8 +345,14 @@ func (cm *CoherencyManagerImpl) processInvalidation(event *InvalidationEvent) {
 	cm.pendingInvalidations[event.Key] = event
 	cm.mu.Unlock()
 
-	// Process invalidation
-	cm.cache.Delete(event.Key)
+	// Process invalidation by deleting from cache when available
+	if cm.cache != nil {
+		if err := cm.cache.Delete(cm.ctx, event.Key); err != nil {
+			cm.logger.Warn("Failed to delete cache entry during invalidation processing",
+				zap.String("key", event.Key),
+				zap.Error(err))
+		}
+	}
 
 	cm.mu.Lock()
 	delete(cm.pendingInvalidations, event.Key)

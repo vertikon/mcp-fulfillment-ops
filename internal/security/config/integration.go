@@ -64,7 +64,7 @@ func LoadAndInitializeAuth(loader *Loader, userStore auth.UserStore) (auth.AuthM
 
 	// Initialize OAuth Manager
 	oauthManager := auth.NewOAuthManager()
-	
+
 	// Register OAuth providers if enabled
 	if cfg.OAuth.Auth0.Enabled {
 		auth0Config := auth.OAuthProviderConfig{
@@ -183,8 +183,8 @@ func LoadAndInitializeRBAC(loader *Loader) (rbac.RBACManager, error) {
 		}
 		override := rbac.PermissionOverride{
 			ResourcePattern: overrideCfg.Resource,
-			ActionPattern:    overrideCfg.Action,
-			Effect:           effect,
+			ActionPattern:   overrideCfg.Action,
+			Effect:          effect,
 		}
 		permissionChecker.RegisterOverride(override)
 	}
@@ -210,7 +210,7 @@ func LoadAndInitializeRBAC(loader *Loader) (rbac.RBACManager, error) {
 			if ruleCfg.Effect == "deny" {
 				effect = rbac.EffectDeny
 			}
-			
+
 			rule := rbac.PolicyRule{
 				Resource:    ruleCfg.Resource,
 				Action:      ruleCfg.Action,
@@ -274,4 +274,3 @@ func LoadAndInitializeEncryption(loader *Loader) (encryption.EncryptionManager, 
 
 	return encryptionManager, keyManager, nil
 }
-

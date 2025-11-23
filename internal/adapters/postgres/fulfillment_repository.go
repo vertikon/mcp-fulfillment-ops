@@ -126,8 +126,8 @@ func (r *FulfillmentRepository) GetInboundByReferenceID(ctx context.Context, ref
 
 func (r *FulfillmentRepository) UpdateInboundStatus(ctx context.Context, id string, status fulfillment.Status) error {
 	return r.UpdateInbound(ctx, &fulfillment.InboundShipment{
-		ID:     id,
-		Status: status,
+		ID:        id,
+		Status:    status,
 		UpdatedAt: time.Now(),
 	})
 }
@@ -390,4 +390,3 @@ func (r *FulfillmentRepository) UpdateCycleCount(ctx context.Context, task *fulf
 	// Similar pattern
 	return nil
 }
-

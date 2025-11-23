@@ -98,20 +98,20 @@ func (ss *SemanticSearch) SimilaritySearch(ctx context.Context, collection strin
 	// We'll search for the document by ID first to get its embedding
 	// Note: This assumes the vector client has a method to get vector by ID
 	// For now, we'll use a workaround: search with a very specific filter
-	
+
 	// Try to get the document vector by searching with documentID in metadata
 	// This is a simplified approach - in production, vector client should have GetVector method
 	// For now, we'll need to get the document content first and then search
-	
+
 	// Alternative approach: Use the documentID as a query and search for similar content
 	// This requires having the document content stored somewhere accessible
 	// For now, return an error indicating the document content is needed
-	
+
 	// In a full implementation, you would:
 	// 1. Get document content from KnowledgeStore or repository
 	// 2. Generate embedding for that content
 	// 3. Use that embedding to search for similar documents
-	
+
 	// Simplified implementation: search using documentID as query term
 	// This assumes documentID contains semantic information
 	queryVector, err := ss.embedder.Embed(ctx, documentID)
@@ -132,7 +132,7 @@ func (ss *SemanticSearch) SimilaritySearch(ctx context.Context, collection strin
 		if result.ID == documentID {
 			continue
 		}
-		
+
 		content := ""
 		if contentVal, ok := result.Metadata["content"].(string); ok {
 			content = contentVal
@@ -147,7 +147,7 @@ func (ss *SemanticSearch) SimilaritySearch(ctx context.Context, collection strin
 			Metadata: result.Metadata,
 			Source:   MethodVector,
 		})
-		
+
 		if len(filteredResults) >= limit {
 			break
 		}

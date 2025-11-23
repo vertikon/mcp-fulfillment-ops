@@ -30,7 +30,7 @@ func (s *AIDomainService) ValidateKnowledgeContext(mcp *entities.MCP) error {
 		return fmt.Errorf("knowledge context is nil")
 	}
 
-	if len(context.documents) == 0 {
+	if len(context.Documents()) == 0 {
 		return fmt.Errorf("knowledge context must have at least one document")
 	}
 

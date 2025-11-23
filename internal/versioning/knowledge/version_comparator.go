@@ -11,12 +11,12 @@ import (
 
 // VersionDiff represents differences between two versions
 type VersionDiff struct {
-	AddedDocuments   []string               `json:"added_documents"`
-	RemovedDocuments []string               `json:"removed_documents"`
-	ModifiedDocuments []DocumentChange      `json:"modified_documents"`
-	MetadataChanges  map[string]interface{} `json:"metadata_changes"`
-	SemanticSimilarity float64             `json:"semantic_similarity"`
-	StructuralSimilarity float64            `json:"structural_similarity"`
+	AddedDocuments       []string               `json:"added_documents"`
+	RemovedDocuments     []string               `json:"removed_documents"`
+	ModifiedDocuments    []DocumentChange       `json:"modified_documents"`
+	MetadataChanges      map[string]interface{} `json:"metadata_changes"`
+	SemanticSimilarity   float64                `json:"semantic_similarity"`
+	StructuralSimilarity float64                `json:"structural_similarity"`
 }
 
 // DocumentChange represents changes to a document
@@ -31,13 +31,13 @@ type DocumentChange struct {
 type VersionComparator interface {
 	// CompareVersions compares two versions and returns differences
 	CompareVersions(ctx context.Context, versionID1, versionID2 string) (*VersionDiff, error)
-	
+
 	// CompareSemantic compares semantic similarity between versions
 	CompareSemantic(ctx context.Context, versionID1, versionID2 string) (float64, error)
-	
+
 	// CompareStructural compares structural similarity between versions
 	CompareStructural(ctx context.Context, versionID1, versionID2 string) (float64, error)
-	
+
 	// GetDiffSummary returns a human-readable summary of differences
 	GetDiffSummary(ctx context.Context, diff *VersionDiff) string
 }

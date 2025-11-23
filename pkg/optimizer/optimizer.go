@@ -1,1 +1,0 @@
-# Otimização de queries e recursos

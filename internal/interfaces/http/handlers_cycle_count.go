@@ -14,8 +14,8 @@ type OpenCycleCountRequest struct {
 }
 
 type SubmitCycleCountRequest struct {
-	TaskID        string            `json:"task_id" binding:"required"`
-	CountedItems  []fulfillment.Item `json:"counted_items" binding:"required"`
+	TaskID       string             `json:"task_id" binding:"required"`
+	CountedItems []fulfillment.Item `json:"counted_items" binding:"required"`
 }
 
 func handleOpenCycleCount(uc *app.OpenCycleCountUseCase) gin.HandlerFunc {
@@ -52,4 +52,3 @@ func handleSubmitCycleCount(uc *app.SubmitCycleCountUseCase) gin.HandlerFunc {
 		c.JSON(http.StatusOK, gin.H{"status": "submitted"})
 	}
 }
-

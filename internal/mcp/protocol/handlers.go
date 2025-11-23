@@ -5,12 +5,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"strings"
 	"time"
 
 	"github.com/vertikon/mcp-fulfillment-ops/internal/mcp/generators"
-	"github.com/vertikon/mcp-fulfillment-ops/internal/mcp/validators"
 	"github.com/vertikon/mcp-fulfillment-ops/internal/mcp/registry"
+	"github.com/vertikon/mcp-fulfillment-ops/internal/mcp/validators"
 	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
@@ -20,7 +19,7 @@ type HandlerManager struct {
 	generatorFactory *generators.GeneratorFactory
 	validatorFactory *validators.ValidatorFactory
 	registry         *registry.MCPRegistry
-	logger          *zap.Logger
+	logger           *zap.Logger
 }
 
 // NewHandlerManager creates a new handler manager
@@ -32,8 +31,8 @@ func NewHandlerManager(
 	return &HandlerManager{
 		generatorFactory: genFactory,
 		validatorFactory: valFactory,
-		registry:        reg,
-		logger:          logger.Get(),
+		registry:         reg,
+		logger:           logger.Get(),
 	}
 }
 
@@ -44,13 +43,13 @@ func (hm *HandlerManager) GetAllHandlers() map[string]ToolHandler {
 	// Register tool handlers
 	handlers["generate_project"] = &GenerateProjectHandler{
 		generatorFactory: hm.generatorFactory,
-		registry:        hm.registry,
-		logger:          hm.logger,
+		registry:         hm.registry,
+		logger:           hm.logger,
 	}
 
 	handlers["validate_project"] = &ValidateProjectHandler{
 		validatorFactory: hm.validatorFactory,
-		logger:          hm.logger,
+		logger:           hm.logger,
 	}
 
 	handlers["list_templates"] = &ListTemplatesHandler{
@@ -81,8 +80,8 @@ func (hm *HandlerManager) GetAllHandlers() map[string]ToolHandler {
 	handlers["update_project"] = &UpdateProjectHandler{
 		generatorFactory: hm.generatorFactory,
 		validatorFactory: hm.validatorFactory,
-		registry:        hm.registry,
-		logger:          hm.logger,
+		registry:         hm.registry,
+		logger:           hm.logger,
 	}
 
 	return handlers
@@ -92,7 +91,7 @@ func (hm *HandlerManager) GetAllHandlers() map[string]ToolHandler {
 type GenerateProjectHandler struct {
 	generatorFactory *generators.GeneratorFactory
 	registry         *registry.MCPRegistry
-	logger          *zap.Logger
+	logger           *zap.Logger
 }
 
 func (h *GenerateProjectHandler) Name() string {
@@ -174,12 +173,12 @@ func (h *GenerateProjectHandler) Handle(ctx context.Context, request *JSONRPCReq
 
 	// Register project
 	projectInfo := registry.ProjectInfo{
-		Name:       params.Name,
-		Stack:      params.Stack,
-		Path:       result.Path,
-		CreatedAt:  result.CreatedAt,
-		Features:   params.Features,
-		Status:     "active",
+		Name:      params.Name,
+		Stack:     params.Stack,
+		Path:      result.Path,
+		CreatedAt: result.CreatedAt,
+		Features:  params.Features,
+		Status:    "active",
 	}
 
 	if err := h.registry.RegisterProject(projectInfo); err != nil {
@@ -198,7 +197,7 @@ func (h *GenerateProjectHandler) Handle(ctx context.Context, request *JSONRPCReq
 // ValidateProjectHandler handles project validation requests
 type ValidateProjectHandler struct {
 	validatorFactory *validators.ValidatorFactory
-	logger          *zap.Logger
+	logger           *zap.Logger
 }
 
 func (h *ValidateProjectHandler) Name() string {
@@ -229,10 +228,10 @@ func (h *ValidateProjectHandler) Schema() map[string]interface{} {
 
 func (h *ValidateProjectHandler) Handle(ctx context.Context, request *JSONRPCRequest) (*JSONRPCResponse, error) {
 	var params struct {
-		Path        string `json:"path"`
-		StrictMode  bool   `json:"strict_mode,omitempty"`
-		CheckDeps   bool   `json:"check_dependencies,omitempty"`
-		CheckSec    bool   `json:"check_security,omitempty"`
+		Path       string `json:"path"`
+		StrictMode bool   `json:"strict_mode,omitempty"`
+		CheckDeps  bool   `json:"check_dependencies,omitempty"`
+		CheckSec   bool   `json:"check_security,omitempty"`
 	}
 
 	if err := parseParams(request.Params, &params); err != nil {
@@ -251,17 +250,17 @@ func (h *ValidateProjectHandler) Handle(ctx context.Context, request *JSONRPCReq
 
 	// Run validations
 	result := validators.ValidationResult{
-		Path:       params.Path,
-		Valid:      true,
-		Warnings:   []string{},
-		Errors:     []string{},
-		Checks:     []string{},
+		Path:     params.Path,
+		Valid:    true,
+		Warnings: []string{},
+		Errors:   []string{},
+		Checks:   []string{},
 	}
 
 	// Structure validation
 	structResult, err := structValidator.Validate(ctx, validators.StructureRequest{
-		Path:        params.Path,
-		StrictMode:  params.StrictMode,
+		Path:       params.Path,
+		StrictMode: params.StrictMode,
 	})
 
 	if err != nil {
@@ -342,7 +341,10 @@ func (h *ListTemplatesHandler) Handle(ctx context.Context, request *JSONRPCReque
 		Category string `json:"category,omitempty"`
 	}
 
-	h.parseParams(request.Params, &params)
+	if err := parseParams(request.Params, &params); err != nil {
+		return NewErrorResponse(request.ID, ErrCodeInvalidParams,
+			fmt.Sprintf("Invalid parameters: %v", err), nil), nil
+	}
 
 	templates, err := h.registry.ListTemplates(registry.TemplateFilter{
 		Stack:    params.Stack,
@@ -356,7 +358,7 @@ func (h *ListTemplatesHandler) Handle(ctx context.Context, request *JSONRPCReque
 
 	return NewSuccessResponse(request.ID, map[string]interface{}{
 		"templates": templates,
-		"count":    len(templates),
+		"count":     len(templates),
 	}), nil
 }
 
@@ -444,7 +446,10 @@ func (h *ListProjectsHandler) Handle(ctx context.Context, request *JSONRPCReques
 		Status string `json:"status,omitempty"`
 	}
 
-	h.parseParams(request.Params, &params)
+	if err := parseParams(request.Params, &params); err != nil {
+		return NewErrorResponse(request.ID, ErrCodeInvalidParams,
+			fmt.Sprintf("Invalid parameters: %v", err), nil), nil
+	}
 
 	projects, err := h.registry.ListProjects(registry.ProjectFilter{
 		Stack:  params.Stack,
@@ -632,7 +637,7 @@ type UpdateProjectHandler struct {
 	generatorFactory *generators.GeneratorFactory
 	validatorFactory *validators.ValidatorFactory
 	registry         *registry.MCPRegistry
-	logger          *zap.Logger
+	logger           *zap.Logger
 }
 
 func (h *UpdateProjectHandler) Name() string {
@@ -664,12 +669,12 @@ func (h *UpdateProjectHandler) Schema() map[string]interface{} {
 
 func (h *UpdateProjectHandler) Handle(ctx context.Context, request *JSONRPCRequest) (*JSONRPCResponse, error) {
 	var params struct {
-		Name          string                 `json:"name,omitempty"`
-		Path          string                 `json:"path,omitempty"`
-		AddFeatures   []string               `json:"add_features,omitempty"`
-		RemoveFeatures []string              `json:"remove_features,omitempty"`
-		UpdateConfig  map[string]interface{} `json:"update_config,omitempty"`
-		UpgradeTemplate string              `json:"upgrade_template,omitempty"`
+		Name            string                 `json:"name,omitempty"`
+		Path            string                 `json:"path,omitempty"`
+		AddFeatures     []string               `json:"add_features,omitempty"`
+		RemoveFeatures  []string               `json:"remove_features,omitempty"`
+		UpdateConfig    map[string]interface{} `json:"update_config,omitempty"`
+		UpgradeTemplate string                 `json:"upgrade_template,omitempty"`
 	}
 
 	if err := parseParams(request.Params, &params); err != nil {
@@ -764,12 +769,12 @@ func (h *UpdateProjectHandler) Handle(ctx context.Context, request *JSONRPCReque
 		zap.Strings("removed_features", params.RemoveFeatures))
 
 	result := map[string]interface{}{
-		"status":        "updated",
-		"project":       projectInfo.Name,
-		"path":          projectInfo.Path,
-		"features":      updates.Features,
-		"config":        updates.Config,
-		"updated_at":    time.Now(),
+		"status":     "updated",
+		"project":    projectInfo.Name,
+		"path":       projectInfo.Path,
+		"features":   updates.Features,
+		"config":     updates.Config,
+		"updated_at": time.Now(),
 	}
 
 	return NewSuccessResponse(request.ID, result), nil

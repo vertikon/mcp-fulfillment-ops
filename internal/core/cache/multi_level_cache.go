@@ -177,7 +177,22 @@ func (c *L1Cache) Get(key string) ([]byte, error) {
 		return nil, ErrCacheMiss
 	}
 
-	entry := val.(*L1Entry)
+	// Nil pointer check: ensure val is not nil before type assertion
+	if val == nil {
+		c.mu.Lock()
+		c.stats.Misses++
+		c.mu.Unlock()
+		return nil, ErrCacheMiss
+	}
+
+	entry, ok := val.(*L1Entry)
+	if !ok || entry == nil {
+		c.mu.Lock()
+		c.stats.Misses++
+		c.mu.Unlock()
+		return nil, ErrCacheMiss
+	}
+
 	if !entry.ExpiresAt.IsZero() && time.Now().After(entry.ExpiresAt) {
 		c.data.Delete(key)
 		c.mu.Lock()

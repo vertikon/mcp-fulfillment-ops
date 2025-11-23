@@ -1,7 +1,6 @@
 package registry
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -15,26 +14,26 @@ import (
 
 // MCPRegistry manages registration and discovery of MCPs, templates, and projects
 type MCPRegistry struct {
-	projects      map[string]*ProjectInfo
-	templates     map[string]*TemplateInfo
-	stacks        map[string]*StackInfo
-	services      map[string]*ServiceInfo
-	mu            sync.RWMutex
-	logger        *zap.Logger
-	config        *RegistryConfig
-	lastUpdated   time.Time
+	projects    map[string]*ProjectInfo
+	templates   map[string]*TemplateInfo
+	stacks      map[string]*StackInfo
+	services    map[string]*ServiceInfo
+	mu          sync.RWMutex
+	logger      *zap.Logger
+	config      *RegistryConfig
+	lastUpdated time.Time
 }
 
 // RegistryConfig holds configuration for the registry
 type RegistryConfig struct {
-	StoragePath     string            `json:"storage_path"`
-	AutoSave        bool              `json:"auto_save"`
-	SaveInterval    time.Duration     `json:"save_interval"`
-	MaxProjects     int               `json:"max_projects"`
-	MaxTemplates    int               `json:"max_templates"`
-	EnableMetrics   bool              `json:"enable_metrics"`
-	CacheEnabled    bool              `json:"cache_enabled"`
-	CacheTTL        time.Duration     `json:"cache_ttl"`
+	StoragePath   string        `json:"storage_path"`
+	AutoSave      bool          `json:"auto_save"`
+	SaveInterval  time.Duration `json:"save_interval"`
+	MaxProjects   int           `json:"max_projects"`
+	MaxTemplates  int           `json:"max_templates"`
+	EnableMetrics bool          `json:"enable_metrics"`
+	CacheEnabled  bool          `json:"cache_enabled"`
+	CacheTTL      time.Duration `json:"cache_ttl"`
 }
 
 // NewMCPRegistry creates a new MCP registry
@@ -109,13 +108,13 @@ func (r *MCPRegistry) initializeDefaultStacks() {
 				"monitoring",
 				"graceful-shutdown",
 			},
-			Dependencies:   []string{"go >= 1.21", "docker"},
-			SupportedOS:    []string{"linux", "darwin", "windows"},
-			Requirements:   []string{},
-			Templates:      []string{"go", "go-grpc", "go-web"},
-			Status:         "active",
-			CreatedAt:      time.Now(),
-			UpdatedAt:      time.Now(),
+			Dependencies: []string{"go >= 1.21", "docker"},
+			SupportedOS:  []string{"linux", "darwin", "windows"},
+			Requirements: []string{},
+			Templates:    []string{"go", "go-grpc", "go-web"},
+			Status:       "active",
+			CreatedAt:    time.Now(),
+			UpdatedAt:    time.Now(),
 		},
 		{
 			Name:        "web",
@@ -131,13 +130,13 @@ func (r *MCPRegistry) initializeDefaultStacks() {
 				"prettier",
 				"docker",
 			},
-			Dependencies:   []string{"node >= 18", "npm"},
-			SupportedOS:    []string{"linux", "darwin", "windows"},
-			Requirements:   []string{},
-			Templates:      []string{"react", "vue", "angular"},
-			Status:         "active",
-			CreatedAt:      time.Now(),
-			UpdatedAt:      time.Now(),
+			Dependencies: []string{"node >= 18", "npm"},
+			SupportedOS:  []string{"linux", "darwin", "windows"},
+			Requirements: []string{},
+			Templates:    []string{"react", "vue", "angular"},
+			Status:       "active",
+			CreatedAt:    time.Now(),
+			UpdatedAt:    time.Now(),
 		},
 		{
 			Name:        "tinygo",
@@ -151,13 +150,13 @@ func (r *MCPRegistry) initializeDefaultStacks() {
 				"testing",
 				"docker",
 			},
-			Dependencies:   []string{"tinygo >= 0.30", "go >= 1.21"},
-			SupportedOS:    []string{"linux", "darwin", "windows"},
-			Requirements:   []string{},
-			Templates:      []string{"tinygo-wasm", "tinygo-embedded"},
-			Status:         "active",
-			CreatedAt:      time.Now(),
-			UpdatedAt:      time.Now(),
+			Dependencies: []string{"tinygo >= 0.30", "go >= 1.21"},
+			SupportedOS:  []string{"linux", "darwin", "windows"},
+			Requirements: []string{},
+			Templates:    []string{"tinygo-wasm", "tinygo-embedded"},
+			Status:       "active",
+			CreatedAt:    time.Now(),
+			UpdatedAt:    time.Now(),
 		},
 		{
 			Name:        "wasm",
@@ -171,13 +170,13 @@ func (r *MCPRegistry) initializeDefaultStacks() {
 				"testing",
 				"docker",
 			},
-			Dependencies:   []string{"rust >= 1.70", "cargo"},
-			SupportedOS:    []string{"linux", "darwin", "windows"},
-			Requirements:   []string{},
-			Templates:      []string{"rust-wasm", "cpp-wasm"},
-			Status:         "active",
-			CreatedAt:      time.Now(),
-			UpdatedAt:      time.Now(),
+			Dependencies: []string{"rust >= 1.70", "cargo"},
+			SupportedOS:  []string{"linux", "darwin", "windows"},
+			Requirements: []string{},
+			Templates:    []string{"rust-wasm", "cpp-wasm"},
+			Status:       "active",
+			CreatedAt:    time.Now(),
+			UpdatedAt:    time.Now(),
 		},
 		{
 			Name:        "mcp-go-premium",
@@ -194,13 +193,13 @@ func (r *MCPRegistry) initializeDefaultStacks() {
 				"docker",
 				"kubernetes",
 			},
-			Dependencies:   []string{"go >= 1.21", "docker", "kubectl"},
-			SupportedOS:    []string{"linux", "darwin", "windows"},
-			Requirements:   []string{},
-			Templates:      []string{"mcp-go-premium", "mcp-go-enterprise"},
-			Status:         "active",
-			CreatedAt:      time.Now(),
-			UpdatedAt:      time.Now(),
+			Dependencies: []string{"go >= 1.21", "docker", "kubectl"},
+			SupportedOS:  []string{"linux", "darwin", "windows"},
+			Requirements: []string{},
+			Templates:    []string{"mcp-go-premium", "mcp-go-enterprise"},
+			Status:       "active",
+			CreatedAt:    time.Now(),
+			UpdatedAt:    time.Now(),
 		},
 	}
 
@@ -215,58 +214,58 @@ func (r *MCPRegistry) initializeDefaultStacks() {
 func (r *MCPRegistry) initializeDefaultTemplates() {
 	defaultTemplates := []*TemplateInfo{
 		{
-			ID:           "go-basic",
-			Name:         "Go Basic Microservice",
-			Description:  "Basic Go microservice with Clean Architecture",
-			Stack:        "go",
-			Version:      "1.0.0",
-			Category:     "backend",
-			Features:     []string{"clean-architecture", "docker", "testing"},
-			Author:       "mcp-fulfillment-ops Team",
-			License:      "MIT",
-			Repository:   "https://github.com/vertikon/mcp-fulfillment-ops",
-			TemplateDir:  "go",
-			Status:       "active",
-			Downloads:    0,
-			Rating:       5.0,
-			CreatedAt:    time.Now(),
-			UpdatedAt:    time.Now(),
+			ID:          "go-basic",
+			Name:        "Go Basic Microservice",
+			Description: "Basic Go microservice with Clean Architecture",
+			Stack:       "go",
+			Version:     "1.0.0",
+			Category:    "backend",
+			Features:    []string{"clean-architecture", "docker", "testing"},
+			Author:      "mcp-fulfillment-ops Team",
+			License:     "MIT",
+			Repository:  "https://github.com/vertikon/mcp-fulfillment-ops",
+			TemplateDir: "go",
+			Status:      "active",
+			Downloads:   0,
+			Rating:      5.0,
+			CreatedAt:   time.Now(),
+			UpdatedAt:   time.Now(),
 		},
 		{
-			ID:           "web-react",
-			Name:         "React Web Application",
-			Description:  "React web application with TypeScript and Vite",
-			Stack:        "web",
-			Version:      "1.0.0",
-			Category:     "frontend",
-			Features:     []string{"typescript", "vite", "testing"},
-			Author:       "mcp-fulfillment-ops Team",
-			License:      "MIT",
-			Repository:   "https://github.com/vertikon/mcp-fulfillment-ops",
-			TemplateDir:  "web",
-			Status:       "active",
-			Downloads:    0,
-			Rating:       5.0,
-			CreatedAt:    time.Now(),
-			UpdatedAt:    time.Now(),
+			ID:          "web-react",
+			Name:        "React Web Application",
+			Description: "React web application with TypeScript and Vite",
+			Stack:       "web",
+			Version:     "1.0.0",
+			Category:    "frontend",
+			Features:    []string{"typescript", "vite", "testing"},
+			Author:      "mcp-fulfillment-ops Team",
+			License:     "MIT",
+			Repository:  "https://github.com/vertikon/mcp-fulfillment-ops",
+			TemplateDir: "web",
+			Status:      "active",
+			Downloads:   0,
+			Rating:      5.0,
+			CreatedAt:   time.Now(),
+			UpdatedAt:   time.Now(),
 		},
 		{
-			ID:           "tinygo-wasm",
-			Name:         "TinyGo WebAssembly",
-			Description:  "TinyGo project targeting WebAssembly",
-			Stack:        "tinygo",
-			Version:      "1.0.0",
-			Category:     "wasm",
-			Features:     []string{"wasm", "embedded", "testing"},
-			Author:       "mcp-fulfillment-ops Team",
-			License:      "MIT",
-			Repository:   "https://github.com/vertikon/mcp-fulfillment-ops",
-			TemplateDir:  "tinygo",
-			Status:       "active",
-			Downloads:    0,
-			Rating:       5.0,
-			CreatedAt:    time.Now(),
-			UpdatedAt:    time.Now(),
+			ID:          "tinygo-wasm",
+			Name:        "TinyGo WebAssembly",
+			Description: "TinyGo project targeting WebAssembly",
+			Stack:       "tinygo",
+			Version:     "1.0.0",
+			Category:    "wasm",
+			Features:    []string{"wasm", "embedded", "testing"},
+			Author:      "mcp-fulfillment-ops Team",
+			License:     "MIT",
+			Repository:  "https://github.com/vertikon/mcp-fulfillment-ops",
+			TemplateDir: "tinygo",
+			Status:      "active",
+			Downloads:   0,
+			Rating:      5.0,
+			CreatedAt:   time.Now(),
+			UpdatedAt:   time.Now(),
 		},
 	}
 
@@ -279,76 +278,76 @@ func (r *MCPRegistry) initializeDefaultTemplates() {
 
 // ProjectInfo represents information about a generated project
 type ProjectInfo struct {
-	ID          string                 `json:"id"`
-	Name        string                 `json:"name"`
-	Stack       string                 `json:"stack"`
-	Path        string                 `json:"path"`
-	Features    []string               `json:"features"`
-	Config      map[string]interface{} `json:"config"`
-	Status      string                 `json:"status"`
-	CreatedAt   time.Time              `json:"created_at"`
-	UpdatedAt   time.Time              `json:"updated_at"`
-	LastBuilt   *time.Time             `json:"last_built,omitempty"`
-	Size        int64                  `json:"size"`
-	Files       int                    `json:"files"`
+	ID           string                 `json:"id"`
+	Name         string                 `json:"name"`
+	Stack        string                 `json:"stack"`
+	Path         string                 `json:"path"`
+	Features     []string               `json:"features"`
+	Config       map[string]interface{} `json:"config"`
+	Status       string                 `json:"status"`
+	CreatedAt    time.Time              `json:"created_at"`
+	UpdatedAt    time.Time              `json:"updated_at"`
+	LastBuilt    *time.Time             `json:"last_built,omitempty"`
+	Size         int64                  `json:"size"`
+	Files        int                    `json:"files"`
 	Dependencies []string               `json:"dependencies,omitempty"`
-	Tags        []string               `json:"tags,omitempty"`
-	Author      string                 `json:"author,omitempty"`
-	Description string                 `json:"description,omitempty"`
+	Tags         []string               `json:"tags,omitempty"`
+	Author       string                 `json:"author,omitempty"`
+	Description  string                 `json:"description,omitempty"`
 }
 
 // TemplateInfo represents information about a template
 type TemplateInfo struct {
-	ID            string                 `json:"id"`
-	Name          string                 `json:"name"`
-	Description    string                 `json:"description"`
-	Stack         string                 `json:"stack"`
-	Version       string                 `json:"version"`
-	Category      string                 `json:"category"`
-	Features      []string               `json:"features"`
-	Author        string                 `json:"author"`
-	License       string                 `json:"license"`
-	Repository    string                 `json:"repository"`
-	TemplateDir   string                 `json:"template_dir"`
-	Config        map[string]interface{} `json:"config,omitempty"`
-	Status        string                 `json:"status"`
-	Downloads     int64                  `json:"downloads"`
-	Rating        float64                `json:"rating"`
-	Reviews       int                    `json:"reviews"`
-	CreatedAt     time.Time              `json:"created_at"`
-	UpdatedAt     time.Time              `json:"updated_at"`
+	ID          string                 `json:"id"`
+	Name        string                 `json:"name"`
+	Description string                 `json:"description"`
+	Stack       string                 `json:"stack"`
+	Version     string                 `json:"version"`
+	Category    string                 `json:"category"`
+	Features    []string               `json:"features"`
+	Author      string                 `json:"author"`
+	License     string                 `json:"license"`
+	Repository  string                 `json:"repository"`
+	TemplateDir string                 `json:"template_dir"`
+	Config      map[string]interface{} `json:"config,omitempty"`
+	Status      string                 `json:"status"`
+	Downloads   int64                  `json:"downloads"`
+	Rating      float64                `json:"rating"`
+	Reviews     int                    `json:"reviews"`
+	CreatedAt   time.Time              `json:"created_at"`
+	UpdatedAt   time.Time              `json:"updated_at"`
 }
 
 // StackInfo represents information about a technology stack
 type StackInfo struct {
-	Name          string    `json:"name"`
-	DisplayName   string    `json:"display_name"`
-	Description   string    `json:"description"`
-	Version       string    `json:"version"`
-	Category      string    `json:"category"`
-	Features      []string  `json:"features"`
-	Dependencies  []string  `json:"dependencies"`
-	SupportedOS   []string  `json:"supported_os"`
-	Requirements  []string  `json:"requirements"`
-	Templates     []string  `json:"templates"`
-	Status        string    `json:"status"`
-	CreatedAt     time.Time `json:"created_at"`
-	UpdatedAt     time.Time `json:"updated_at"`
+	Name         string    `json:"name"`
+	DisplayName  string    `json:"display_name"`
+	Description  string    `json:"description"`
+	Version      string    `json:"version"`
+	Category     string    `json:"category"`
+	Features     []string  `json:"features"`
+	Dependencies []string  `json:"dependencies"`
+	SupportedOS  []string  `json:"supported_os"`
+	Requirements []string  `json:"requirements"`
+	Templates    []string  `json:"templates"`
+	Status       string    `json:"status"`
+	CreatedAt    time.Time `json:"created_at"`
+	UpdatedAt    time.Time `json:"updated_at"`
 }
 
 // ServiceInfo represents information about a registered service
 type ServiceInfo struct {
-	ID          string                 `json:"id"`
-	Name        string                 `json:"name"`
-	Type        string                 `json:"type"`
-	Version     string                 `json:"version"`
-	Endpoint    string                 `json:"endpoint"`
-	Status      string                 `json:"status"`
-	Health      string                 `json:"health"`
-	Config      map[string]interface{} `json:"config"`
-	Metadata    map[string]string     `json:"metadata"`
+	ID           string                 `json:"id"`
+	Name         string                 `json:"name"`
+	Type         string                 `json:"type"`
+	Version      string                 `json:"version"`
+	Endpoint     string                 `json:"endpoint"`
+	Status       string                 `json:"status"`
+	Health       string                 `json:"health"`
+	Config       map[string]interface{} `json:"config"`
+	Metadata     map[string]string      `json:"metadata"`
 	RegisteredAt time.Time              `json:"registered_at"`
-	LastSeen    *time.Time             `json:"last_seen,omitempty"`
+	LastSeen     *time.Time             `json:"last_seen,omitempty"`
 }
 
 // RegisterProject registers a new project
@@ -575,10 +574,10 @@ func (r *MCPRegistry) ListServices() ([]*ServiceInfo, error) {
 
 // GetRegistryStats returns statistics about the registry
 type RegistryStats struct {
-	TotalProjects  int `json:"total_projects"`
-	TotalTemplates int `json:"total_templates"`
-	TotalStacks    int `json:"total_stacks"`
-	TotalServices  int `json:"total_services"`
+	TotalProjects  int       `json:"total_projects"`
+	TotalTemplates int       `json:"total_templates"`
+	TotalStacks    int       `json:"total_stacks"`
+	TotalServices  int       `json:"total_services"`
 	LastUpdated    time.Time `json:"last_updated"`
 }
 
@@ -617,7 +616,7 @@ func (r *MCPRegistry) startAutoSave() {
 
 // saveToStorage saves registry data to persistent storage
 func (r *MCPRegistry) saveToStorage() error {
-	r.logger.Info("Saving registry data to storage", 
+	r.logger.Info("Saving registry data to storage",
 		zap.String("path", r.config.StoragePath))
 
 	// Ensure storage directory exists

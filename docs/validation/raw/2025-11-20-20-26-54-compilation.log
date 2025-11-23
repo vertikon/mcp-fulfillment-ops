@@ -1,0 +1,66 @@
+# github.com/vertikon/mcp-fulfillment-ops/internal/core/scheduler
+internal\core\scheduler\scheduler.go:62:19: undefined: nats.ErrStreamNameExist
+# github.com/vertikon/mcp-fulfillment-ops/internal/mcp/generators
+internal\mcp\generators\generator_factory.go:317:32: req.Stack undefined (type GenerateRequest has no field or method Stack)
+internal\mcp\generators\generator_factory.go:319:50: req.Stack undefined (type GenerateRequest has no field or method Stack)
+internal\mcp\generators\generator_factory.go:323:54: req.Stack undefined (type GenerateRequest has no field or method Stack)
+internal\mcp\generators\generator_factory.go:334:75: req.Stack undefined (type GenerateRequest has no field or method Stack)
+internal\mcp\generators\generator_factory.go:350:39: req.Stack undefined (type GenerateRequest has no field or method Stack)
+internal\mcp\generators\tinygo_generator.go:324:3: cannot use "project" (untyped string constant) as zap.Field value in argument to g.logger.Info
+internal\mcp\generators\tinygo_generator.go:324:14: cannot use req.Name (variable of type string) as zap.Field value in argument to g.logger.Info
+internal\mcp\generators\tinygo_generator.go:325:3: cannot use "language" (untyped string constant) as zap.Field value in argument to g.logger.Info
+internal\mcp\generators\tinygo_generator.go:325:15: cannot use g.language (variable of type string) as zap.Field value in argument to g.logger.Info
+internal\mcp\generators\tinygo_generator.go:326:3: cannot use "features" (untyped string constant) as zap.Field value in argument to g.logger.Info
+internal\mcp\generators\tinygo_generator.go:326:3: too many errors
+# github.com/vertikon/mcp-fulfillment-ops/tools/deployers
+tools\deployers\hybrid_deployer.go:10:2: "github.com/vertikon/mcp-fulfillment-ops/internal/infrastructure/cloud/kubernetes" imported and not used
+# github.com/vertikon/mcp-fulfillment-ops/cmd/tools-validator
+cmd\tools-validator\main.go:60:4: unknown field StrictMode in struct literal of type "github.com/vertikon/mcp-fulfillment-ops/tools/validators".ConfigValidateRequest
+# github.com/vertikon/mcp-fulfillment-ops/internal/core/crush
+internal\core\crush\memory_optimizer.go:614:11: undefined: runtime.SetGCPercent
+# github.com/vertikon/mcp-fulfillment-ops/internal/core/state
+internal\core\state\store.go:10:2: "github.com/vertikon/mcp-fulfillment-ops/pkg/logger" imported and not used
+internal\core\state\store.go:11:2: "go.uber.org/zap" imported and not used
+# github.com/vertikon/mcp-fulfillment-ops/internal/domain/services
+internal\domain\services\ai_domain_service.go:33:17: context.documents undefined (type *entities.KnowledgeContext has no field or method documents, but does have method Documents)
+# github.com/vertikon/mcp-fulfillment-ops/internal/infrastructure/compute/serverless
+internal\infrastructure\compute\serverless\cloud_functions.go:14:46: undefined: FunctionConfig
+# github.com/vertikon/mcp-fulfillment-ops/internal/infrastructure/messaging/streaming
+internal\infrastructure\messaging\streaming\nats_jetstream.go:178:18: undefined: nats.ErrStreamNameExist
+# github.com/vertikon/mcp-fulfillment-ops/internal/infrastructure/persistence/relational
+internal\infrastructure\persistence\relational\postgres_knowledge_repository.go:87:6: declared and not used: knowledge
+internal\infrastructure\persistence\relational\postgres_knowledge_repository.go:204:9: cannot use &knowledge (value of type **entities.Knowledge) as *entities.Knowledge value in return statement
+# github.com/vertikon/mcp-fulfillment-ops/internal/interfaces/cli
+internal\interfaces\cli\root.go:42:21: undefined: analytics
+internal\interfaces\cli\root.go:43:21: undefined: ci
+# github.com/vertikon/mcp-fulfillment-ops/internal/state/cache
+internal\state\cache\cache_coherency.go:162:11: cm.cache.Delete undefined (type *StateCache is pointer to interface, not interface)
+internal\state\cache\cache_coherency.go:217:11: cm.stats.TotalUpdates undefined (type *InvalidationStats has no field or method TotalUpdates)
+internal\state\cache\cache_coherency.go:253:34: cm.stats.TotalUpdates undefined (type *InvalidationStats has no field or method TotalUpdates)
+internal\state\cache\cache_coherency.go:342:11: cm.cache.Delete undefined (type *StateCache is pointer to interface, not interface)
+# github.com/vertikon/mcp-fulfillment-ops/internal/state/events
+internal\state\events\event_replay.go:249:2: declared and not used: snapshot
+internal\state\events\event_replay.go:290:2: declared and not used: events
+internal\state\events\event_versioning.go:140:4: invalid operation: cannot call copy (variable of struct type VersionInfo): VersionInfo is not a function
+internal\state\events\event_versioning.go:216:30: ev.resolveVersionConflict undefined (type *EventVersioningImpl has no field or method resolveVersionConflict, but does have method ResolveVersionConflict)
+# github.com/vertikon/mcp-fulfillment-ops/internal/state/store
+internal\state\store\conflict_resolver.go:236:10: not enough return values
+	have (*VersionedState)
+	want (*VersionedState, error)
+internal\state\store\conflict_resolver.go:238:10: not enough return values
+	have (*VersionedState)
+	want (*VersionedState, error)
+internal\state\store\conflict_resolver.go:251:2: declared and not used: localTime
+internal\state\store\conflict_resolver.go:252:2: declared and not used: remoteTime
+internal\state\store\conflict_resolver.go:283:51: too many arguments in call to r.isMergeableValue
+	have (interface{}, interface{})
+	want (interface{})
+internal\state\store\conflict_resolver.go:396:9: v declared and not used
+internal\state\store\conflict_resolver.go:415:13: r.mergeMaps undefined (type map[string]interface{} has no field or method mergeMaps)
+internal\state\store\conflict_resolver.go:419:13: r.mergeArrays undefined (type []interface{} has no field or method mergeArrays)
+# github.com/vertikon/mcp-fulfillment-ops/internal/security/config
+internal\security\config\integration.go:215:26: ruleCfg.Resource undefined (type PolicyRuleConfig has no field or method Resource)
+internal\security\config\integration.go:216:26: ruleCfg.Action undefined (type PolicyRuleConfig has no field or method Action)
+internal\security\config\integration.go:218:26: ruleCfg.Description undefined (type PolicyRuleConfig has no field or method Description)
+# github.com/vertikon/mcp-fulfillment-ops/internal/interfaces/http
+internal\interfaces\http\handlers_outbound.go:8:2: "github.com/vertikon/mcp-fulfillment-ops/internal/domain/fulfillment" imported and not used

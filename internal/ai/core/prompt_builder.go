@@ -27,12 +27,12 @@ func DefaultPromptPolicy() *PromptPolicy {
 
 // PromptContext contains all context for building a prompt
 type PromptContext struct {
-	SystemPrompt   string
-	UserPrompt     string
-	Knowledge      []string
-	History        []Message
-	Metadata       map[string]interface{}
-	Policy         *PromptPolicy
+	SystemPrompt string
+	UserPrompt   string
+	Knowledge    []string
+	History      []Message
+	Metadata     map[string]interface{}
+	Policy       *PromptPolicy
 }
 
 // Message represents a message in conversation history

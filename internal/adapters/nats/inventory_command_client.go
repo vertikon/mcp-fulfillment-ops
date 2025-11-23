@@ -135,4 +135,3 @@ func (c *InventoryCommandClient) GetAvailableStock(ctx context.Context, location
 
 	return result.Available, nil
 }
-

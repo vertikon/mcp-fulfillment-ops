@@ -25,92 +25,92 @@ const (
 type DeploymentStatus string
 
 const (
-	DeploymentStatusPending   DeploymentStatus = "pending"
-	DeploymentStatusRunning   DeploymentStatus = "running"
-	DeploymentStatusCompleted DeploymentStatus = "completed"
-	DeploymentStatusFailed    DeploymentStatus = "failed"
+	DeploymentStatusPending    DeploymentStatus = "pending"
+	DeploymentStatusRunning    DeploymentStatus = "running"
+	DeploymentStatusCompleted  DeploymentStatus = "completed"
+	DeploymentStatusFailed     DeploymentStatus = "failed"
 	DeploymentStatusRolledBack DeploymentStatus = "rolled_back"
 )
 
 // Deployment represents a model deployment
 type Deployment struct {
-	ID              string                 `json:"id"`
-	ModelID         string                 `json:"model_id"`
-	VersionID       string                 `json:"version_id"`
-	Strategy        DeploymentStrategy     `json:"strategy"`
-	Status          DeploymentStatus       `json:"status"`
-	Targets         []DeploymentTarget     `json:"targets"`
-	CanaryPercent   float64                `json:"canary_percent,omitempty"`
-	HealthChecks    HealthCheckConfig      `json:"health_checks"`
-	RollbackPolicy  RollbackPolicy         `json:"rollback_policy"`
-	CreatedAt       time.Time              `json:"created_at"`
-	StartedAt       *time.Time             `json:"started_at,omitempty"`
-	CompletedAt     *time.Time             `json:"completed_at,omitempty"`
-	CreatedBy       string                 `json:"created_by"`
-	Metadata        map[string]interface{} `json:"metadata"`
+	ID             string                 `json:"id"`
+	ModelID        string                 `json:"model_id"`
+	VersionID      string                 `json:"version_id"`
+	Strategy       DeploymentStrategy     `json:"strategy"`
+	Status         DeploymentStatus       `json:"status"`
+	Targets        []DeploymentTarget     `json:"targets"`
+	CanaryPercent  float64                `json:"canary_percent,omitempty"`
+	HealthChecks   HealthCheckConfig      `json:"health_checks"`
+	RollbackPolicy RollbackPolicy         `json:"rollback_policy"`
+	CreatedAt      time.Time              `json:"created_at"`
+	StartedAt      *time.Time             `json:"started_at,omitempty"`
+	CompletedAt    *time.Time             `json:"completed_at,omitempty"`
+	CreatedBy      string                 `json:"created_by"`
+	Metadata       map[string]interface{} `json:"metadata"`
 }
 
 // DeploymentTarget represents a deployment target
 type DeploymentTarget struct {
-	ID        string                 `json:"id"`
-	Type      string                 `json:"type"` // "endpoint", "service", "region"
-	Location  string                 `json:"location"`
-	Status    DeploymentStatus       `json:"status"`
-	Metadata  map[string]interface{} `json:"metadata"`
+	ID       string                 `json:"id"`
+	Type     string                 `json:"type"` // "endpoint", "service", "region"
+	Location string                 `json:"location"`
+	Status   DeploymentStatus       `json:"status"`
+	Metadata map[string]interface{} `json:"metadata"`
 }
 
 // HealthCheckConfig represents health check configuration
 type HealthCheckConfig struct {
-	Enabled         bool          `json:"enabled"`
-	Interval        time.Duration `json:"interval"`
-	Timeout         time.Duration `json:"timeout"`
-	MaxFailures     int           `json:"max_failures"`
-	SuccessThreshold float64      `json:"success_threshold"`
+	Enabled          bool          `json:"enabled"`
+	Interval         time.Duration `json:"interval"`
+	Timeout          time.Duration `json:"timeout"`
+	MaxFailures      int           `json:"max_failures"`
+	SuccessThreshold float64       `json:"success_threshold"`
 }
 
 // RollbackPolicy represents rollback policy
 type RollbackPolicy struct {
-	AutoRollback    bool    `json:"auto_rollback"`
-	MaxErrorRate    float64 `json:"max_error_rate"`
-	MaxLatencyMs    float64 `json:"max_latency_ms"`
-	MinSuccessRate  float64 `json:"min_success_rate"`
+	AutoRollback   bool    `json:"auto_rollback"`
+	MaxErrorRate   float64 `json:"max_error_rate"`
+	MaxLatencyMs   float64 `json:"max_latency_ms"`
+	MinSuccessRate float64 `json:"min_success_rate"`
 }
 
 // DeploymentMetrics represents deployment metrics
 type DeploymentMetrics struct {
-	Requests      int64   `json:"requests"`
-	Errors        int64   `json:"errors"`
-	LatencyMs     float64 `json:"latency_ms"`
-	SuccessRate   float64 `json:"success_rate"`
-	ErrorRate     float64 `json:"error_rate"`
+	Requests    int64   `json:"requests"`
+	Errors      int64   `json:"errors"`
+	LatencyMs   float64 `json:"latency_ms"`
+	SuccessRate float64 `json:"success_rate"`
+	ErrorRate   float64 `json:"error_rate"`
 }
 
 // ModelDeployment interface for model deployment operations
 type ModelDeployment interface {
 	// CreateDeployment creates a new deployment
 	CreateDeployment(ctx context.Context, deployment *Deployment) (*Deployment, error)
-	
+
 	// GetDeployment retrieves a deployment
 	GetDeployment(ctx context.Context, deploymentID string) (*Deployment, error)
-	
+
 	// StartDeployment starts a deployment
 	StartDeployment(ctx context.Context, deploymentID string) error
-	
+
 	// StopDeployment stops a deployment
 	StopDeployment(ctx context.Context, deploymentID string) error
-	
+
 	// RollbackDeployment rolls back a deployment
 	RollbackDeployment(ctx context.Context, deploymentID string) error
-	
+
 	// GetDeploymentMetrics gets metrics for a deployment
 	GetDeploymentMetrics(ctx context.Context, deploymentID string) (*DeploymentMetrics, error)
-	
+
 	// CheckHealth checks health of a deployment
 	CheckHealth(ctx context.Context, deploymentID string) (bool, error)
-	
+
 	// ListDeployments lists deployments for a model
 	ListDeployments(ctx context.Context, modelID string) ([]*Deployment, error)
-	
+
 	// GetActiveDeployment gets active deployment for a model
 	GetActiveDeployment(ctx context.Context, modelID string) (*Deployment, error)
 }
@@ -337,4 +337,3 @@ func (md *InMemoryModelDeployment) GetActiveDeployment(ctx context.Context, mode
 
 	return nil, fmt.Errorf("no active deployment found for model %s", modelID)
 }
-

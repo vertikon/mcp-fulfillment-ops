@@ -128,27 +128,27 @@ type DatabaseConfig struct {
 
 // AIConfig represents AI provider configuration
 type AIConfig struct {
-	Provider    string  `mapstructure:"provider"`     // "openai", "gemini", "glm"
-	Model       string  `mapstructure:"model"`          // default model
-	APIKey      string  `mapstructure:"api_key"`       // from env
-	Endpoint    string  `mapstructure:"endpoint"`      // API endpoint
-	Temperature float64 `mapstructure:"temperature"`  // default temperature
-	MaxTokens   int     `mapstructure:"max_tokens"`    // default max tokens
-	Timeout     string  `mapstructure:"timeout"`       // request timeout
+	Provider    string  `mapstructure:"provider"`    // "openai", "gemini", "glm"
+	Model       string  `mapstructure:"model"`       // default model
+	APIKey      string  `mapstructure:"api_key"`     // from env
+	Endpoint    string  `mapstructure:"endpoint"`    // API endpoint
+	Temperature float64 `mapstructure:"temperature"` // default temperature
+	MaxTokens   int     `mapstructure:"max_tokens"`  // default max tokens
+	Timeout     string  `mapstructure:"timeout"`     // request timeout
 }
 
 // PathsConfig represents path configuration for templates and output
 type PathsConfig struct {
 	Templates string `mapstructure:"templates"` // path to templates directory
-	Output    string `mapstructure:"output"`     // path to output directory
-	Data      string `mapstructure:"data"`       // path to data directory
+	Output    string `mapstructure:"output"`    // path to output directory
+	Data      string `mapstructure:"data"`      // path to data directory
 	Cache     string `mapstructure:"cache"`     // path to cache directory
 }
 
 // FeatureConfig represents feature flags configuration
 type FeatureConfig struct {
-	ExternalGPU   bool `mapstructure:"external_gpu"`
-	AuditLogging  bool `mapstructure:"audit_logging"`
+	ExternalGPU    bool `mapstructure:"external_gpu"`
+	AuditLogging   bool `mapstructure:"audit_logging"`
 	BetaGenerators bool `mapstructure:"beta_generators"`
 }
 
@@ -251,12 +251,12 @@ func (l *Loader) loadEnvironmentConfig() error {
 	env = strings.ToLower(env)
 	envMap := map[string]string{
 		"development": "dev",
-		"production":   "prod",
-		"staging":      "staging",
-		"test":         "test",
-		"dev":          "dev",
-		"prod":         "prod",
-		"stage":        "staging",
+		"production":  "prod",
+		"staging":     "staging",
+		"test":        "test",
+		"dev":         "dev",
+		"prod":        "prod",
+		"stage":       "staging",
 	}
 
 	if mappedEnv, ok := envMap[env]; ok {
@@ -347,7 +347,7 @@ func (l *Loader) setDefaults() {
 	l.viper.SetDefault("database.port", 5432)
 	l.viper.SetDefault("database.user", "postgres")
 	l.viper.SetDefault("database.password", "")
-	l.viper.SetDefault("database.database", "mcp_hulk")
+	l.viper.SetDefault("database.database", "fulfillment")
 	l.viper.SetDefault("database.ssl_mode", "disable")
 	l.viper.SetDefault("database.max_conns", 25)
 	l.viper.SetDefault("database.min_conns", 5)

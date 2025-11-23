@@ -1,1 +1,0 @@
-# Função: Query de documentos

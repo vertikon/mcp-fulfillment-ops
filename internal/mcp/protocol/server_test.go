@@ -2,7 +2,6 @@ package protocol
 
 import (
 	"context"
-	"encoding/json"
 	"testing"
 	"time"
 )
@@ -334,4 +333,3 @@ func TestMCPServer_ConcurrentAccess(t *testing.T) {
 		t.Fatal("GetCapabilities() returned nil")
 	}
 }
-

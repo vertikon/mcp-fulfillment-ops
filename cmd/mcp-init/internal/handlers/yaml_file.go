@@ -155,7 +155,7 @@ func (h *YAMLFileHandler) processString(s string) string {
 // processAsText processes file as plain text if YAML parsing fails
 func (h *YAMLFileHandler) processAsText(content string, path string) error {
 	processed := h.config.ApplyRules(content, "yaml")
-	
+
 	if processed != content {
 		if err := h.WriteFile(path, []byte(processed)); err != nil {
 			return fmt.Errorf("failed to write file: %w", err)
@@ -172,4 +172,3 @@ func (h *YAMLFileHandler) getAllMappings() map[string]string {
 	}
 	return make(map[string]string)
 }
-

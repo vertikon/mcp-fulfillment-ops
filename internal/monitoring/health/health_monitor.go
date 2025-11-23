@@ -28,13 +28,13 @@ type HealthCheck interface {
 
 // HealthResult represents the result of a health check
 type HealthResult struct {
-	Name        string                 `json:"name"`
-	Status      HealthStatus           `json:"status"`
-	Message     string                 `json:"message"`
-	Timestamp   time.Time              `json:"timestamp"`
-	Duration    time.Duration          `json:"duration"`
-	Metadata    map[string]interface{} `json:"metadata,omitempty"`
-	Error       string                 `json:"error,omitempty"`
+	Name      string                 `json:"name"`
+	Status    HealthStatus           `json:"status"`
+	Message   string                 `json:"message"`
+	Timestamp time.Time              `json:"timestamp"`
+	Duration  time.Duration          `json:"duration"`
+	Metadata  map[string]interface{} `json:"metadata,omitempty"`
+	Error     string                 `json:"error,omitempty"`
 }
 
 // ComponentHealth represents health of a component
@@ -61,13 +61,13 @@ type HealthMonitor struct {
 
 // HealthStats provides health statistics
 type HealthStats struct {
-	TotalComponents   int                    `json:"total_components"`
-	HealthyComponents int                    `json:"healthy_components"`
-	DegradedComponents int                    `json:"degraded_components"`
-	UnhealthyComponents int                  `json:"unhealthy_components"`
-	OverallStatus     HealthStatus           `json:"overall_status"`
-	Components        map[string]ComponentHealth `json:"components"`
-	LastUpdate        time.Time              `json:"last_update"`
+	TotalComponents     int                        `json:"total_components"`
+	HealthyComponents   int                        `json:"healthy_components"`
+	DegradedComponents  int                        `json:"degraded_components"`
+	UnhealthyComponents int                        `json:"unhealthy_components"`
+	OverallStatus       HealthStatus               `json:"overall_status"`
+	Components          map[string]ComponentHealth `json:"components"`
+	LastUpdate          time.Time                  `json:"last_update"`
 }
 
 // HealthConfig represents health monitor configuration
@@ -236,7 +236,7 @@ func (hm *HealthMonitor) runHealthChecks() {
 
 	for name, check := range checks {
 		result := hm.executeCheck(ctx, check)
-		
+
 		hm.mu.Lock()
 		component, exists := hm.components[name]
 		if !exists {
@@ -251,7 +251,7 @@ func (hm *HealthMonitor) runHealthChecks() {
 
 		component.Status = result.Status
 		component.LastCheck = result.Timestamp
-		
+
 		if result.Status == HealthStatusHealthy {
 			now := time.Now()
 			component.LastSuccess = &now

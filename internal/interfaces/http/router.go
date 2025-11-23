@@ -75,4 +75,3 @@ func handleHealth() gin.HandlerFunc {
 		c.JSON(200, gin.H{"status": "ok"})
 	}
 }
-

@@ -51,4 +51,3 @@ func TestNewStackType(t *testing.T) {
 		})
 	}
 }
-

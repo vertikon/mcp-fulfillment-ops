@@ -6,7 +6,7 @@ server:
 database:
   host: "postgres-prod"
   port: 5432
-  database: "mcp_hulk_prod"
+  database: "fulfillment_prod"
   ssl_mode: "require"
   max_conns: 50
   min_conns: 10

@@ -138,7 +138,7 @@ func NewSnapshotManager(config *SnapshotConfig, store DistributedStore) *Snapsho
 	ctx, cancel := context.WithCancel(context.Background())
 
 	logger := logger.Get()
-	
+
 	// Create snapshot directory if it doesn't exist
 	if err := os.MkdirAll(config.SnapshotPath, 0755); err != nil {
 		logger.Error("Failed to create snapshot directory",
@@ -397,7 +397,7 @@ func (sm *SnapshotManagerImpl) captureFullState(ctx context.Context) (map[string
 	if err != nil {
 		return nil, fmt.Errorf("failed to get all keys: %w", err)
 	}
-	
+
 	// Build state map by retrieving each key
 	state := make(map[string]*VersionedState, len(keys))
 	for _, key := range keys {
@@ -411,10 +411,10 @@ func (sm *SnapshotManagerImpl) captureFullState(ctx context.Context) (map[string
 		}
 		state[key] = versionedState
 	}
-	
+
 	sm.logger.Debug("Full state captured",
 		zap.Int("keys_count", len(state)))
-	
+
 	return state, nil
 }
 

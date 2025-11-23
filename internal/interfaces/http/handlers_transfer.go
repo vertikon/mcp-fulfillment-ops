@@ -9,8 +9,8 @@ import (
 )
 
 type CreateTransferRequest struct {
-	LocationFrom string            `json:"location_from" binding:"required"`
-	LocationTo   string            `json:"location_to" binding:"required"`
+	LocationFrom string             `json:"location_from" binding:"required"`
+	LocationTo   string             `json:"location_to" binding:"required"`
 	Items        []fulfillment.Item `json:"items" binding:"required"`
 }
 
@@ -52,4 +52,3 @@ func handleCompleteTransfer(uc *app.CompleteTransferUseCase) gin.HandlerFunc {
 		c.JSON(http.StatusOK, gin.H{"status": "completed"})
 	}
 }
-

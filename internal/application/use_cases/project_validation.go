@@ -1,1 +1,0 @@
-# Função: Validação de projetos contra regras/tecnologias

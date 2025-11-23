@@ -8,15 +8,15 @@ import (
 
 // ReturnOrder: Logística Reversa
 type ReturnOrder struct {
-	ID             string    `json:"id"`
-	OriginalOrderID string   `json:"original_order_id"`
-	Reason         string    `json:"reason"`
-	Status         Status    `json:"status"`
-	Items          []Item    `json:"items"`
-	IdempotencyKey string    `json:"idempotency_key"`
-	CreatedAt      time.Time `json:"created_at"`
-	UpdatedAt      time.Time `json:"updated_at"`
-	CompletedAt    *time.Time `json:"completed_at,omitempty"`
+	ID              string     `json:"id"`
+	OriginalOrderID string     `json:"original_order_id"`
+	Reason          string     `json:"reason"`
+	Status          Status     `json:"status"`
+	Items           []Item     `json:"items"`
+	IdempotencyKey  string     `json:"idempotency_key"`
+	CreatedAt       time.Time  `json:"created_at"`
+	UpdatedAt       time.Time  `json:"updated_at"`
+	CompletedAt     *time.Time `json:"completed_at,omitempty"`
 }
 
 // NewReturnOrder cria uma nova instância de ReturnOrder
@@ -27,14 +27,14 @@ func NewReturnOrder(originalOrderID, reason string, items []Item) (*ReturnOrder,
 	now := time.Now()
 	id := uuid.New().String()
 	return &ReturnOrder{
-		ID:             id,
+		ID:              id,
 		OriginalOrderID: originalOrderID,
-		Reason:         reason,
-		Status:         StatusPending,
-		Items:          items,
-		IdempotencyKey: id,
-		CreatedAt:      now,
-		UpdatedAt:      now,
+		Reason:          reason,
+		Status:          StatusPending,
+		Items:           items,
+		IdempotencyKey:  id,
+		CreatedAt:       now,
+		UpdatedAt:       now,
 	}, nil
 }
 
@@ -69,4 +69,3 @@ func (r *ReturnOrder) Cancel() error {
 	r.UpdatedAt = time.Now()
 	return nil
 }
-

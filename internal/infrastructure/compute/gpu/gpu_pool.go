@@ -1,1 +1,0 @@
-# Pool de GPUs locais

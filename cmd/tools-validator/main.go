@@ -38,9 +38,9 @@ func main() {
 	switch toolType {
 	case "mcp":
 		req := validators.MCPValidateRequest{
-			Path:             path,
-			StrictMode:       strictMode,
-			CheckSecurity:    checkSecurity,
+			Path:              path,
+			StrictMode:        strictMode,
+			CheckSecurity:     checkSecurity,
 			CheckDependencies: checkDependencies,
 		}
 		validator := validators.NewMCPValidator()
@@ -56,8 +56,8 @@ func main() {
 
 	case "config":
 		req := validators.ConfigValidateRequest{
-			Path:       path,
-			StrictMode: strictMode,
+			Path: path,
+			// StrictMode removido - não existe no struct
 		}
 		validator := validators.NewConfigValidator()
 		result, err = validator.ValidateConfig(ctx, req)
@@ -122,4 +122,3 @@ Examples:
   %s -type config -path ./config.yaml
 `, os.Args[0], os.Args[0], os.Args[0], os.Args[0])
 }
-

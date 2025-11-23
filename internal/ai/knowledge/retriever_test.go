@@ -211,4 +211,3 @@ func TestSimpleReranker_Rerank(t *testing.T) {
 		t.Error("Expected reranked results to be sorted by score")
 	}
 }
-

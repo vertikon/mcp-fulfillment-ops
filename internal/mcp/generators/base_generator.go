@@ -16,11 +16,11 @@ import (
 
 // BaseGenerator provides common functionality for all generators
 type BaseGenerator struct {
-	name         string
-	stack        string
-	templateDir  string
-	logger       *zap.Logger
-	funcMap      template.FuncMap
+	name        string
+	stack       string
+	templateDir string
+	logger      *zap.Logger
+	funcMap     template.FuncMap
 }
 
 // NewBaseGenerator creates a new base generator
@@ -38,6 +38,7 @@ func NewBaseGenerator(name, stack, templateDir string) *BaseGenerator {
 type GenerateRequest struct {
 	Name     string                 `json:"name"`
 	Path     string                 `json:"path"`
+	Stack    string                 `json:"stack,omitempty"` // Stack type (go, tinygo, wasm, etc.)
 	Features []string               `json:"features,omitempty"`
 	Config   map[string]interface{} `json:"config,omitempty"`
 }
@@ -106,7 +107,7 @@ func (g *BaseGenerator) Generate(ctx interface{}, req GenerateRequest) (*Generat
 		}
 
 		targetPath := filepath.Join(projectPath, templateFile.TargetPath)
-		
+
 		// Create directory if it doesn't exist
 		if err := os.MkdirAll(filepath.Dir(targetPath), 0755); err != nil {
 			return nil, fmt.Errorf("failed to create directory %s: %w", filepath.Dir(targetPath), err)
@@ -272,16 +273,16 @@ func (g *BaseGenerator) processTemplate(templatePath string, req GenerateRequest
 // prepareTemplateData prepares the data for template execution
 func (g *BaseGenerator) prepareTemplateData(req GenerateRequest) map[string]interface{} {
 	return map[string]interface{}{
-		"ProjectName":  req.Name,
-		"ProjectPath":  req.Path,
-		"Stack":        g.stack,
-		"Features":     req.Features,
-		"Config":       req.Config,
-		"Generator":    g.name,
-		"Timestamp":    time.Now(),
-		"Year":         time.Now().Year(),
-		"FeaturesMap":  g.createFeaturesMap(req.Features),
-		"ConfigMap":    req.Config,
+		"ProjectName": req.Name,
+		"ProjectPath": req.Path,
+		"Stack":       g.stack,
+		"Features":    req.Features,
+		"Config":      req.Config,
+		"Generator":   g.name,
+		"Timestamp":   time.Now(),
+		"Year":        time.Now().Year(),
+		"FeaturesMap": g.createFeaturesMap(req.Features),
+		"ConfigMap":   req.Config,
 	}
 }
 
@@ -311,10 +312,10 @@ func isValidProjectName(name string) bool {
 	}
 
 	for _, char := range name {
-		if !((char >= 'a' && char <= 'z') || 
-			 (char >= 'A' && char <= 'Z') || 
-			 (char >= '0' && char <= '9') || 
-			 char == '-' || char == '_') {
+		if !((char >= 'a' && char <= 'z') ||
+			(char >= 'A' && char <= 'Z') ||
+			(char >= '0' && char <= '9') ||
+			char == '-' || char == '_') {
 			return false
 		}
 	}
@@ -330,13 +331,13 @@ func createTemplateFuncMap() template.FuncMap {
 		"lower": strings.ToLower,
 		"title": strings.Title,
 		"trim":  strings.TrimSpace,
-		
+
 		// String transformations
-		"snakeCase": toSnakeCase,
-		"camelCase": toCamelCase,
+		"snakeCase":  toSnakeCase,
+		"camelCase":  toCamelCase,
 		"pascalCase": toPascalCase,
-		"kebabCase": toKebabCase,
-		
+		"kebabCase":  toKebabCase,
+
 		// Boolean helpers
 		"hasFeature": func(features []string, feature string) bool {
 			for _, f := range features {
@@ -346,7 +347,7 @@ func createTemplateFuncMap() template.FuncMap {
 			}
 			return false
 		},
-		
+
 		// Array helpers
 		"join": strings.Join,
 		"contains": func(slice []string, item string) bool {
@@ -357,7 +358,7 @@ func createTemplateFuncMap() template.FuncMap {
 			}
 			return false
 		},
-		
+
 		// Config helpers
 		"getConfig": func(config map[string]interface{}, key string, defaultValue interface{}) interface{} {
 			if val, ok := config[key]; ok {
@@ -365,7 +366,7 @@ func createTemplateFuncMap() template.FuncMap {
 			}
 			return defaultValue
 		},
-		
+
 		// Time helpers
 		"now": time.Now,
 		"formatTime": func(t time.Time, layout string) string {
@@ -374,12 +375,12 @@ func createTemplateFuncMap() template.FuncMap {
 			}
 			return t.Format(layout)
 		},
-		
+
 		// Path helpers
 		"base": filepath.Base,
 		"dir":  filepath.Dir,
 		"ext":  filepath.Ext,
-		
+
 		// Conditional helpers
 		"ternary": func(condition bool, trueValue, falseValue interface{}) interface{} {
 			if condition {
@@ -387,7 +388,7 @@ func createTemplateFuncMap() template.FuncMap {
 			}
 			return falseValue
 		},
-		
+
 		// Default value helpers
 		"default": func(value, defaultValue interface{}) interface{} {
 			if value == nil || value == "" {
@@ -412,7 +413,7 @@ func toCamelCase(s string) string {
 	if len(words) == 0 {
 		return ""
 	}
-	
+
 	result := strings.ToLower(words[0])
 	for _, word := range words[1:] {
 		result += strings.Title(strings.ToLower(word))
@@ -425,7 +426,7 @@ func toPascalCase(s string) string {
 	if len(words) == 0 {
 		return ""
 	}
-	
+
 	result := ""
 	for _, word := range words {
 		result += strings.Title(strings.ToLower(word))
@@ -454,48 +455,48 @@ func (g *BaseGenerator) Validate() error {
 	if g.name == "" {
 		return fmt.Errorf("generator name is required")
 	}
-	
+
 	if g.stack == "" {
 		return fmt.Errorf("generator stack is required")
 	}
-	
+
 	if g.templateDir == "" {
 		return fmt.Errorf("template directory is required")
 	}
-	
+
 	// Check if template directory exists
 	if _, err := os.Stat(g.templateDir); os.IsNotExist(err) {
 		return fmt.Errorf("template directory does not exist: %s", g.templateDir)
 	}
-	
+
 	return nil
 }
 
 // GetTemplateFilesInfo returns information about available templates
 func (g *BaseGenerator) GetTemplateFilesInfo() ([]map[string]interface{}, error) {
 	var templates []map[string]interface{}
-	
+
 	err := filepath.Walk(g.templateDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
-		
+
 		if !info.IsDir() && strings.HasSuffix(path, ".tmpl") {
 			relPath, err := filepath.Rel(g.templateDir, path)
 			if err != nil {
 				return err
 			}
-			
+
 			templates = append(templates, map[string]interface{}{
 				"name":     filepath.Base(path),
 				"path":     relPath,
 				"size":     info.Size(),
-				"modified":  info.ModTime(),
+				"modified": info.ModTime(),
 			})
 		}
-		
+
 		return nil
 	})
-	
+
 	return templates, err
 }

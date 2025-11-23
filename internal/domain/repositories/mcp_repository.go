@@ -30,8 +30,8 @@ type MCPRepository interface {
 
 // MCPFilters represents filters for listing MCPs
 type MCPFilters struct {
-	Stack   string
+	Stack      string
 	HasContext bool
-	Limit   int
-	Offset  int
+	Limit      int
+	Offset     int
 }

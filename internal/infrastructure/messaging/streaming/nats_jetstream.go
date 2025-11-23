@@ -175,7 +175,8 @@ func (c *natsJetStreamClient) CreateStream(ctx context.Context, config *StreamCo
 
 	_, err := c.js.AddStream(streamConfig)
 	if err != nil {
-		if err == nats.ErrStreamNameExist {
+		// Verifica se o stream já existe tentando obtê-lo
+		if _, getErr := c.js.StreamInfo(config.Name); getErr == nil {
 			logger.Debug("Stream already exists", zap.String("stream", config.Name))
 			return nil
 		}

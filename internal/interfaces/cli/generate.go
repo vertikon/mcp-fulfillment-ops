@@ -41,7 +41,7 @@ var generateCmd = &cobra.Command{
 	},
 }
 
-func init() {
+func registerGenerateCmd() {
 	rootCmd.AddCommand(generateCmd)
 	generateCmd.Flags().StringP("template", "t", "", "Template ID to use")
 	generateCmd.Flags().StringP("output", "o", ".", "Output directory")

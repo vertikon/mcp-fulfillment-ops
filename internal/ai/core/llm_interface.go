@@ -29,13 +29,13 @@ type LLMRequest struct {
 
 // LLMResponse represents a response from an LLM
 type LLMResponse struct {
-	Content     string
-	Model       string
-	Provider    LLMProvider
-	TokensUsed  int
+	Content      string
+	Model        string
+	Provider     LLMProvider
+	TokensUsed   int
 	FinishReason string
-	Latency     time.Duration
-	Metadata    map[string]interface{}
+	Latency      time.Duration
+	Metadata     map[string]interface{}
 }
 
 // LLMError represents an error from an LLM call

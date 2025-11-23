@@ -12,7 +12,7 @@ import (
 type Handler interface {
 	// Process processes a file or directory
 	Process(path string, info os.FileInfo) error
-	
+
 	// CanHandle checks if this handler can handle the given file
 	CanHandle(path string, info os.FileInfo) bool
 }
@@ -76,4 +76,3 @@ func (b *BaseHandler) WriteFile(path string, data []byte) error {
 func (b *BaseHandler) ShouldProcess(path string) bool {
 	return !b.config.ShouldExclude(path)
 }
-

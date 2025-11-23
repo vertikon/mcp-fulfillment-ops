@@ -1,265 +1,249 @@
-# mcp-fulfillment-ops
+# MCP Fulfillment Ops
 
-mcp-fulfillment-ops is a comprehensive Model Context Protocol (MCP) template and generation engine for building high-performance, scalable MCP implementations.
+Serviço de orquestração de operações logísticas do ecossistema Vertikon. Responsável por gerenciar o fluxo físico de produtos desde o recebimento até a expedição.
 
-## 🚀 Features
+## 🚀 Funcionalidades
 
-- **Complete MCP Framework**: Full implementation of the Model Context Protocol
-- **Template Engine**: Generate code from multiple templates (Go, TinyGo, Rust WASM, Web)
-- **AI Integration**: Built-in support for OpenAI, Gemini, GLM, and other LLM providers
-- **Knowledge Management**: RAG (Retrieval-Augmented Generation) with vector and graph databases
-- **State Management**: Distributed state with event sourcing
-- **Observability**: Full monitoring, tracing, and analytics
-- **Security**: Enterprise-grade authentication, authorization, and encryption
-- **Hybrid Compute**: Support for local CPU and external GPU (RunPod) compute
-- **Clean Architecture**: Modular, maintainable code structure
+- **Gestão de Ordens de Fulfillment**: Criação e acompanhamento de ordens de expedição
+- **Processamento de Inbound**: Recebimento e armazenamento de produtos
+- **Picking e Packing**: Separação e embalagem de pedidos
+- **Shipping**: Expedição e rastreio de entregas
+- **Gestão de Devoluções**: Processamento de retornos e reposições
+- **Controle de Estoque Físico**: Sincronização com o Core Inventory
+- **Integração por Eventos**: Comunicação assíncrona via NATS JetStream
 
-## 📁 Project Structure
+## 📁 Estrutura do Projeto
 
-The project follows a **Clean Architecture** pattern with 14 main blocks:
+O projeto segue **Clean Architecture** com foco em domínio logístico:
 
 ```
-├── cmd/                    # Application entry points
-├── internal/               # Private application code
-│   ├── core/              # Performance engine
-│   ├── ai/                # AI & knowledge management
-│   ├── state/             # State management
-│   ├── monitoring/        # Observability
-│   ├── versioning/        # Version control
-│   ├── mcp/               # MCP protocol & generation
-│   ├── services/         # Application services
-│   ├── domain/            # Domain logic
-│   ├── application/      # Use cases
-│   ├── infrastructure/    # External integrations
-│   ├── interfaces/        # Input/output adapters
-│   └── security/          # Security layer
-├── pkg/                    # Public libraries
-├── templates/              # Code generation templates
-├── tools/                  # Development tools
-├── config/                 # Configuration files
-├── scripts/                # Automation scripts
-└── docs/                   # Documentation
+├── cmd/                    # Pontos de entrada da aplicação
+├── internal/               # Código privado da aplicação
+│   ├── fulfillment/        # Domínio de logística
+│   │   ├── entities/       # Entidades principais
+│   │   ├── services/       # Serviços de domínio
+│   │   └── repositories/   # Interfaces de persistência
+│   ├── adapters/           # Adaptadores externos
+│   ├── app/               # Configuração e inicialização
+│   └── infrastructure/    # Infraestrutura externa
+├── pkg/                   # Bibliotecas públicas
+├── config/                # Arquivos de configuração
+├── scripts/               # Scripts de automação
+└── docs/                  # Documentação
 ```
 
 ## 🛠️ Quick Start
 
-### Prerequisites
+### Pré-requisitos
 
-- Go 1.21 or higher
-- Docker (optional)
-- Access to supported databases and message brokers
+- Go 1.21 ou superior
+- Docker (opcional)
+- PostgreSQL
+- Redis
+- NATS JetStream
 
-### Installation
+### Instalação
 
 ```bash
-# Clone the repository
+# Clonar o repositório
 git clone https://github.com/vertikon/mcp-fulfillment-ops.git
 cd mcp-fulfillment-ops
 
-# Install dependencies
+# Instalar dependências
 make deps
 
-# Build the application
+# Construir a aplicação
 make build
 ```
 
-### Running the Application
+### Executando a Aplicação
 
 ```bash
-# Run with default configuration
+# Executar com configuração padrão
 make run
 
-# Or using Go directly
+# Ou usando Go diretamente
 go run ./cmd/main.go
 ```
 
-## 🎯 Usage
+## 🎯 Funcionalidades Principais
 
-### CLI Commands
+### Ordens de Fulfillment
 
-The mcp-fulfillment-ops CLI provides comprehensive commands for managing MCPs and templates:
-
-```bash
-# Generate a new MCP
-hulk generate --template go --name my-mcp
-
-# List available templates
-hulk template list
-
-# Validate MCP structure
-hulk validate mcp ./my-mcp
-
-# Start monitoring
-hulk monitor start
-
-# View application status
-hulk status
-```
-
-### Template Generation
+O serviço gerencia o ciclo de vida completo das ordens de expedição:
 
 ```bash
-# Generate a Go backend service
-hulk generate template go --name my-service --with-grpc
+# Criar nova ordem de fulfillment
+curl -X POST http://localhost:8080/api/v1/fulfillment-orders \
+  -H "Content-Type: application/json" \
+  -d '{
+    "order_id": "ORD-12345",
+    "customer": "CUSTOMER-001",
+    "destination": "Rua A, 123 - São Paulo/SP",
+    "items": [
+      {"sku": "PROD-001", "quantity": 2},
+      {"sku": "PROD-002", "quantity": 1}
+    ],
+    "priority": 0
+  }'
 
-# Generate a TinyGo WASM module
-hulk generate template tinygo --name my-wasm
+# Iniciar processo de picking
+curl -X POST http://localhost:8080/api/v1/fulfillment-orders/{id}/pick
 
-# Generate a React web frontend
-hulk generate template web --name my-ui
-
-# Generate a premium MCP with full features
-hulk generate template mcp-go-premium --name enterprise-mcp
+# Confirmar expedição
+curl -X POST http://localhost:8080/api/v1/fulfillment-orders/{id}/ship
 ```
 
-## 🔧 Configuration
+### Eventos NATS
 
-Configuration is managed through YAML files in the `config/` directory:
+O serviço publica e consome eventos via NATS JetStream:
 
-- `config/core/` - Engine and core settings
-- `config/ai/` - AI model and knowledge settings
-- `config/infrastructure/` - Database and messaging settings
-- `config/environments/` - Environment-specific configs
-- `config/features.yaml` - Feature flags
+**Eventos Publicados:**
+- `fulfillment.order.created`
+- `fulfillment.order.picked`
+- `fulfillment.order.shipped`
+- `fulfillment.inventory.updated`
 
-### Environment Setup
+**Eventos Consumidos:**
+- `oms.order.ready_to_pick`
+- `inventory.reservation.confirmed`
+- `inventory.adjustment.completed`
+
+## 🔧 Configuração
+
+A configuração é gerenciada através de arquivos YAML no diretório `config/`:
+
+- `config/config.yaml` - Configurações principais
+- `config/infrastructure/` - Banco de dados e mensageria
+- `config/environments/` - Configurações específicas por ambiente
+
+### Variáveis de Ambiente
 
 ```bash
-# Development
-export HULK_ENV=dev
+# Desenvolvimento
+export FULFILLMENT_ENV=dev
 
-# Production
-export HULK_ENV=prod
+# Produção
+export FULFILLMENT_ENV=prod
 
-# Override configuration path
-export HULK_CONFIG_PATH=/path/to/config
+# Override de caminho de configuração
+export FULFILLMENT_CONFIG_PATH=/path/to/config
 ```
 
-## 🤖 AI Integration
+## 📊 Monitoramento & Observabilidade
 
-mcp-fulfillment-ops integrates with multiple AI providers:
+Monitoramento completo integrado:
 
-### Supported Providers
-
-- **OpenAI**: GPT-3.5, GPT-4, GPT-4-turbo
-- **Google**: Gemini Pro, Gemini Ultra
-- **GLM**: GLM-4.6, GLM-3-turbo
-- **Custom**: OpenAI-compatible endpoints
-
-### Knowledge Management
-
-Built-in RAG capabilities with:
-
-- Vector databases (Qdrant, Pinecone, Weaviate)
-- Graph databases (Neo4j, ArangoDB)
-- Document stores (MongoDB, CouchDB)
-- Hybrid search (vector + keyword)
-
-### Memory Management
-
-- **Episodic Memory**: Short-term conversation history
-- **Semantic Memory**: Long-term knowledge storage
-- **Working Memory**: Current session context
-- **Memory Consolidation**: Automatic transfer from short to long-term
-
-## 📊 Monitoring & Observability
-
-Comprehensive monitoring built-in:
-
-- **Metrics**: Prometheus-compatible metrics
-- **Tracing**: OpenTelemetry/Jaeger distributed tracing
-- **Logging**: Structured logging with multiple levels
-- **Health Checks**: Liveness and readiness probes
-- **Analytics**: Usage, performance, and cost analytics
+- **Métricas**: Prometheus compatível (`/metrics`)
+- **Tracing**: OpenTelemetry/Jaeger
+- **Logging**: Logs estruturados com trace_id
+- **Health Checks**: Endpoints de liveness e readiness
 
 ### Dashboard
 
-Access the monitoring dashboard at `http://localhost:3000` (Grafana)
+Acesse o dashboard de monitoramento em `http://localhost:3000` (Grafana)
 
-## 🔒 Security
-
-Enterprise-grade security features:
-
-- **Authentication**: JWT, OAuth 2.0, SSO support
-- **Authorization**: Role-based access control (RBAC)
-- **Encryption**: AES-256 encryption at rest and in transit
-- **Audit Logging**: Comprehensive audit trails
-- **Compliance**: GDPR, HIPAA, SOX compliance support
-
-## 🚀 Deployment
+## 🚀 Deploy
 
 ### Docker
 
 ```bash
-# Build image
+# Construir imagem
 make docker
 
-# Run container
-docker run -p 8080:8080 -e HULK_ENV=prod mcp-fulfillment-ops:latest
+# Executar container
+docker run -p 8080:8080 -e FULFILLMENT_ENV=prod mcp-fulfillment-ops:latest
+```
+
+### Docker Compose
+
+```bash
+# Subir stack completa
+docker-compose up -d
+
+# Verificar status
+docker-compose ps
 ```
 
 ### Kubernetes
 
 ```bash
-# Deploy to Kubernetes
+# Deploy para Kubernetes
 kubectl apply -f deployments/k8s/
 
-# Check deployment status
+# Verificar status do deployment
 kubectl get pods -l app=mcp-fulfillment-ops
 ```
 
-### Serverless
+## 🧪 Testes
 
 ```bash
-# Deploy as serverless functions
-hulk deploy serverless --provider aws
-```
-
-## 🧪 Testing
-
-```bash
-# Run all tests
+# Executar todos os testes
 make test
 
-# Run with coverage
+# Executar com cobertura
 make test-coverage
 
-# Run integration tests
+# Executar testes de integração
 go test -v ./tests/integration/...
+
+# Executar testes de carga
+k6 run tests/load/fulfillment-flow.js
 ```
 
-## 📚 Documentation
+## 📚 Documentação
 
-- [Architecture Guide](docs/architecture/)
-- [API Documentation](docs/api/)
-- [User Guides](docs/guides/)
-- [Examples](docs/examples/)
+- [Guia de Arquitetura](docs/architecture/)
+- [Documentação da API](docs/api/)
+- [Guias de Uso](docs/guides/)
+- [Exemplos](docs/examples/)
 - [Troubleshooting](docs/guides/troubleshooting.md)
 
-## 🤝 Contributing
+## 🔗 Integrações
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### Core Inventory
 
-## 📄 License
+O serviço se integra com o `mcp-core-inventory` para:
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- Reservar itens no momento da criação da ordem
+- Confirmar baixa de estoque na expedição
+- Sincronizar ajustes de inventário
 
-## 🆘 Support
+### OMS (Order Management System)
+
+Recebe eventos do OMS para iniciar o processo de fulfillment:
+
+```json
+{
+  "subject": "oms.order.ready_to_pick",
+  "data": {
+    "order_id": "ORD-12345",
+    "customer_id": "CUST-001",
+    "items": [
+      {"sku": "PROD-001", "quantity": 2}
+    ]
+  }
+}
+```
+
+## 🤝 Contribuindo
+
+1. Fork do repositório
+2. Criar branch de feature (`git checkout -b feature/amazing-feature`)
+3. Commit das mudanças (`git commit -m 'Add amazing feature'`)
+4. Push para o branch (`git push origin feature/amazing-feature`)
+5. Abrir Pull Request
+
+## 📄 Licença
+
+Este projeto está licenciado sob MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+## 🆘 Suporte
 
 - **Issues**: [GitHub Issues](https://github.com/vertikon/mcp-fulfillment-ops/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/vertikon/mcp-fulfillment-ops/discussions)
-- **Documentation**: [Project Docs](https://docs.vertikon.com/mcp-fulfillment-ops)
-
-## 🙏 Acknowledgments
-
-- The **Model Context Protocol (MCP)** community
-- Anthropic for the MCP specification
-- All contributors and users of mcp-fulfillment-ops
+- **Discussões**: [GitHub Discussions](https://github.com/vertikon/mcp-fulfillment-ops/discussions)
+- **Documentação**: [Project Docs](https://docs.vertikon.com/mcp-fulfillment-ops)
 
 ---
 
-**Built with ❤️ by the Vertikon Team**
+**Construído com ❤️ pelo Vertikon Team**

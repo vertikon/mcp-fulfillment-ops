@@ -35,16 +35,16 @@ type Credentials struct {
 type AuthManager interface {
 	// Authenticate validates credentials and returns user
 	Authenticate(ctx context.Context, creds Credentials) (*User, error)
-	
+
 	// Register creates a new user account
 	Register(ctx context.Context, email, username, password string) (*User, error)
-	
+
 	// ValidateToken validates a JWT token and returns user ID
 	ValidateToken(ctx context.Context, token string) (string, error)
-	
+
 	// HasPermission checks if user has permission for resource/action
 	HasPermission(userID string, resource string, action string) bool
-	
+
 	// Logout invalidates user session
 	Logout(ctx context.Context, userID string) error
 }

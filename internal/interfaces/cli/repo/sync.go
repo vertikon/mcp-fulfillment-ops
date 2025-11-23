@@ -1,1 +1,0 @@
-# Função: Sincronizar repositório (pull/push templates)

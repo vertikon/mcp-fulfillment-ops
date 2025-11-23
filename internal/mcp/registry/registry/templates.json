@@ -1,0 +1,71 @@
+{
+  "go-basic": {
+    "id": "go-basic",
+    "name": "Go Basic Microservice",
+    "description": "Basic Go microservice with Clean Architecture",
+    "stack": "go",
+    "version": "1.0.0",
+    "category": "backend",
+    "features": [
+      "clean-architecture",
+      "docker",
+      "testing"
+    ],
+    "author": "mcp-fulfillment-ops Team",
+    "license": "MIT",
+    "repository": "https://github.com/vertikon/mcp-fulfillment-ops",
+    "template_dir": "go",
+    "status": "active",
+    "downloads": 0,
+    "rating": 5,
+    "reviews": 0,
+    "created_at": "2025-11-21T19:59:35.5776416-03:00",
+    "updated_at": "2025-11-21T19:59:35.5776416-03:00"
+  },
+  "tinygo-wasm": {
+    "id": "tinygo-wasm",
+    "name": "TinyGo WebAssembly",
+    "description": "TinyGo project targeting WebAssembly",
+    "stack": "tinygo",
+    "version": "1.0.0",
+    "category": "wasm",
+    "features": [
+      "wasm",
+      "embedded",
+      "testing"
+    ],
+    "author": "mcp-fulfillment-ops Team",
+    "license": "MIT",
+    "repository": "https://github.com/vertikon/mcp-fulfillment-ops",
+    "template_dir": "tinygo",
+    "status": "active",
+    "downloads": 0,
+    "rating": 5,
+    "reviews": 0,
+    "created_at": "2025-11-21T19:59:35.5776416-03:00",
+    "updated_at": "2025-11-21T19:59:35.5776416-03:00"
+  },
+  "web-react": {
+    "id": "web-react",
+    "name": "React Web Application",
+    "description": "React web application with TypeScript and Vite",
+    "stack": "web",
+    "version": "1.0.0",
+    "category": "frontend",
+    "features": [
+      "typescript",
+      "vite",
+      "testing"
+    ],
+    "author": "mcp-fulfillment-ops Team",
+    "license": "MIT",
+    "repository": "https://github.com/vertikon/mcp-fulfillment-ops",
+    "template_dir": "web",
+    "status": "active",
+    "downloads": 0,
+    "rating": 5,
+    "reviews": 0,
+    "created_at": "2025-11-21T19:59:35.5776416-03:00",
+    "updated_at": "2025-11-21T19:59:35.5776416-03:00"
+  }
+}

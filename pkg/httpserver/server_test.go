@@ -225,4 +225,3 @@ func TestReadyHandler(t *testing.T) {
 		t.Error("readyHandler should be defined")
 	}
 }
-

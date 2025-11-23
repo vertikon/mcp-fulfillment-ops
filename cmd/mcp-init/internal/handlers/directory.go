@@ -54,19 +54,19 @@ func (h *DirectoryHandler) CanHandle(path string, info os.FileInfo) bool {
 // getNewName gets the new name for a directory based on mappings
 func (h *DirectoryHandler) getNewName(path string) string {
 	baseName := filepath.Base(path)
-	
+
 	// Check if there's a mapping for this directory name
 	if mapped, exists := h.config.GetMapping(baseName); exists {
 		return mapped
 	}
-	
+
 	// Apply pattern-based mappings
 	for key, value := range h.getAllMappings() {
 		if strings.Contains(baseName, key) {
 			return strings.ReplaceAll(baseName, key, value)
 		}
 	}
-	
+
 	return ""
 }
 
@@ -123,4 +123,3 @@ func (h *DirectoryHandler) getAllMappings() map[string]string {
 	}
 	return make(map[string]string)
 }
-

@@ -72,7 +72,7 @@ func TestIntegrationFulfillmentToCoreInventory(t *testing.T) {
 
 	// Step 3: Verificar estoque inicial no Core
 	t.Run("Verificar estoque inicial", func(t *testing.T) {
-		req, err := http.NewRequestWithContext(ctx, "GET", 
+		req, err := http.NewRequestWithContext(ctx, "GET",
 			fmt.Sprintf("%s/v1/available?location=CD-TEST&sku=SKU-TEST-001", coreInventoryURL), nil)
 		require.NoError(t, err)
 
@@ -132,7 +132,7 @@ func TestIntegrationFulfillmentToCoreInventory(t *testing.T) {
 			"order_id": orderID,
 		}
 		body, _ := json.Marshal(createReq)
-		
+
 		// Tentar criar via start_picking primeiro
 		req, _ := http.NewRequestWithContext(ctx, "POST", fulfillmentURL+"/v1/outbound/start_picking", bytes.NewBuffer(body))
 		req.Header.Set("Content-Type", "application/json")
@@ -143,7 +143,7 @@ func TestIntegrationFulfillmentToCoreInventory(t *testing.T) {
 			"order_id": orderID,
 		}
 		body, _ = json.Marshal(shipReq)
-		
+
 		req, err := http.NewRequestWithContext(ctx, "POST", fulfillmentURL+"/v1/outbound/ship", bytes.NewBuffer(body))
 		require.NoError(t, err)
 		req.Header.Set("Content-Type", "application/json")
@@ -178,7 +178,7 @@ func TestIntegrationFulfillmentToCoreInventory(t *testing.T) {
 
 			finalStock := result.Available
 			t.Logf("📊 Estoque final no Core: %d", finalStock)
-			
+
 			// Validar que houve débito (estoque diminuiu)
 			// Nota: Em um teste real, compararíamos com o estoque inicial
 			t.Log("✅ Estoque verificado no Core Inventory")
@@ -195,7 +195,7 @@ func TestIntegrationInboundToCoreInventory(t *testing.T) {
 	}
 
 	fulfillmentURL := getEnv("FULFILLMENT_URL", "http://localhost:8080")
-	coreInventoryURL := getEnv("CORE_INVENTORY_URL", "http://localhost:8081")
+	_ = getEnv("CORE_INVENTORY_URL", "http://localhost:8081")
 
 	ctx := context.Background()
 	client := &http.Client{Timeout: 30 * time.Second}
@@ -224,7 +224,7 @@ func TestIntegrationInboundToCoreInventory(t *testing.T) {
 			var shipment map[string]interface{}
 			json.NewDecoder(resp.Body).Decode(&shipment)
 			resp.Body.Close()
-			
+
 			shipmentID := shipment["id"].(string)
 			t.Logf("✅ InboundShipment criado: %s", shipmentID)
 
@@ -233,7 +233,7 @@ func TestIntegrationInboundToCoreInventory(t *testing.T) {
 				"shipment_id": shipmentID,
 			}
 			body, _ = json.Marshal(confirmReq)
-			
+
 			req, _ = http.NewRequestWithContext(ctx, "POST", fulfillmentURL+"/v1/inbound/confirm", bytes.NewBuffer(body))
 			req.Header.Set("Content-Type", "application/json")
 
@@ -254,4 +254,3 @@ func getEnv(key, defaultValue string) string {
 	// Implementação simples - em produção usar os.Getenv
 	return defaultValue
 }
-

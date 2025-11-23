@@ -123,5 +123,3 @@ func TestEventRouter_matchPattern(t *testing.T) {
 		})
 	}
 }
-
-

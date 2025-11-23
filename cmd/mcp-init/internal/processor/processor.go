@@ -42,7 +42,7 @@ func (p *Processor) registerHandlers() {
 	p.handlers[".md"] = handlers.NewTextFileHandler(p.config)
 	p.handlers[".sh"] = handlers.NewTextFileHandler(p.config)
 	p.handlers[".txt"] = handlers.NewTextFileHandler(p.config)
-	
+
 	// Directory handler
 	p.handlers["__dir__"] = handlers.NewDirectoryHandler(p.config)
 }
@@ -87,7 +87,7 @@ func (p *Processor) processDirectory(path string, info os.FileInfo) error {
 // processFile processes a file
 func (p *Processor) processFile(path string, info os.FileInfo) error {
 	ext := filepath.Ext(path)
-	
+
 	handler, exists := p.handlers[ext]
 	if !exists {
 		// Try text handler as fallback
@@ -106,4 +106,3 @@ func (p *Processor) GetHandler(fileType string) (handlers.Handler, bool) {
 	handler, exists := p.handlers[fileType]
 	return handler, exists
 }
-

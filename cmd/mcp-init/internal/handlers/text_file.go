@@ -22,11 +22,11 @@ type TextFileHandler struct {
 // NewTextFileHandler creates a new text file handler
 func NewTextFileHandler(cfg *config.Config) *TextFileHandler {
 	exts := map[string]bool{
-		".md":  true,
-		".sh":  true,
-		".txt": true,
-		".env": true,
-		".gitignore": true,
+		".md":           true,
+		".sh":           true,
+		".txt":          true,
+		".env":          true,
+		".gitignore":    true,
 		".dockerignore": true,
 	}
 
@@ -123,7 +123,7 @@ func (h *TextFileHandler) processText(content string, path string) string {
 func (h *TextFileHandler) processMarkdown(content string) string {
 	// Apply mappings to markdown content
 	result := content
-	
+
 	// Process code blocks, links, etc.
 	// This is a simplified version
 	return result
@@ -133,7 +133,7 @@ func (h *TextFileHandler) processMarkdown(content string) string {
 func (h *TextFileHandler) processShellScript(content string) string {
 	// Apply mappings to shell script
 	result := content
-	
+
 	// Process variables, paths, etc.
 	return result
 }
@@ -142,24 +142,24 @@ func (h *TextFileHandler) processShellScript(content string) string {
 func (h *TextFileHandler) processEnvFile(content string) string {
 	// Apply mappings to environment variables
 	result := content
-	
+
 	lines := strings.Split(result, "\n")
 	processed := make([]string, 0, len(lines))
-	
+
 	for _, line := range lines {
 		if strings.Contains(line, "=") {
 			parts := strings.SplitN(line, "=", 2)
 			if len(parts) == 2 {
 				key := strings.TrimSpace(parts[0])
 				value := strings.TrimSpace(parts[1])
-				
+
 				// Apply mappings to value
 				for mapKey, mapValue := range h.getAllMappings() {
 					if strings.Contains(value, mapKey) {
 						value = strings.ReplaceAll(value, mapKey, mapValue)
 					}
 				}
-				
+
 				processed = append(processed, key+"="+value)
 			} else {
 				processed = append(processed, line)
@@ -168,7 +168,7 @@ func (h *TextFileHandler) processEnvFile(content string) string {
 			processed = append(processed, line)
 		}
 	}
-	
+
 	return strings.Join(processed, "\n")
 }
 
@@ -185,4 +185,3 @@ func (h *TextFileHandler) getAllMappings() map[string]string {
 	}
 	return make(map[string]string)
 }
-

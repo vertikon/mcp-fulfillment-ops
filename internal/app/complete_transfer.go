@@ -97,4 +97,3 @@ func (uc *CompleteTransferUseCase) CompleteTransfer(ctx context.Context, transfe
 	uc.logger.Info("Transfer order completed", "id", transferID)
 	return nil
 }
-

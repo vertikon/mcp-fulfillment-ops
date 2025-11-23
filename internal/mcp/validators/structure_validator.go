@@ -16,10 +16,10 @@ import (
 type ValidatorFactory struct {
 	structureValidator  *StructureValidator
 	dependencyValidator *DependencyValidator
-	treeValidator      *TreeValidator
-	securityValidator  *SecurityValidator
-	configValidator   *ConfigValidator
-	logger           *zap.Logger
+	treeValidator       *TreeValidator
+	securityValidator   *SecurityValidator
+	configValidator     *ConfigValidator
+	logger              *zap.Logger
 }
 
 // NewValidatorFactory creates a new validator factory
@@ -65,19 +65,19 @@ func (vf *ValidatorFactory) GetConfigValidator() *ConfigValidator {
 
 // ValidationResult represents the result of a validation operation
 type ValidationResult struct {
-	Path       string    `json:"path"`
-	Valid      bool      `json:"valid"`
-	Warnings   []string  `json:"warnings"`
-	Errors     []string  `json:"errors"`
-	Checks     []string  `json:"checks"`
-	Duration   time.Duration `json:"duration"`
-	ValidatedAt time.Time `json:"validated_at"`
+	Path        string        `json:"path"`
+	Valid       bool          `json:"valid"`
+	Warnings    []string      `json:"warnings"`
+	Errors      []string      `json:"errors"`
+	Checks      []string      `json:"checks"`
+	Duration    time.Duration `json:"duration"`
+	ValidatedAt time.Time     `json:"validated_at"`
 }
 
 // ValidationRequest represents a generic validation request
 type ValidationRequest struct {
 	Path       string                 `json:"path"`
-	StrictMode bool                  `json:"strict_mode"`
+	StrictMode bool                   `json:"strict_mode"`
 	Config     map[string]interface{} `json:"config"`
 }
 
@@ -89,24 +89,24 @@ type StructureRequest struct {
 
 // DependencyRequest represents dependency validation request
 type DependencyRequest struct {
-	Path             string `json:"path"`
-	CheckVersions    bool   `json:"check_versions"`
-	CheckConflicts  bool   `json:"check_conflicts"`
-	CheckLicenses   bool   `json:"check_licenses"`
+	Path           string `json:"path"`
+	CheckVersions  bool   `json:"check_versions"`
+	CheckConflicts bool   `json:"check_conflicts"`
+	CheckLicenses  bool   `json:"check_licenses"`
 }
 
 // TreeRequest represents tree validation request
 type TreeRequest struct {
-	Path       string `json:"path"`
-	Depth      int    `json:"depth"`
-	FollowSymlinks bool `json:"follow_symlinks"`
+	Path           string `json:"path"`
+	Depth          int    `json:"depth"`
+	FollowSymlinks bool   `json:"follow_symlinks"`
 }
 
 // SecurityRequest represents security validation request
 type SecurityRequest struct {
-	Path        string `json:"path"`
+	Path         string `json:"path"`
 	CheckSecrets bool   `json:"check_secrets"`
-	CheckPerms  bool   `json:"check_permissions"`
+	CheckPerms   bool   `json:"check_permissions"`
 }
 
 // ConfigRequest represents configuration validation request
@@ -222,12 +222,12 @@ func getDefaultStructureRules() []StructureRule {
 func (sv *StructureValidator) Validate(ctx context.Context, req StructureRequest) (*ValidationResult, error) {
 	startTime := time.Now()
 	result := &ValidationResult{
-		Path:       req.Path,
-		Valid:      true,
-		Warnings:   []string{},
-		Errors:     []string{},
-		Checks:     []string{},
-		Duration:   0,
+		Path:        req.Path,
+		Valid:       true,
+		Warnings:    []string{},
+		Errors:      []string{},
+		Checks:      []string{},
+		Duration:    0,
 		ValidatedAt: time.Now(),
 	}
 
@@ -239,12 +239,12 @@ func (sv *StructureValidator) Validate(ctx context.Context, req StructureRequest
 	for _, rule := range sv.rules {
 		checkResult := sv.validateRule(req.Path, rule, req.StrictMode)
 		result.Checks = append(result.Checks, rule.Name)
-		
+
 		if !checkResult.Valid {
 			result.Valid = false
 			result.Errors = append(result.Errors, checkResult.Errors...)
 		}
-		
+
 		if len(checkResult.Warnings) > 0 {
 			result.Warnings = append(result.Warnings, checkResult.Warnings...)
 		}
@@ -343,12 +343,12 @@ func NewDependencyValidator() *DependencyValidator {
 func (dv *DependencyValidator) Validate(ctx context.Context, req DependencyRequest) (*ValidationResult, error) {
 	startTime := time.Now()
 	result := &ValidationResult{
-		Path:       req.Path,
-		Valid:      true,
-		Warnings:   []string{},
-		Errors:     []string{},
-		Checks:     []string{"dependencies"},
-		Duration:   0,
+		Path:        req.Path,
+		Valid:       true,
+		Warnings:    []string{},
+		Errors:      []string{},
+		Checks:      []string{"dependencies"},
+		Duration:    0,
 		ValidatedAt: time.Now(),
 	}
 
@@ -369,17 +369,17 @@ func (dv *DependencyValidator) Validate(ctx context.Context, req DependencyReque
 	if err == nil {
 		// Basic dependency validation
 		content := string(goModContent)
-		
+
 		// Check for module declaration
 		if !strings.Contains(content, "module ") {
 			result.Warnings = append(result.Warnings, "go.mod missing module declaration")
 		}
-		
+
 		// Check for Go version
 		if !strings.Contains(content, "go ") {
 			result.Warnings = append(result.Warnings, "go.mod missing Go version")
 		}
-		
+
 		// Count dependencies (lines starting with require or replace)
 		lines := strings.Split(content, "\n")
 		depCount := 0
@@ -389,11 +389,11 @@ func (dv *DependencyValidator) Validate(ctx context.Context, req DependencyReque
 				depCount++
 			}
 		}
-		
+
 		if depCount > 0 {
 			result.Checks = append(result.Checks, fmt.Sprintf("dependencies_found: %d", depCount))
 		}
-		
+
 		// Check for common problematic patterns
 		if strings.Contains(content, "replace") {
 			result.Warnings = append(result.Warnings, "go.mod contains replace directives - verify compatibility")
@@ -428,12 +428,12 @@ func NewTreeValidator() *TreeValidator {
 func (tv *TreeValidator) Validate(ctx context.Context, req TreeRequest) (*ValidationResult, error) {
 	startTime := time.Now()
 	result := &ValidationResult{
-		Path:       req.Path,
-		Valid:      true,
-		Warnings:   []string{},
-		Errors:     []string{},
-		Checks:     []string{"tree_structure"},
-		Duration:   0,
+		Path:        req.Path,
+		Valid:       true,
+		Warnings:    []string{},
+		Errors:      []string{},
+		Checks:      []string{"tree_structure"},
+		Duration:    0,
 		ValidatedAt: time.Now(),
 	}
 
@@ -470,12 +470,12 @@ func NewSecurityValidator() *SecurityValidator {
 func (sv *SecurityValidator) Validate(ctx context.Context, req SecurityRequest) (*ValidationResult, error) {
 	startTime := time.Now()
 	result := &ValidationResult{
-		Path:       req.Path,
-		Valid:      true,
-		Warnings:   []string{},
-		Errors:     []string{},
-		Checks:     []string{"security"},
-		Duration:   0,
+		Path:        req.Path,
+		Valid:       true,
+		Warnings:    []string{},
+		Errors:      []string{},
+		Checks:      []string{"security"},
+		Duration:    0,
 		ValidatedAt: time.Now(),
 	}
 
@@ -491,66 +491,66 @@ func (sv *SecurityValidator) Validate(ctx context.Context, req SecurityRequest) 
 			"password", "secret", "api_key", "apikey", "token", "credential",
 			"private_key", "privatekey", "access_token", "accesstoken",
 		}
-		
+
 		err := filepath.Walk(req.Path, func(path string, info os.FileInfo, err error) error {
 			if err != nil {
 				return nil // Continue on error
 			}
-			
+
 			// Skip binary files and directories
 			if info.IsDir() || strings.HasSuffix(path, ".exe") || strings.HasSuffix(path, ".bin") {
 				return nil
 			}
-			
+
 			// Skip node_modules, .git, vendor directories
 			if strings.Contains(path, "node_modules") || strings.Contains(path, ".git") || strings.Contains(path, "vendor") {
 				return nil
 			}
-			
+
 			// Read file content
 			content, err := os.ReadFile(path)
 			if err != nil {
 				return nil
 			}
-			
+
 			contentStr := strings.ToLower(string(content))
-			
+
 			// Check for secret patterns
 			for _, pattern := range secretPatterns {
 				if strings.Contains(contentStr, pattern) {
 					// Check if it's a hardcoded value (not just a variable name)
 					if strings.Contains(contentStr, pattern+"=") || strings.Contains(contentStr, pattern+":") {
-						result.Warnings = append(result.Warnings, 
+						result.Warnings = append(result.Warnings,
 							fmt.Sprintf("Potential secret pattern found: %s in %s", pattern, filepath.Base(path)))
 					}
 				}
 			}
-			
+
 			return nil
 		})
-		
+
 		if err != nil {
 			result.Warnings = append(result.Warnings, fmt.Sprintf("Error scanning for secrets: %v", err))
 		}
 	}
-	
+
 	if req.CheckPerms {
 		// Check file permissions (basic check)
 		err := filepath.Walk(req.Path, func(path string, info os.FileInfo, err error) error {
 			if err != nil {
 				return nil
 			}
-			
+
 			// Check for world-writable files (security risk)
 			mode := info.Mode()
 			if mode&0002 != 0 && !info.IsDir() {
-				result.Warnings = append(result.Warnings, 
+				result.Warnings = append(result.Warnings,
 					fmt.Sprintf("World-writable file found: %s", filepath.Base(path)))
 			}
-			
+
 			return nil
 		})
-		
+
 		if err != nil {
 			result.Warnings = append(result.Warnings, fmt.Sprintf("Error checking permissions: %v", err))
 		}
@@ -582,12 +582,12 @@ func NewConfigValidator() *ConfigValidator {
 func (cv *ConfigValidator) Validate(ctx context.Context, req ConfigRequest) (*ValidationResult, error) {
 	startTime := time.Now()
 	result := &ValidationResult{
-		Path:       req.Path,
-		Valid:      true,
-		Warnings:   []string{},
-		Errors:     []string{},
-		Checks:     []string{"configuration"},
-		Duration:   0,
+		Path:        req.Path,
+		Valid:       true,
+		Warnings:    []string{},
+		Errors:      []string{},
+		Checks:      []string{"configuration"},
+		Duration:    0,
 		ValidatedAt: time.Now(),
 	}
 
@@ -630,7 +630,7 @@ func matchesPattern(path, pattern string) bool {
 // ValidateAll runs all validators on a project
 func (vf *ValidatorFactory) ValidateAll(ctx context.Context, projectPath string, strictMode bool) (*ValidationResult, error) {
 	results := make([]*ValidationResult, 0)
-	
+
 	// Run structure validation
 	structResult, err := vf.structureValidator.Validate(ctx, StructureRequest{
 		Path:       projectPath,
@@ -640,52 +640,52 @@ func (vf *ValidatorFactory) ValidateAll(ctx context.Context, projectPath string,
 		return nil, fmt.Errorf("structure validation failed: %w", err)
 	}
 	results = append(results, structResult)
-	
+
 	// Run dependency validation
 	depResult, err := vf.dependencyValidator.Validate(ctx, DependencyRequest{
 		Path:           projectPath,
-		CheckVersions:   true,
-		CheckConflicts:  true,
-		CheckLicenses:   true,
+		CheckVersions:  true,
+		CheckConflicts: true,
+		CheckLicenses:  true,
 	})
 	if err != nil {
 		return nil, fmt.Errorf("dependency validation failed: %w", err)
 	}
 	results = append(results, depResult)
-	
+
 	// Run tree validation
 	treeResult, err := vf.treeValidator.Validate(ctx, TreeRequest{
 		Path:           projectPath,
 		Depth:          10,
-		FollowSymlinks:  false,
+		FollowSymlinks: false,
 	})
 	if err != nil {
 		return nil, fmt.Errorf("tree validation failed: %w", err)
 	}
 	results = append(results, treeResult)
-	
+
 	// Run security validation
 	secResult, err := vf.securityValidator.Validate(ctx, SecurityRequest{
-		Path:        projectPath,
+		Path:         projectPath,
 		CheckSecrets: true,
-		CheckPerms:  true,
+		CheckPerms:   true,
 	})
 	if err != nil {
 		return nil, fmt.Errorf("security validation failed: %w", err)
 	}
 	results = append(results, secResult)
-	
+
 	// Combine results
 	combined := &ValidationResult{
-		Path:       projectPath,
-		Valid:      true,
-		Warnings:   []string{},
-		Errors:     []string{},
-		Checks:     []string{},
-		Duration:   0,
+		Path:        projectPath,
+		Valid:       true,
+		Warnings:    []string{},
+		Errors:      []string{},
+		Checks:      []string{},
+		Duration:    0,
 		ValidatedAt: time.Now(),
 	}
-	
+
 	for _, result := range results {
 		if !result.Valid {
 			combined.Valid = false
@@ -695,6 +695,6 @@ func (vf *ValidatorFactory) ValidateAll(ctx context.Context, projectPath string,
 		combined.Checks = append(combined.Checks, result.Checks...)
 		combined.Duration += result.Duration
 	}
-	
+
 	return combined, nil
 }

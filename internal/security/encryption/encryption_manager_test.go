@@ -112,7 +112,7 @@ func TestEncryptionManager_EncryptDecrypt(t *testing.T) {
 }
 
 func TestEncryptionManager_EncryptDecryptWithKey(t *testing.T) {
-	manager := &Manager{}
+	manager := &encryptionManagerImpl{}
 
 	testKey := make([]byte, 32)
 	_, _ = rand.Read(testKey)
@@ -131,7 +131,7 @@ func TestEncryptionManager_EncryptDecryptWithKey(t *testing.T) {
 }
 
 func TestEncryptionManager_InvalidKey(t *testing.T) {
-	manager := &Manager{}
+	manager := &encryptionManagerImpl{}
 
 	plaintext := []byte("Test data")
 	invalidKey := make([]byte, 16) // Wrong size
@@ -214,4 +214,3 @@ func TestEncryptionManager_SignVerify(t *testing.T) {
 	invalid = manager.Verify(data, wrongSignature, publicKey)
 	assert.False(t, invalid)
 }
-

@@ -311,7 +311,7 @@ func (t *MCPTools) updateProjectTool() Tool {
 // RegisterTools registers all tool handlers with the MCP server
 func (t *MCPTools) RegisterTools(server *MCPServer) {
 	tools := t.GetToolDefinitions()
-	
+
 	for _, tool := range tools {
 		handler := &ToolHandlerImpl{
 			name:        tool.Name,
@@ -355,7 +355,7 @@ func (h *ToolHandlerImpl) Schema() map[string]interface{} {
 }
 
 // Handle processes the tool request
-func (h *ToolHandlerImpl) Handle(ctx context.Context, request *protocol.JSONRPCRequest) (*protocol.JSONRPCResponse, error) {
+func (h *ToolHandlerImpl) Handle(ctx context.Context, request *JSONRPCRequest) (*JSONRPCResponse, error) {
 	h.logger.Info("Handling tool request",
 		zap.String("tool", h.name),
 		zap.Any("params", request.Params))
@@ -363,8 +363,8 @@ func (h *ToolHandlerImpl) Handle(ctx context.Context, request *protocol.JSONRPCR
 	// This is a placeholder implementation
 	// In a real implementation, each tool would have its own handler logic
 	result := map[string]interface{}{
-		"tool":   h.name,
-		"status": "implemented",
+		"tool":    h.name,
+		"status":  "implemented",
 		"message": fmt.Sprintf("Tool %s is ready for implementation", h.name),
 	}
 

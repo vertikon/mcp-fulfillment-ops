@@ -138,7 +138,7 @@ func (mr *MemoryRetrieval) formatForPrompt(memCtx *MemoryContext) string {
 
 	// Add working memory
 	if memCtx.Working != nil {
-		parts = append(parts, fmt.Sprintf("Working Memory (Task: %s, Step: %d):", 
+		parts = append(parts, fmt.Sprintf("Working Memory (Task: %s, Step: %d):",
 			memCtx.Working.TaskID(), memCtx.Working.Step()))
 		parts = append(parts, memCtx.Working.Content())
 	}

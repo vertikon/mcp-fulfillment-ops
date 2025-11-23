@@ -8,14 +8,14 @@ import (
 
 // TransferOrder: Transferência entre locais (CD↔loja, loja↔loja)
 type TransferOrder struct {
-	ID             string    `json:"id"`
-	LocationFrom   string    `json:"location_from"`
-	LocationTo     string    `json:"location_to"`
-	Status         Status    `json:"status"`
-	Items          []Item    `json:"items"`
-	IdempotencyKey string    `json:"idempotency_key"`
-	CreatedAt      time.Time `json:"created_at"`
-	UpdatedAt      time.Time `json:"updated_at"`
+	ID             string     `json:"id"`
+	LocationFrom   string     `json:"location_from"`
+	LocationTo     string     `json:"location_to"`
+	Status         Status     `json:"status"`
+	Items          []Item     `json:"items"`
+	IdempotencyKey string     `json:"idempotency_key"`
+	CreatedAt      time.Time  `json:"created_at"`
+	UpdatedAt      time.Time  `json:"updated_at"`
 	CompletedAt    *time.Time `json:"completed_at,omitempty"`
 }
 
@@ -69,4 +69,3 @@ func (t *TransferOrder) Cancel() error {
 	t.UpdatedAt = time.Now()
 	return nil
 }
-

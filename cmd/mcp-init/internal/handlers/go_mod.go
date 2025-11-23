@@ -147,4 +147,3 @@ func (h *GoModHandler) getAllMappings() map[string]string {
 	}
 	return make(map[string]string)
 }
-

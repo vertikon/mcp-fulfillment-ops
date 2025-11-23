@@ -3,7 +3,6 @@ package protocol
 import (
 	"context"
 	"fmt"
-	"strings"
 
 	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
@@ -46,7 +45,7 @@ func (r *ToolRouter) Route(ctx context.Context, request *JSONRPCRequest) *JSONRP
 			return r.handleToolCall(ctx, request, handler)
 		}
 
-		return NewErrorResponse(request.ID, ErrCodeMethodNotFound, 
+		return NewErrorResponse(request.ID, ErrCodeMethodNotFound,
 			fmt.Sprintf("Method '%s' not found", request.Method), nil)
 	}
 }
@@ -54,7 +53,7 @@ func (r *ToolRouter) Route(ctx context.Context, request *JSONRPCRequest) *JSONRP
 // handleListTools handles the tools/list method
 func (r *ToolRouter) handleListTools(ctx context.Context, request *JSONRPCRequest) *JSONRPCResponse {
 	tools := make([]Tool, 0, len(r.handlers))
-	
+
 	for _, handler := range r.handlers {
 		tools = append(tools, Tool{
 			Name:        handler.Name(),
@@ -75,7 +74,7 @@ func (r *ToolRouter) handleCallTool(ctx context.Context, request *JSONRPCRequest
 	// Parse call parameters
 	var params CallToolRequest
 	if err := parseParams(request.Params, &params); err != nil {
-		return NewErrorResponse(request.ID, ErrCodeInvalidParams, 
+		return NewErrorResponse(request.ID, ErrCodeInvalidParams,
 			fmt.Sprintf("Invalid parameters: %v", err), nil)
 	}
 
@@ -171,7 +170,7 @@ func (r *ToolRouter) handleToolCall(ctx context.Context, request *JSONRPCRequest
 func (r *ToolRouter) validateParams(params interface{}, schema map[string]interface{}) error {
 	// This is a simplified validation implementation
 	// In a production environment, you would use a proper JSON schema validator
-	
+
 	if params == nil {
 		if required, ok := schema["required"].([]interface{}); ok && len(required) > 0 {
 			return fmt.Errorf("missing required parameters")
@@ -188,13 +187,13 @@ func (r *ToolRouter) validateParams(params interface{}, schema map[string]interf
 	// Check required fields
 	if required, ok := schema["required"].([]interface{}); ok {
 		properties, _ := schema["properties"].(map[string]interface{})
-		
+
 		for _, req := range required {
 			fieldName, ok := req.(string)
 			if !ok {
 				continue
 			}
-			
+
 			if _, exists := paramMap[fieldName]; !exists {
 				if properties != nil {
 					if fieldInfo, exists := properties[fieldName].(map[string]interface{}); exists {

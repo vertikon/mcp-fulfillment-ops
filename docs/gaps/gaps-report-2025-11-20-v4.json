@@ -1,0 +1,1821 @@
+{
+  "project_name": "mcp-fulfillment-ops",
+  "project_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops",
+  "timestamp": "2025-11-20 10:18:14",
+  "validator_version": "9.4",
+  "critical": [
+    {
+      "type": "Dependencias resolvidas",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Erro ao baixar dependencias",
+      "suggestion": "Execute: go mod tidy",
+      "fixability": {
+        "safe": true,
+        "rollback_easy": true,
+        "affects_behavior": false,
+        "requires_review": false,
+        "auto_fix_command": "go mod tidy",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "1-2 minutos",
+        "confidence": 0.9
+      },
+      "examples": [
+        "go: cannot load module E:\\vertikon\\mcp-shared listed in go.work file: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.\n"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Testes PASSAM",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Testes falharam",
+      "suggestion": "Corrija os testes. Use 'go test -v ./...'",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": [
+        "📄 Log: E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\2025-11-20-10-18-04-tests.log"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Nil Pointer Check",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "1 potencial(is) nil pointer issue(s)",
+      "suggestion": "Adicione nil checks",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": [
+        "multi_level_cache.go:180"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "No Code Conflicts",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Conflitos de declaracao detectados",
+      "suggestion": "Remova ou renomeie as declaracoes duplicadas",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": true,
+        "requires_review": true,
+        "manual_steps": "1. Identifique qual declaracao manter\n2. Remova ou renomeie as duplicatas\n3. Atualize referencias",
+        "non_fixable_reason": "ARCHITECTURAL",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "15-30 minutos",
+        "confidence": 0
+      },
+      "examples": [
+        "cli: 'init' declarado em ai.go, generate.go, monitor.go, root.go, state.go, template.go, version.go",
+        "analytics: 'init' declarado em metrics.go, performance.go",
+        "validators: 'ValidationResult' declarado em structure_validator.go, template_validator.go",
+        "encryption: 'Manager' declarado em certificate_manager.go, encryption_manager.go, key_manager.go",
+        "transformer: 'MultiHeadAttention' declarado em attention.go, transformer.go",
+        "transformer: 'FeedForwardNetwork' declarado em feedforward.go, transformer.go",
+        "transformer: 'PositionalEncodingLayer' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'NewPositionalEncodingLayer' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'NewEmbeddingLayer' declarado em embeddings.go, transformer.go",
+        "transformer: 'RotaryEmbeddings' declarado em attention.go, embeddings.go, positional_encoding.go",
+        "transformer: 'NewMultiHeadAttention' declarado em attention.go, transformer.go",
+        "transformer: 'PositionalEncodingConfig' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'PositionalEncodingStats' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'EmbeddingLayer' declarado em embeddings.go, transformer.go",
+        "transformer: 'FeedForwardConfig' declarado em feedforward.go, transformer.go",
+        "transformer: 'NewFeedForwardNetwork' declarado em feedforward.go, transformer.go"
+      ],
+      "non_fixable_reason": "ARCHITECTURAL",
+      "code_contexts": [
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\state\\store\\conflict_resolver.go",
+          "line_number": 622,
+          "code_snippet": "   617 | \t\treturn a\r\n   618 | \t}\r\n   619 | \treturn b\r\n   620 | }\r\n   621 | \r\n→  622 | func max(a, b time.Time) time.Time {\r\n   623 | \tif a.After(b) {\r\n   624 | \t\treturn a\r\n   625 | \t}\r\n   626 | \treturn b\r\n   627 | }\n",
+          "full_function": "func max(a, b time.Time) time.Time {\r\n\tif a.After(b) {\r\n\t\treturn a\r\n\t}\r\n\treturn b\r\n}",
+          "symbol_name": "max",
+          "package_name": "store",
+          "dependencies": [
+            "context",
+            "fmt",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\generate.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"MCP project generation initiated\")\r\n    40 | \t\treturn nil\r\n    41 | \t},\r\n    42 | }\r\n    43 | \r\n→   44 | func init() {\r\n    45 | \trootCmd.AddCommand(generateCmd)\r\n    46 | \tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\r\n    47 | \tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\r\n    48 | \tgenerateCmd.MarkFlagRequired(\"template\")\r\n    49 | }\r\n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(generateCmd)\r\n\tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\r\n\tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\r\n\tgenerateCmd.MarkFlagRequired(\"template\")\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\monitor.go",
+          "line_number": 24,
+          "code_snippet": "    19 | \t\tcmd.Println(\"System status: Operational\")\r\n    20 | \t\treturn nil\r\n    21 | \t},\r\n    22 | }\r\n    23 | \r\n→   24 | func init() {\r\n    25 | \trootCmd.AddCommand(monitorCmd)\r\n    26 | }\r\n    27 | \r\n    28 | // SetMonitoringService sets the monitoring service\r\n    29 | func SetMonitoringService(service *services.MonitoringAppService) {\r\n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(monitorCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\root.go",
+          "line_number": 37,
+          "code_snippet": "    32 | \t\tos.Exit(1)\r\n    33 | \t}\r\n    34 | }\r\n    35 | \r\n    36 | // init initializes the CLI\r\n→   37 | func init() {\r\n    38 | \trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\r\n    39 | \trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\r\n    40 | \t\r\n    41 | \t// Add subcommand groups\r\n    42 | \trootCmd.AddCommand(analytics.AnalyticsCmd)\r\n",
+          "full_function": "func init() {\r\n\trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\r\n\trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\r\n\t\r\n\t// Add subcommand groups\r\n\trootCmd.AddCommand(analytics.AnalyticsCmd)\r\n\trootCmd.AddCommand(ci.CICmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "os",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\state.go",
+          "line_number": 20,
+          "code_snippet": "    15 | \t\tcmd.Println(\"State management - service implementation pending\")\r\n    16 | \t\treturn nil\r\n    17 | \t},\r\n    18 | }\r\n    19 | \r\n→   20 | func init() {\r\n    21 | \trootCmd.AddCommand(stateCmd)\r\n    22 | }\r\n    23 | \n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(stateCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\template.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"Template created\")\r\n    40 | \t\treturn nil\r\n    41 | \t},\r\n    42 | }\r\n    43 | \r\n→   44 | func init() {\r\n    45 | \trootCmd.AddCommand(templateCmd)\r\n    46 | \ttemplateCmd.AddCommand(templateListCmd)\r\n    47 | \ttemplateCmd.AddCommand(templateCreateCmd)\r\n    48 | \ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\r\n    49 | \ttemplateCreateCmd.MarkFlagRequired(\"name\")\r\n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(templateCmd)\r\n\ttemplateCmd.AddCommand(templateListCmd)\r\n\ttemplateCmd.AddCommand(templateCreateCmd)\r\n\ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\r\n\ttemplateCreateCmd.MarkFlagRequired(\"name\")\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\version.go",
+          "line_number": 21,
+          "code_snippet": "    16 | \t\tfmt.Printf(\"Version: %s\\n\", Version)\r\n    17 | \t\tfmt.Printf(\"Build Date: %s\\n\", BuildDate)\r\n    18 | \t},\r\n    19 | }\r\n    20 | \r\n→   21 | func init() {\r\n    22 | \trootCmd.AddCommand(versionCmd)\r\n    23 | }\r\n    24 | \n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(versionCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\analytics\\performance.go",
+          "line_number": 23,
+          "code_snippet": "    18 | \t\tcmd.Println(\"  P95 Latency: 0ms\")\r\n    19 | \t\treturn nil\r\n    20 | \t},\r\n    21 | }\r\n    22 | \r\n→   23 | func init() {\r\n    24 | \tAnalyticsCmd.AddCommand(performanceCmd)\r\n    25 | }\r\n    26 | \n",
+          "full_function": "func init() {\r\n\tAnalyticsCmd.AddCommand(performanceCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "analytics",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\mcp\\validators\\template_validator.go",
+          "line_number": 28,
+          "code_snippet": "    23 | \t\tlogger: logger.GetLogger(),\r\n    24 | \t}\r\n    25 | }\r\n    26 | \r\n    27 | // ValidationResult represents the result of template validation\r\n→   28 | type ValidationResult struct {\r\n    29 | \tValid  bool     `json:\"valid\"`\r\n    30 | \tErrors []string `json:\"errors\"`\r\n    31 | \tWarnings []string `json:\"warnings\"`\r\n    32 | }\r\n    33 | \r\n",
+          "full_function": "type ValidationResult struct {\r\n\tValid  bool     `json:\"valid\"`\r\n\tErrors []string `json:\"errors\"`\r\n\tWarnings []string `json:\"warnings\"`\r\n}\r",
+          "symbol_name": "ValidationResult",
+          "package_name": "registry",
+          "dependencies": [
+            "fmt",
+            "os",
+            "path/filepath",
+            "regexp",
+            "strings",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap",
+            "gopkg.in/yaml.v3"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\security\\encryption\\encryption_manager.go",
+          "line_number": 56,
+          "code_snippet": "    51 | \t// Verify verifies a signature using RSA\r\n    52 | \tVerify(data, signature []byte, publicKey *rsa.PublicKey) bool\r\n    53 | }\r\n    54 | \r\n    55 | // Manager implements EncryptionManager\r\n→   56 | type Manager struct {\r\n    57 | \tkeyManager KeyManager\r\n    58 | \tlogger     *zap.Logger\r\n    59 | }\r\n    60 | \r\n    61 | // NewEncryptionManager creates a new EncryptionManager\r\n",
+          "full_function": "type Manager struct {\r\n\tkeyManager KeyManager\r\n\tlogger     *zap.Logger\r\n}\r",
+          "symbol_name": "Manager",
+          "package_name": "encryption",
+          "dependencies": [
+            "crypto",
+            "crypto/aes",
+            "crypto/cipher",
+            "crypto/rand",
+            "crypto/rsa",
+            "crypto/sha256",
+            "errors",
+            "io",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap",
+            "golang.org/x/crypto/argon2",
+            "golang.org/x/crypto/bcrypt"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\security\\encryption\\key_manager.go",
+          "line_number": 52,
+          "code_snippet": "    47 | \t// LoadKeyFromFile loads key from file\r\n    48 | \tLoadKeyFromFile(filePath string) error\r\n    49 | }\r\n    50 | \r\n    51 | // Manager implements KeyManager\r\n→   52 | type Manager struct {\r\n    53 | \tencryptionKey []byte\r\n    54 | \tkeyVersion    string\r\n    55 | \trsaPrivateKey *rsa.PrivateKey\r\n    56 | \trsaPublicKey  *rsa.PublicKey\r\n    57 | \trotationTTL  time.Duration\r\n",
+          "full_function": "type Manager struct {\r\n\tencryptionKey []byte\r\n\tkeyVersion    string\r\n\trsaPrivateKey *rsa.PrivateKey\r\n\trsaPublicKey  *rsa.PublicKey\r\n\trotationTTL  time.Duration\r\n\tlastRotation  time.Time\r\n\tmu            sync.RWMutex\r\n\tlogger        *zap.Logger\r\n}\r",
+          "symbol_name": "Manager",
+          "package_name": "encryption",
+          "dependencies": [
+            "crypto/rand",
+            "crypto/rsa",
+            "crypto/x509",
+            "encoding/base64",
+            "encoding/hex",
+            "encoding/pem",
+            "errors",
+            "fmt",
+            "os",
+            "path/filepath",
+            "strings",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\embeddings.go",
+          "line_number": 82,
+          "code_snippet": "    77 | \tstats         *PositionalEncodingStats\r\n    78 | \tmu            sync.RWMutex\r\n    79 | }\r\n    80 | \r\n    81 | // RotaryEmbeddings implements rotary positional embeddings (RoPE)\r\n→   82 | type RotaryEmbeddings struct {\r\n    83 | \tdim          int\r\n    84 | \tmaxSeqLen    int\r\n    85 | \tbase         float64\r\n    86 | \tscale        bool\r\n    87 | \tcache        map[int]*RotaryCache\r\n",
+          "full_function": "type RotaryEmbeddings struct {\r\n\tdim          int\r\n\tmaxSeqLen    int\r\n\tbase         float64\r\n\tscale        bool\r\n\tcache        map[int]*RotaryCache\r\n\tsinCosCache  *Tensor\r\n\tmu           sync.RWMutex\r\n}\r",
+          "symbol_name": "RotaryEmbeddings",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 28,
+          "code_snippet": "    23 | \tPosEncodingTypeALiBi      PositionalEncodingType = \"alibi\"\r\n    24 | \tPosEncodingTypeXPos       PositionalEncodingType = \"xpos\"\r\n    25 | )\r\n    26 | \r\n    27 | // PositionalEncodingConfig represents positional encoding configuration\r\n→   28 | type PositionalEncodingConfig struct {\r\n    29 | \tType         PositionalEncodingType `json:\"type\"`\r\n    30 | \tMaxSeqLen    int                   `json:\"max_seq_len\"`\r\n    31 | \tHiddenSize   int                   `json:\"hidden_size\"`\r\n    32 | \tHeadDim      int                   `json:\"head_dim,omitempty\"`\r\n    33 | \tBase         float64                `json:\"base\"`\r\n",
+          "full_function": "type PositionalEncodingConfig struct {\r\n\tType         PositionalEncodingType `json:\"type\"`\r\n\tMaxSeqLen    int                   `json:\"max_seq_len\"`\r\n\tHiddenSize   int                   `json:\"hidden_size\"`\r\n\tHeadDim      int                   `json:\"head_dim,omitempty\"`\r\n\tBase         float64                `json:\"base\"`\r\n\tScale        bool                   `json:\"scale\"`\r\n\tNormalize    bool                   `json:\"normalize\"`\r\n\tConcatenate  bool                   `json:\"concatenate\"`\r\n\tRotateHalf   bool                   `json:\"rotate_half\"`\r\n\tUseRoPE      bool                   `json:\"use_rope\"`\r\n\tUseXPos      bool                   `json:\"use_xpos\"`\r\n}\r",
+          "symbol_name": "PositionalEncodingConfig",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 43,
+          "code_snippet": "    38 | \tUseRoPE      bool                   `json:\"use_rope\"`\r\n    39 | \tUseXPos      bool                   `json:\"use_xpos\"`\r\n    40 | }\r\n    41 | \r\n    42 | // PositionalEncodingLayer implements various positional encoding strategies\r\n→   43 | type PositionalEncodingLayer struct {\r\n    44 | \tconfig         PositionalEncodingConfig\r\n    45 | \tencoding       *Tensor\r\n    46 | \trotaryEmbeds   *RotaryEmbeddings\r\n    47 | \talibiBias      *ALiBiBias\r\n    48 | \txposEmbeds     *XPosembeddings\r\n",
+          "full_function": "type PositionalEncodingLayer struct {\r\n\tconfig         PositionalEncodingConfig\r\n\tencoding       *Tensor\r\n\trotaryEmbeds   *RotaryEmbeddings\r\n\talibiBias      *ALiBiBias\r\n\txposEmbeds     *XPosembeddings\r\n\tlearnedPos     *Tensor\r\n\trelativePos    *RelativePositionBias\r\n\tstats          *PositionalEncodingStats\r\n\tmu             sync.RWMutex\r\n\tcache          map[int]*Tensor\r\n}\r",
+          "symbol_name": "PositionalEncodingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 57,
+          "code_snippet": "    52 | \tmu             sync.RWMutex\r\n    53 | \tcache          map[int]*Tensor\r\n    54 | }\r\n    55 | \r\n    56 | // RotaryEmbeddings implements rotary positional embeddings (RoPE)\r\n→   57 | type RotaryEmbeddings struct {\r\n    58 | \tdim          int\r\n    59 | \tmaxSeqLen    int\r\n    60 | \tbase         float64\r\n    61 | \tscale        bool\r\n    62 | \tcache        map[int]*RotaryCache\r\n",
+          "full_function": "type RotaryEmbeddings struct {\r\n\tdim          int\r\n\tmaxSeqLen    int\r\n\tbase         float64\r\n\tscale        bool\r\n\tcache        map[int]*RotaryCache\r\n\tsinCosCache  *Tensor\r\n\tmu           sync.RWMutex\r\n}\r",
+          "symbol_name": "RotaryEmbeddings",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 95,
+          "code_snippet": "    90 | \tmaxDistance   int\r\n    91 | \tbias          *Tensor\r\n    92 | }\r\n    93 | \r\n    94 | // PositionalEncodingStats tracks positional encoding performance\r\n→   95 | type PositionalEncodingStats struct {\r\n    96 | \tTotalEncodings    int64   `json:\"total_encodings\"`\r\n    97 | \tAvgEncodingTime   float64  `json:\"avg_encoding_time\"`\r\n    98 | \tCacheHitRate      float64  `json:\"cache_hit_rate\"`\r\n    99 | \tRoPEUsage         float64  `json:\"rope_usage\"`\r\n   100 | \tALiBiUsage        float64  `json:\"alibi_usage\"`\r\n",
+          "full_function": "type PositionalEncodingStats struct {\r\n\tTotalEncodings    int64   `json:\"total_encodings\"`\r\n\tAvgEncodingTime   float64  `json:\"avg_encoding_time\"`\r\n\tCacheHitRate      float64  `json:\"cache_hit_rate\"`\r\n\tRoPEUsage         float64  `json:\"rope_usage\"`\r\n\tALiBiUsage        float64  `json:\"alibi_usage\"`\r\n\tXPosUsage         float64  `json:\"xpos_usage\"`\r\n\tLastUpdated       int64    `json:\"last_updated\"`\r\n}\r",
+          "symbol_name": "PositionalEncodingStats",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 106,
+          "code_snippet": "   101 | \tXPosUsage         float64  `json:\"xpos_usage\"`\r\n   102 | \tLastUpdated       int64    `json:\"last_updated\"`\r\n   103 | }\r\n   104 | \r\n   105 | // NewPositionalEncodingLayer creates a new positional encoding layer\r\n→  106 | func NewPositionalEncodingLayer(config PositionalEncodingConfig) *PositionalEncodingLayer {\r\n   107 | \tlogger.Info(\"Creating positional encoding layer\",\r\n   108 | \t\tzap.String(\"type\", string(config.Type)),\r\n   109 | \t\tzap.Int(\"max_seq_len\", config.MaxSeqLen),\r\n   110 | \t\tzap.Int(\"hidden_size\", config.HiddenSize),\r\n   111 | \t\tzap.Bool(\"use_rope\", config.UseRoPE),\r\n",
+          "full_function": "func NewPositionalEncodingLayer(config PositionalEncodingConfig) *PositionalEncodingLayer {\r\n\tlogger.Info(\"Creating positional encoding layer\",\r\n\t\tzap.String(\"type\", string(config.Type)),\r\n\t\tzap.Int(\"max_seq_len\", config.MaxSeqLen),\r\n\t\tzap.Int(\"hidden_size\", config.HiddenSize),\r\n\t\tzap.Bool(\"use_rope\", config.UseRoPE),\r\n\t\tzap.Bool(\"use_xpos\", config.UseXPos),\r\n\t)\r\n\r\n\tlayer := \u0026PositionalEncodingLayer{\r\n\t\tconfig: config,\r\n\t\tstats:  \u0026PositionalEncodingStats{},\r\n\t\tcache:  make(map[int]*Tensor),\r\n\t}\r\n\r\n\t// Initialize based on type\r\n\tswitch config.Type {\r\n\tcase PosEncodingTypeSinusoidal:\r\n\t\tlayer.encoding = layer.createSinusoidalEncoding()\r\n\tcase PosEncodingTypeLearned:\r\n\t\tlayer.learnedPos = t.randn(config.MaxSeqLen, config.HiddenSize)\r\n\tcase PosEncodingTypeRotary:\r\n\t\tlayer.rotaryEmbeds = NewRotaryEmbeddingsWithConfig(config)\r\n\tcase PosEncodingTypeALiBi:\r\n\t\tlayer.alibiBias = NewALiBiBiasWithConfig(config)\r\n\tcase PosEncodingTypeXPos:\r\n\t\tlayer.xposEmbeds = NewXPosembeddingsWithConfig(config)\r\n\tcase PosEncodingTypeRelative:\r\n\t\tlayer.relativePos = NewRelativePositionBias(config.HiddenSize/12, config.MaxSeqLen)\r\n\tdefault:\r\n\t\tlayer.encoding = layer.createSinusoidalEncoding()\r\n\t}\r\n\r\n\treturn layer\r\n}\r",
+          "symbol_name": "NewPositionalEncodingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 24,
+          "code_snippet": "    19 | \tUseFlash      bool    `json:\"use_flash\"`\r\n    20 | \tScale         float64 `json:\"scale\"`\r\n    21 | }\r\n    22 | \r\n    23 | // FeedForwardConfig represents feed-forward network configuration\r\n→   24 | type FeedForwardConfig struct {\r\n    25 | \tHiddenSize    int     `json:\"hidden_size\"`\r\n    26 | \tIntermediate  int     `json:\"intermediate_size\"`\r\n    27 | \tDropout       float64 `json:\"dropout\"`\r\n    28 | \tActivation    string  `json:\"activation\"`\r\n    29 | \tUseBias       bool    `json:\"use_bias\"`\r\n",
+          "full_function": "type FeedForwardConfig struct {\r\n\tHiddenSize    int     `json:\"hidden_size\"`\r\n\tIntermediate  int     `json:\"intermediate_size\"`\r\n\tDropout       float64 `json:\"dropout\"`\r\n\tActivation    string  `json:\"activation\"`\r\n\tUseBias       bool    `json:\"use_bias\"`\r\n}\r",
+          "symbol_name": "FeedForwardConfig",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 74,
+          "code_snippet": "    69 | \tShape    []int     `json:\"shape\"`\r\n    70 | \tRequiresGrad bool   `json:\"requires_grad\"`\r\n    71 | }\r\n    72 | \r\n    73 | // MultiHeadAttention implements multi-head attention mechanism\r\n→   74 | type MultiHeadAttention struct {\r\n    75 | \tconfig       AttentionConfig\r\n    76 | \thiddenSize   int\r\n    77 | \theadDim      int\r\n    78 | \tqueryWeights *Tensor\r\n    79 | \tkeyWeights   *Tensor\r\n",
+          "full_function": "type MultiHeadAttention struct {\r\n\tconfig       AttentionConfig\r\n\thiddenSize   int\r\n\theadDim      int\r\n\tqueryWeights *Tensor\r\n\tkeyWeights   *Tensor\r\n\tvalueWeights *Tensor\r\n\toutputWeights *Tensor\r\n\tbias         *Tensor\r\n}\r",
+          "symbol_name": "MultiHeadAttention",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 86,
+          "code_snippet": "    81 | \toutputWeights *Tensor\r\n    82 | \tbias         *Tensor\r\n    83 | }\r\n    84 | \r\n    85 | // FeedForwardNetwork implements the position-wise feed-forward network\r\n→   86 | type FeedForwardNetwork struct {\r\n    87 | \tconfig      FeedForwardConfig\r\n    88 | \tweight1     *Tensor\r\n    89 | \tbias1       *Tensor\r\n    90 | \tweight2     *Tensor\r\n    91 | \tbias2       *Tensor\r\n",
+          "full_function": "type FeedForwardNetwork struct {\r\n\tconfig      FeedForwardConfig\r\n\tweight1     *Tensor\r\n\tbias1       *Tensor\r\n\tweight2     *Tensor\r\n\tbias2       *Tensor\r\n\thiddenSize  int\r\n\tintermediate int\r\n}\r",
+          "symbol_name": "FeedForwardNetwork",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 97,
+          "code_snippet": "    92 | \thiddenSize  int\r\n    93 | \tintermediate int\r\n    94 | }\r\n    95 | \r\n    96 | // EmbeddingLayer represents token embeddings\r\n→   97 | type EmbeddingLayer struct {\r\n    98 | \tvocabSize  int\r\n    99 | \thiddenSize int\r\n   100 | \tweight     *Tensor\r\n   101 | }\r\n   102 | \r\n",
+          "full_function": "type EmbeddingLayer struct {\r\n\tvocabSize  int\r\n\thiddenSize int\r\n\tweight     *Tensor\r\n}\r",
+          "symbol_name": "EmbeddingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 249,
+          "code_snippet": "   244 | \r\n   245 | \treturn output, nil\r\n   246 | }\r\n   247 | \r\n   248 | // NewMultiHeadAttention creates a new multi-head attention mechanism\r\n→  249 | func NewMultiHeadAttention(config AttentionConfig, hiddenSize int) *MultiHeadAttention {\r\n   250 | \theadDim := config.HeadDim\r\n   251 | \tif headDim == 0 {\r\n   252 | \t\theadDim = hiddenSize / config.NumHeads\r\n   253 | \t}\r\n   254 | \r\n",
+          "full_function": "func NewMultiHeadAttention(config AttentionConfig, hiddenSize int) *MultiHeadAttention {\r\n\theadDim := config.HeadDim\r\n\tif headDim == 0 {\r\n\t\theadDim = hiddenSize / config.NumHeads\r\n\t}\r\n\r\n\treturn \u0026MultiHeadAttention{\r\n\t\tconfig:     config,\r\n\t\thiddenSize: hiddenSize,\r\n\t\theadDim:    headDim,\r\n\t\tqueryWeights: t.randn(hiddenSize, hiddenSize),\r\n\t\tkeyWeights:   t.randn(hiddenSize, hiddenSize),\r\n\t\tvalueWeights: t.randn(hiddenSize, hiddenSize),\r\n\t\toutputWeights: t.randn(hiddenSize, hiddenSize),\r\n\t\tbias:         t.zeros(hiddenSize),\r\n\t}\r\n}\r",
+          "symbol_name": "NewMultiHeadAttention",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 322,
+          "code_snippet": "   317 | \r\n   318 | \treturn output, nil\r\n   319 | }\r\n   320 | \r\n   321 | // NewFeedForwardNetwork creates a new feed-forward network\r\n→  322 | func NewFeedForwardNetwork(config FeedForwardConfig, hiddenSize int) *FeedForwardNetwork {\r\n   323 | \treturn \u0026FeedForwardNetwork{\r\n   324 | \t\tconfig:      config,\r\n   325 | \t\tweight1:     t.randn(hiddenSize, config.Intermediate),\r\n   326 | \t\tbias1:       t.zeros(config.Intermediate),\r\n   327 | \t\tweight2:     t.randn(config.Intermediate, hiddenSize),\r\n",
+          "full_function": "func NewFeedForwardNetwork(config FeedForwardConfig, hiddenSize int) *FeedForwardNetwork {\r\n\treturn \u0026FeedForwardNetwork{\r\n\t\tconfig:      config,\r\n\t\tweight1:     t.randn(hiddenSize, config.Intermediate),\r\n\t\tbias1:       t.zeros(config.Intermediate),\r\n\t\tweight2:     t.randn(config.Intermediate, hiddenSize),\r\n\t\tbias2:       t.zeros(hiddenSize),\r\n\t\thiddenSize:  hiddenSize,\r\n\t\tintermediate: config.Intermediate,\r\n\t}\r\n}\r",
+          "symbol_name": "NewFeedForwardNetwork",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 357,
+          "code_snippet": "   352 | \r\n   353 | \treturn output, nil\r\n   354 | }\r\n   355 | \r\n   356 | // NewEmbeddingLayer creates a new embedding layer\r\n→  357 | func NewEmbeddingLayer(vocabSize, hiddenSize int) *EmbeddingLayer {\r\n   358 | \treturn \u0026EmbeddingLayer{\r\n   359 | \t\tvocabSize:  vocabSize,\r\n   360 | \t\thiddenSize: hiddenSize,\r\n   361 | \t\tweight:     t.randn(vocabSize, hiddenSize),\r\n   362 | \t}\r\n",
+          "full_function": "func NewEmbeddingLayer(vocabSize, hiddenSize int) *EmbeddingLayer {\r\n\treturn \u0026EmbeddingLayer{\r\n\t\tvocabSize:  vocabSize,\r\n\t\thiddenSize: hiddenSize,\r\n\t\tweight:     t.randn(vocabSize, hiddenSize),\r\n\t}\r\n}\r",
+          "symbol_name": "NewEmbeddingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        }
+      ],
+      "impact_analysis": {
+        "severity": "critical",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": true,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "10-30 minutos",
+        "priority": 1,
+        "risk_level": "high",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Codigo compila",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Nao compila: go: cannot load module E:\\vertikon\\mcp-shared listed in go.work file: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.\n",
+      "suggestion": "Corrija os erros de compilacao listados",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "non_fixable_reason": "BUSINESS_LOGIC",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "Variavel - depende dos erros",
+        "confidence": 0
+      },
+      "examples": [
+        "📄 Log completo: E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\2025-11-20-10-18-04-compilation.log",
+        "",
+        "go: cannot load module E:\\vertikon\\mcp-shared listed in go.work file: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+        ""
+      ],
+      "non_fixable_reason": "BUSINESS_LOGIC",
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "critical",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": true,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "5-15 minutos",
+        "priority": 1,
+        "risk_level": "high",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    }
+  ],
+  "high": null,
+  "medium": null,
+  "low": null,
+  "total_gaps": 5,
+  "score": 75,
+  "auto_fixable": 1,
+  "manual": 4,
+  "top_priorities": [
+    {
+      "type": "Dependencias resolvidas",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Erro ao baixar dependencias",
+      "suggestion": "Execute: go mod tidy",
+      "fixability": {
+        "safe": true,
+        "rollback_easy": true,
+        "affects_behavior": false,
+        "requires_review": false,
+        "auto_fix_command": "go mod tidy",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "1-2 minutos",
+        "confidence": 0.9
+      },
+      "examples": [
+        "go: cannot load module E:\\vertikon\\mcp-shared listed in go.work file: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.\n"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Testes PASSAM",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Testes falharam",
+      "suggestion": "Corrija os testes. Use 'go test -v ./...'",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": [
+        "📄 Log: E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\2025-11-20-10-18-04-tests.log"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Nil Pointer Check",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "1 potencial(is) nil pointer issue(s)",
+      "suggestion": "Adicione nil checks",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "",
+        "confidence": 0
+      },
+      "examples": [
+        "multi_level_cache.go:180"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "No Code Conflicts",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Conflitos de declaracao detectados",
+      "suggestion": "Remova ou renomeie as declaracoes duplicadas",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": true,
+        "requires_review": true,
+        "manual_steps": "1. Identifique qual declaracao manter\n2. Remova ou renomeie as duplicatas\n3. Atualize referencias",
+        "non_fixable_reason": "ARCHITECTURAL",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "15-30 minutos",
+        "confidence": 0
+      },
+      "examples": [
+        "cli: 'init' declarado em ai.go, generate.go, monitor.go, root.go, state.go, template.go, version.go",
+        "analytics: 'init' declarado em metrics.go, performance.go",
+        "validators: 'ValidationResult' declarado em structure_validator.go, template_validator.go",
+        "encryption: 'Manager' declarado em certificate_manager.go, encryption_manager.go, key_manager.go",
+        "transformer: 'MultiHeadAttention' declarado em attention.go, transformer.go",
+        "transformer: 'FeedForwardNetwork' declarado em feedforward.go, transformer.go",
+        "transformer: 'PositionalEncodingLayer' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'NewPositionalEncodingLayer' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'NewEmbeddingLayer' declarado em embeddings.go, transformer.go",
+        "transformer: 'RotaryEmbeddings' declarado em attention.go, embeddings.go, positional_encoding.go",
+        "transformer: 'NewMultiHeadAttention' declarado em attention.go, transformer.go",
+        "transformer: 'PositionalEncodingConfig' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'PositionalEncodingStats' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'EmbeddingLayer' declarado em embeddings.go, transformer.go",
+        "transformer: 'FeedForwardConfig' declarado em feedforward.go, transformer.go",
+        "transformer: 'NewFeedForwardNetwork' declarado em feedforward.go, transformer.go"
+      ],
+      "non_fixable_reason": "ARCHITECTURAL",
+      "code_contexts": [
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\state\\store\\conflict_resolver.go",
+          "line_number": 622,
+          "code_snippet": "   617 | \t\treturn a\r\n   618 | \t}\r\n   619 | \treturn b\r\n   620 | }\r\n   621 | \r\n→  622 | func max(a, b time.Time) time.Time {\r\n   623 | \tif a.After(b) {\r\n   624 | \t\treturn a\r\n   625 | \t}\r\n   626 | \treturn b\r\n   627 | }\n",
+          "full_function": "func max(a, b time.Time) time.Time {\r\n\tif a.After(b) {\r\n\t\treturn a\r\n\t}\r\n\treturn b\r\n}",
+          "symbol_name": "max",
+          "package_name": "store",
+          "dependencies": [
+            "context",
+            "fmt",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\generate.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"MCP project generation initiated\")\r\n    40 | \t\treturn nil\r\n    41 | \t},\r\n    42 | }\r\n    43 | \r\n→   44 | func init() {\r\n    45 | \trootCmd.AddCommand(generateCmd)\r\n    46 | \tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\r\n    47 | \tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\r\n    48 | \tgenerateCmd.MarkFlagRequired(\"template\")\r\n    49 | }\r\n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(generateCmd)\r\n\tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\r\n\tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\r\n\tgenerateCmd.MarkFlagRequired(\"template\")\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\monitor.go",
+          "line_number": 24,
+          "code_snippet": "    19 | \t\tcmd.Println(\"System status: Operational\")\r\n    20 | \t\treturn nil\r\n    21 | \t},\r\n    22 | }\r\n    23 | \r\n→   24 | func init() {\r\n    25 | \trootCmd.AddCommand(monitorCmd)\r\n    26 | }\r\n    27 | \r\n    28 | // SetMonitoringService sets the monitoring service\r\n    29 | func SetMonitoringService(service *services.MonitoringAppService) {\r\n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(monitorCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\root.go",
+          "line_number": 37,
+          "code_snippet": "    32 | \t\tos.Exit(1)\r\n    33 | \t}\r\n    34 | }\r\n    35 | \r\n    36 | // init initializes the CLI\r\n→   37 | func init() {\r\n    38 | \trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\r\n    39 | \trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\r\n    40 | \t\r\n    41 | \t// Add subcommand groups\r\n    42 | \trootCmd.AddCommand(analytics.AnalyticsCmd)\r\n",
+          "full_function": "func init() {\r\n\trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\r\n\trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\r\n\t\r\n\t// Add subcommand groups\r\n\trootCmd.AddCommand(analytics.AnalyticsCmd)\r\n\trootCmd.AddCommand(ci.CICmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "os",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\state.go",
+          "line_number": 20,
+          "code_snippet": "    15 | \t\tcmd.Println(\"State management - service implementation pending\")\r\n    16 | \t\treturn nil\r\n    17 | \t},\r\n    18 | }\r\n    19 | \r\n→   20 | func init() {\r\n    21 | \trootCmd.AddCommand(stateCmd)\r\n    22 | }\r\n    23 | \n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(stateCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\template.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"Template created\")\r\n    40 | \t\treturn nil\r\n    41 | \t},\r\n    42 | }\r\n    43 | \r\n→   44 | func init() {\r\n    45 | \trootCmd.AddCommand(templateCmd)\r\n    46 | \ttemplateCmd.AddCommand(templateListCmd)\r\n    47 | \ttemplateCmd.AddCommand(templateCreateCmd)\r\n    48 | \ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\r\n    49 | \ttemplateCreateCmd.MarkFlagRequired(\"name\")\r\n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(templateCmd)\r\n\ttemplateCmd.AddCommand(templateListCmd)\r\n\ttemplateCmd.AddCommand(templateCreateCmd)\r\n\ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\r\n\ttemplateCreateCmd.MarkFlagRequired(\"name\")\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\version.go",
+          "line_number": 21,
+          "code_snippet": "    16 | \t\tfmt.Printf(\"Version: %s\\n\", Version)\r\n    17 | \t\tfmt.Printf(\"Build Date: %s\\n\", BuildDate)\r\n    18 | \t},\r\n    19 | }\r\n    20 | \r\n→   21 | func init() {\r\n    22 | \trootCmd.AddCommand(versionCmd)\r\n    23 | }\r\n    24 | \n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(versionCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\analytics\\performance.go",
+          "line_number": 23,
+          "code_snippet": "    18 | \t\tcmd.Println(\"  P95 Latency: 0ms\")\r\n    19 | \t\treturn nil\r\n    20 | \t},\r\n    21 | }\r\n    22 | \r\n→   23 | func init() {\r\n    24 | \tAnalyticsCmd.AddCommand(performanceCmd)\r\n    25 | }\r\n    26 | \n",
+          "full_function": "func init() {\r\n\tAnalyticsCmd.AddCommand(performanceCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "analytics",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\mcp\\validators\\template_validator.go",
+          "line_number": 28,
+          "code_snippet": "    23 | \t\tlogger: logger.GetLogger(),\r\n    24 | \t}\r\n    25 | }\r\n    26 | \r\n    27 | // ValidationResult represents the result of template validation\r\n→   28 | type ValidationResult struct {\r\n    29 | \tValid  bool     `json:\"valid\"`\r\n    30 | \tErrors []string `json:\"errors\"`\r\n    31 | \tWarnings []string `json:\"warnings\"`\r\n    32 | }\r\n    33 | \r\n",
+          "full_function": "type ValidationResult struct {\r\n\tValid  bool     `json:\"valid\"`\r\n\tErrors []string `json:\"errors\"`\r\n\tWarnings []string `json:\"warnings\"`\r\n}\r",
+          "symbol_name": "ValidationResult",
+          "package_name": "registry",
+          "dependencies": [
+            "fmt",
+            "os",
+            "path/filepath",
+            "regexp",
+            "strings",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap",
+            "gopkg.in/yaml.v3"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\security\\encryption\\encryption_manager.go",
+          "line_number": 56,
+          "code_snippet": "    51 | \t// Verify verifies a signature using RSA\r\n    52 | \tVerify(data, signature []byte, publicKey *rsa.PublicKey) bool\r\n    53 | }\r\n    54 | \r\n    55 | // Manager implements EncryptionManager\r\n→   56 | type Manager struct {\r\n    57 | \tkeyManager KeyManager\r\n    58 | \tlogger     *zap.Logger\r\n    59 | }\r\n    60 | \r\n    61 | // NewEncryptionManager creates a new EncryptionManager\r\n",
+          "full_function": "type Manager struct {\r\n\tkeyManager KeyManager\r\n\tlogger     *zap.Logger\r\n}\r",
+          "symbol_name": "Manager",
+          "package_name": "encryption",
+          "dependencies": [
+            "crypto",
+            "crypto/aes",
+            "crypto/cipher",
+            "crypto/rand",
+            "crypto/rsa",
+            "crypto/sha256",
+            "errors",
+            "io",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap",
+            "golang.org/x/crypto/argon2",
+            "golang.org/x/crypto/bcrypt"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\security\\encryption\\key_manager.go",
+          "line_number": 52,
+          "code_snippet": "    47 | \t// LoadKeyFromFile loads key from file\r\n    48 | \tLoadKeyFromFile(filePath string) error\r\n    49 | }\r\n    50 | \r\n    51 | // Manager implements KeyManager\r\n→   52 | type Manager struct {\r\n    53 | \tencryptionKey []byte\r\n    54 | \tkeyVersion    string\r\n    55 | \trsaPrivateKey *rsa.PrivateKey\r\n    56 | \trsaPublicKey  *rsa.PublicKey\r\n    57 | \trotationTTL  time.Duration\r\n",
+          "full_function": "type Manager struct {\r\n\tencryptionKey []byte\r\n\tkeyVersion    string\r\n\trsaPrivateKey *rsa.PrivateKey\r\n\trsaPublicKey  *rsa.PublicKey\r\n\trotationTTL  time.Duration\r\n\tlastRotation  time.Time\r\n\tmu            sync.RWMutex\r\n\tlogger        *zap.Logger\r\n}\r",
+          "symbol_name": "Manager",
+          "package_name": "encryption",
+          "dependencies": [
+            "crypto/rand",
+            "crypto/rsa",
+            "crypto/x509",
+            "encoding/base64",
+            "encoding/hex",
+            "encoding/pem",
+            "errors",
+            "fmt",
+            "os",
+            "path/filepath",
+            "strings",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\embeddings.go",
+          "line_number": 82,
+          "code_snippet": "    77 | \tstats         *PositionalEncodingStats\r\n    78 | \tmu            sync.RWMutex\r\n    79 | }\r\n    80 | \r\n    81 | // RotaryEmbeddings implements rotary positional embeddings (RoPE)\r\n→   82 | type RotaryEmbeddings struct {\r\n    83 | \tdim          int\r\n    84 | \tmaxSeqLen    int\r\n    85 | \tbase         float64\r\n    86 | \tscale        bool\r\n    87 | \tcache        map[int]*RotaryCache\r\n",
+          "full_function": "type RotaryEmbeddings struct {\r\n\tdim          int\r\n\tmaxSeqLen    int\r\n\tbase         float64\r\n\tscale        bool\r\n\tcache        map[int]*RotaryCache\r\n\tsinCosCache  *Tensor\r\n\tmu           sync.RWMutex\r\n}\r",
+          "symbol_name": "RotaryEmbeddings",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 28,
+          "code_snippet": "    23 | \tPosEncodingTypeALiBi      PositionalEncodingType = \"alibi\"\r\n    24 | \tPosEncodingTypeXPos       PositionalEncodingType = \"xpos\"\r\n    25 | )\r\n    26 | \r\n    27 | // PositionalEncodingConfig represents positional encoding configuration\r\n→   28 | type PositionalEncodingConfig struct {\r\n    29 | \tType         PositionalEncodingType `json:\"type\"`\r\n    30 | \tMaxSeqLen    int                   `json:\"max_seq_len\"`\r\n    31 | \tHiddenSize   int                   `json:\"hidden_size\"`\r\n    32 | \tHeadDim      int                   `json:\"head_dim,omitempty\"`\r\n    33 | \tBase         float64                `json:\"base\"`\r\n",
+          "full_function": "type PositionalEncodingConfig struct {\r\n\tType         PositionalEncodingType `json:\"type\"`\r\n\tMaxSeqLen    int                   `json:\"max_seq_len\"`\r\n\tHiddenSize   int                   `json:\"hidden_size\"`\r\n\tHeadDim      int                   `json:\"head_dim,omitempty\"`\r\n\tBase         float64                `json:\"base\"`\r\n\tScale        bool                   `json:\"scale\"`\r\n\tNormalize    bool                   `json:\"normalize\"`\r\n\tConcatenate  bool                   `json:\"concatenate\"`\r\n\tRotateHalf   bool                   `json:\"rotate_half\"`\r\n\tUseRoPE      bool                   `json:\"use_rope\"`\r\n\tUseXPos      bool                   `json:\"use_xpos\"`\r\n}\r",
+          "symbol_name": "PositionalEncodingConfig",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 43,
+          "code_snippet": "    38 | \tUseRoPE      bool                   `json:\"use_rope\"`\r\n    39 | \tUseXPos      bool                   `json:\"use_xpos\"`\r\n    40 | }\r\n    41 | \r\n    42 | // PositionalEncodingLayer implements various positional encoding strategies\r\n→   43 | type PositionalEncodingLayer struct {\r\n    44 | \tconfig         PositionalEncodingConfig\r\n    45 | \tencoding       *Tensor\r\n    46 | \trotaryEmbeds   *RotaryEmbeddings\r\n    47 | \talibiBias      *ALiBiBias\r\n    48 | \txposEmbeds     *XPosembeddings\r\n",
+          "full_function": "type PositionalEncodingLayer struct {\r\n\tconfig         PositionalEncodingConfig\r\n\tencoding       *Tensor\r\n\trotaryEmbeds   *RotaryEmbeddings\r\n\talibiBias      *ALiBiBias\r\n\txposEmbeds     *XPosembeddings\r\n\tlearnedPos     *Tensor\r\n\trelativePos    *RelativePositionBias\r\n\tstats          *PositionalEncodingStats\r\n\tmu             sync.RWMutex\r\n\tcache          map[int]*Tensor\r\n}\r",
+          "symbol_name": "PositionalEncodingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 57,
+          "code_snippet": "    52 | \tmu             sync.RWMutex\r\n    53 | \tcache          map[int]*Tensor\r\n    54 | }\r\n    55 | \r\n    56 | // RotaryEmbeddings implements rotary positional embeddings (RoPE)\r\n→   57 | type RotaryEmbeddings struct {\r\n    58 | \tdim          int\r\n    59 | \tmaxSeqLen    int\r\n    60 | \tbase         float64\r\n    61 | \tscale        bool\r\n    62 | \tcache        map[int]*RotaryCache\r\n",
+          "full_function": "type RotaryEmbeddings struct {\r\n\tdim          int\r\n\tmaxSeqLen    int\r\n\tbase         float64\r\n\tscale        bool\r\n\tcache        map[int]*RotaryCache\r\n\tsinCosCache  *Tensor\r\n\tmu           sync.RWMutex\r\n}\r",
+          "symbol_name": "RotaryEmbeddings",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 95,
+          "code_snippet": "    90 | \tmaxDistance   int\r\n    91 | \tbias          *Tensor\r\n    92 | }\r\n    93 | \r\n    94 | // PositionalEncodingStats tracks positional encoding performance\r\n→   95 | type PositionalEncodingStats struct {\r\n    96 | \tTotalEncodings    int64   `json:\"total_encodings\"`\r\n    97 | \tAvgEncodingTime   float64  `json:\"avg_encoding_time\"`\r\n    98 | \tCacheHitRate      float64  `json:\"cache_hit_rate\"`\r\n    99 | \tRoPEUsage         float64  `json:\"rope_usage\"`\r\n   100 | \tALiBiUsage        float64  `json:\"alibi_usage\"`\r\n",
+          "full_function": "type PositionalEncodingStats struct {\r\n\tTotalEncodings    int64   `json:\"total_encodings\"`\r\n\tAvgEncodingTime   float64  `json:\"avg_encoding_time\"`\r\n\tCacheHitRate      float64  `json:\"cache_hit_rate\"`\r\n\tRoPEUsage         float64  `json:\"rope_usage\"`\r\n\tALiBiUsage        float64  `json:\"alibi_usage\"`\r\n\tXPosUsage         float64  `json:\"xpos_usage\"`\r\n\tLastUpdated       int64    `json:\"last_updated\"`\r\n}\r",
+          "symbol_name": "PositionalEncodingStats",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 106,
+          "code_snippet": "   101 | \tXPosUsage         float64  `json:\"xpos_usage\"`\r\n   102 | \tLastUpdated       int64    `json:\"last_updated\"`\r\n   103 | }\r\n   104 | \r\n   105 | // NewPositionalEncodingLayer creates a new positional encoding layer\r\n→  106 | func NewPositionalEncodingLayer(config PositionalEncodingConfig) *PositionalEncodingLayer {\r\n   107 | \tlogger.Info(\"Creating positional encoding layer\",\r\n   108 | \t\tzap.String(\"type\", string(config.Type)),\r\n   109 | \t\tzap.Int(\"max_seq_len\", config.MaxSeqLen),\r\n   110 | \t\tzap.Int(\"hidden_size\", config.HiddenSize),\r\n   111 | \t\tzap.Bool(\"use_rope\", config.UseRoPE),\r\n",
+          "full_function": "func NewPositionalEncodingLayer(config PositionalEncodingConfig) *PositionalEncodingLayer {\r\n\tlogger.Info(\"Creating positional encoding layer\",\r\n\t\tzap.String(\"type\", string(config.Type)),\r\n\t\tzap.Int(\"max_seq_len\", config.MaxSeqLen),\r\n\t\tzap.Int(\"hidden_size\", config.HiddenSize),\r\n\t\tzap.Bool(\"use_rope\", config.UseRoPE),\r\n\t\tzap.Bool(\"use_xpos\", config.UseXPos),\r\n\t)\r\n\r\n\tlayer := \u0026PositionalEncodingLayer{\r\n\t\tconfig: config,\r\n\t\tstats:  \u0026PositionalEncodingStats{},\r\n\t\tcache:  make(map[int]*Tensor),\r\n\t}\r\n\r\n\t// Initialize based on type\r\n\tswitch config.Type {\r\n\tcase PosEncodingTypeSinusoidal:\r\n\t\tlayer.encoding = layer.createSinusoidalEncoding()\r\n\tcase PosEncodingTypeLearned:\r\n\t\tlayer.learnedPos = t.randn(config.MaxSeqLen, config.HiddenSize)\r\n\tcase PosEncodingTypeRotary:\r\n\t\tlayer.rotaryEmbeds = NewRotaryEmbeddingsWithConfig(config)\r\n\tcase PosEncodingTypeALiBi:\r\n\t\tlayer.alibiBias = NewALiBiBiasWithConfig(config)\r\n\tcase PosEncodingTypeXPos:\r\n\t\tlayer.xposEmbeds = NewXPosembeddingsWithConfig(config)\r\n\tcase PosEncodingTypeRelative:\r\n\t\tlayer.relativePos = NewRelativePositionBias(config.HiddenSize/12, config.MaxSeqLen)\r\n\tdefault:\r\n\t\tlayer.encoding = layer.createSinusoidalEncoding()\r\n\t}\r\n\r\n\treturn layer\r\n}\r",
+          "symbol_name": "NewPositionalEncodingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 24,
+          "code_snippet": "    19 | \tUseFlash      bool    `json:\"use_flash\"`\r\n    20 | \tScale         float64 `json:\"scale\"`\r\n    21 | }\r\n    22 | \r\n    23 | // FeedForwardConfig represents feed-forward network configuration\r\n→   24 | type FeedForwardConfig struct {\r\n    25 | \tHiddenSize    int     `json:\"hidden_size\"`\r\n    26 | \tIntermediate  int     `json:\"intermediate_size\"`\r\n    27 | \tDropout       float64 `json:\"dropout\"`\r\n    28 | \tActivation    string  `json:\"activation\"`\r\n    29 | \tUseBias       bool    `json:\"use_bias\"`\r\n",
+          "full_function": "type FeedForwardConfig struct {\r\n\tHiddenSize    int     `json:\"hidden_size\"`\r\n\tIntermediate  int     `json:\"intermediate_size\"`\r\n\tDropout       float64 `json:\"dropout\"`\r\n\tActivation    string  `json:\"activation\"`\r\n\tUseBias       bool    `json:\"use_bias\"`\r\n}\r",
+          "symbol_name": "FeedForwardConfig",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 74,
+          "code_snippet": "    69 | \tShape    []int     `json:\"shape\"`\r\n    70 | \tRequiresGrad bool   `json:\"requires_grad\"`\r\n    71 | }\r\n    72 | \r\n    73 | // MultiHeadAttention implements multi-head attention mechanism\r\n→   74 | type MultiHeadAttention struct {\r\n    75 | \tconfig       AttentionConfig\r\n    76 | \thiddenSize   int\r\n    77 | \theadDim      int\r\n    78 | \tqueryWeights *Tensor\r\n    79 | \tkeyWeights   *Tensor\r\n",
+          "full_function": "type MultiHeadAttention struct {\r\n\tconfig       AttentionConfig\r\n\thiddenSize   int\r\n\theadDim      int\r\n\tqueryWeights *Tensor\r\n\tkeyWeights   *Tensor\r\n\tvalueWeights *Tensor\r\n\toutputWeights *Tensor\r\n\tbias         *Tensor\r\n}\r",
+          "symbol_name": "MultiHeadAttention",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 86,
+          "code_snippet": "    81 | \toutputWeights *Tensor\r\n    82 | \tbias         *Tensor\r\n    83 | }\r\n    84 | \r\n    85 | // FeedForwardNetwork implements the position-wise feed-forward network\r\n→   86 | type FeedForwardNetwork struct {\r\n    87 | \tconfig      FeedForwardConfig\r\n    88 | \tweight1     *Tensor\r\n    89 | \tbias1       *Tensor\r\n    90 | \tweight2     *Tensor\r\n    91 | \tbias2       *Tensor\r\n",
+          "full_function": "type FeedForwardNetwork struct {\r\n\tconfig      FeedForwardConfig\r\n\tweight1     *Tensor\r\n\tbias1       *Tensor\r\n\tweight2     *Tensor\r\n\tbias2       *Tensor\r\n\thiddenSize  int\r\n\tintermediate int\r\n}\r",
+          "symbol_name": "FeedForwardNetwork",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 97,
+          "code_snippet": "    92 | \thiddenSize  int\r\n    93 | \tintermediate int\r\n    94 | }\r\n    95 | \r\n    96 | // EmbeddingLayer represents token embeddings\r\n→   97 | type EmbeddingLayer struct {\r\n    98 | \tvocabSize  int\r\n    99 | \thiddenSize int\r\n   100 | \tweight     *Tensor\r\n   101 | }\r\n   102 | \r\n",
+          "full_function": "type EmbeddingLayer struct {\r\n\tvocabSize  int\r\n\thiddenSize int\r\n\tweight     *Tensor\r\n}\r",
+          "symbol_name": "EmbeddingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 249,
+          "code_snippet": "   244 | \r\n   245 | \treturn output, nil\r\n   246 | }\r\n   247 | \r\n   248 | // NewMultiHeadAttention creates a new multi-head attention mechanism\r\n→  249 | func NewMultiHeadAttention(config AttentionConfig, hiddenSize int) *MultiHeadAttention {\r\n   250 | \theadDim := config.HeadDim\r\n   251 | \tif headDim == 0 {\r\n   252 | \t\theadDim = hiddenSize / config.NumHeads\r\n   253 | \t}\r\n   254 | \r\n",
+          "full_function": "func NewMultiHeadAttention(config AttentionConfig, hiddenSize int) *MultiHeadAttention {\r\n\theadDim := config.HeadDim\r\n\tif headDim == 0 {\r\n\t\theadDim = hiddenSize / config.NumHeads\r\n\t}\r\n\r\n\treturn \u0026MultiHeadAttention{\r\n\t\tconfig:     config,\r\n\t\thiddenSize: hiddenSize,\r\n\t\theadDim:    headDim,\r\n\t\tqueryWeights: t.randn(hiddenSize, hiddenSize),\r\n\t\tkeyWeights:   t.randn(hiddenSize, hiddenSize),\r\n\t\tvalueWeights: t.randn(hiddenSize, hiddenSize),\r\n\t\toutputWeights: t.randn(hiddenSize, hiddenSize),\r\n\t\tbias:         t.zeros(hiddenSize),\r\n\t}\r\n}\r",
+          "symbol_name": "NewMultiHeadAttention",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 322,
+          "code_snippet": "   317 | \r\n   318 | \treturn output, nil\r\n   319 | }\r\n   320 | \r\n   321 | // NewFeedForwardNetwork creates a new feed-forward network\r\n→  322 | func NewFeedForwardNetwork(config FeedForwardConfig, hiddenSize int) *FeedForwardNetwork {\r\n   323 | \treturn \u0026FeedForwardNetwork{\r\n   324 | \t\tconfig:      config,\r\n   325 | \t\tweight1:     t.randn(hiddenSize, config.Intermediate),\r\n   326 | \t\tbias1:       t.zeros(config.Intermediate),\r\n   327 | \t\tweight2:     t.randn(config.Intermediate, hiddenSize),\r\n",
+          "full_function": "func NewFeedForwardNetwork(config FeedForwardConfig, hiddenSize int) *FeedForwardNetwork {\r\n\treturn \u0026FeedForwardNetwork{\r\n\t\tconfig:      config,\r\n\t\tweight1:     t.randn(hiddenSize, config.Intermediate),\r\n\t\tbias1:       t.zeros(config.Intermediate),\r\n\t\tweight2:     t.randn(config.Intermediate, hiddenSize),\r\n\t\tbias2:       t.zeros(hiddenSize),\r\n\t\thiddenSize:  hiddenSize,\r\n\t\tintermediate: config.Intermediate,\r\n\t}\r\n}\r",
+          "symbol_name": "NewFeedForwardNetwork",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 357,
+          "code_snippet": "   352 | \r\n   353 | \treturn output, nil\r\n   354 | }\r\n   355 | \r\n   356 | // NewEmbeddingLayer creates a new embedding layer\r\n→  357 | func NewEmbeddingLayer(vocabSize, hiddenSize int) *EmbeddingLayer {\r\n   358 | \treturn \u0026EmbeddingLayer{\r\n   359 | \t\tvocabSize:  vocabSize,\r\n   360 | \t\thiddenSize: hiddenSize,\r\n   361 | \t\tweight:     t.randn(vocabSize, hiddenSize),\r\n   362 | \t}\r\n",
+          "full_function": "func NewEmbeddingLayer(vocabSize, hiddenSize int) *EmbeddingLayer {\r\n\treturn \u0026EmbeddingLayer{\r\n\t\tvocabSize:  vocabSize,\r\n\t\thiddenSize: hiddenSize,\r\n\t\tweight:     t.randn(vocabSize, hiddenSize),\r\n\t}\r\n}\r",
+          "symbol_name": "NewEmbeddingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        }
+      ],
+      "impact_analysis": {
+        "severity": "critical",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": true,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "10-30 minutos",
+        "priority": 1,
+        "risk_level": "high",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Codigo compila",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Nao compila: go: cannot load module E:\\vertikon\\mcp-shared listed in go.work file: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.\n",
+      "suggestion": "Corrija os erros de compilacao listados",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "non_fixable_reason": "BUSINESS_LOGIC",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "Variavel - depende dos erros",
+        "confidence": 0
+      },
+      "examples": [
+        "📄 Log completo: E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\2025-11-20-10-18-04-compilation.log",
+        "",
+        "go: cannot load module E:\\vertikon\\mcp-shared listed in go.work file: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+        ""
+      ],
+      "non_fixable_reason": "BUSINESS_LOGIC",
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "critical",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": true,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "5-15 minutos",
+        "priority": 1,
+        "risk_level": "high",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    }
+  ],
+  "quick_wins": [
+    {
+      "type": "Dependencias resolvidas",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Erro ao baixar dependencias",
+      "suggestion": "Execute: go mod tidy",
+      "fixability": {
+        "safe": true,
+        "rollback_easy": true,
+        "affects_behavior": false,
+        "requires_review": false,
+        "auto_fix_command": "go mod tidy",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "1-2 minutos",
+        "confidence": 0.9
+      },
+      "examples": [
+        "go: cannot load module E:\\vertikon\\mcp-shared listed in go.work file: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.\n"
+      ],
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "",
+        "priority": 0,
+        "risk_level": "",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    }
+  ],
+  "blockers": [
+    {
+      "type": "No Code Conflicts",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Conflitos de declaracao detectados",
+      "suggestion": "Remova ou renomeie as declaracoes duplicadas",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": true,
+        "requires_review": true,
+        "manual_steps": "1. Identifique qual declaracao manter\n2. Remova ou renomeie as duplicatas\n3. Atualize referencias",
+        "non_fixable_reason": "ARCHITECTURAL",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "15-30 minutos",
+        "confidence": 0
+      },
+      "examples": [
+        "cli: 'init' declarado em ai.go, generate.go, monitor.go, root.go, state.go, template.go, version.go",
+        "analytics: 'init' declarado em metrics.go, performance.go",
+        "validators: 'ValidationResult' declarado em structure_validator.go, template_validator.go",
+        "encryption: 'Manager' declarado em certificate_manager.go, encryption_manager.go, key_manager.go",
+        "transformer: 'MultiHeadAttention' declarado em attention.go, transformer.go",
+        "transformer: 'FeedForwardNetwork' declarado em feedforward.go, transformer.go",
+        "transformer: 'PositionalEncodingLayer' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'NewPositionalEncodingLayer' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'NewEmbeddingLayer' declarado em embeddings.go, transformer.go",
+        "transformer: 'RotaryEmbeddings' declarado em attention.go, embeddings.go, positional_encoding.go",
+        "transformer: 'NewMultiHeadAttention' declarado em attention.go, transformer.go",
+        "transformer: 'PositionalEncodingConfig' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'PositionalEncodingStats' declarado em embeddings.go, positional_encoding.go",
+        "transformer: 'EmbeddingLayer' declarado em embeddings.go, transformer.go",
+        "transformer: 'FeedForwardConfig' declarado em feedforward.go, transformer.go",
+        "transformer: 'NewFeedForwardNetwork' declarado em feedforward.go, transformer.go"
+      ],
+      "non_fixable_reason": "ARCHITECTURAL",
+      "code_contexts": [
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\state\\store\\conflict_resolver.go",
+          "line_number": 622,
+          "code_snippet": "   617 | \t\treturn a\r\n   618 | \t}\r\n   619 | \treturn b\r\n   620 | }\r\n   621 | \r\n→  622 | func max(a, b time.Time) time.Time {\r\n   623 | \tif a.After(b) {\r\n   624 | \t\treturn a\r\n   625 | \t}\r\n   626 | \treturn b\r\n   627 | }\n",
+          "full_function": "func max(a, b time.Time) time.Time {\r\n\tif a.After(b) {\r\n\t\treturn a\r\n\t}\r\n\treturn b\r\n}",
+          "symbol_name": "max",
+          "package_name": "store",
+          "dependencies": [
+            "context",
+            "fmt",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\generate.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"MCP project generation initiated\")\r\n    40 | \t\treturn nil\r\n    41 | \t},\r\n    42 | }\r\n    43 | \r\n→   44 | func init() {\r\n    45 | \trootCmd.AddCommand(generateCmd)\r\n    46 | \tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\r\n    47 | \tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\r\n    48 | \tgenerateCmd.MarkFlagRequired(\"template\")\r\n    49 | }\r\n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(generateCmd)\r\n\tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\r\n\tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\r\n\tgenerateCmd.MarkFlagRequired(\"template\")\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\monitor.go",
+          "line_number": 24,
+          "code_snippet": "    19 | \t\tcmd.Println(\"System status: Operational\")\r\n    20 | \t\treturn nil\r\n    21 | \t},\r\n    22 | }\r\n    23 | \r\n→   24 | func init() {\r\n    25 | \trootCmd.AddCommand(monitorCmd)\r\n    26 | }\r\n    27 | \r\n    28 | // SetMonitoringService sets the monitoring service\r\n    29 | func SetMonitoringService(service *services.MonitoringAppService) {\r\n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(monitorCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\root.go",
+          "line_number": 37,
+          "code_snippet": "    32 | \t\tos.Exit(1)\r\n    33 | \t}\r\n    34 | }\r\n    35 | \r\n    36 | // init initializes the CLI\r\n→   37 | func init() {\r\n    38 | \trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\r\n    39 | \trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\r\n    40 | \t\r\n    41 | \t// Add subcommand groups\r\n    42 | \trootCmd.AddCommand(analytics.AnalyticsCmd)\r\n",
+          "full_function": "func init() {\r\n\trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\r\n\trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\r\n\t\r\n\t// Add subcommand groups\r\n\trootCmd.AddCommand(analytics.AnalyticsCmd)\r\n\trootCmd.AddCommand(ci.CICmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "os",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\state.go",
+          "line_number": 20,
+          "code_snippet": "    15 | \t\tcmd.Println(\"State management - service implementation pending\")\r\n    16 | \t\treturn nil\r\n    17 | \t},\r\n    18 | }\r\n    19 | \r\n→   20 | func init() {\r\n    21 | \trootCmd.AddCommand(stateCmd)\r\n    22 | }\r\n    23 | \n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(stateCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\template.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"Template created\")\r\n    40 | \t\treturn nil\r\n    41 | \t},\r\n    42 | }\r\n    43 | \r\n→   44 | func init() {\r\n    45 | \trootCmd.AddCommand(templateCmd)\r\n    46 | \ttemplateCmd.AddCommand(templateListCmd)\r\n    47 | \ttemplateCmd.AddCommand(templateCreateCmd)\r\n    48 | \ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\r\n    49 | \ttemplateCreateCmd.MarkFlagRequired(\"name\")\r\n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(templateCmd)\r\n\ttemplateCmd.AddCommand(templateListCmd)\r\n\ttemplateCmd.AddCommand(templateCreateCmd)\r\n\ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\r\n\ttemplateCreateCmd.MarkFlagRequired(\"name\")\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\version.go",
+          "line_number": 21,
+          "code_snippet": "    16 | \t\tfmt.Printf(\"Version: %s\\n\", Version)\r\n    17 | \t\tfmt.Printf(\"Build Date: %s\\n\", BuildDate)\r\n    18 | \t},\r\n    19 | }\r\n    20 | \r\n→   21 | func init() {\r\n    22 | \trootCmd.AddCommand(versionCmd)\r\n    23 | }\r\n    24 | \n",
+          "full_function": "func init() {\r\n\trootCmd.AddCommand(versionCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\analytics\\performance.go",
+          "line_number": 23,
+          "code_snippet": "    18 | \t\tcmd.Println(\"  P95 Latency: 0ms\")\r\n    19 | \t\treturn nil\r\n    20 | \t},\r\n    21 | }\r\n    22 | \r\n→   23 | func init() {\r\n    24 | \tAnalyticsCmd.AddCommand(performanceCmd)\r\n    25 | }\r\n    26 | \n",
+          "full_function": "func init() {\r\n\tAnalyticsCmd.AddCommand(performanceCmd)\r\n}\r",
+          "symbol_name": "init",
+          "package_name": "analytics",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\mcp\\validators\\template_validator.go",
+          "line_number": 28,
+          "code_snippet": "    23 | \t\tlogger: logger.GetLogger(),\r\n    24 | \t}\r\n    25 | }\r\n    26 | \r\n    27 | // ValidationResult represents the result of template validation\r\n→   28 | type ValidationResult struct {\r\n    29 | \tValid  bool     `json:\"valid\"`\r\n    30 | \tErrors []string `json:\"errors\"`\r\n    31 | \tWarnings []string `json:\"warnings\"`\r\n    32 | }\r\n    33 | \r\n",
+          "full_function": "type ValidationResult struct {\r\n\tValid  bool     `json:\"valid\"`\r\n\tErrors []string `json:\"errors\"`\r\n\tWarnings []string `json:\"warnings\"`\r\n}\r",
+          "symbol_name": "ValidationResult",
+          "package_name": "registry",
+          "dependencies": [
+            "fmt",
+            "os",
+            "path/filepath",
+            "regexp",
+            "strings",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap",
+            "gopkg.in/yaml.v3"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\security\\encryption\\encryption_manager.go",
+          "line_number": 56,
+          "code_snippet": "    51 | \t// Verify verifies a signature using RSA\r\n    52 | \tVerify(data, signature []byte, publicKey *rsa.PublicKey) bool\r\n    53 | }\r\n    54 | \r\n    55 | // Manager implements EncryptionManager\r\n→   56 | type Manager struct {\r\n    57 | \tkeyManager KeyManager\r\n    58 | \tlogger     *zap.Logger\r\n    59 | }\r\n    60 | \r\n    61 | // NewEncryptionManager creates a new EncryptionManager\r\n",
+          "full_function": "type Manager struct {\r\n\tkeyManager KeyManager\r\n\tlogger     *zap.Logger\r\n}\r",
+          "symbol_name": "Manager",
+          "package_name": "encryption",
+          "dependencies": [
+            "crypto",
+            "crypto/aes",
+            "crypto/cipher",
+            "crypto/rand",
+            "crypto/rsa",
+            "crypto/sha256",
+            "errors",
+            "io",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap",
+            "golang.org/x/crypto/argon2",
+            "golang.org/x/crypto/bcrypt"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\security\\encryption\\key_manager.go",
+          "line_number": 52,
+          "code_snippet": "    47 | \t// LoadKeyFromFile loads key from file\r\n    48 | \tLoadKeyFromFile(filePath string) error\r\n    49 | }\r\n    50 | \r\n    51 | // Manager implements KeyManager\r\n→   52 | type Manager struct {\r\n    53 | \tencryptionKey []byte\r\n    54 | \tkeyVersion    string\r\n    55 | \trsaPrivateKey *rsa.PrivateKey\r\n    56 | \trsaPublicKey  *rsa.PublicKey\r\n    57 | \trotationTTL  time.Duration\r\n",
+          "full_function": "type Manager struct {\r\n\tencryptionKey []byte\r\n\tkeyVersion    string\r\n\trsaPrivateKey *rsa.PrivateKey\r\n\trsaPublicKey  *rsa.PublicKey\r\n\trotationTTL  time.Duration\r\n\tlastRotation  time.Time\r\n\tmu            sync.RWMutex\r\n\tlogger        *zap.Logger\r\n}\r",
+          "symbol_name": "Manager",
+          "package_name": "encryption",
+          "dependencies": [
+            "crypto/rand",
+            "crypto/rsa",
+            "crypto/x509",
+            "encoding/base64",
+            "encoding/hex",
+            "encoding/pem",
+            "errors",
+            "fmt",
+            "os",
+            "path/filepath",
+            "strings",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\embeddings.go",
+          "line_number": 82,
+          "code_snippet": "    77 | \tstats         *PositionalEncodingStats\r\n    78 | \tmu            sync.RWMutex\r\n    79 | }\r\n    80 | \r\n    81 | // RotaryEmbeddings implements rotary positional embeddings (RoPE)\r\n→   82 | type RotaryEmbeddings struct {\r\n    83 | \tdim          int\r\n    84 | \tmaxSeqLen    int\r\n    85 | \tbase         float64\r\n    86 | \tscale        bool\r\n    87 | \tcache        map[int]*RotaryCache\r\n",
+          "full_function": "type RotaryEmbeddings struct {\r\n\tdim          int\r\n\tmaxSeqLen    int\r\n\tbase         float64\r\n\tscale        bool\r\n\tcache        map[int]*RotaryCache\r\n\tsinCosCache  *Tensor\r\n\tmu           sync.RWMutex\r\n}\r",
+          "symbol_name": "RotaryEmbeddings",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 28,
+          "code_snippet": "    23 | \tPosEncodingTypeALiBi      PositionalEncodingType = \"alibi\"\r\n    24 | \tPosEncodingTypeXPos       PositionalEncodingType = \"xpos\"\r\n    25 | )\r\n    26 | \r\n    27 | // PositionalEncodingConfig represents positional encoding configuration\r\n→   28 | type PositionalEncodingConfig struct {\r\n    29 | \tType         PositionalEncodingType `json:\"type\"`\r\n    30 | \tMaxSeqLen    int                   `json:\"max_seq_len\"`\r\n    31 | \tHiddenSize   int                   `json:\"hidden_size\"`\r\n    32 | \tHeadDim      int                   `json:\"head_dim,omitempty\"`\r\n    33 | \tBase         float64                `json:\"base\"`\r\n",
+          "full_function": "type PositionalEncodingConfig struct {\r\n\tType         PositionalEncodingType `json:\"type\"`\r\n\tMaxSeqLen    int                   `json:\"max_seq_len\"`\r\n\tHiddenSize   int                   `json:\"hidden_size\"`\r\n\tHeadDim      int                   `json:\"head_dim,omitempty\"`\r\n\tBase         float64                `json:\"base\"`\r\n\tScale        bool                   `json:\"scale\"`\r\n\tNormalize    bool                   `json:\"normalize\"`\r\n\tConcatenate  bool                   `json:\"concatenate\"`\r\n\tRotateHalf   bool                   `json:\"rotate_half\"`\r\n\tUseRoPE      bool                   `json:\"use_rope\"`\r\n\tUseXPos      bool                   `json:\"use_xpos\"`\r\n}\r",
+          "symbol_name": "PositionalEncodingConfig",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 43,
+          "code_snippet": "    38 | \tUseRoPE      bool                   `json:\"use_rope\"`\r\n    39 | \tUseXPos      bool                   `json:\"use_xpos\"`\r\n    40 | }\r\n    41 | \r\n    42 | // PositionalEncodingLayer implements various positional encoding strategies\r\n→   43 | type PositionalEncodingLayer struct {\r\n    44 | \tconfig         PositionalEncodingConfig\r\n    45 | \tencoding       *Tensor\r\n    46 | \trotaryEmbeds   *RotaryEmbeddings\r\n    47 | \talibiBias      *ALiBiBias\r\n    48 | \txposEmbeds     *XPosembeddings\r\n",
+          "full_function": "type PositionalEncodingLayer struct {\r\n\tconfig         PositionalEncodingConfig\r\n\tencoding       *Tensor\r\n\trotaryEmbeds   *RotaryEmbeddings\r\n\talibiBias      *ALiBiBias\r\n\txposEmbeds     *XPosembeddings\r\n\tlearnedPos     *Tensor\r\n\trelativePos    *RelativePositionBias\r\n\tstats          *PositionalEncodingStats\r\n\tmu             sync.RWMutex\r\n\tcache          map[int]*Tensor\r\n}\r",
+          "symbol_name": "PositionalEncodingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 57,
+          "code_snippet": "    52 | \tmu             sync.RWMutex\r\n    53 | \tcache          map[int]*Tensor\r\n    54 | }\r\n    55 | \r\n    56 | // RotaryEmbeddings implements rotary positional embeddings (RoPE)\r\n→   57 | type RotaryEmbeddings struct {\r\n    58 | \tdim          int\r\n    59 | \tmaxSeqLen    int\r\n    60 | \tbase         float64\r\n    61 | \tscale        bool\r\n    62 | \tcache        map[int]*RotaryCache\r\n",
+          "full_function": "type RotaryEmbeddings struct {\r\n\tdim          int\r\n\tmaxSeqLen    int\r\n\tbase         float64\r\n\tscale        bool\r\n\tcache        map[int]*RotaryCache\r\n\tsinCosCache  *Tensor\r\n\tmu           sync.RWMutex\r\n}\r",
+          "symbol_name": "RotaryEmbeddings",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 95,
+          "code_snippet": "    90 | \tmaxDistance   int\r\n    91 | \tbias          *Tensor\r\n    92 | }\r\n    93 | \r\n    94 | // PositionalEncodingStats tracks positional encoding performance\r\n→   95 | type PositionalEncodingStats struct {\r\n    96 | \tTotalEncodings    int64   `json:\"total_encodings\"`\r\n    97 | \tAvgEncodingTime   float64  `json:\"avg_encoding_time\"`\r\n    98 | \tCacheHitRate      float64  `json:\"cache_hit_rate\"`\r\n    99 | \tRoPEUsage         float64  `json:\"rope_usage\"`\r\n   100 | \tALiBiUsage        float64  `json:\"alibi_usage\"`\r\n",
+          "full_function": "type PositionalEncodingStats struct {\r\n\tTotalEncodings    int64   `json:\"total_encodings\"`\r\n\tAvgEncodingTime   float64  `json:\"avg_encoding_time\"`\r\n\tCacheHitRate      float64  `json:\"cache_hit_rate\"`\r\n\tRoPEUsage         float64  `json:\"rope_usage\"`\r\n\tALiBiUsage        float64  `json:\"alibi_usage\"`\r\n\tXPosUsage         float64  `json:\"xpos_usage\"`\r\n\tLastUpdated       int64    `json:\"last_updated\"`\r\n}\r",
+          "symbol_name": "PositionalEncodingStats",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\positional_encoding.go",
+          "line_number": 106,
+          "code_snippet": "   101 | \tXPosUsage         float64  `json:\"xpos_usage\"`\r\n   102 | \tLastUpdated       int64    `json:\"last_updated\"`\r\n   103 | }\r\n   104 | \r\n   105 | // NewPositionalEncodingLayer creates a new positional encoding layer\r\n→  106 | func NewPositionalEncodingLayer(config PositionalEncodingConfig) *PositionalEncodingLayer {\r\n   107 | \tlogger.Info(\"Creating positional encoding layer\",\r\n   108 | \t\tzap.String(\"type\", string(config.Type)),\r\n   109 | \t\tzap.Int(\"max_seq_len\", config.MaxSeqLen),\r\n   110 | \t\tzap.Int(\"hidden_size\", config.HiddenSize),\r\n   111 | \t\tzap.Bool(\"use_rope\", config.UseRoPE),\r\n",
+          "full_function": "func NewPositionalEncodingLayer(config PositionalEncodingConfig) *PositionalEncodingLayer {\r\n\tlogger.Info(\"Creating positional encoding layer\",\r\n\t\tzap.String(\"type\", string(config.Type)),\r\n\t\tzap.Int(\"max_seq_len\", config.MaxSeqLen),\r\n\t\tzap.Int(\"hidden_size\", config.HiddenSize),\r\n\t\tzap.Bool(\"use_rope\", config.UseRoPE),\r\n\t\tzap.Bool(\"use_xpos\", config.UseXPos),\r\n\t)\r\n\r\n\tlayer := \u0026PositionalEncodingLayer{\r\n\t\tconfig: config,\r\n\t\tstats:  \u0026PositionalEncodingStats{},\r\n\t\tcache:  make(map[int]*Tensor),\r\n\t}\r\n\r\n\t// Initialize based on type\r\n\tswitch config.Type {\r\n\tcase PosEncodingTypeSinusoidal:\r\n\t\tlayer.encoding = layer.createSinusoidalEncoding()\r\n\tcase PosEncodingTypeLearned:\r\n\t\tlayer.learnedPos = t.randn(config.MaxSeqLen, config.HiddenSize)\r\n\tcase PosEncodingTypeRotary:\r\n\t\tlayer.rotaryEmbeds = NewRotaryEmbeddingsWithConfig(config)\r\n\tcase PosEncodingTypeALiBi:\r\n\t\tlayer.alibiBias = NewALiBiBiasWithConfig(config)\r\n\tcase PosEncodingTypeXPos:\r\n\t\tlayer.xposEmbeds = NewXPosembeddingsWithConfig(config)\r\n\tcase PosEncodingTypeRelative:\r\n\t\tlayer.relativePos = NewRelativePositionBias(config.HiddenSize/12, config.MaxSeqLen)\r\n\tdefault:\r\n\t\tlayer.encoding = layer.createSinusoidalEncoding()\r\n\t}\r\n\r\n\treturn layer\r\n}\r",
+          "symbol_name": "NewPositionalEncodingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "time",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 24,
+          "code_snippet": "    19 | \tUseFlash      bool    `json:\"use_flash\"`\r\n    20 | \tScale         float64 `json:\"scale\"`\r\n    21 | }\r\n    22 | \r\n    23 | // FeedForwardConfig represents feed-forward network configuration\r\n→   24 | type FeedForwardConfig struct {\r\n    25 | \tHiddenSize    int     `json:\"hidden_size\"`\r\n    26 | \tIntermediate  int     `json:\"intermediate_size\"`\r\n    27 | \tDropout       float64 `json:\"dropout\"`\r\n    28 | \tActivation    string  `json:\"activation\"`\r\n    29 | \tUseBias       bool    `json:\"use_bias\"`\r\n",
+          "full_function": "type FeedForwardConfig struct {\r\n\tHiddenSize    int     `json:\"hidden_size\"`\r\n\tIntermediate  int     `json:\"intermediate_size\"`\r\n\tDropout       float64 `json:\"dropout\"`\r\n\tActivation    string  `json:\"activation\"`\r\n\tUseBias       bool    `json:\"use_bias\"`\r\n}\r",
+          "symbol_name": "FeedForwardConfig",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 74,
+          "code_snippet": "    69 | \tShape    []int     `json:\"shape\"`\r\n    70 | \tRequiresGrad bool   `json:\"requires_grad\"`\r\n    71 | }\r\n    72 | \r\n    73 | // MultiHeadAttention implements multi-head attention mechanism\r\n→   74 | type MultiHeadAttention struct {\r\n    75 | \tconfig       AttentionConfig\r\n    76 | \thiddenSize   int\r\n    77 | \theadDim      int\r\n    78 | \tqueryWeights *Tensor\r\n    79 | \tkeyWeights   *Tensor\r\n",
+          "full_function": "type MultiHeadAttention struct {\r\n\tconfig       AttentionConfig\r\n\thiddenSize   int\r\n\theadDim      int\r\n\tqueryWeights *Tensor\r\n\tkeyWeights   *Tensor\r\n\tvalueWeights *Tensor\r\n\toutputWeights *Tensor\r\n\tbias         *Tensor\r\n}\r",
+          "symbol_name": "MultiHeadAttention",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 86,
+          "code_snippet": "    81 | \toutputWeights *Tensor\r\n    82 | \tbias         *Tensor\r\n    83 | }\r\n    84 | \r\n    85 | // FeedForwardNetwork implements the position-wise feed-forward network\r\n→   86 | type FeedForwardNetwork struct {\r\n    87 | \tconfig      FeedForwardConfig\r\n    88 | \tweight1     *Tensor\r\n    89 | \tbias1       *Tensor\r\n    90 | \tweight2     *Tensor\r\n    91 | \tbias2       *Tensor\r\n",
+          "full_function": "type FeedForwardNetwork struct {\r\n\tconfig      FeedForwardConfig\r\n\tweight1     *Tensor\r\n\tbias1       *Tensor\r\n\tweight2     *Tensor\r\n\tbias2       *Tensor\r\n\thiddenSize  int\r\n\tintermediate int\r\n}\r",
+          "symbol_name": "FeedForwardNetwork",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 97,
+          "code_snippet": "    92 | \thiddenSize  int\r\n    93 | \tintermediate int\r\n    94 | }\r\n    95 | \r\n    96 | // EmbeddingLayer represents token embeddings\r\n→   97 | type EmbeddingLayer struct {\r\n    98 | \tvocabSize  int\r\n    99 | \thiddenSize int\r\n   100 | \tweight     *Tensor\r\n   101 | }\r\n   102 | \r\n",
+          "full_function": "type EmbeddingLayer struct {\r\n\tvocabSize  int\r\n\thiddenSize int\r\n\tweight     *Tensor\r\n}\r",
+          "symbol_name": "EmbeddingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 249,
+          "code_snippet": "   244 | \r\n   245 | \treturn output, nil\r\n   246 | }\r\n   247 | \r\n   248 | // NewMultiHeadAttention creates a new multi-head attention mechanism\r\n→  249 | func NewMultiHeadAttention(config AttentionConfig, hiddenSize int) *MultiHeadAttention {\r\n   250 | \theadDim := config.HeadDim\r\n   251 | \tif headDim == 0 {\r\n   252 | \t\theadDim = hiddenSize / config.NumHeads\r\n   253 | \t}\r\n   254 | \r\n",
+          "full_function": "func NewMultiHeadAttention(config AttentionConfig, hiddenSize int) *MultiHeadAttention {\r\n\theadDim := config.HeadDim\r\n\tif headDim == 0 {\r\n\t\theadDim = hiddenSize / config.NumHeads\r\n\t}\r\n\r\n\treturn \u0026MultiHeadAttention{\r\n\t\tconfig:     config,\r\n\t\thiddenSize: hiddenSize,\r\n\t\theadDim:    headDim,\r\n\t\tqueryWeights: t.randn(hiddenSize, hiddenSize),\r\n\t\tkeyWeights:   t.randn(hiddenSize, hiddenSize),\r\n\t\tvalueWeights: t.randn(hiddenSize, hiddenSize),\r\n\t\toutputWeights: t.randn(hiddenSize, hiddenSize),\r\n\t\tbias:         t.zeros(hiddenSize),\r\n\t}\r\n}\r",
+          "symbol_name": "NewMultiHeadAttention",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 322,
+          "code_snippet": "   317 | \r\n   318 | \treturn output, nil\r\n   319 | }\r\n   320 | \r\n   321 | // NewFeedForwardNetwork creates a new feed-forward network\r\n→  322 | func NewFeedForwardNetwork(config FeedForwardConfig, hiddenSize int) *FeedForwardNetwork {\r\n   323 | \treturn \u0026FeedForwardNetwork{\r\n   324 | \t\tconfig:      config,\r\n   325 | \t\tweight1:     t.randn(hiddenSize, config.Intermediate),\r\n   326 | \t\tbias1:       t.zeros(config.Intermediate),\r\n   327 | \t\tweight2:     t.randn(config.Intermediate, hiddenSize),\r\n",
+          "full_function": "func NewFeedForwardNetwork(config FeedForwardConfig, hiddenSize int) *FeedForwardNetwork {\r\n\treturn \u0026FeedForwardNetwork{\r\n\t\tconfig:      config,\r\n\t\tweight1:     t.randn(hiddenSize, config.Intermediate),\r\n\t\tbias1:       t.zeros(config.Intermediate),\r\n\t\tweight2:     t.randn(config.Intermediate, hiddenSize),\r\n\t\tbias2:       t.zeros(hiddenSize),\r\n\t\thiddenSize:  hiddenSize,\r\n\t\tintermediate: config.Intermediate,\r\n\t}\r\n}\r",
+          "symbol_name": "NewFeedForwardNetwork",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\core\\transformer\\transformer.go",
+          "line_number": 357,
+          "code_snippet": "   352 | \r\n   353 | \treturn output, nil\r\n   354 | }\r\n   355 | \r\n   356 | // NewEmbeddingLayer creates a new embedding layer\r\n→  357 | func NewEmbeddingLayer(vocabSize, hiddenSize int) *EmbeddingLayer {\r\n   358 | \treturn \u0026EmbeddingLayer{\r\n   359 | \t\tvocabSize:  vocabSize,\r\n   360 | \t\thiddenSize: hiddenSize,\r\n   361 | \t\tweight:     t.randn(vocabSize, hiddenSize),\r\n   362 | \t}\r\n",
+          "full_function": "func NewEmbeddingLayer(vocabSize, hiddenSize int) *EmbeddingLayer {\r\n\treturn \u0026EmbeddingLayer{\r\n\t\tvocabSize:  vocabSize,\r\n\t\thiddenSize: hiddenSize,\r\n\t\tweight:     t.randn(vocabSize, hiddenSize),\r\n\t}\r\n}\r",
+          "symbol_name": "NewEmbeddingLayer",
+          "package_name": "transformer",
+          "dependencies": [
+            "context",
+            "fmt",
+            "math",
+            "sync",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        }
+      ],
+      "impact_analysis": {
+        "severity": "critical",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": true,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "10-30 minutos",
+        "priority": 1,
+        "risk_level": "high",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Codigo compila",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Nao compila: go: cannot load module E:\\vertikon\\mcp-shared listed in go.work file: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.\n",
+      "suggestion": "Corrija os erros de compilacao listados",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": false,
+        "requires_review": false,
+        "non_fixable_reason": "BUSINESS_LOGIC",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "Variavel - depende dos erros",
+        "confidence": 0
+      },
+      "examples": [
+        "📄 Log completo: E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\2025-11-20-10-18-04-compilation.log",
+        "",
+        "go: cannot load module E:\\vertikon\\mcp-shared listed in go.work file: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+        ""
+      ],
+      "non_fixable_reason": "BUSINESS_LOGIC",
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "critical",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": true,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "5-15 minutos",
+        "priority": 1,
+        "risk_level": "high",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    }
+  ],
+  "technical_debt": null,
+  "recommended_tools": null,
+  "next_steps": [
+    "🔴 URGENTE: Resolver 2 bloqueador(es)",
+    "⚡ Quick wins: 1 GAP(s) faceis",
+    "🤖 Auto-fixavel: 1 GAP(s)"
+  ],
+  "estimated_effort": "45m"
+}

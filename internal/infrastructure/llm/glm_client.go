@@ -118,8 +118,8 @@ func (c *glmClient) Complete(ctx context.Context, prompt string, options *Comple
 	}
 
 	return &Completion{
-		Text:        result.Choices[0].Text,
-		Model:       result.Model,
+		Text:         result.Choices[0].Text,
+		Model:        result.Model,
 		FinishReason: result.Choices[0].FinishReason,
 		Usage: &Usage{
 			PromptTokens:     result.Usage.PromptTokens,
@@ -218,8 +218,8 @@ func (c *glmClient) Chat(ctx context.Context, messages []*Message, options *Comp
 	}
 
 	return &Completion{
-		Text:        result.Choices[0].Message.Content,
-		Model:       result.Model,
+		Text:         result.Choices[0].Message.Content,
+		Model:        result.Model,
 		FinishReason: result.Choices[0].FinishReason,
 		Usage: &Usage{
 			PromptTokens:     result.Usage.PromptTokens,

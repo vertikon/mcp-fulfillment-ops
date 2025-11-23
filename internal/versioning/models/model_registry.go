@@ -44,8 +44,8 @@ type ModelVersion struct {
 type ModelVersionStatus string
 
 const (
-	ModelVersionStatusDraft     ModelVersionStatus = "draft"
-	ModelVersionStatusStaging   ModelVersionStatus = "staging"
+	ModelVersionStatusDraft      ModelVersionStatus = "draft"
+	ModelVersionStatusStaging    ModelVersionStatus = "staging"
 	ModelVersionStatusProduction ModelVersionStatus = "production"
 	ModelVersionStatusDeprecated ModelVersionStatus = "deprecated"
 )
@@ -54,42 +54,42 @@ const (
 type ModelRegistry interface {
 	// RegisterModel registers a new model
 	RegisterModel(ctx context.Context, model *Model) (*Model, error)
-	
+
 	// GetModel retrieves a model by ID
 	GetModel(ctx context.Context, modelID string) (*Model, error)
-	
+
 	// ListModels lists all registered models
 	ListModels(ctx context.Context) ([]*Model, error)
-	
+
 	// UpdateModel updates model metadata
 	UpdateModel(ctx context.Context, modelID string, metadata map[string]interface{}) error
-	
+
 	// DeleteModel deletes a model (soft delete)
 	DeleteModel(ctx context.Context, modelID string) error
-	
+
 	// RegisterVersion registers a new version of a model
 	RegisterVersion(ctx context.Context, modelID string, version *ModelVersion) (*ModelVersion, error)
-	
+
 	// GetVersion retrieves a model version
 	GetVersion(ctx context.Context, versionID string) (*ModelVersion, error)
-	
+
 	// ListVersions lists all versions of a model
 	ListVersions(ctx context.Context, modelID string) ([]*ModelVersion, error)
-	
+
 	// GetLatestVersion gets the latest version of a model
 	GetLatestVersion(ctx context.Context, modelID string) (*ModelVersion, error)
-	
+
 	// CalculateFingerprint calculates fingerprint for model data
 	CalculateFingerprint(data []byte) string
 }
 
 // InMemoryModelRegistry implements ModelRegistry in memory
 type InMemoryModelRegistry struct {
-	models   map[string]*Model
-	versions map[string]*ModelVersion // versionID -> version
-	modelVersions map[string][]string  // modelID -> []versionID
-	mu       sync.RWMutex
-	logger   *zap.Logger
+	models        map[string]*Model
+	versions      map[string]*ModelVersion // versionID -> version
+	modelVersions map[string][]string      // modelID -> []versionID
+	mu            sync.RWMutex
+	logger        *zap.Logger
 }
 
 // NewInMemoryModelRegistry creates a new in-memory model registry
@@ -324,4 +324,3 @@ func (mr *InMemoryModelRegistry) CalculateFingerprint(data []byte) string {
 	hasher.Write(data)
 	return hex.EncodeToString(hasher.Sum(nil))
 }
-

@@ -7,7 +7,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/vertikon/mcp-fulfillment-ops/internal/infrastructure/cloud/kubernetes"
 	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
@@ -129,14 +128,14 @@ func (h *HybridDeployer) deployKubernetes(ctx context.Context, req HybridDeployR
 	}
 
 	k8sReq := KubernetesDeployRequest{
-		ProjectName:  req.ProjectName,
-		ProjectPath:  req.ProjectPath,
-		Namespace:    req.Namespace,
-		Image:        req.Image,
-		Replicas:     req.Replicas,
-		Labels:       req.Labels,
-		Env:          req.Env,
-		Ports:        req.Ports,
+		ProjectName:   req.ProjectName,
+		ProjectPath:   req.ProjectPath,
+		Namespace:     req.Namespace,
+		Image:         req.Image,
+		Replicas:      req.Replicas,
+		Labels:        req.Labels,
+		Env:           req.Env,
+		Ports:         req.Ports,
 		ManifestsPath: req.ManifestsPath,
 	}
 
@@ -146,11 +145,11 @@ func (h *HybridDeployer) deployKubernetes(ctx context.Context, req HybridDeployR
 	}
 
 	return &HybridDeployResult{
-		Strategy:     "kubernetes",
-		ProjectName:  req.ProjectName,
-		Status:       k8sResult.Status,
-		Namespace:    k8sResult.Namespace,
-		Deployments:  []string{"kubernetes"},
+		Strategy:    "kubernetes",
+		ProjectName: req.ProjectName,
+		Status:      k8sResult.Status,
+		Namespace:   k8sResult.Namespace,
+		Deployments: []string{"kubernetes"},
 	}, nil
 }
 
@@ -183,12 +182,12 @@ func (h *HybridDeployer) deployServerless(ctx context.Context, req HybridDeployR
 	}
 
 	return &HybridDeployResult{
-		Strategy:     "serverless",
-		ProjectName:  req.ProjectName,
-		Status:       serverlessResult.Status,
-		Provider:     serverlessResult.Provider,
-		FunctionURL:  serverlessResult.URL,
-		Deployments:  []string{"serverless"},
+		Strategy:    "serverless",
+		ProjectName: req.ProjectName,
+		Status:      serverlessResult.Status,
+		Provider:    serverlessResult.Provider,
+		FunctionURL: serverlessResult.URL,
+		Deployments: []string{"serverless"},
 	}, nil
 }
 
@@ -210,12 +209,12 @@ func (h *HybridDeployer) deployDocker(ctx context.Context, req HybridDeployReque
 	}
 
 	return &HybridDeployResult{
-		Strategy:     "docker",
-		ProjectName:  req.ProjectName,
-		Status:       dockerResult.Status,
-		ImageName:    dockerResult.ImageName,
-		ContainerID:  dockerResult.ContainerID,
-		Deployments:  []string{"docker"},
+		Strategy:    "docker",
+		ProjectName: req.ProjectName,
+		Status:      dockerResult.Status,
+		ImageName:   dockerResult.ImageName,
+		ContainerID: dockerResult.ContainerID,
+		Deployments: []string{"docker"},
 	}, nil
 }
 
@@ -342,23 +341,23 @@ func (h *HybridDeployer) formatErrors(errors []error) []string {
 
 // HybridDeployRequest represents a hybrid deployment request
 type HybridDeployRequest struct {
-	ProjectName      string            `json:"project_name"`
-	ProjectPath      string            `json:"project_path"`
-	Strategy         string            `json:"strategy,omitempty"` // kubernetes, serverless, docker, multi, auto
-	Namespace        string            `json:"namespace,omitempty"`
-	Image            string            `json:"image,omitempty"`
-	Replicas         int               `json:"replicas,omitempty"`
-	Labels           map[string]string `json:"labels,omitempty"`
-	Env              map[string]string `json:"env,omitempty"`
-	Ports            []int             `json:"ports,omitempty"`
-	ManifestsPath    string            `json:"manifests_path,omitempty"`
-	ServerlessProvider string          `json:"serverless_provider,omitempty"` // aws, azure, gcp
-	Runtime          string            `json:"runtime,omitempty"`
-	Handler          string            `json:"handler,omitempty"`
-	Timeout          int               `json:"timeout,omitempty"`
-	MemorySize       int               `json:"memory_size,omitempty"`
-	ContainerName    string            `json:"container_name,omitempty"`
-	RunContainer     bool              `json:"run_container,omitempty"`
+	ProjectName        string            `json:"project_name"`
+	ProjectPath        string            `json:"project_path"`
+	Strategy           string            `json:"strategy,omitempty"` // kubernetes, serverless, docker, multi, auto
+	Namespace          string            `json:"namespace,omitempty"`
+	Image              string            `json:"image,omitempty"`
+	Replicas           int               `json:"replicas,omitempty"`
+	Labels             map[string]string `json:"labels,omitempty"`
+	Env                map[string]string `json:"env,omitempty"`
+	Ports              []int             `json:"ports,omitempty"`
+	ManifestsPath      string            `json:"manifests_path,omitempty"`
+	ServerlessProvider string            `json:"serverless_provider,omitempty"` // aws, azure, gcp
+	Runtime            string            `json:"runtime,omitempty"`
+	Handler            string            `json:"handler,omitempty"`
+	Timeout            int               `json:"timeout,omitempty"`
+	MemorySize         int               `json:"memory_size,omitempty"`
+	ContainerName      string            `json:"container_name,omitempty"`
+	RunContainer       bool              `json:"run_container,omitempty"`
 }
 
 // HybridDeployResult represents the result of hybrid deployment
@@ -466,9 +465,9 @@ func (h *HybridDeployer) GetDeploymentStatus(ctx context.Context, projectName st
 
 // HybridDeployStatus represents the status of hybrid deployments
 type HybridDeployStatus struct {
-	ProjectName string                      `json:"project_name"`
-	Deployments map[string]DeploymentInfo   `json:"deployments"`
-	LastUpdated time.Time                   `json:"last_updated"`
+	ProjectName string                    `json:"project_name"`
+	Deployments map[string]DeploymentInfo `json:"deployments"`
+	LastUpdated time.Time                 `json:"last_updated"`
 }
 
 // DeploymentInfo represents information about a single deployment

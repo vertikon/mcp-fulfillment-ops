@@ -8,16 +8,16 @@ import (
 
 // FulfillmentOrder: Expedição de Venda (Outbound)
 type FulfillmentOrder struct {
-	ID             string    `json:"id"`
-	OrderID        string    `json:"order_id"` // Ex: ID do Pedido OMS (B10)
-	Customer       string    `json:"customer"`
-	Destination    string    `json:"destination"` // Endereço
-	Status         Status    `json:"status"`
-	Items          []Item    `json:"items"`
-	Priority       int       `json:"priority"` // 0-Normal, 1-Express
-	IdempotencyKey string    `json:"idempotency_key"`
-	CreatedAt      time.Time `json:"created_at"`
-	UpdatedAt      time.Time `json:"updated_at"`
+	ID             string     `json:"id"`
+	OrderID        string     `json:"order_id"` // Ex: ID do Pedido OMS (B10)
+	Customer       string     `json:"customer"`
+	Destination    string     `json:"destination"` // Endereço
+	Status         Status     `json:"status"`
+	Items          []Item     `json:"items"`
+	Priority       int        `json:"priority"` // 0-Normal, 1-Express
+	IdempotencyKey string     `json:"idempotency_key"`
+	CreatedAt      time.Time  `json:"created_at"`
+	UpdatedAt      time.Time  `json:"updated_at"`
 	ShippedAt      *time.Time `json:"shipped_at,omitempty"`
 }
 
@@ -72,4 +72,3 @@ func (f *FulfillmentOrder) Cancel() error {
 	f.UpdatedAt = time.Now()
 	return nil
 }
-

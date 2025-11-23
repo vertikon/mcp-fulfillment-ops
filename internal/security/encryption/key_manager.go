@@ -20,7 +20,7 @@ import (
 )
 
 var (
-	ErrKeyNotFound     = errors.New("key not found")
+	ErrKeyNotFound       = errors.New("key not found")
 	ErrKeyRotationFailed = errors.New("key rotation failed")
 )
 
@@ -28,33 +28,33 @@ var (
 type KeyManager interface {
 	// GetEncryptionKey returns the current encryption key
 	GetEncryptionKey() ([]byte, error)
-	
+
 	// GetKeyVersion returns the current key version
 	GetKeyVersion() string
-	
+
 	// RotateKey rotates the encryption key
 	RotateKey() error
-	
+
 	// GetRSAPrivateKey returns RSA private key
 	GetRSAPrivateKey() (*rsa.PrivateKey, error)
-	
+
 	// GetRSAPublicKey returns RSA public key
 	GetRSAPublicKey() (*rsa.PublicKey, error)
-	
+
 	// LoadKeyFromEnv loads key from environment variable
 	LoadKeyFromEnv(keyName string) error
-	
+
 	// LoadKeyFromFile loads key from file
 	LoadKeyFromFile(filePath string) error
 }
 
-// Manager implements KeyManager
-type Manager struct {
+// keyManagerImpl implements KeyManager
+type keyManagerImpl struct {
 	encryptionKey []byte
 	keyVersion    string
 	rsaPrivateKey *rsa.PrivateKey
 	rsaPublicKey  *rsa.PublicKey
-	rotationTTL  time.Duration
+	rotationTTL   time.Duration
 	lastRotation  time.Time
 	mu            sync.RWMutex
 	logger        *zap.Logger
@@ -68,10 +68,10 @@ type KeyManagerConfig struct {
 
 // NewKeyManager creates a new KeyManager
 func NewKeyManager(config KeyManagerConfig) KeyManager {
-	km := &Manager{
-		keyVersion:   "v1",
+	km := &keyManagerImpl{
+		keyVersion:  "v1",
 		rotationTTL: config.RotationTTL,
-		logger:       logger.WithContext(nil),
+		logger:      logger.WithContext(nil),
 	}
 
 	// Generate initial encryption key
@@ -92,7 +92,7 @@ func NewKeyManager(config KeyManagerConfig) KeyManager {
 }
 
 // GetEncryptionKey returns the current encryption key
-func (m *Manager) GetEncryptionKey() ([]byte, error) {
+func (m *keyManagerImpl) GetEncryptionKey() ([]byte, error) {
 	m.mu.RLock()
 	defer m.mu.RUnlock()
 
@@ -112,14 +112,14 @@ func (m *Manager) GetEncryptionKey() ([]byte, error) {
 }
 
 // GetKeyVersion returns the current key version
-func (m *Manager) GetKeyVersion() string {
+func (m *keyManagerImpl) GetKeyVersion() string {
 	m.mu.RLock()
 	defer m.mu.RUnlock()
 	return m.keyVersion
 }
 
 // RotateKey rotates the encryption key
-func (m *Manager) RotateKey() error {
+func (m *keyManagerImpl) RotateKey() error {
 	m.mu.Lock()
 	defer m.mu.Unlock()
 
@@ -148,7 +148,7 @@ func (m *Manager) RotateKey() error {
 }
 
 // GetRSAPrivateKey returns RSA private key
-func (m *Manager) GetRSAPrivateKey() (*rsa.PrivateKey, error) {
+func (m *keyManagerImpl) GetRSAPrivateKey() (*rsa.PrivateKey, error) {
 	m.mu.RLock()
 	defer m.mu.RUnlock()
 
@@ -160,7 +160,7 @@ func (m *Manager) GetRSAPrivateKey() (*rsa.PrivateKey, error) {
 }
 
 // GetRSAPublicKey returns RSA public key
-func (m *Manager) GetRSAPublicKey() (*rsa.PublicKey, error) {
+func (m *keyManagerImpl) GetRSAPublicKey() (*rsa.PublicKey, error) {
 	m.mu.RLock()
 	defer m.mu.RUnlock()
 
@@ -172,7 +172,7 @@ func (m *Manager) GetRSAPublicKey() (*rsa.PublicKey, error) {
 }
 
 // LoadKeyFromEnv loads key from environment variable
-func (m *Manager) LoadKeyFromEnv(keyName string) error {
+func (m *keyManagerImpl) LoadKeyFromEnv(keyName string) error {
 	if keyName == "" {
 		return fmt.Errorf("key name cannot be empty")
 	}
@@ -212,7 +212,7 @@ func (m *Manager) LoadKeyFromEnv(keyName string) error {
 }
 
 // LoadKeyFromFile loads key from file
-func (m *Manager) LoadKeyFromFile(filePath string) error {
+func (m *keyManagerImpl) LoadKeyFromFile(filePath string) error {
 	if filePath == "" {
 		return fmt.Errorf("file path cannot be empty")
 	}
@@ -282,7 +282,7 @@ func (m *Manager) LoadKeyFromFile(filePath string) error {
 }
 
 // generateRSAKeys generates RSA key pair
-func (m *Manager) generateRSAKeys(keySize int) error {
+func (m *keyManagerImpl) generateRSAKeys(keySize int) error {
 	if keySize == 0 {
 		keySize = 2048 // Default
 	}
@@ -304,7 +304,7 @@ func (m *Manager) generateRSAKeys(keySize int) error {
 }
 
 // ExportRSAPrivateKey exports RSA private key as PEM
-func (m *Manager) ExportRSAPrivateKey() ([]byte, error) {
+func (m *keyManagerImpl) ExportRSAPrivateKey() ([]byte, error) {
 	m.mu.RLock()
 	defer m.mu.RUnlock()
 
@@ -322,7 +322,7 @@ func (m *Manager) ExportRSAPrivateKey() ([]byte, error) {
 }
 
 // ExportRSAPublicKey exports RSA public key as PEM
-func (m *Manager) ExportRSAPublicKey() ([]byte, error) {
+func (m *keyManagerImpl) ExportRSAPublicKey() ([]byte, error) {
 	m.mu.RLock()
 	defer m.mu.RUnlock()
 

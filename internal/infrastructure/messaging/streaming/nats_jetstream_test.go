@@ -85,5 +85,3 @@ func TestNATSJetStreamClient_CreateStream(t *testing.T) {
 		t.Errorf("CreateStream() error = %v", err)
 	}
 }
-
-

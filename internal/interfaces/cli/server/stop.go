@@ -1,1 +1,0 @@
-# Função: Parar servidor

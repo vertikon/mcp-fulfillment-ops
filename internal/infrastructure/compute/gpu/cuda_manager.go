@@ -1,1 +1,0 @@
-# Gerenciador CUDA (quando houver GPU local)

@@ -276,7 +276,7 @@ func (g *GoGenerator) validateGoRequest(req GenerateRequest) error {
 	// Check Go version compatibility
 	// Validate features are supported
 	// Check naming conventions
-	
+
 	if req.Name == "" {
 		return fmt.Errorf("project name is required")
 	}
@@ -298,7 +298,7 @@ func isValidGoModuleName(name string) bool {
 	// Check for valid characters and patterns
 	// This is a simplified validation
 	validChars := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-./"
-	
+
 	for _, char := range name {
 		if !strings.ContainsRune(validChars, char) {
 			return false
@@ -382,7 +382,7 @@ func (g *GoGenerator) getDevDependencies(req GenerateRequest) []string {
 // CreateDockerfile generates Dockerfile content
 func (g *GoGenerator) CreateDockerfile(req GenerateRequest) string {
 	goVersion := g.getGoVersion(req)
-	
+
 	return fmt.Sprintf(`# Build stage
 FROM golang:%s-alpine AS builder
 WORKDIR /app

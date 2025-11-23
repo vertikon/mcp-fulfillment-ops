@@ -11,11 +11,11 @@ import (
 
 func TestAuth0Provider_GetAuthURL(t *testing.T) {
 	config := OAuthProviderConfig{
-		Domain:      "dev-vertikon.us.auth0.com",
-		ClientID:    "test_client_id",
+		Domain:       "dev-vertikon.us.auth0.com",
+		ClientID:     "test_client_id",
 		ClientSecret: "test_client_secret",
-		RedirectURL: "http://localhost:8080/callback",
-		Scopes:      []string{"openid", "profile", "email"},
+		RedirectURL:  "http://localhost:8080/callback",
+		Scopes:       []string{"openid", "profile", "email"},
 	}
 
 	provider := NewAuth0Provider(config).(*Auth0Provider)
@@ -56,11 +56,11 @@ func TestAuth0Provider_GetUserInfo(t *testing.T) {
 	defer mockServer.Close()
 
 	config := OAuthProviderConfig{
-		Domain:      "dev-vertikon.us.auth0.com",
-		ClientID:    "test_client_id",
+		Domain:       "dev-vertikon.us.auth0.com",
+		ClientID:     "test_client_id",
 		ClientSecret: "test_client_secret",
-		RedirectURL: "http://localhost:8080/callback",
-		UserInfoURL: mockServer.URL,
+		RedirectURL:  "http://localhost:8080/callback",
+		UserInfoURL:  mockServer.URL,
 	}
 
 	provider := NewAuth0Provider(config).(*Auth0Provider)
@@ -138,10 +138,10 @@ func TestAuth0Provider_GetProviderType(t *testing.T) {
 
 func TestNewAuth0Provider_AutoGenerateURLs(t *testing.T) {
 	config := OAuthProviderConfig{
-		Domain:      "dev-vertikon.us.auth0.com",
-		ClientID:    "test_client_id",
+		Domain:       "dev-vertikon.us.auth0.com",
+		ClientID:     "test_client_id",
 		ClientSecret: "test_secret",
-		RedirectURL: "http://localhost:8080/callback",
+		RedirectURL:  "http://localhost:8080/callback",
 	}
 
 	provider := NewAuth0Provider(config).(*Auth0Provider)
@@ -156,10 +156,10 @@ func TestNewAuth0Provider_AutoGenerateURLs(t *testing.T) {
 
 func TestNewAuth0Provider_DefaultScopes(t *testing.T) {
 	config := OAuthProviderConfig{
-		Domain:      "dev-vertikon.us.auth0.com",
-		ClientID:    "test_client_id",
+		Domain:       "dev-vertikon.us.auth0.com",
+		ClientID:     "test_client_id",
 		ClientSecret: "test_secret",
-		RedirectURL: "http://localhost:8080/callback",
+		RedirectURL:  "http://localhost:8080/callback",
 		// Scopes not provided
 	}
 
@@ -177,10 +177,10 @@ func TestAuth0Provider_ExchangeCode(t *testing.T) {
 	// For now, we'll test the structure
 
 	config := OAuthProviderConfig{
-		Domain:      "dev-vertikon.us.auth0.com",
-		ClientID:    "test_client_id",
+		Domain:       "dev-vertikon.us.auth0.com",
+		ClientID:     "test_client_id",
 		ClientSecret: "test_secret",
-		RedirectURL: "http://localhost:8080/callback",
+		RedirectURL:  "http://localhost:8080/callback",
 	}
 
 	provider := NewAuth0Provider(config).(*Auth0Provider)
@@ -191,4 +191,3 @@ func TestAuth0Provider_ExchangeCode(t *testing.T) {
 	assert.Equal(t, "test_secret", provider.oauth2Config.ClientSecret)
 	assert.Equal(t, "http://localhost:8080/callback", provider.oauth2Config.RedirectURL)
 }
-

@@ -105,7 +105,7 @@ func (idx *Indexer) UpdateVectorIndex(ctx context.Context, knowledgeID string, d
 	}
 
 	metadata := map[string]interface{}{
-		"document_id": documentID,
+		"document_id":  documentID,
 		"knowledge_id": knowledgeID,
 	}
 

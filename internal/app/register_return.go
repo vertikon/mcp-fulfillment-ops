@@ -89,4 +89,3 @@ func (uc *RegisterReturnUseCase) CompleteReturn(ctx context.Context, returnID, l
 	uc.logger.Info("Return order completed", "id", returnID)
 	return nil
 }
-

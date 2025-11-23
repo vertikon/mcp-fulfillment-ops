@@ -1,1 +1,0 @@
-# Função: Validador base abstrato

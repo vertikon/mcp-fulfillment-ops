@@ -82,4 +82,3 @@ func RBACInterceptor(authManager AuthManager, resource string, action string) gr
 		return handler(ctx, req)
 	}
 }
-

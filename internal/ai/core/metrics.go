@@ -10,11 +10,11 @@ type Metrics struct {
 	mu sync.RWMutex
 
 	// Generation metrics
-	generations      map[string]int64 // key: "provider:model"
-	totalTokens      map[string]int64
-	totalLatency     map[string]time.Duration
-	successCount     map[string]int64
-	errorCount       map[string]int64
+	generations  map[string]int64 // key: "provider:model"
+	totalTokens  map[string]int64
+	totalLatency map[string]time.Duration
+	successCount map[string]int64
+	errorCount   map[string]int64
 
 	// Latency tracking
 	latencies map[string][]time.Duration // key: "provider:model"
@@ -27,12 +27,12 @@ type Metrics struct {
 func NewMetrics() *Metrics {
 	return &Metrics{
 		generations:  make(map[string]int64),
-		totalTokens:   make(map[string]int64),
+		totalTokens:  make(map[string]int64),
 		totalLatency: make(map[string]time.Duration),
 		successCount: make(map[string]int64),
-		errorCount:    make(map[string]int64),
-		latencies:     make(map[string][]time.Duration),
-		errors:        make(map[string][]error),
+		errorCount:   make(map[string]int64),
+		latencies:    make(map[string][]time.Duration),
+		errors:       make(map[string][]error),
 	}
 }
 
@@ -168,7 +168,7 @@ func (m *Metrics) GetP95Latency(provider LLMProvider, model string) time.Duratio
 	// Sort and get P95
 	sorted := make([]time.Duration, len(latencies))
 	copy(sorted, latencies)
-	
+
 	// Simple P95 calculation (for production, use proper sorting)
 	index := int(float64(len(sorted)) * 0.95)
 	if index >= len(sorted) {
@@ -185,15 +185,15 @@ func (m *Metrics) GetStats(provider LLMProvider, model string) ProviderStats {
 	key := m.key(provider, model)
 
 	return ProviderStats{
-		Provider:        provider,
-		Model:           model,
+		Provider:         provider,
+		Model:            model,
 		TotalGenerations: m.generations[key],
-		TotalTokens:     m.totalTokens[key],
-		AverageLatency:  m.GetAverageLatency(provider, model),
-		P95Latency:      m.GetP95Latency(provider, model),
-		SuccessRate:     m.GetSuccessRate(provider, model),
-		ErrorRate:       m.GetErrorRate(provider, model),
-		ErrorCount:      m.errorCount[key],
+		TotalTokens:      m.totalTokens[key],
+		AverageLatency:   m.GetAverageLatency(provider, model),
+		P95Latency:       m.GetP95Latency(provider, model),
+		SuccessRate:      m.GetSuccessRate(provider, model),
+		ErrorRate:        m.GetErrorRate(provider, model),
+		ErrorCount:       m.errorCount[key],
 	}
 }
 

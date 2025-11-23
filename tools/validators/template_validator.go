@@ -113,14 +113,14 @@ func (v *TemplateValidator) validateTemplateFiles(path string, errors *[]string,
 		if err != nil {
 			return err
 		}
-		
+
 		if !info.IsDir() && strings.HasSuffix(filePath, ".tmpl") {
 			templateFiles++
 		}
-		
+
 		return nil
 	})
-	
+
 	if err != nil {
 		return err
 	}
@@ -140,7 +140,7 @@ func (v *TemplateValidator) validateTemplateConventions(path string, errors *[]s
 	if strings.Contains(templateName, " ") {
 		*errors = append(*errors, fmt.Sprintf("template name contains spaces: %s", templateName))
 	}
-	
+
 	if strings.ToLower(templateName) != templateName {
 		*warnings = append(*warnings, fmt.Sprintf("template name should be lowercase: %s", templateName))
 	}

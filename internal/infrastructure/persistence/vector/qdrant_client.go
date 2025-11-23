@@ -243,8 +243,8 @@ func (c *qdrantClient) SearchVectors(ctx context.Context, collectionName string,
 	)
 
 	payload := map[string]interface{}{
-		"vector": queryVector,
-		"limit":  limit,
+		"vector":       queryVector,
+		"limit":        limit,
 		"with_payload": true,
 		"with_vector":  true,
 	}
@@ -297,7 +297,7 @@ func (c *qdrantClient) SearchVectors(ctx context.Context, collectionName string,
 			Score:    r.Score,
 			Vector:   r.Vector,
 			Payload:  r.Payload,
-			Metadata:  make(map[string]interface{}),
+			Metadata: make(map[string]interface{}),
 		}
 	}
 
@@ -361,9 +361,9 @@ func (c *qdrantClient) GetVector(ctx context.Context, collectionName string, id 
 	)
 
 	payload := map[string]interface{}{
-		"ids":            []string{id},
-		"with_payload":   true,
-		"with_vector":    true,
+		"ids":          []string{id},
+		"with_payload": true,
+		"with_vector":  true,
 	}
 
 	jsonData, err := json.Marshal(payload)

@@ -1,1 +1,0 @@
-# Scheduler de processos/tarefas em CPU

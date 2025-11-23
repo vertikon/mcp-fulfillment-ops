@@ -179,4 +179,3 @@ func TestMCPTools_ToolSchemas(t *testing.T) {
 		}
 	}
 }
-

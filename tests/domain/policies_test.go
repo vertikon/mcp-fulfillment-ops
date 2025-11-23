@@ -9,10 +9,10 @@ import (
 
 func TestValidateStateTransition(t *testing.T) {
 	tests := []struct {
-		name    string
-		from    fulfillment.Status
-		to      fulfillment.Status
-		want    bool
+		name string
+		from fulfillment.Status
+		to   fulfillment.Status
+		want bool
 	}{
 		{
 			name: "pending -> in_progress",
@@ -64,28 +64,28 @@ func TestValidateStateTransition(t *testing.T) {
 
 func TestCheckSLA(t *testing.T) {
 	tests := []struct {
-		name              string
-		createdAt         time.Time
+		name               string
+		createdAt          time.Time
 		maxDurationMinutes int
-		want              bool
+		want               bool
 	}{
 		{
-			name:              "within SLA",
-			createdAt:         time.Now().Add(-30 * time.Minute),
+			name:               "within SLA",
+			createdAt:          time.Now().Add(-30 * time.Minute),
 			maxDurationMinutes: 60,
-			want:              true,
+			want:               true,
 		},
 		{
-			name:              "exceeded SLA",
-			createdAt:         time.Now().Add(-90 * time.Minute),
+			name:               "exceeded SLA",
+			createdAt:          time.Now().Add(-90 * time.Minute),
 			maxDurationMinutes: 60,
-			want:              false,
+			want:               false,
 		},
 		{
-			name:              "exactly at SLA limit",
-			createdAt:         time.Now().Add(-60 * time.Minute),
+			name:               "exactly at SLA limit",
+			createdAt:          time.Now().Add(-60 * time.Minute),
 			maxDurationMinutes: 60,
-			want:              true,
+			want:               true,
 		},
 	}
 
@@ -136,4 +136,3 @@ func TestIsIdempotencyKeyValid(t *testing.T) {
 		})
 	}
 }
-

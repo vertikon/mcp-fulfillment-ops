@@ -95,8 +95,8 @@ type ConfigMap struct {
 
 // k8sClient implements KubernetesClient using client-go
 type k8sClient struct {
-	clientset  kubernetes.Interface
-	timeout    time.Duration
+	clientset kubernetes.Interface
+	timeout   time.Duration
 }
 
 // NewKubernetesClient creates a new Kubernetes client

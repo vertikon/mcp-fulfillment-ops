@@ -29,7 +29,7 @@ var aiChatCmd = &cobra.Command{
 	},
 }
 
-func init() {
+func registerAICmd() {
 	rootCmd.AddCommand(aiCmd)
 	aiCmd.AddCommand(aiChatCmd)
 	aiChatCmd.Flags().StringP("message", "m", "", "Message to send")

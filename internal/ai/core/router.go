@@ -10,11 +10,11 @@ import (
 type RoutingStrategy string
 
 const (
-	StrategyCost      RoutingStrategy = "cost"
-	StrategyLatency   RoutingStrategy = "latency"
-	StrategyQuality   RoutingStrategy = "quality"
-	StrategyBalanced  RoutingStrategy = "balanced"
-	StrategyFallback  RoutingStrategy = "fallback"
+	StrategyCost     RoutingStrategy = "cost"
+	StrategyLatency  RoutingStrategy = "latency"
+	StrategyQuality  RoutingStrategy = "quality"
+	StrategyBalanced RoutingStrategy = "balanced"
+	StrategyFallback RoutingStrategy = "fallback"
 )
 
 // ProviderConfig contains configuration for a provider

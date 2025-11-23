@@ -20,7 +20,7 @@ func NewTinyGoGenerator(templateDir string) *TinyGoGenerator {
 	base := NewBaseGenerator("TinyGo Generator", "tinygo", templateDir)
 	return &TinyGoGenerator{
 		BaseGenerator: base,
-		target:       "wasm", // Default target
+		target:        "wasm", // Default target
 	}
 }
 
@@ -223,7 +223,7 @@ func NewWasmGenerator(templateDir string) *WasmGenerator {
 	base := NewBaseGenerator("WASM Generator", "wasm", templateDir)
 	return &WasmGenerator{
 		BaseGenerator: base,
-		language:     "rust", // Default language
+		language:      "rust", // Default language
 	}
 }
 
@@ -319,11 +319,11 @@ func (g *WasmGenerator) postProcessWasmProject(projectPath string, req GenerateR
 	// Generate bindings
 	// This would involve executing shell commands
 	// For now, just return nil as placeholder
-	
+
 	g.logger.Info("WASM project post-processing completed",
-		"project", req.Name,
-		"language", g.language,
-		"features", req.Features)
+		zap.String("project", req.Name),
+		zap.String("language", g.language),
+		zap.Strings("features", req.Features))
 
 	return nil
 }
@@ -483,10 +483,10 @@ func (g *MCPGoPremiumGenerator) postProcessMCPProject(projectPath string, req Ge
 	// Configure monitoring
 	// This would involve executing shell commands
 	// For now, just return nil as placeholder
-	
+
 	g.logger.Info("MCP Go Premium project post-processing completed",
-		"project", req.Name,
-		"features", req.Features)
+		zap.String("project", req.Name),
+		zap.Strings("features", req.Features))
 
 	return nil
 }

@@ -13,88 +13,81 @@ import (
 
 // AttentionConfig represents attention mechanism configuration
 type AttentionConfig struct {
-	NumHeads      int     `json:"num_heads"`
-	HeadDim       int     `json:"head_dim"`
-	Dropout       float64 `json:"dropout"`
-	UseFlash      bool    `json:"use_flash"`
-	Scale         float64 `json:"scale"`
+	NumHeads int     `json:"num_heads"`
+	HeadDim  int     `json:"head_dim"`
+	Dropout  float64 `json:"dropout"`
+	UseFlash bool    `json:"use_flash"`
+	Scale    float64 `json:"scale"`
 }
 
-// FeedForwardConfig represents feed-forward network configuration
-type FeedForwardConfig struct {
-	HiddenSize    int     `json:"hidden_size"`
-	Intermediate  int     `json:"intermediate_size"`
-	Dropout       float64 `json:"dropout"`
-	Activation    string  `json:"activation"`
-	UseBias       bool    `json:"use_bias"`
-}
+// FeedForwardConfig is defined in feedforward.go
 
 // TransformerLayer represents a single transformer layer
 type TransformerLayer struct {
-	attention     *MultiHeadAttention
-	feedForward   *FeedForwardNetwork
-	layernorm1    *LayerNorm
-	layernorm2    *LayerNorm
-	dropout       float64
-	hiddenSize    int
+	attention   *simpleMultiHeadAttention
+	feedForward *simpleFeedForwardNetwork
+	layernorm1  *LayerNorm
+	layernorm2  *LayerNorm
+	dropout     float64
+	hiddenSize  int
 }
 
 // GLMTransformer represents the GLM-4.6 transformer architecture
 type GLMTransformer struct {
-	layers        []*TransformerLayer
-	embeddings    *EmbeddingLayer
-	posEncoding   *PositionalEncoding
-	layernorm     *LayerNorm
-	config        GLMConfig
-	mu            sync.RWMutex
+	layers      []*TransformerLayer
+	embeddings  *simpleEmbeddingLayer
+	posEncoding *PositionalEncoding
+	layernorm   *LayerNorm
+	config      GLMConfig
+	mu          sync.RWMutex
 }
 
 // GLMConfig represents the full GLM-4.6 configuration
 type GLMConfig struct {
-	VocabSize       int                 `json:"vocab_size"`
-	HiddenSize      int                 `json:"hidden_size"`
-	NumLayers       int                 `json:"num_layers"`
-	NumHeads        int                 `json:"num_heads"`
-	MaxSeqLen       int                 `json:"max_seq_len"`
-	Dropout         float64             `json:"dropout"`
-	Attention       AttentionConfig      `json:"attention"`
-	FeedForward     FeedForwardConfig   `json:"feed_forward"`
-	UseRotaryEmbeds bool                `json:"use_rotary_embeds"`
-	LayerNormEps    float64             `json:"layer_norm_eps"`
+	VocabSize       int               `json:"vocab_size"`
+	HiddenSize      int               `json:"hidden_size"`
+	NumLayers       int               `json:"num_layers"`
+	NumHeads        int               `json:"num_heads"`
+	MaxSeqLen       int               `json:"max_seq_len"`
+	Dropout         float64           `json:"dropout"`
+	Attention       AttentionConfig   `json:"attention"`
+	FeedForward     FeedForwardConfig `json:"feed_forward"`
+	UseRotaryEmbeds bool              `json:"use_rotary_embeds"`
+	LayerNormEps    float64           `json:"layer_norm_eps"`
 }
 
 // Tensor represents a multi-dimensional tensor (simplified)
 type Tensor struct {
-	Data     []float64 `json:"data"`
-	Shape    []int     `json:"shape"`
-	RequiresGrad bool   `json:"requires_grad"`
+	Data         []float64 `json:"data"`
+	Shape        []int     `json:"shape"`
+	RequiresGrad bool      `json:"requires_grad"`
 }
 
-// MultiHeadAttention implements multi-head attention mechanism
-type MultiHeadAttention struct {
-	config       AttentionConfig
-	hiddenSize   int
-	headDim      int
-	queryWeights *Tensor
-	keyWeights   *Tensor
-	valueWeights *Tensor
+// simpleMultiHeadAttention implements a simplified multi-head attention mechanism for GLMTransformer
+type simpleMultiHeadAttention struct {
+	config        AttentionConfig
+	hiddenSize    int
+	headDim       int
+	queryWeights  *Tensor
+	keyWeights    *Tensor
+	valueWeights  *Tensor
 	outputWeights *Tensor
-	bias         *Tensor
+	bias          *Tensor
 }
 
-// FeedForwardNetwork implements the position-wise feed-forward network
-type FeedForwardNetwork struct {
-	config      FeedForwardConfig
-	weight1     *Tensor
-	bias1       *Tensor
-	weight2     *Tensor
-	bias2       *Tensor
-	hiddenSize  int
+// simpleFeedForwardNetwork implements a simplified feed-forward network for GLMTransformer
+type simpleFeedForwardNetwork struct {
+	config       FeedForwardConfig
+	weight1      *Tensor
+	bias1        *Tensor
+	weight2      *Tensor
+	bias2        *Tensor
+	hiddenSize   int
 	intermediate int
 }
 
-// EmbeddingLayer represents token embeddings
-type EmbeddingLayer struct {
+// simpleEmbeddingLayer represents simplified token embeddings for GLMTransformer
+type simpleEmbeddingLayer struct {
 	vocabSize  int
 	hiddenSize int
 	weight     *Tensor
@@ -102,16 +95,16 @@ type EmbeddingLayer struct {
 
 // PositionalEncoding represents positional encoding
 type PositionalEncoding struct {
-	maxSeqLen int
+	maxSeqLen  int
 	hiddenSize int
-	encoding  *Tensor
+	encoding   *Tensor
 }
 
 // LayerNorm implements layer normalization
 type LayerNorm struct {
-	weight   *Tensor
-	bias     *Tensor
-	eps      float64
+	weight     *Tensor
+	bias       *Tensor
+	eps        float64
 	hiddenSize int
 }
 
@@ -124,11 +117,11 @@ func NewGLMTransformer(config GLMConfig) *GLMTransformer {
 	)
 
 	transformer := &GLMTransformer{
-		config:     config,
-		layers:     make([]*TransformerLayer, config.NumLayers),
-		embeddings: NewEmbeddingLayer(config.VocabSize, config.HiddenSize),
+		config:      config,
+		layers:      make([]*TransformerLayer, config.NumLayers),
+		embeddings:  newSimpleEmbeddingLayer(config.VocabSize, config.HiddenSize),
 		posEncoding: NewPositionalEncoding(config.MaxSeqLen, config.HiddenSize),
-		layernorm: NewLayerNorm(config.HiddenSize, config.LayerNormEps),
+		layernorm:   NewLayerNorm(config.HiddenSize, config.LayerNormEps),
 	}
 
 	// Create transformer layers
@@ -142,12 +135,12 @@ func NewGLMTransformer(config GLMConfig) *GLMTransformer {
 // NewTransformerLayer creates a new transformer layer
 func NewTransformerLayer(config GLMConfig) *TransformerLayer {
 	return &TransformerLayer{
-		attention:   NewMultiHeadAttention(config.Attention, config.HiddenSize),
-		feedForward: NewFeedForwardNetwork(config.FeedForward, config.HiddenSize),
+		attention:   newSimpleMultiHeadAttention(config.Attention, config.HiddenSize),
+		feedForward: newSimpleFeedForwardNetwork(config.FeedForward, config.HiddenSize),
 		layernorm1:  NewLayerNorm(config.HiddenSize, config.LayerNormEps),
 		layernorm2:  NewLayerNorm(config.HiddenSize, config.LayerNormEps),
 		dropout:     config.Dropout,
-		hiddenSize:   config.HiddenSize,
+		hiddenSize:  config.HiddenSize,
 	}
 }
 
@@ -245,27 +238,33 @@ func (l *TransformerLayer) Forward(ctx context.Context, input *Tensor, attention
 	return output, nil
 }
 
-// NewMultiHeadAttention creates a new multi-head attention mechanism
-func NewMultiHeadAttention(config AttentionConfig, hiddenSize int) *MultiHeadAttention {
+// newSimpleMultiHeadAttention creates a new simplified multi-head attention
+func newSimpleMultiHeadAttention(config AttentionConfig, hiddenSize int) *simpleMultiHeadAttention {
 	headDim := config.HeadDim
 	if headDim == 0 {
 		headDim = hiddenSize / config.NumHeads
 	}
 
-	return &MultiHeadAttention{
-		config:     config,
-		hiddenSize: hiddenSize,
-		headDim:    headDim,
-		queryWeights: t.randn(hiddenSize, hiddenSize),
-		keyWeights:   t.randn(hiddenSize, hiddenSize),
-		valueWeights: t.randn(hiddenSize, hiddenSize),
+	return &simpleMultiHeadAttention{
+		config:        config,
+		hiddenSize:    hiddenSize,
+		headDim:       headDim,
+		queryWeights:  t.randn(hiddenSize, hiddenSize),
+		keyWeights:    t.randn(hiddenSize, hiddenSize),
+		valueWeights:  t.randn(hiddenSize, hiddenSize),
 		outputWeights: t.randn(hiddenSize, hiddenSize),
-		bias:         t.zeros(hiddenSize),
+		bias:          t.zeros(hiddenSize),
 	}
 }
 
+// NewMultiHeadAttentionWithHiddenSize creates a new multi-head attention mechanism with hidden size
+// This is a helper function that uses the main NewMultiHeadAttention from attention.go
+func NewMultiHeadAttentionWithHiddenSize(config AttentionConfig, hiddenSize int) *MultiHeadAttention {
+	return NewMultiHeadAttention(config, AttentionTypeMultiHead)
+}
+
 // Forward performs attention computation
-func (a *MultiHeadAttention) Forward(ctx context.Context, query, key, value, mask *Tensor) (*Tensor, error) {
+func (a *simpleMultiHeadAttention) Forward(ctx context.Context, query, key, value, mask *Tensor) (*Tensor, error) {
 	select {
 	case <-ctx.Done():
 		return nil, ctx.Err()
@@ -318,21 +317,21 @@ func (a *MultiHeadAttention) Forward(ctx context.Context, query, key, value, mas
 	return output, nil
 }
 
-// NewFeedForwardNetwork creates a new feed-forward network
-func NewFeedForwardNetwork(config FeedForwardConfig, hiddenSize int) *FeedForwardNetwork {
-	return &FeedForwardNetwork{
-		config:      config,
-		weight1:     t.randn(hiddenSize, config.Intermediate),
-		bias1:       t.zeros(config.Intermediate),
-		weight2:     t.randn(config.Intermediate, hiddenSize),
-		bias2:       t.zeros(hiddenSize),
-		hiddenSize:  hiddenSize,
-		intermediate: config.Intermediate,
+// newSimpleFeedForwardNetwork creates a new simplified feed-forward network
+func newSimpleFeedForwardNetwork(config FeedForwardConfig, hiddenSize int) *simpleFeedForwardNetwork {
+	return &simpleFeedForwardNetwork{
+		config:       config,
+		weight1:      t.randn(hiddenSize, config.IntermediateSize),
+		bias1:        t.zeros(config.IntermediateSize),
+		weight2:      t.randn(config.IntermediateSize, hiddenSize),
+		bias2:        t.zeros(hiddenSize),
+		hiddenSize:   hiddenSize,
+		intermediate: config.IntermediateSize,
 	}
 }
 
 // Forward performs feed-forward computation
-func (ff *FeedForwardNetwork) Forward(ctx context.Context, input *Tensor) (*Tensor, error) {
+func (ff *simpleFeedForwardNetwork) Forward(ctx context.Context, input *Tensor) (*Tensor, error) {
 	select {
 	case <-ctx.Done():
 		return nil, ctx.Err()
@@ -353,9 +352,9 @@ func (ff *FeedForwardNetwork) Forward(ctx context.Context, input *Tensor) (*Tens
 	return output, nil
 }
 
-// NewEmbeddingLayer creates a new embedding layer
-func NewEmbeddingLayer(vocabSize, hiddenSize int) *EmbeddingLayer {
-	return &EmbeddingLayer{
+// newSimpleEmbeddingLayer creates a new simplified embedding layer
+func newSimpleEmbeddingLayer(vocabSize, hiddenSize int) *simpleEmbeddingLayer {
+	return &simpleEmbeddingLayer{
 		vocabSize:  vocabSize,
 		hiddenSize: hiddenSize,
 		weight:     t.randn(vocabSize, hiddenSize),
@@ -363,7 +362,7 @@ func NewEmbeddingLayer(vocabSize, hiddenSize int) *EmbeddingLayer {
 }
 
 // Forward performs embedding lookup
-func (e *EmbeddingLayer) Forward(input *Tensor) (*Tensor, error) {
+func (e *simpleEmbeddingLayer) Forward(input *Tensor) (*Tensor, error) {
 	// Simplified embedding lookup
 	// In practice, this would index the weight matrix
 	return t.matmul(input, e.weight), nil
@@ -381,7 +380,7 @@ func NewPositionalEncoding(maxSeqLen, hiddenSize int) *PositionalEncoding {
 	for pos := 0; pos < maxSeqLen; pos++ {
 		for i := 0; i < hiddenSize; i += 2 {
 			angle := float64(pos) / math.Pow(10000.0, float64(i)/float64(hiddenSize))
-			
+
 			if i < hiddenSize {
 				encoding.encoding.Data[pos*hiddenSize+i] = math.Sin(angle)
 			}
@@ -416,12 +415,13 @@ func (ln *LayerNorm) Forward(input *Tensor) (*Tensor, error) {
 	// Simplified layer norm implementation
 	mean := t.mean(input, -1, true)
 	variance := t.variance(input, -1, true)
-	normalized := t.div(t.sub(input, mean), t.sqrt(t.add(variance, ln.eps)))
-	
+	epsTensor := &Tensor{Data: []float64{ln.eps}, Shape: []int{1}}
+	normalized := t.div(t.sub(input, mean), t.sqrt(t.add(variance, epsTensor)))
+
 	// Scale and shift
 	output := t.mul(normalized, ln.weight)
 	output = t.add(output, ln.bias)
-	
+
 	return output, nil
 }
 
@@ -515,7 +515,7 @@ func (t *tensorOps) variance(input *Tensor, dim int, keepdim bool) *Tensor {
 	return &Tensor{Data: []float64{1.0}, Shape: []int{1}}
 }
 
-func (t *transformer) meanActivation(tensor *Tensor) float64 {
+func (t *GLMTransformer) meanActivation(tensor *Tensor) float64 {
 	if len(tensor.Data) == 0 {
 		return 0.0
 	}

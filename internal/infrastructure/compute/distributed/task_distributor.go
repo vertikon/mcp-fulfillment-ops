@@ -1,1 +1,0 @@
-# Distribuidor de tarefas

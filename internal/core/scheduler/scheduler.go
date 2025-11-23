@@ -28,38 +28,39 @@ func NewScheduler(js nats.JetStreamContext) *Scheduler {
 // InitializeStreams creates required NATS JetStream streams
 func (s *Scheduler) InitializeStreams(ctx context.Context) error {
 	streams := []struct {
-		name    string
+		name     string
 		subjects []string
 	}{
 		{
-			name:     "hulk.engine.tasks",
-			subjects: []string{"hulk.task.created", "hulk.task.completed", "hulk.task.failed"},
+			name:     "fulfillment.engine.tasks",
+			subjects: []string{"fulfillment.task.created", "fulfillment.task.completed", "fulfillment.task.failed"},
 		},
 		{
-			name:     "hulk.engine.events",
-			subjects: []string{"hulk.engine.*"},
+			name:     "fulfillment.engine.events",
+			subjects: []string{"fulfillment.engine.*"},
 		},
 		{
-			name:     "hulk.scheduler.queue",
-			subjects: []string{"hulk.scheduler.tick"},
+			name:     "fulfillment.scheduler.queue",
+			subjects: []string{"fulfillment.scheduler.tick"},
 		},
 		{
-			name:     "hulk.errors",
-			subjects: []string{"hulk.error.*"},
+			name:     "fulfillment.errors",
+			subjects: []string{"fulfillment.error.*"},
 		},
 	}
 
 	for _, stream := range streams {
 		cfg := &nats.StreamConfig{
-			Name:      stream.name,
+			Name:     stream.name,
 			Subjects: stream.subjects,
-			Replicas:  1,
-			MaxAge:    24 * time.Hour,
+			Replicas: 1,
+			MaxAge:   24 * time.Hour,
 		}
 
 		_, err := s.js.AddStream(cfg)
 		if err != nil {
-			if err == nats.ErrStreamNameExist {
+			// Verifica se o stream já existe tentando obtê-lo
+			if _, getErr := s.js.StreamInfo(stream.name); getErr == nil {
 				logger.Debug("Stream already exists", zap.String("stream", stream.name))
 				continue
 			}
@@ -84,7 +85,7 @@ func (s *Scheduler) PublishTick(ctx context.Context) error {
 		return err
 	}
 
-	_, err = s.js.Publish("hulk.scheduler.tick", data)
+	_, err = s.js.Publish("fulfillment.scheduler.tick", data)
 	if err != nil {
 		return err
 	}
@@ -94,7 +95,7 @@ func (s *Scheduler) PublishTick(ctx context.Context) error {
 
 // SubscribeToTicks subscribes to scheduler tick events
 func (s *Scheduler) SubscribeToTicks(ctx context.Context, handler func(*TickEvent) error) (*nats.Subscription, error) {
-	sub, err := s.js.Subscribe("hulk.scheduler.tick", func(msg *nats.Msg) {
+	sub, err := s.js.Subscribe("fulfillment.scheduler.tick", func(msg *nats.Msg) {
 		var tick TickEvent
 		if err := json.Unmarshal(msg.Data, &tick); err != nil {
 			logger.Error("Failed to unmarshal tick event", zap.Error(err))
@@ -115,4 +116,3 @@ func (s *Scheduler) SubscribeToTicks(ctx context.Context, handler func(*TickEven
 type TickEvent struct {
 	Timestamp time.Time `json:"timestamp"`
 }
-

@@ -14,20 +14,20 @@ import (
 type VersioningStrategy string
 
 const (
-	VersioningStrategySequential VersioningStrategy = "sequential"
-	VersioningStrategyTimestamp  VersioningStrategy = "timestamp"
+	VersioningStrategySequential  VersioningStrategy = "sequential"
+	VersioningStrategyTimestamp   VersioningStrategy = "timestamp"
 	VersioningStrategyVectorClock VersioningStrategy = "vector-clock"
 )
 
 // VersionInfo represents version information for an aggregate
 type VersionInfo struct {
-	AggregateID   string                 `json:"aggregate_id"`
-	AggregateType string                 `json:"aggregate_type"`
+	AggregateID    string                 `json:"aggregate_id"`
+	AggregateType  string                 `json:"aggregate_type"`
 	CurrentVersion int64                  `json:"current_version"`
-	LastEventID   string                 `json:"last_event_id"`
-	LastEventTime time.Time              `json:"last_event_time"`
+	LastEventID    string                 `json:"last_event_id"`
+	LastEventTime  time.Time              `json:"last_event_time"`
 	VersionHistory []VersionHistoryEntry  `json:"version_history,omitempty"`
-	Metadata      map[string]interface{} `json:"metadata,omitempty"`
+	Metadata       map[string]interface{} `json:"metadata,omitempty"`
 }
 
 // VersionHistoryEntry represents a version history entry
@@ -50,21 +50,21 @@ type VersionConflict struct {
 
 // VersioningConfig represents versioning configuration
 type VersioningConfig struct {
-	Strategy        VersioningStrategy `json:"strategy"`
-	EnableHistory   bool               `json:"enable_history"`
-	HistoryRetention int                `json:"history_retention"`
-	ConflictResolution string           `json:"conflict_resolution"`
-	AutoIncrement    bool               `json:"auto_increment"`
+	Strategy           VersioningStrategy `json:"strategy"`
+	EnableHistory      bool               `json:"enable_history"`
+	HistoryRetention   int                `json:"history_retention"`
+	ConflictResolution string             `json:"conflict_resolution"`
+	AutoIncrement      bool               `json:"auto_increment"`
 }
 
 // DefaultVersioningConfig returns default versioning configuration
 func DefaultVersioningConfig() *VersioningConfig {
 	return &VersioningConfig{
-		Strategy:        VersioningStrategySequential,
-		EnableHistory:   true,
-		HistoryRetention: 100,
+		Strategy:           VersioningStrategySequential,
+		EnableHistory:      true,
+		HistoryRetention:   100,
 		ConflictResolution: "reject",
-		AutoIncrement:    true,
+		AutoIncrement:      true,
 	}
 }
 
@@ -74,38 +74,38 @@ type EventVersioning interface {
 	GetVersion(ctx context.Context, aggregateID string) (*VersionInfo, error)
 	IncrementVersion(ctx context.Context, aggregateID string, event *Event) (int64, error)
 	ValidateVersion(ctx context.Context, aggregateID string, expectedVersion int64) error
-	
+
 	// Version history
 	GetVersionHistory(ctx context.Context, aggregateID string, limit int) ([]VersionHistoryEntry, error)
 	AddVersionHistory(ctx context.Context, aggregateID string, entry VersionHistoryEntry) error
-	
+
 	// Conflict resolution
 	ResolveVersionConflict(ctx context.Context, conflict *VersionConflict) (int64, error)
 	GetVersionConflicts(ctx context.Context, aggregateID string) ([]*VersionConflict, error)
-	
+
 	// Statistics
 	GetVersioningStats(ctx context.Context) (*VersioningStats, error)
 }
 
 // VersioningStats represents versioning statistics
 type VersioningStats struct {
-	TotalVersions      int64         `json:"total_versions"`
-	TotalConflicts     int64         `json:"total_conflicts"`
-	ResolvedConflicts  int64         `json:"resolved_conflicts"`
-	AverageVersionGap  float64       `json:"average_version_gap"`
-	LastConflict       *time.Time    `json:"last_conflict,omitempty"`
+	TotalVersions       int64           `json:"total_versions"`
+	TotalConflicts      int64           `json:"total_conflicts"`
+	ResolvedConflicts   int64           `json:"resolved_conflicts"`
+	AverageVersionGap   float64         `json:"average_version_gap"`
+	LastConflict        *time.Time      `json:"last_conflict,omitempty"`
 	VersionDistribution map[int64]int64 `json:"version_distribution"`
 }
 
 // EventVersioningImpl implements EventVersioning interface
 type EventVersioningImpl struct {
-	store      EventStore
-	config     *VersioningConfig
-	versions   map[string]*VersionInfo
-	conflicts  map[string][]*VersionConflict
-	stats      *VersioningStats
-	logger     *zap.Logger
-	mu         sync.RWMutex
+	store     EventStore
+	config    *VersioningConfig
+	versions  map[string]*VersionInfo
+	conflicts map[string][]*VersionConflict
+	stats     *VersioningStats
+	logger    *zap.Logger
+	mu        sync.RWMutex
 }
 
 // NewEventVersioning creates a new event versioning implementation
@@ -113,11 +113,11 @@ func NewEventVersioning(store EventStore, config *VersioningConfig) *EventVersio
 	if config == nil {
 		config = DefaultVersioningConfig()
 	}
-	
+
 	return &EventVersioningImpl{
-		store:    store,
-		config:   config,
-		versions: make(map[string]*VersionInfo),
+		store:     store,
+		config:    config,
+		versions:  make(map[string]*VersionInfo),
 		conflicts: make(map[string][]*VersionConflict),
 		stats: &VersioningStats{
 			VersionDistribution: make(map[int64]int64),
@@ -131,38 +131,38 @@ func (ev *EventVersioningImpl) GetVersion(ctx context.Context, aggregateID strin
 	ev.mu.RLock()
 	versionInfo, exists := ev.versions[aggregateID]
 	ev.mu.RUnlock()
-	
+
 	if exists {
 		// Return copy
-		copy := *versionInfo
+		clone := *versionInfo
 		if versionInfo.VersionHistory != nil {
-			copy.VersionHistory = make([]VersionHistoryEntry, len(versionInfo.VersionHistory))
-			copy(versionInfo.VersionHistory, copy.VersionHistory)
+			clone.VersionHistory = make([]VersionHistoryEntry, len(versionInfo.VersionHistory))
+			copy(clone.VersionHistory, versionInfo.VersionHistory)
 		}
-		return &copy, nil
+		return &clone, nil
 	}
-	
+
 	// Load from event store
 	aggregateInfo, err := ev.store.GetAggregateInfo(ctx, aggregateID)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get aggregate info: %w", err)
 	}
-	
+
 	versionInfo = &VersionInfo{
 		AggregateID:    aggregateID,
 		AggregateType:  aggregateInfo.AggregateType,
 		CurrentVersion: aggregateInfo.Version,
 		Metadata:       make(map[string]interface{}),
 	}
-	
+
 	if ev.config.EnableHistory {
 		versionInfo.VersionHistory = make([]VersionHistoryEntry, 0)
 	}
-	
+
 	ev.mu.Lock()
 	ev.versions[aggregateID] = versionInfo
 	ev.mu.Unlock()
-	
+
 	return versionInfo, nil
 }
 
@@ -170,7 +170,7 @@ func (ev *EventVersioningImpl) GetVersion(ctx context.Context, aggregateID strin
 func (ev *EventVersioningImpl) IncrementVersion(ctx context.Context, aggregateID string, event *Event) (int64, error) {
 	ev.mu.Lock()
 	defer ev.mu.Unlock()
-	
+
 	versionInfo, exists := ev.versions[aggregateID]
 	if !exists {
 		// Load from store
@@ -178,24 +178,24 @@ func (ev *EventVersioningImpl) IncrementVersion(ctx context.Context, aggregateID
 		if err != nil {
 			return 0, fmt.Errorf("failed to get aggregate info: %w", err)
 		}
-		
+
 		versionInfo = &VersionInfo{
 			AggregateID:    aggregateID,
 			AggregateType:  aggregateInfo.AggregateType,
 			CurrentVersion: aggregateInfo.Version,
 			Metadata:       make(map[string]interface{}),
 		}
-		
+
 		if ev.config.EnableHistory {
 			versionInfo.VersionHistory = make([]VersionHistoryEntry, 0)
 		}
-		
+
 		ev.versions[aggregateID] = versionInfo
 	}
-	
+
 	// Increment version
 	newVersion := versionInfo.CurrentVersion + 1
-	
+
 	// Validate version continuity
 	if event.Version != 0 && event.Version != newVersion {
 		conflict := &VersionConflict{
@@ -204,30 +204,30 @@ func (ev *EventVersioningImpl) IncrementVersion(ctx context.Context, aggregateID
 			ActualVersion:   event.Version,
 			ConflictTime:    time.Now(),
 		}
-		
+
 		ev.stats.TotalConflicts++
 		ev.conflicts[aggregateID] = append(ev.conflicts[aggregateID], conflict)
-		
+
 		if ev.config.ConflictResolution == "reject" {
 			return 0, fmt.Errorf("version conflict: expected %d, got %d", newVersion, event.Version)
 		}
-		
+
 		// Resolve conflict
-		resolvedVersion, err := ev.resolveVersionConflict(ctx, conflict)
+		resolvedVersion, err := ev.ResolveVersionConflict(ctx, conflict)
 		if err != nil {
 			return 0, fmt.Errorf("failed to resolve conflict: %w", err)
 		}
-		
+
 		newVersion = resolvedVersion
 		conflict.Resolution = fmt.Sprintf("resolved to %d", resolvedVersion)
 		ev.stats.ResolvedConflicts++
 	}
-	
+
 	// Update version info
 	versionInfo.CurrentVersion = newVersion
 	versionInfo.LastEventID = event.ID
 	versionInfo.LastEventTime = event.Timestamp
-	
+
 	// Add to history
 	if ev.config.EnableHistory {
 		entry := VersionHistoryEntry{
@@ -236,23 +236,23 @@ func (ev *EventVersioningImpl) IncrementVersion(ctx context.Context, aggregateID
 			Timestamp: event.Timestamp,
 			EventType: event.Type,
 		}
-		
+
 		versionInfo.VersionHistory = append(versionInfo.VersionHistory, entry)
-		
+
 		// Trim history if needed
 		if len(versionInfo.VersionHistory) > ev.config.HistoryRetention {
 			versionInfo.VersionHistory = versionInfo.VersionHistory[len(versionInfo.VersionHistory)-ev.config.HistoryRetention:]
 		}
 	}
-	
+
 	// Update statistics
 	ev.stats.TotalVersions++
 	ev.stats.VersionDistribution[newVersion]++
-	
+
 	ev.logger.Debug("Version incremented",
 		zap.String("aggregate_id", aggregateID),
 		zap.Int64("version", newVersion))
-	
+
 	return newVersion, nil
 }
 
@@ -262,7 +262,7 @@ func (ev *EventVersioningImpl) ValidateVersion(ctx context.Context, aggregateID 
 	if err != nil {
 		return fmt.Errorf("failed to get version: %w", err)
 	}
-	
+
 	if versionInfo.CurrentVersion != expectedVersion {
 		conflict := &VersionConflict{
 			AggregateID:     aggregateID,
@@ -270,17 +270,17 @@ func (ev *EventVersioningImpl) ValidateVersion(ctx context.Context, aggregateID 
 			ActualVersion:   versionInfo.CurrentVersion,
 			ConflictTime:    time.Now(),
 		}
-		
+
 		ev.mu.Lock()
 		ev.stats.TotalConflicts++
 		ev.conflicts[aggregateID] = append(ev.conflicts[aggregateID], conflict)
 		lastTime := time.Now()
 		ev.stats.LastConflict = &lastTime
 		ev.mu.Unlock()
-		
+
 		return fmt.Errorf("version mismatch: expected %d, actual %d", expectedVersion, versionInfo.CurrentVersion)
 	}
-	
+
 	return nil
 }
 
@@ -290,16 +290,16 @@ func (ev *EventVersioningImpl) GetVersionHistory(ctx context.Context, aggregateI
 	if err != nil {
 		return nil, err
 	}
-	
+
 	if !ev.config.EnableHistory || versionInfo.VersionHistory == nil {
 		return []VersionHistoryEntry{}, nil
 	}
-	
+
 	history := versionInfo.VersionHistory
 	if limit > 0 && limit < len(history) {
 		history = history[len(history)-limit:]
 	}
-	
+
 	return history, nil
 }
 
@@ -307,27 +307,27 @@ func (ev *EventVersioningImpl) GetVersionHistory(ctx context.Context, aggregateI
 func (ev *EventVersioningImpl) AddVersionHistory(ctx context.Context, aggregateID string, entry VersionHistoryEntry) error {
 	ev.mu.Lock()
 	defer ev.mu.Unlock()
-	
+
 	versionInfo, exists := ev.versions[aggregateID]
 	if !exists {
 		return fmt.Errorf("aggregate not found: %s", aggregateID)
 	}
-	
+
 	if !ev.config.EnableHistory {
 		return nil
 	}
-	
+
 	if versionInfo.VersionHistory == nil {
 		versionInfo.VersionHistory = make([]VersionHistoryEntry, 0)
 	}
-	
+
 	versionInfo.VersionHistory = append(versionInfo.VersionHistory, entry)
-	
+
 	// Trim history if needed
 	if len(versionInfo.VersionHistory) > ev.config.HistoryRetention {
 		versionInfo.VersionHistory = versionInfo.VersionHistory[len(versionInfo.VersionHistory)-ev.config.HistoryRetention:]
 	}
-	
+
 	return nil
 }
 
@@ -336,22 +336,22 @@ func (ev *EventVersioningImpl) ResolveVersionConflict(ctx context.Context, confl
 	switch ev.config.ConflictResolution {
 	case "reject":
 		return 0, fmt.Errorf("version conflict rejected")
-		
+
 	case "accept-higher":
 		if conflict.ActualVersion > conflict.ExpectedVersion {
 			return conflict.ActualVersion, nil
 		}
 		return conflict.ExpectedVersion, nil
-		
+
 	case "accept-lower":
 		if conflict.ActualVersion < conflict.ExpectedVersion {
 			return conflict.ActualVersion, nil
 		}
 		return conflict.ExpectedVersion, nil
-		
+
 	case "increment":
 		return conflict.ActualVersion + 1, nil
-		
+
 	default:
 		return conflict.ExpectedVersion, nil
 	}
@@ -361,16 +361,16 @@ func (ev *EventVersioningImpl) ResolveVersionConflict(ctx context.Context, confl
 func (ev *EventVersioningImpl) GetVersionConflicts(ctx context.Context, aggregateID string) ([]*VersionConflict, error) {
 	ev.mu.RLock()
 	defer ev.mu.RUnlock()
-	
+
 	conflicts, exists := ev.conflicts[aggregateID]
 	if !exists {
 		return []*VersionConflict{}, nil
 	}
-	
+
 	// Return copy
 	result := make([]*VersionConflict, len(conflicts))
 	copy(result, conflicts)
-	
+
 	return result, nil
 }
 
@@ -378,12 +378,12 @@ func (ev *EventVersioningImpl) GetVersionConflicts(ctx context.Context, aggregat
 func (ev *EventVersioningImpl) GetVersioningStats(ctx context.Context) (*VersioningStats, error) {
 	ev.mu.RLock()
 	defer ev.mu.RUnlock()
-	
+
 	stats := *ev.stats
 	stats.VersionDistribution = make(map[int64]int64)
 	for k, v := range ev.stats.VersionDistribution {
 		stats.VersionDistribution[k] = v
 	}
-	
+
 	return &stats, nil
 }

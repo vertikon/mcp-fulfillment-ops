@@ -55,15 +55,31 @@ func (m *mockKnowledgeRepository) Delete(ctx context.Context, id string) error {
 
 // mockVectorClient and mockGraphClient for creating real Indexer
 type mockVectorClientForIndexer struct{}
-func (m *mockVectorClientForIndexer) Upsert(ctx context.Context, collection string, id string, vector []float64, metadata map[string]interface{}) error { return nil }
-func (m *mockVectorClientForIndexer) Search(ctx context.Context, collection string, queryVector []float64, limit int) ([]VectorResult, error) { return nil, nil }
-func (m *mockVectorClientForIndexer) Delete(ctx context.Context, collection string, id string) error { return nil }
-func (m *mockVectorClientForIndexer) DeleteCollection(ctx context.Context, collection string) error { return nil }
+
+func (m *mockVectorClientForIndexer) Upsert(ctx context.Context, collection string, id string, vector []float64, metadata map[string]interface{}) error {
+	return nil
+}
+func (m *mockVectorClientForIndexer) Search(ctx context.Context, collection string, queryVector []float64, limit int) ([]VectorResult, error) {
+	return nil, nil
+}
+func (m *mockVectorClientForIndexer) Delete(ctx context.Context, collection string, id string) error {
+	return nil
+}
+func (m *mockVectorClientForIndexer) DeleteCollection(ctx context.Context, collection string) error {
+	return nil
+}
 
 type mockGraphClientForIndexer struct{}
-func (m *mockGraphClientForIndexer) CreateNode(ctx context.Context, collection string, id string, properties map[string]interface{}) error { return nil }
-func (m *mockGraphClientForIndexer) CreateEdge(ctx context.Context, fromID string, toID string, relation string, properties map[string]interface{}) error { return nil }
-func (m *mockGraphClientForIndexer) Query(ctx context.Context, cypher string, params map[string]interface{}) ([]GraphResult, error) { return nil, nil }
+
+func (m *mockGraphClientForIndexer) CreateNode(ctx context.Context, collection string, id string, properties map[string]interface{}) error {
+	return nil
+}
+func (m *mockGraphClientForIndexer) CreateEdge(ctx context.Context, fromID string, toID string, relation string, properties map[string]interface{}) error {
+	return nil
+}
+func (m *mockGraphClientForIndexer) Query(ctx context.Context, cypher string, params map[string]interface{}) ([]GraphResult, error) {
+	return nil, nil
+}
 func (m *mockGraphClientForIndexer) DeleteNode(ctx context.Context, id string) error { return nil }
 
 func TestNewKnowledgeStore(t *testing.T) {
@@ -234,4 +250,3 @@ func TestKnowledgeStore_BulkIndex(t *testing.T) {
 		t.Errorf("Expected 2 documents after bulk index, got %d", stats.DocumentCount)
 	}
 }
-

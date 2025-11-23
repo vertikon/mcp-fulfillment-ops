@@ -10,7 +10,7 @@ database:
   port: 5432
   user: "postgres"
   password: ""  # Set via HULK_DATABASE_PASSWORD env var
-  database: "mcp_hulk"
+  database: "fulfillment"
   ssl_mode: "disable"
   max_conns: 25
   min_conns: 5

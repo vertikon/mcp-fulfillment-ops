@@ -371,4 +371,3 @@ func TestTaskScheduler_MultipleTasks(t *testing.T) {
 		t.Errorf("Expected 5 tasks, got %d", taskCount)
 	}
 }
-

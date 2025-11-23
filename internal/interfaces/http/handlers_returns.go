@@ -9,15 +9,15 @@ import (
 )
 
 type RegisterReturnRequest struct {
-	OriginalOrderID string            `json:"original_order_id" binding:"required"`
-	Reason          string            `json:"reason"`
-	Location        string            `json:"location" binding:"required"`
+	OriginalOrderID string             `json:"original_order_id" binding:"required"`
+	Reason          string             `json:"reason"`
+	Location        string             `json:"location" binding:"required"`
 	Items           []fulfillment.Item `json:"items" binding:"required"`
 }
 
 type CompleteReturnRequest struct {
-	ReturnID  string `json:"return_id" binding:"required"`
-	Location  string `json:"location" binding:"required"`
+	ReturnID string `json:"return_id" binding:"required"`
+	Location string `json:"location" binding:"required"`
 }
 
 func handleRegisterReturn(uc *app.RegisterReturnUseCase) gin.HandlerFunc {
@@ -54,4 +54,3 @@ func handleCompleteReturn(uc *app.RegisterReturnUseCase) gin.HandlerFunc {
 		c.JSON(http.StatusOK, gin.H{"status": "completed"})
 	}
 }
-

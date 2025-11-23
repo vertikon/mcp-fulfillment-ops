@@ -26,11 +26,11 @@ const (
 
 // Invalidator manages cache invalidation
 type Invalidator struct {
-	cache     Cache
-	strategy  InvalidationStrategy
-	mu        sync.RWMutex
-	patterns  []string
-	callbacks []func(string)
+	cache      Cache
+	strategy   InvalidationStrategy
+	mu         sync.RWMutex
+	patterns   []string
+	callbacks  []func(string)
 	keyTracker KeyTracker // Tracks keys for pattern matching
 }
 

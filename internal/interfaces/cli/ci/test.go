@@ -1,1 +1,0 @@
-# Função: Test (executa suítes de testes)

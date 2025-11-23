@@ -31,32 +31,32 @@ const (
 
 // Alert represents an alert condition
 type Alert struct {
-	ID          string                 `json:"id"`
-	Name        string                 `json:"name"`
-	Description string                 `json:"description"`
-	Severity    AlertSeverity          `json:"severity"`
-	Status      AlertStatus            `json:"status"`
-	Source      string                 `json:"source"`
-	Timestamp   time.Time              `json:"timestamp"`
-	Updated     time.Time              `json:"updated"`
-	Labels      map[string]string      `json:"labels"`
-	Annotations map[string]string      `json:"annotations"`
-	SilencedUntil *time.Time          `json:"silenced_until,omitempty"`
+	ID            string            `json:"id"`
+	Name          string            `json:"name"`
+	Description   string            `json:"description"`
+	Severity      AlertSeverity     `json:"severity"`
+	Status        AlertStatus       `json:"status"`
+	Source        string            `json:"source"`
+	Timestamp     time.Time         `json:"timestamp"`
+	Updated       time.Time         `json:"updated"`
+	Labels        map[string]string `json:"labels"`
+	Annotations   map[string]string `json:"annotations"`
+	SilencedUntil *time.Time        `json:"silenced_until,omitempty"`
 }
 
 // AlertRule defines a rule for generating alerts
 type AlertRule struct {
-	ID          string                 `json:"id"`
-	Name        string                 `json:"name"`
-	Condition   string                 `json:"condition"`
-	Severity    AlertSeverity          `json:"severity"`
-	Duration    time.Duration          `json:"duration"`
-	Source      string                 `json:"source"`
-	Labels      map[string]string      `json:"labels"`
-	Annotations map[string]string      `json:"annotations"`
-	Enabled     bool                   `json:"enabled"`
-	LastEval    time.Time              `json:"last_eval"`
-	ActiveSince *time.Time             `json:"active_since,omitempty"`
+	ID          string            `json:"id"`
+	Name        string            `json:"name"`
+	Condition   string            `json:"condition"`
+	Severity    AlertSeverity     `json:"severity"`
+	Duration    time.Duration     `json:"duration"`
+	Source      string            `json:"source"`
+	Labels      map[string]string `json:"labels"`
+	Annotations map[string]string `json:"annotations"`
+	Enabled     bool              `json:"enabled"`
+	LastEval    time.Time         `json:"last_eval"`
+	ActiveSince *time.Time        `json:"active_since,omitempty"`
 }
 
 // AlertManager manages alert rules and notifications
@@ -78,20 +78,20 @@ type AlertHandler interface {
 
 // AlertStats provides alert statistics
 type AlertStats struct {
-	TotalRules      int                     `json:"total_rules"`
-	ActiveRules     int                     `json:"active_rules"`
-	TotalAlerts     int                     `json:"total_alerts"`
-	ActiveAlerts    int                     `json:"active_alerts"`
-	CriticalAlerts   int                     `json:"critical_alerts"`
-	WarningAlerts    int                     `json:"warning_alerts"`
-	AlertsBySeverity map[AlertSeverity]int   `json:"alerts_by_severity"`
-	LastUpdate      time.Time               `json:"last_update"`
+	TotalRules       int                   `json:"total_rules"`
+	ActiveRules      int                   `json:"active_rules"`
+	TotalAlerts      int                   `json:"total_alerts"`
+	ActiveAlerts     int                   `json:"active_alerts"`
+	CriticalAlerts   int                   `json:"critical_alerts"`
+	WarningAlerts    int                   `json:"warning_alerts"`
+	AlertsBySeverity map[AlertSeverity]int `json:"alerts_by_severity"`
+	LastUpdate       time.Time             `json:"last_update"`
 }
 
 // NewAlertManager creates a new alert manager
 func NewAlertManager(checkInterval time.Duration) *AlertManager {
 	ctx, cancel := context.WithCancel(context.Background())
-	
+
 	return &AlertManager{
 		rules:         make(map[string]*AlertRule),
 		alerts:        make(map[string]*Alert),
@@ -217,7 +217,7 @@ func (am *AlertManager) evaluateRules() {
 func (am *AlertManager) evaluateCondition(condition string) bool {
 	// Simulated evaluation - in production, use proper expression evaluator
 	now := time.Now().Unix()
-	
+
 	switch condition {
 	case "cpu > 90":
 		return float64(now%100) > 90
@@ -256,7 +256,7 @@ func (am *AlertManager) handleInactiveRule(rule *AlertRule) {
 // createOrUpdateAlert creates or updates an alert
 func (am *AlertManager) createOrUpdateAlert(rule *AlertRule) {
 	alert, exists := am.alerts[rule.ID]
-	
+
 	if !exists {
 		alert = &Alert{
 			ID:          rule.ID,
@@ -270,20 +270,20 @@ func (am *AlertManager) createOrUpdateAlert(rule *AlertRule) {
 			Labels:      rule.Labels,
 			Annotations: rule.Annotations,
 		}
-		
+
 		am.alerts[rule.ID] = alert
-		
+
 		logger.Warn("Alert created",
 			zap.String("id", alert.ID),
 			zap.String("name", alert.Name),
 			zap.String("severity", string(alert.Severity)),
 		)
-		
+
 		am.sendNotification(alert)
 	} else {
 		alert.Updated = time.Now()
 		alert.Status = StatusActive
-		
+
 		logger.Debug("Alert updated",
 			zap.String("id", alert.ID),
 			zap.String("status", string(alert.Status)),
@@ -297,12 +297,12 @@ func (am *AlertManager) resolveAlert(ruleID string) {
 		alert.Status = StatusResolved
 		alert.Updated = time.Now()
 		alert.SilencedUntil = nil
-		
+
 		logger.Info("Alert resolved",
 			zap.String("id", alert.ID),
 			zap.String("name", alert.Name),
 		)
-		
+
 		am.sendNotification(alert)
 	}
 }
@@ -326,7 +326,7 @@ func (am *AlertManager) sendNotification(alert *Alert) {
 func (am *AlertManager) AddHandler(handler AlertHandler) {
 	am.mu.Lock()
 	defer am.mu.Unlock()
-	
+
 	am.handlers = append(am.handlers, handler)
 	logger.Info("Alert handler added", zap.String("handler", handler.Name()))
 }
@@ -335,12 +335,12 @@ func (am *AlertManager) AddHandler(handler AlertHandler) {
 func (am *AlertManager) GetAlerts() map[string]*Alert {
 	am.mu.RLock()
 	defer am.mu.RUnlock()
-	
+
 	alerts := make(map[string]*Alert)
 	for k, v := range am.alerts {
 		alerts[k] = v
 	}
-	
+
 	return alerts
 }
 
@@ -348,12 +348,12 @@ func (am *AlertManager) GetAlerts() map[string]*Alert {
 func (am *AlertManager) GetRules() map[string]*AlertRule {
 	am.mu.RLock()
 	defer am.mu.RUnlock()
-	
+
 	rules := make(map[string]*AlertRule)
 	for k, v := range am.rules {
 		rules[k] = v
 	}
-	
+
 	return rules
 }
 
@@ -361,27 +361,27 @@ func (am *AlertManager) GetRules() map[string]*AlertRule {
 func (am *AlertManager) GetStats() AlertStats {
 	am.mu.RLock()
 	defer am.mu.RUnlock()
-	
+
 	stats := AlertStats{
-		TotalRules:      len(am.rules),
-		TotalAlerts:     len(am.alerts),
+		TotalRules:       len(am.rules),
+		TotalAlerts:      len(am.alerts),
 		AlertsBySeverity: make(map[AlertSeverity]int),
-		LastUpdate:      time.Now(),
+		LastUpdate:       time.Now(),
 	}
-	
+
 	for _, rule := range am.rules {
 		if rule.Enabled {
 			stats.ActiveRules++
 		}
 	}
-	
+
 	for _, alert := range am.alerts {
 		if alert.Status == StatusActive {
 			stats.ActiveAlerts++
 		}
-		
+
 		stats.AlertsBySeverity[alert.Severity]++
-		
+
 		switch alert.Severity {
 		case SeverityCritical:
 			stats.CriticalAlerts++
@@ -389,7 +389,7 @@ func (am *AlertManager) GetStats() AlertStats {
 			stats.WarningAlerts++
 		}
 	}
-	
+
 	return stats
 }
 
@@ -413,7 +413,7 @@ func (lh *LogHandler) Handle(ctx context.Context, alert *Alert) error {
 			zap.Time("resolved", alert.Updated),
 		)
 	}
-	
+
 	return nil
 }
 

@@ -84,4 +84,3 @@ func (r *RedisClient) Unlock(ctx context.Context, key string) error {
 func (r *RedisClient) Close() error {
 	return r.client.Close()
 }
-

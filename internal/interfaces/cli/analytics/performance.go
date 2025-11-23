@@ -20,6 +20,6 @@ var performanceCmd = &cobra.Command{
 	},
 }
 
-func init() {
+func registerPerformanceCmd() {
 	AnalyticsCmd.AddCommand(performanceCmd)
 }

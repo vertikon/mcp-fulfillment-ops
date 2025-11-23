@@ -1,1 +1,0 @@
-# Função: Assistência por IA na geração/validação

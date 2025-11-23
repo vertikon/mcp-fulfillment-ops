@@ -74,12 +74,12 @@ func (p *EventPublisher) PublishPickingStarted(ctx context.Context, order *fulfi
 // PublishReturnRegistered publica evento de devolução registrada
 func (p *EventPublisher) PublishReturnRegistered(ctx context.Context, returnOrder *fulfillment.ReturnOrder) error {
 	event := map[string]interface{}{
-		"return_id":        returnOrder.ID,
+		"return_id":         returnOrder.ID,
 		"original_order_id": returnOrder.OriginalOrderID,
-		"reason":           returnOrder.Reason,
-		"items":            returnOrder.Items,
-		"timestamp":        time.Now().UTC(),
-		"event_version":    "v1",
+		"reason":            returnOrder.Reason,
+		"items":             returnOrder.Items,
+		"timestamp":         time.Now().UTC(),
+		"event_version":     "v1",
 	}
 
 	return p.publishEvent(ctx, "fulfillment.return.registered.v1", event)
@@ -88,11 +88,11 @@ func (p *EventPublisher) PublishReturnRegistered(ctx context.Context, returnOrde
 // PublishReturnCompleted publica evento de devolução completada
 func (p *EventPublisher) PublishReturnCompleted(ctx context.Context, returnOrder *fulfillment.ReturnOrder) error {
 	event := map[string]interface{}{
-		"return_id":        returnOrder.ID,
+		"return_id":         returnOrder.ID,
 		"original_order_id": returnOrder.OriginalOrderID,
-		"completed_at":     returnOrder.CompletedAt,
-		"timestamp":        time.Now().UTC(),
-		"event_version":    "v1",
+		"completed_at":      returnOrder.CompletedAt,
+		"timestamp":         time.Now().UTC(),
+		"event_version":     "v1",
 	}
 
 	return p.publishEvent(ctx, "fulfillment.return.completed.v1", event)
@@ -129,10 +129,10 @@ func (p *EventPublisher) PublishTransferCompleted(ctx context.Context, transfer 
 // PublishCycleCountOpened publica evento de contagem cíclica aberta
 func (p *EventPublisher) PublishCycleCountOpened(ctx context.Context, task *fulfillment.CycleCountTask) error {
 	event := map[string]interface{}{
-		"task_id":      task.ID,
-		"location":     task.Location,
-		"skus":         task.SKUs,
-		"timestamp":    time.Now().UTC(),
+		"task_id":       task.ID,
+		"location":      task.Location,
+		"skus":          task.SKUs,
+		"timestamp":     time.Now().UTC(),
 		"event_version": "v1",
 	}
 
@@ -169,4 +169,3 @@ func (p *EventPublisher) publishEvent(ctx context.Context, subject string, paylo
 	p.logger.Info("Event published", zap.String("subject", subject))
 	return nil
 }
-

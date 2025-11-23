@@ -10,7 +10,6 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
 	"github.com/nats-io/nats.go"
 	"github.com/nats-io/nats.go/jetstream"
@@ -64,11 +63,12 @@ func main() {
 	}
 	defer nc.Close()
 
-	js, err := nc.JetStream()
+	// Criar JetStream usando a API correta
+	js, err := jetstream.New(nc)
 	if err != nil {
-		logger.Fatal("Failed to get JetStream context", zap.Error(err))
+		logger.Fatal("Failed to create JetStream", zap.Error(err))
 	}
-	logger.Info("NATS connection established")
+	logger.Info("NATS JetStream connection established")
 
 	// Conectar ao Redis
 	redisClient, err := redisAdapter.NewRedisClient(redisURL)

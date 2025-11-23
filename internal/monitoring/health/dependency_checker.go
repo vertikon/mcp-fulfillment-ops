@@ -23,11 +23,11 @@ const (
 
 // Dependency represents a system dependency
 type Dependency struct {
-	Name        string                 `json:"name"`
-	Type        DependencyType         `json:"type"`
-	Endpoint    string                 `json:"endpoint"`
-	Timeout     time.Duration          `json:"timeout"`
-	Metadata    map[string]interface{} `json:"metadata,omitempty"`
+	Name     string                 `json:"name"`
+	Type     DependencyType         `json:"type"`
+	Endpoint string                 `json:"endpoint"`
+	Timeout  time.Duration          `json:"timeout"`
+	Metadata map[string]interface{} `json:"metadata,omitempty"`
 }
 
 // DependencyChecker checks health of system dependencies

@@ -123,14 +123,14 @@ func (k *KubernetesDeployer) deployUsingClient(ctx context.Context, req Kubernet
 
 // KubernetesDeployRequest represents a Kubernetes deployment request
 type KubernetesDeployRequest struct {
-	ProjectName  string            `json:"project_name"`
-	ProjectPath  string            `json:"project_path"`
-	Namespace    string            `json:"namespace"`
-	Image        string            `json:"image"`
-	Replicas     int               `json:"replicas"`
-	Labels       map[string]string `json:"labels,omitempty"`
-	Env          map[string]string `json:"env,omitempty"`
-	Ports        []int             `json:"ports,omitempty"`
+	ProjectName   string            `json:"project_name"`
+	ProjectPath   string            `json:"project_path"`
+	Namespace     string            `json:"namespace"`
+	Image         string            `json:"image"`
+	Replicas      int               `json:"replicas"`
+	Labels        map[string]string `json:"labels,omitempty"`
+	Env           map[string]string `json:"env,omitempty"`
+	Ports         []int             `json:"ports,omitempty"`
 	ManifestsPath string            `json:"manifests_path,omitempty"`
 }
 

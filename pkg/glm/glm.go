@@ -1,1 +1,0 @@
-# Interface e tipos principais

@@ -13,17 +13,17 @@ import (
 
 // PerformanceMonitor monitors system performance metrics
 type PerformanceMonitor struct {
-	mu           sync.RWMutex
-	startTime    time.Time
-	lastCheck    time.Time
-	metrics      PerformanceMetrics
-	cpuUsage     float64
-	memUsage     uint64
-	goroutineCount int
-	gcStats      runtime.MemStats
+	mu              sync.RWMutex
+	startTime       time.Time
+	lastCheck       time.Time
+	metrics         PerformanceMetrics
+	cpuUsage        float64
+	memUsage        uint64
+	goroutineCount  int
+	gcStats         runtime.MemStats
 	collectInterval time.Duration
-	ctx          context.Context
-	cancel       context.CancelFunc
+	ctx             context.Context
+	cancel          context.CancelFunc
 }
 
 // PerformanceMetrics holds performance data
@@ -31,7 +31,7 @@ type PerformanceMetrics struct {
 	CPUUsage       float64   `json:"cpu_usage"`
 	MemoryUsage    uint64    `json:"memory_usage"`
 	MemoryMB       float64   `json:"memory_mb"`
-	GoroutineCount int      `json:"goroutine_count"`
+	GoroutineCount int       `json:"goroutine_count"`
 	HeapAlloc      uint64    `json:"heap_alloc"`
 	HeapSys        uint64    `json:"heap_sys"`
 	GCCycles       uint32    `json:"gc_cycles"`
@@ -43,11 +43,11 @@ type PerformanceMetrics struct {
 func NewPerformanceMonitor(interval time.Duration) *PerformanceMonitor {
 	ctx, cancel := context.WithCancel(context.Background())
 	return &PerformanceMonitor{
-		startTime:      time.Now(),
-		lastCheck:      time.Now(),
+		startTime:       time.Now(),
+		lastCheck:       time.Now(),
 		collectInterval: interval,
-		ctx:           ctx,
-		cancel:        cancel,
+		ctx:             ctx,
+		cancel:          cancel,
 	}
 }
 
@@ -140,12 +140,12 @@ func (pm *PerformanceMonitor) IsHealthy() bool {
 func (pm *PerformanceMonitor) GetHealthStatus() map[string]interface{} {
 	metrics := pm.GetMetrics()
 	return map[string]interface{}{
-		"healthy":          pm.IsHealthy(),
-		"memory_usage_mb":  metrics.MemoryMB,
-		"goroutine_count":  metrics.GoroutineCount,
+		"healthy":         pm.IsHealthy(),
+		"memory_usage_mb": metrics.MemoryMB,
+		"goroutine_count": metrics.GoroutineCount,
 		"uptime":          metrics.Uptime,
-		"last_update":      metrics.LastUpdate,
-		"heap_alloc_mb":    float64(metrics.HeapAlloc) / 1024 / 1024,
-		"gc_cycles":        metrics.GCCycles,
+		"last_update":     metrics.LastUpdate,
+		"heap_alloc_mb":   float64(metrics.HeapAlloc) / 1024 / 1024,
+		"gc_cycles":       metrics.GCCycles,
 	}
 }

@@ -188,9 +188,9 @@ func (r *PostgresMCPRepository) FindByID(ctx context.Context, id string) (*entit
 	// Unmarshal and add context
 	if len(contextJSON) > 0 {
 		var contextData struct {
-			KnowledgeID string            `json:"knowledge_id"`
-			Documents   []string          `json:"documents"`
-			Embeddings  map[string][]float64 `json:"embeddings"`
+			KnowledgeID string                 `json:"knowledge_id"`
+			Documents   []string               `json:"documents"`
+			Embeddings  map[string][]float64   `json:"embeddings"`
 			Metadata    map[string]interface{} `json:"metadata"`
 		}
 		if err := json.Unmarshal(contextJSON, &contextData); err != nil {
@@ -306,9 +306,9 @@ func (r *PostgresMCPRepository) FindByName(ctx context.Context, name string) (*e
 	// Unmarshal and add context
 	if len(contextJSON) > 0 {
 		var contextData struct {
-			KnowledgeID string            `json:"knowledge_id"`
-			Documents   []string          `json:"documents"`
-			Embeddings  map[string][]float64 `json:"embeddings"`
+			KnowledgeID string                 `json:"knowledge_id"`
+			Documents   []string               `json:"documents"`
+			Embeddings  map[string][]float64   `json:"embeddings"`
 			Metadata    map[string]interface{} `json:"metadata"`
 		}
 		if err := json.Unmarshal(contextJSON, &contextData); err != nil {
@@ -452,9 +452,9 @@ func (r *PostgresMCPRepository) List(ctx context.Context, filters *repositories.
 		// Unmarshal and add context
 		if len(contextJSON) > 0 {
 			var contextData struct {
-				KnowledgeID string            `json:"knowledge_id"`
-				Documents   []string          `json:"documents"`
-				Embeddings  map[string][]float64 `json:"embeddings"`
+				KnowledgeID string                 `json:"knowledge_id"`
+				Documents   []string               `json:"documents"`
+				Embeddings  map[string][]float64   `json:"embeddings"`
 				Metadata    map[string]interface{} `json:"metadata"`
 			}
 			if err := json.Unmarshal(contextJSON, &contextData); err != nil {

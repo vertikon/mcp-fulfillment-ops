@@ -109,4 +109,3 @@ func (uc *ShipOrderUseCase) Ship(ctx context.Context, orderID string) error {
 	uc.logger.Info("Order shipped", "order_id", orderID)
 	return nil
 }
-

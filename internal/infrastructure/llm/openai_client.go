@@ -43,9 +43,9 @@ type CompletionOptions struct {
 
 // Completion represents a completion result
 type Completion struct {
-	Text        string
-	Model       string
-	Usage       *Usage
+	Text         string
+	Model        string
+	Usage        *Usage
 	FinishReason string
 }
 
@@ -160,8 +160,8 @@ func (c *openaiClient) Complete(ctx context.Context, prompt string, options *Com
 	}
 
 	return &Completion{
-		Text:        result.Choices[0].Text,
-		Model:       result.Model,
+		Text:         result.Choices[0].Text,
+		Model:        result.Model,
 		FinishReason: result.Choices[0].FinishReason,
 		Usage: &Usage{
 			PromptTokens:     result.Usage.PromptTokens,
@@ -260,8 +260,8 @@ func (c *openaiClient) Chat(ctx context.Context, messages []*Message, options *C
 	}
 
 	return &Completion{
-		Text:        result.Choices[0].Message.Content,
-		Model:       result.Model,
+		Text:         result.Choices[0].Message.Content,
+		Model:        result.Model,
 		FinishReason: result.Choices[0].FinishReason,
 		Usage: &Usage{
 			PromptTokens:     result.Usage.PromptTokens,

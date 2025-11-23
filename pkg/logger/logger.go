@@ -5,9 +5,9 @@ import (
 	"context"
 	"os"
 
+	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	"go.opentelemetry.io/otel/trace"
 )
 
 var (

@@ -1,0 +1,244 @@
+{
+  "project_name": "mcp-fulfillment-ops",
+  "project_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops",
+  "timestamp": "2025-11-23 07:26:28",
+  "validator_version": "9.4",
+  "critical": null,
+  "high": [
+    {
+      "type": "Linter limpo",
+      "severity": "high",
+      "location": "multiplos arquivos",
+      "description": "✗ FAIL: 6 issues críticos, 0 warnings",
+      "suggestion": "Corrija os issues FAIL primeiro, depois warnings",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": true,
+        "requires_review": true,
+        "non_fixable_reason": "BUSINESS_LOGIC",
+        "tools": [
+          {
+            "tool_name": "golangci-lint",
+            "install_command": "go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest",
+            "diagnose_command": "golangci-lint run",
+            "fix_command": "# NAO use --fix automaticamente, revise cada issue",
+            "config_required": true,
+            "config_template": ".golangci.yml com linters selecionados",
+            "documentation": "https://golangci-lint.run/",
+            "alternative_tools": null
+          },
+          {
+            "tool_name": "staticcheck",
+            "install_command": "go install honnef.co/go/tools/cmd/staticcheck@latest",
+            "diagnose_command": "staticcheck ./...",
+            "fix_command": "# Manual - staticcheck nao tem auto-fix",
+            "config_required": false,
+            "config_template": "",
+            "documentation": "https://staticcheck.io/",
+            "alternative_tools": null
+          },
+          {
+            "tool_name": "gosec",
+            "install_command": "go install github.com/securego/gosec/v2/cmd/gosec@latest",
+            "diagnose_command": "gosec ./...",
+            "fix_command": "# Manual - corrija issues de seguranca",
+            "config_required": false,
+            "config_template": "",
+            "documentation": "https://github.com/securego/gosec",
+            "alternative_tools": null
+          }
+        ],
+        "executable_steps": null,
+        "estimated_time": "12m",
+        "confidence": 0
+      },
+      "examples": [
+        "📦 Módulos analisados: 1",
+        "📄 Linter Report v9: JSON + SARIF gerados",
+        "",
+        "📊 Resumo por ferramenta (todos os módulos):",
+        "  • golangci-lint: 𐄂 0 FAIL / ⚠ 0 WARN / ℹ 0 INFO",
+        "  • govet: 𐄂 6 FAIL / ⚠ 0 WARN / ℹ 0 INFO",
+        "  • staticcheck: 𐄂 0 FAIL / ⚠ 0 WARN / ℹ 0 INFO",
+        "",
+        "🔝 Top issues prioritários (FAIL):",
+        "  1. [govet] vet.exe: internal/ai/knowledge/indexer_test.go:68 - not enough arguments in call to NewIndexer (govet)",
+        "  2. [govet] internal/domain/value_objects/validation_rule.go:69 - non-constant format string in call to fmt.Errorf (govet)",
+        "  3. [govet] vet.exe: internal/state/cache/state_cache_test.go:127 - assignment mismatch: 1 variable but cache.Get returns 2 values (govet)",
+        "  4. [govet] vet.exe: internal/state/store/conflict_resolver_test.go:161 - invalid operation: stats == nil (mismatched types ConflictStats and un... (govet)",
+        "  5. [govet] pkg/httpserver/server_test.go:216 - comparison of function healthHandler == nil is always false (govet)",
+        "  6. [govet] pkg/httpserver/server_test.go:224 - comparison of function readyHandler == nil is always false (govet)"
+      ],
+      "non_fixable_reason": "BUSINESS_LOGIC",
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "high",
+        "affected_files": 6,
+        "affected_lines": 6,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "12m",
+        "priority": 2,
+        "risk_level": "medium",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [
+        "performance",
+        "memory-optimization"
+      ],
+      "error_breakdown": {
+        "govet": 6
+      },
+      "top_files": [
+        "pkg/httpserver/server_test.go (2)",
+        "internal/domain/value_objects/validation_rule.go (1)",
+        "vet.exe: internal/state/cache/state_cache_test.go (1)",
+        "vet.exe: internal/state/store/conflict_resolver_test.go (1)",
+        "vet.exe: internal/ai/knowledge/indexer_test.go (1)"
+      ]
+    }
+  ],
+  "medium": null,
+  "low": null,
+  "total_gaps": 1,
+  "score": 95,
+  "auto_fixable": 0,
+  "manual": 1,
+  "top_priorities": [
+    {
+      "type": "Linter limpo",
+      "severity": "high",
+      "location": "multiplos arquivos",
+      "description": "✗ FAIL: 6 issues críticos, 0 warnings",
+      "suggestion": "Corrija os issues FAIL primeiro, depois warnings",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": true,
+        "requires_review": true,
+        "non_fixable_reason": "BUSINESS_LOGIC",
+        "tools": [
+          {
+            "tool_name": "golangci-lint",
+            "install_command": "go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest",
+            "diagnose_command": "golangci-lint run",
+            "fix_command": "# NAO use --fix automaticamente, revise cada issue",
+            "config_required": true,
+            "config_template": ".golangci.yml com linters selecionados",
+            "documentation": "https://golangci-lint.run/",
+            "alternative_tools": null
+          },
+          {
+            "tool_name": "staticcheck",
+            "install_command": "go install honnef.co/go/tools/cmd/staticcheck@latest",
+            "diagnose_command": "staticcheck ./...",
+            "fix_command": "# Manual - staticcheck nao tem auto-fix",
+            "config_required": false,
+            "config_template": "",
+            "documentation": "https://staticcheck.io/",
+            "alternative_tools": null
+          },
+          {
+            "tool_name": "gosec",
+            "install_command": "go install github.com/securego/gosec/v2/cmd/gosec@latest",
+            "diagnose_command": "gosec ./...",
+            "fix_command": "# Manual - corrija issues de seguranca",
+            "config_required": false,
+            "config_template": "",
+            "documentation": "https://github.com/securego/gosec",
+            "alternative_tools": null
+          }
+        ],
+        "executable_steps": null,
+        "estimated_time": "12m",
+        "confidence": 0
+      },
+      "examples": [
+        "📦 Módulos analisados: 1",
+        "📄 Linter Report v9: JSON + SARIF gerados",
+        "",
+        "📊 Resumo por ferramenta (todos os módulos):",
+        "  • golangci-lint: 𐄂 0 FAIL / ⚠ 0 WARN / ℹ 0 INFO",
+        "  • govet: 𐄂 6 FAIL / ⚠ 0 WARN / ℹ 0 INFO",
+        "  • staticcheck: 𐄂 0 FAIL / ⚠ 0 WARN / ℹ 0 INFO",
+        "",
+        "🔝 Top issues prioritários (FAIL):",
+        "  1. [govet] vet.exe: internal/ai/knowledge/indexer_test.go:68 - not enough arguments in call to NewIndexer (govet)",
+        "  2. [govet] internal/domain/value_objects/validation_rule.go:69 - non-constant format string in call to fmt.Errorf (govet)",
+        "  3. [govet] vet.exe: internal/state/cache/state_cache_test.go:127 - assignment mismatch: 1 variable but cache.Get returns 2 values (govet)",
+        "  4. [govet] vet.exe: internal/state/store/conflict_resolver_test.go:161 - invalid operation: stats == nil (mismatched types ConflictStats and un... (govet)",
+        "  5. [govet] pkg/httpserver/server_test.go:216 - comparison of function healthHandler == nil is always false (govet)",
+        "  6. [govet] pkg/httpserver/server_test.go:224 - comparison of function readyHandler == nil is always false (govet)"
+      ],
+      "non_fixable_reason": "BUSINESS_LOGIC",
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "high",
+        "affected_files": 6,
+        "affected_lines": 6,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "12m",
+        "priority": 2,
+        "risk_level": "medium",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [
+        "performance",
+        "memory-optimization"
+      ],
+      "error_breakdown": {
+        "govet": 6
+      },
+      "top_files": [
+        "pkg/httpserver/server_test.go (2)",
+        "internal/domain/value_objects/validation_rule.go (1)",
+        "vet.exe: internal/state/cache/state_cache_test.go (1)",
+        "vet.exe: internal/state/store/conflict_resolver_test.go (1)",
+        "vet.exe: internal/ai/knowledge/indexer_test.go (1)"
+      ]
+    }
+  ],
+  "quick_wins": null,
+  "blockers": null,
+  "technical_debt": null,
+  "recommended_tools": [
+    {
+      "tool_name": "golangci-lint",
+      "install_command": "go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest",
+      "diagnose_command": "golangci-lint run",
+      "fix_command": "# NAO use --fix automaticamente, revise cada issue",
+      "config_required": true,
+      "config_template": ".golangci.yml com linters selecionados",
+      "documentation": "https://golangci-lint.run/",
+      "alternative_tools": null
+    },
+    {
+      "tool_name": "staticcheck",
+      "install_command": "go install honnef.co/go/tools/cmd/staticcheck@latest",
+      "diagnose_command": "staticcheck ./...",
+      "fix_command": "# Manual - staticcheck nao tem auto-fix",
+      "config_required": false,
+      "config_template": "",
+      "documentation": "https://staticcheck.io/",
+      "alternative_tools": null
+    },
+    {
+      "tool_name": "gosec",
+      "install_command": "go install github.com/securego/gosec/v2/cmd/gosec@latest",
+      "diagnose_command": "gosec ./...",
+      "fix_command": "# Manual - corrija issues de seguranca",
+      "config_required": false,
+      "config_template": "",
+      "documentation": "https://github.com/securego/gosec",
+      "alternative_tools": null
+    }
+  ],
+  "next_steps": null,
+  "estimated_effort": "0m"
+}

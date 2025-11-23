@@ -92,4 +92,3 @@ func (uc *ReceiveGoodsUseCase) ConfirmReceipt(ctx context.Context, shipmentID st
 	uc.logger.Info("Inbound shipment confirmed", "id", shipmentID)
 	return nil
 }
-

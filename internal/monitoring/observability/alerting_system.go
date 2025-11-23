@@ -50,19 +50,19 @@ type Alert struct {
 
 // AlertRule defines a rule for generating alerts
 type AlertRule struct {
-	ID          string                 `json:"id"`
-	Name        string                 `json:"name"`
-	Description string                 `json:"description"`
-	Condition   string                 `json:"condition"`
-	Severity    AlertSeverity          `json:"severity"`
-	Duration    time.Duration          `json:"duration"`
-	Source      string                 `json:"source"`
-	Component   string                 `json:"component"`
-	Labels      map[string]string      `json:"labels"`
-	Annotations map[string]string      `json:"annotations"`
-	Enabled     bool                   `json:"enabled"`
-	LastEval    time.Time              `json:"last_eval"`
-	ActiveSince *time.Time             `json:"active_since,omitempty"`
+	ID          string            `json:"id"`
+	Name        string            `json:"name"`
+	Description string            `json:"description"`
+	Condition   string            `json:"condition"`
+	Severity    AlertSeverity     `json:"severity"`
+	Duration    time.Duration     `json:"duration"`
+	Source      string            `json:"source"`
+	Component   string            `json:"component"`
+	Labels      map[string]string `json:"labels"`
+	Annotations map[string]string `json:"annotations"`
+	Enabled     bool              `json:"enabled"`
+	LastEval    time.Time         `json:"last_eval"`
+	ActiveSince *time.Time        `json:"active_since,omitempty"`
 }
 
 // AlertHandler handles alert notifications
@@ -84,31 +84,31 @@ type AlertingSystem struct {
 
 // AlertStats provides alert statistics
 type AlertStats struct {
-	TotalRules      int                     `json:"total_rules"`
-	ActiveRules     int                     `json:"active_rules"`
-	TotalAlerts     int                     `json:"total_alerts"`
-	ActiveAlerts    int                     `json:"active_alerts"`
-	ResolvedAlerts  int                     `json:"resolved_alerts"`
-	CriticalAlerts  int                     `json:"critical_alerts"`
-	WarningAlerts   int                     `json:"warning_alerts"`
-	ErrorAlerts     int                     `json:"error_alerts"`
-	InfoAlerts      int                     `json:"info_alerts"`
-	AlertsBySeverity map[AlertSeverity]int   `json:"alerts_by_severity"`
-	LastUpdate      time.Time               `json:"last_update"`
+	TotalRules       int                   `json:"total_rules"`
+	ActiveRules      int                   `json:"active_rules"`
+	TotalAlerts      int                   `json:"total_alerts"`
+	ActiveAlerts     int                   `json:"active_alerts"`
+	ResolvedAlerts   int                   `json:"resolved_alerts"`
+	CriticalAlerts   int                   `json:"critical_alerts"`
+	WarningAlerts    int                   `json:"warning_alerts"`
+	ErrorAlerts      int                   `json:"error_alerts"`
+	InfoAlerts       int                   `json:"info_alerts"`
+	AlertsBySeverity map[AlertSeverity]int `json:"alerts_by_severity"`
+	LastUpdate       time.Time             `json:"last_update"`
 }
 
 // AlertConfig represents alerting system configuration
 type AlertConfig struct {
-	CheckInterval time.Duration `json:"check_interval"`
-	EnableAlerts  bool          `json:"enable_alerts"`
+	CheckInterval   time.Duration `json:"check_interval"`
+	EnableAlerts    bool          `json:"enable_alerts"`
 	DefaultSeverity AlertSeverity `json:"default_severity"`
 }
 
 // DefaultAlertConfig returns default alert configuration
 func DefaultAlertConfig() *AlertConfig {
 	return &AlertConfig{
-		CheckInterval:  30 * time.Second,
-		EnableAlerts:   true,
+		CheckInterval:   30 * time.Second,
+		EnableAlerts:    true,
 		DefaultSeverity: AlertSeverityWarning,
 	}
 }
@@ -394,10 +394,10 @@ func (as *AlertingSystem) GetStats() AlertStats {
 	defer as.mu.RUnlock()
 
 	stats := AlertStats{
-		TotalRules:      len(as.rules),
-		TotalAlerts:     len(as.alerts),
+		TotalRules:       len(as.rules),
+		TotalAlerts:      len(as.alerts),
 		AlertsBySeverity: make(map[AlertSeverity]int),
-		LastUpdate:      time.Now(),
+		LastUpdate:       time.Now(),
 	}
 
 	for _, rule := range as.rules {

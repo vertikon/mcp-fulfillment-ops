@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vet.exe: internal/ai/knowledge/indexer_test.go"
+                },
+                "region": {
+                  "startColumn": 60,
+                  "startLine": 68
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "not enough arguments in call to NewIndexer"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/domain/value_objects/validation_rule.go"
+                },
+                "region": {
+                  "startColumn": 22,
+                  "startLine": 69
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "non-constant format string in call to fmt.Errorf"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vet.exe: internal/state/cache/state_cache_test.go"
+                },
+                "region": {
+                  "startColumn": 6,
+                  "startLine": 127
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "assignment mismatch: 1 variable but cache.Get returns 2 values"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vet.exe: internal/state/store/conflict_resolver_test.go"
+                },
+                "region": {
+                  "startColumn": 14,
+                  "startLine": 161
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "invalid operation: stats == nil (mismatched types ConflictStats and untyped nil)"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/httpserver/server_test.go"
+                },
+                "region": {
+                  "startColumn": 5,
+                  "startLine": 216
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "comparison of function healthHandler == nil is always false"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/httpserver/server_test.go"
+                },
+                "region": {
+                  "startColumn": 5,
+                  "startLine": 224
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "comparison of function readyHandler == nil is always false"
+          },
+          "ruleId": "govet"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "informationUri": "https://github.com/vertikon/mcp-validator",
+          "name": "MCP Validator V9.1",
+          "version": "9.4"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

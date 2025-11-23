@@ -19,4 +19,3 @@ func (l *ZapLoggerAdapter) Info(msg string, fields ...zap.Field) {
 func (l *ZapLoggerAdapter) Error(msg string, fields ...zap.Field) {
 	l.logger.Error(msg, fields...)
 }
-

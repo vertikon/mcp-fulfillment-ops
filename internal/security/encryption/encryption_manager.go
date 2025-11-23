@@ -52,22 +52,22 @@ type EncryptionManager interface {
 	Verify(data, signature []byte, publicKey *rsa.PublicKey) bool
 }
 
-// Manager implements EncryptionManager
-type Manager struct {
+// encryptionManagerImpl implements EncryptionManager
+type encryptionManagerImpl struct {
 	keyManager KeyManager
 	logger     *zap.Logger
 }
 
 // NewEncryptionManager creates a new EncryptionManager
 func NewEncryptionManager(keyManager KeyManager) EncryptionManager {
-	return &Manager{
+	return &encryptionManagerImpl{
 		keyManager: keyManager,
 		logger:     logger.WithContext(nil),
 	}
 }
 
 // Encrypt encrypts data using AES-256-GCM with default key
-func (m *Manager) Encrypt(plaintext []byte) ([]byte, error) {
+func (m *encryptionManagerImpl) Encrypt(plaintext []byte) ([]byte, error) {
 	key, err := m.keyManager.GetEncryptionKey()
 	if err != nil {
 		m.logger.Error("Failed to get encryption key", zap.Error(err))
@@ -77,7 +77,7 @@ func (m *Manager) Encrypt(plaintext []byte) ([]byte, error) {
 }
 
 // Decrypt decrypts data using AES-256-GCM with default key
-func (m *Manager) Decrypt(ciphertext []byte) ([]byte, error) {
+func (m *encryptionManagerImpl) Decrypt(ciphertext []byte) ([]byte, error) {
 	key, err := m.keyManager.GetEncryptionKey()
 	if err != nil {
 		m.logger.Error("Failed to get encryption key", zap.Error(err))
@@ -87,7 +87,7 @@ func (m *Manager) Decrypt(ciphertext []byte) ([]byte, error) {
 }
 
 // EncryptWithKey encrypts data with a specific key using AES-256-GCM
-func (m *Manager) EncryptWithKey(plaintext []byte, key []byte) ([]byte, error) {
+func (m *encryptionManagerImpl) EncryptWithKey(plaintext []byte, key []byte) ([]byte, error) {
 	if len(key) != 32 {
 		return nil, ErrInvalidKey
 	}
@@ -115,7 +115,7 @@ func (m *Manager) EncryptWithKey(plaintext []byte, key []byte) ([]byte, error) {
 }
 
 // DecryptWithKey decrypts data with a specific key using AES-256-GCM
-func (m *Manager) DecryptWithKey(ciphertext []byte, key []byte) ([]byte, error) {
+func (m *encryptionManagerImpl) DecryptWithKey(ciphertext []byte, key []byte) ([]byte, error) {
 	if len(key) != 32 {
 		return nil, ErrInvalidKey
 	}
@@ -148,7 +148,7 @@ func (m *Manager) DecryptWithKey(ciphertext []byte, key []byte) ([]byte, error) 
 }
 
 // HashPassword hashes a password using bcrypt
-func (m *Manager) HashPassword(password string) (string, error) {
+func (m *encryptionManagerImpl) HashPassword(password string) (string, error) {
 	hash, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
 		m.logger.Error("Failed to hash password", zap.Error(err))
@@ -158,20 +158,20 @@ func (m *Manager) HashPassword(password string) (string, error) {
 }
 
 // VerifyPassword verifies a password against a hash
-func (m *Manager) VerifyPassword(password, hash string) bool {
+func (m *encryptionManagerImpl) VerifyPassword(password, hash string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
 	return err == nil
 }
 
 // HashArgon2 hashes data using Argon2
-func (m *Manager) HashArgon2(data []byte, salt []byte) []byte {
+func (m *encryptionManagerImpl) HashArgon2(data []byte, salt []byte) []byte {
 	// Argon2id with recommended parameters
 	hash := argon2.IDKey(data, salt, 1, 64*1024, 4, 32)
 	return hash
 }
 
 // Sign signs data using RSA
-func (m *Manager) Sign(data []byte, privateKey *rsa.PrivateKey) ([]byte, error) {
+func (m *encryptionManagerImpl) Sign(data []byte, privateKey *rsa.PrivateKey) ([]byte, error) {
 	hashed := sha256.Sum256(data)
 	signature, err := rsa.SignPKCS1v15(rand.Reader, privateKey, crypto.SHA256, hashed[:])
 	if err != nil {
@@ -182,7 +182,7 @@ func (m *Manager) Sign(data []byte, privateKey *rsa.PrivateKey) ([]byte, error) 
 }
 
 // Verify verifies a signature using RSA
-func (m *Manager) Verify(data, signature []byte, publicKey *rsa.PublicKey) bool {
+func (m *encryptionManagerImpl) Verify(data, signature []byte, publicKey *rsa.PublicKey) bool {
 	hashed := sha256.Sum256(data)
 	err := rsa.VerifyPKCS1v15(publicKey, crypto.SHA256, hashed[:], signature)
 	return err == nil

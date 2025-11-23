@@ -1,0 +1,497 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/mcp/generators/generator_factory.go"
+                },
+                "region": {
+                  "startColumn": 32,
+                  "startLine": 317
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "req.Stack undefined (type GenerateRequest has no field or method Stack)"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/mcp/generators/generator_factory.go"
+                },
+                "region": {
+                  "startColumn": 50,
+                  "startLine": 319
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "req.Stack undefined (type GenerateRequest has no field or method Stack)"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/mcp/generators/generator_factory.go"
+                },
+                "region": {
+                  "startColumn": 54,
+                  "startLine": 323
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "req.Stack undefined (type GenerateRequest has no field or method Stack)"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/mcp/generators/generator_factory.go"
+                },
+                "region": {
+                  "startColumn": 75,
+                  "startLine": 334
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "req.Stack undefined (type GenerateRequest has no field or method Stack)"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/mcp/generators/generator_factory.go"
+                },
+                "region": {
+                  "startColumn": 39,
+                  "startLine": 350
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "req.Stack undefined (type GenerateRequest has no field or method Stack)"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/mcp/generators/tinygo_generator.go"
+                },
+                "region": {
+                  "startColumn": 3,
+                  "startLine": 324
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "cannot use \"project\" (untyped string constant) as zap.Field value in argument to g.logger.Info"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/mcp/generators/tinygo_generator.go"
+                },
+                "region": {
+                  "startColumn": 14,
+                  "startLine": 324
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "cannot use req.Name (variable of type string) as zap.Field value in argument to g.logger.Info"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/mcp/generators/tinygo_generator.go"
+                },
+                "region": {
+                  "startColumn": 3,
+                  "startLine": 325
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "cannot use \"language\" (untyped string constant) as zap.Field value in argument to g.logger.Info"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/mcp/generators/tinygo_generator.go"
+                },
+                "region": {
+                  "startColumn": 15,
+                  "startLine": 325
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "cannot use g.language (variable of type string) as zap.Field value in argument to g.logger.Info"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/mcp/generators/tinygo_generator.go"
+                },
+                "region": {
+                  "startColumn": 3,
+                  "startLine": 326
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "cannot use \"features\" (untyped string constant) as zap.Field value in argument to g.logger.Info"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/mcp/generators/tinygo_generator.go"
+                },
+                "region": {
+                  "startColumn": 3,
+                  "startLine": 326
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "too many errors"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tools/deployers/hybrid_deployer.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 10
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "\"github.com/vertikon/mcp-fulfillment-ops/internal/infrastructure/cloud/kubernetes\" imported and not used"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vet.exe: internal/ai/knowledge/indexer_test.go"
+                },
+                "region": {
+                  "startColumn": 60,
+                  "startLine": 68
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "not enough arguments in call to NewIndexer"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vet.exe: cmd/fulfillment-ops/main.go"
+                },
+                "region": {
+                  "startColumn": 50,
+                  "startLine": 89
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "cannot use js (variable of interface type \"github.com/nats-io/nats.go\".JetStreamContext) as jetstream.JetStream value in argument to natsAdapter.NewEventPublisher: \"github.com/nats-io/nats.go\".JetStreamContext does not implement jetstream.JetStream (wrong type for method AccountInfo)"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "internal/domain/value_objects/validation_rule.go"
+                },
+                "region": {
+                  "startColumn": 22,
+                  "startLine": 69
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "non-constant format string in call to fmt.Errorf"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vet.exe: internal/infrastructure/compute/serverless/cloud_functions.go"
+                },
+                "region": {
+                  "startColumn": 46,
+                  "startLine": 14
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "undefined: FunctionConfig"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vet.exe: internal/interfaces/cli/root.go"
+                },
+                "region": {
+                  "startColumn": 21,
+                  "startLine": 42
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "undefined: analytics"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vet.exe: internal/mcp/generators/generator_factory.go"
+                },
+                "region": {
+                  "startColumn": 32,
+                  "startLine": 317
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "req.Stack undefined (type GenerateRequest has no field or method Stack)"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vet.exe: internal/state/store/conflict_resolver.go"
+                },
+                "region": {
+                  "startColumn": 10,
+                  "startLine": 236
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "not enough return values"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vet.exe: internal/state/events/event_replay.go"
+                },
+                "region": {
+                  "startColumn": 2,
+                  "startLine": 249
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "declared and not used: snapshot"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vet.exe: internal/state/cache/cache_coherency.go"
+                },
+                "region": {
+                  "startColumn": 11,
+                  "startLine": 162
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "cm.cache.Delete undefined (type *StateCache is pointer to interface, not interface)"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vet.exe: internal/security/config/integration.go"
+                },
+                "region": {
+                  "startColumn": 26,
+                  "startLine": 215
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "ruleCfg.Resource undefined (type PolicyRuleConfig has no field or method Resource)"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/httpserver/server_test.go"
+                },
+                "region": {
+                  "startColumn": 5,
+                  "startLine": 216
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "comparison of function healthHandler == nil is always false"
+          },
+          "ruleId": "govet"
+        },
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pkg/httpserver/server_test.go"
+                },
+                "region": {
+                  "startColumn": 5,
+                  "startLine": 224
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "comparison of function readyHandler == nil is always false"
+          },
+          "ruleId": "govet"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "informationUri": "https://github.com/vertikon/mcp-validator",
+          "name": "MCP Validator V9.1",
+          "version": "9.4"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

@@ -36,4 +36,3 @@ type Repository interface {
 	UpdateCycleCountStatus(ctx context.Context, id string, status Status) error
 	UpdateCycleCount(ctx context.Context, task *CycleCountTask) error
 }
-

@@ -8,15 +8,15 @@ import (
 
 // InboundShipment: Recebimento de Mercadoria (Compras/Transferência)
 type InboundShipment struct {
-	ID             string    `json:"id"`
-	ReferenceID    string    `json:"reference_id"` // Ex: ID do Pedido de Compra (B7)
-	Origin         string    `json:"origin"`       // Ex: Fornecedor X
-	Destination    string    `json:"destination"`  // Ex: CD-SP
-	Status         Status    `json:"status"`
-	Items          []Item    `json:"items"`
-	IdempotencyKey string    `json:"idempotency_key"`
-	CreatedAt      time.Time `json:"created_at"`
-	UpdatedAt      time.Time `json:"updated_at"`
+	ID             string     `json:"id"`
+	ReferenceID    string     `json:"reference_id"` // Ex: ID do Pedido de Compra (B7)
+	Origin         string     `json:"origin"`       // Ex: Fornecedor X
+	Destination    string     `json:"destination"`  // Ex: CD-SP
+	Status         Status     `json:"status"`
+	Items          []Item     `json:"items"`
+	IdempotencyKey string     `json:"idempotency_key"`
+	CreatedAt      time.Time  `json:"created_at"`
+	UpdatedAt      time.Time  `json:"updated_at"`
 	CompletedAt    *time.Time `json:"completed_at,omitempty"`
 }
 
@@ -70,4 +70,3 @@ func (i *InboundShipment) Cancel() error {
 	i.UpdatedAt = time.Now()
 	return nil
 }
-

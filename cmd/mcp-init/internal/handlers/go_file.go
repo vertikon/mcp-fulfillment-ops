@@ -24,7 +24,7 @@ type GoFileHandler struct {
 func NewGoFileHandler(cfg *config.Config) *GoFileHandler {
 	// Regex to match import statements
 	importRegex := regexp.MustCompile(`(?m)^\s*(import\s+\([^)]*\)|import\s+"[^"]+"|import\s+` + "`[^`]+`" + `)`)
-	
+
 	return &GoFileHandler{
 		BaseHandler: NewBaseHandler(NewConfigAdapter(cfg)),
 		importRegex: importRegex,
@@ -78,9 +78,9 @@ func (h *GoFileHandler) CanHandle(path string, info os.FileInfo) bool {
 func (h *GoFileHandler) processImports(content string) (string, error) {
 	// Find all import statements
 	matches := h.importRegex.FindAllString(content, -1)
-	
+
 	result := content
-	
+
 	for _, match := range matches {
 		// Apply mappings to import paths
 		processed := h.applyImportMappings(match)
@@ -88,14 +88,14 @@ func (h *GoFileHandler) processImports(content string) (string, error) {
 			result = strings.Replace(result, match, processed, 1)
 		}
 	}
-	
+
 	return result, nil
 }
 
 // applyImportMappings applies configuration mappings to import paths
 func (h *GoFileHandler) applyImportMappings(importStmt string) string {
 	result := importStmt
-	
+
 	// Extract import paths and apply mappings
 	// This is a simplified version - production would need more robust parsing
 	for key, value := range h.getAllMappings() {
@@ -103,7 +103,7 @@ func (h *GoFileHandler) applyImportMappings(importStmt string) string {
 			result = strings.ReplaceAll(result, key, value)
 		}
 	}
-	
+
 	return result
 }
 
@@ -115,4 +115,3 @@ func (h *GoFileHandler) getAllMappings() map[string]string {
 	}
 	return make(map[string]string)
 }
-

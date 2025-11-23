@@ -1,0 +1,677 @@
+{
+  "project_name": "mcp-fulfillment-ops",
+  "project_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops",
+  "timestamp": "2025-11-21 20:03:46",
+  "validator_version": "9.4",
+  "critical": [
+    {
+      "type": "No Code Conflicts",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Conflitos de declaracao detectados",
+      "suggestion": "Remova ou renomeie as declaracoes duplicadas",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": true,
+        "requires_review": true,
+        "manual_steps": "1. Identifique qual declaracao manter\n2. Remova ou renomeie as duplicatas\n3. Atualize referencias",
+        "non_fixable_reason": "ARCHITECTURAL",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "15-30 minutos",
+        "confidence": 0
+      },
+      "examples": [
+        "cli: 'init' declarado em ai.go, generate.go, monitor.go, root.go, state.go, template.go, version.go",
+        "analytics: 'init' declarado em metrics.go, performance.go"
+      ],
+      "non_fixable_reason": "ARCHITECTURAL",
+      "code_contexts": [
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\generate.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"MCP project generation initiated\")\n    40 | \t\treturn nil\n    41 | \t},\n    42 | }\n    43 | \n→   44 | func init() {\n    45 | \trootCmd.AddCommand(generateCmd)\n    46 | \tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\n    47 | \tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\n    48 | \tgenerateCmd.MarkFlagRequired(\"template\")\n    49 | }\n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(generateCmd)\n\tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\n\tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\n\tgenerateCmd.MarkFlagRequired(\"template\")\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\monitor.go",
+          "line_number": 24,
+          "code_snippet": "    19 | \t\tcmd.Println(\"System status: Operational\")\n    20 | \t\treturn nil\n    21 | \t},\n    22 | }\n    23 | \n→   24 | func init() {\n    25 | \trootCmd.AddCommand(monitorCmd)\n    26 | }\n    27 | \n    28 | // SetMonitoringService sets the monitoring service\n    29 | func SetMonitoringService(service *services.MonitoringAppService) {\n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(monitorCmd)\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\root.go",
+          "line_number": 38,
+          "code_snippet": "    33 | \t\tos.Exit(1)\n    34 | \t}\n    35 | }\n    36 | \n    37 | // init initializes the CLI\n→   38 | func init() {\n    39 | \trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\n    40 | \trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\n    41 | \n    42 | \t// Add subcommand groups\n    43 | \trootCmd.AddCommand(analytics.AnalyticsCmd)\n",
+          "full_function": "func init() {\n\trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\n\trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\n\n\t// Add subcommand groups\n\trootCmd.AddCommand(analytics.AnalyticsCmd)\n\t// ci.CICmd removido - pacote ci não existe ainda\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "os",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/interfaces/cli/analytics",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\state.go",
+          "line_number": 20,
+          "code_snippet": "    15 | \t\tcmd.Println(\"State management - service implementation pending\")\n    16 | \t\treturn nil\n    17 | \t},\n    18 | }\n    19 | \n→   20 | func init() {\n    21 | \trootCmd.AddCommand(stateCmd)\n    22 | }\n    23 | \n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(stateCmd)\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\template.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"Template created\")\n    40 | \t\treturn nil\n    41 | \t},\n    42 | }\n    43 | \n→   44 | func init() {\n    45 | \trootCmd.AddCommand(templateCmd)\n    46 | \ttemplateCmd.AddCommand(templateListCmd)\n    47 | \ttemplateCmd.AddCommand(templateCreateCmd)\n    48 | \ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\n    49 | \ttemplateCreateCmd.MarkFlagRequired(\"name\")\n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(templateCmd)\n\ttemplateCmd.AddCommand(templateListCmd)\n\ttemplateCmd.AddCommand(templateCreateCmd)\n\ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\n\ttemplateCreateCmd.MarkFlagRequired(\"name\")\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\version.go",
+          "line_number": 21,
+          "code_snippet": "    16 | \t\tfmt.Printf(\"Version: %s\\n\", Version)\n    17 | \t\tfmt.Printf(\"Build Date: %s\\n\", BuildDate)\n    18 | \t},\n    19 | }\n    20 | \n→   21 | func init() {\n    22 | \trootCmd.AddCommand(versionCmd)\n    23 | }\n    24 | \n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(versionCmd)\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\analytics\\performance.go",
+          "line_number": 23,
+          "code_snippet": "    18 | \t\tcmd.Println(\"  P95 Latency: 0ms\")\n    19 | \t\treturn nil\n    20 | \t},\n    21 | }\n    22 | \n→   23 | func init() {\n    24 | \tAnalyticsCmd.AddCommand(performanceCmd)\n    25 | }\n    26 | \n",
+          "full_function": "func init() {\n\tAnalyticsCmd.AddCommand(performanceCmd)\n}",
+          "symbol_name": "init",
+          "package_name": "analytics",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        }
+      ],
+      "impact_analysis": {
+        "severity": "critical",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": true,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "10-30 minutos",
+        "priority": 1,
+        "risk_level": "high",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    }
+  ],
+  "high": [
+    {
+      "type": "Linter limpo",
+      "severity": "high",
+      "location": "multiplos arquivos",
+      "description": "✗ FAIL: 6 issues críticos, 0 warnings",
+      "suggestion": "Corrija os issues FAIL primeiro, depois warnings",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": true,
+        "requires_review": true,
+        "non_fixable_reason": "BUSINESS_LOGIC",
+        "tools": [
+          {
+            "tool_name": "golangci-lint",
+            "install_command": "go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest",
+            "diagnose_command": "golangci-lint run",
+            "fix_command": "# NAO use --fix automaticamente, revise cada issue",
+            "config_required": true,
+            "config_template": ".golangci.yml com linters selecionados",
+            "documentation": "https://golangci-lint.run/",
+            "alternative_tools": null
+          },
+          {
+            "tool_name": "staticcheck",
+            "install_command": "go install honnef.co/go/tools/cmd/staticcheck@latest",
+            "diagnose_command": "staticcheck ./...",
+            "fix_command": "# Manual - staticcheck nao tem auto-fix",
+            "config_required": false,
+            "config_template": "",
+            "documentation": "https://staticcheck.io/",
+            "alternative_tools": null
+          },
+          {
+            "tool_name": "gosec",
+            "install_command": "go install github.com/securego/gosec/v2/cmd/gosec@latest",
+            "diagnose_command": "gosec ./...",
+            "fix_command": "# Manual - corrija issues de seguranca",
+            "config_required": false,
+            "config_template": "",
+            "documentation": "https://github.com/securego/gosec",
+            "alternative_tools": null
+          }
+        ],
+        "executable_steps": null,
+        "estimated_time": "12m",
+        "confidence": 0
+      },
+      "examples": [
+        "📦 Módulos analisados: 1",
+        "📄 Linter Report v8: JSON + SARIF gerados",
+        "",
+        "📊 Resumo por ferramenta (todos os módulos):",
+        "  • golangci-lint: 𐄂 0 FAIL / ⚠ 0 WARN / ℹ 0 INFO",
+        "  • govet: 𐄂 6 FAIL / ⚠ 0 WARN / ℹ 0 INFO",
+        "  • staticcheck: 𐄂 0 FAIL / ⚠ 0 WARN / ℹ 0 INFO",
+        "",
+        "🔝 Top issues prioritários (FAIL):",
+        "  1. [govet] vet.exe: internal/ai/knowledge/indexer_test.go:68 - not enough arguments in call to NewIndexer (govet)",
+        "  2. [govet] internal/domain/value_objects/validation_rule.go:69 - non-constant format string in call to fmt.Errorf (govet)",
+        "  3. [govet] vet.exe: internal/state/cache/state_cache_test.go:127 - assignment mismatch: 1 variable but cache.Get returns 2 values (govet)",
+        "  4. [govet] vet.exe: internal/state/store/conflict_resolver_test.go:161 - invalid operation: stats == nil (mismatched types ConflictStats and un... (govet)",
+        "  5. [govet] pkg/httpserver/server_test.go:216 - comparison of function healthHandler == nil is always false (govet)",
+        "  6. [govet] pkg/httpserver/server_test.go:224 - comparison of function readyHandler == nil is always false (govet)"
+      ],
+      "non_fixable_reason": "BUSINESS_LOGIC",
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "high",
+        "affected_files": 6,
+        "affected_lines": 6,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "12m",
+        "priority": 2,
+        "risk_level": "medium",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [
+        "performance",
+        "memory-optimization"
+      ],
+      "error_breakdown": {
+        "govet": 6
+      },
+      "top_files": [
+        "pkg/httpserver/server_test.go (2)",
+        "internal/domain/value_objects/validation_rule.go (1)",
+        "vet.exe: internal/state/cache/state_cache_test.go (1)",
+        "vet.exe: internal/state/store/conflict_resolver_test.go (1)",
+        "vet.exe: internal/ai/knowledge/indexer_test.go (1)"
+      ]
+    }
+  ],
+  "medium": null,
+  "low": null,
+  "total_gaps": 2,
+  "score": 90,
+  "auto_fixable": 0,
+  "manual": 2,
+  "top_priorities": [
+    {
+      "type": "No Code Conflicts",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Conflitos de declaracao detectados",
+      "suggestion": "Remova ou renomeie as declaracoes duplicadas",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": true,
+        "requires_review": true,
+        "manual_steps": "1. Identifique qual declaracao manter\n2. Remova ou renomeie as duplicatas\n3. Atualize referencias",
+        "non_fixable_reason": "ARCHITECTURAL",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "15-30 minutos",
+        "confidence": 0
+      },
+      "examples": [
+        "cli: 'init' declarado em ai.go, generate.go, monitor.go, root.go, state.go, template.go, version.go",
+        "analytics: 'init' declarado em metrics.go, performance.go"
+      ],
+      "non_fixable_reason": "ARCHITECTURAL",
+      "code_contexts": [
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\generate.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"MCP project generation initiated\")\n    40 | \t\treturn nil\n    41 | \t},\n    42 | }\n    43 | \n→   44 | func init() {\n    45 | \trootCmd.AddCommand(generateCmd)\n    46 | \tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\n    47 | \tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\n    48 | \tgenerateCmd.MarkFlagRequired(\"template\")\n    49 | }\n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(generateCmd)\n\tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\n\tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\n\tgenerateCmd.MarkFlagRequired(\"template\")\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\monitor.go",
+          "line_number": 24,
+          "code_snippet": "    19 | \t\tcmd.Println(\"System status: Operational\")\n    20 | \t\treturn nil\n    21 | \t},\n    22 | }\n    23 | \n→   24 | func init() {\n    25 | \trootCmd.AddCommand(monitorCmd)\n    26 | }\n    27 | \n    28 | // SetMonitoringService sets the monitoring service\n    29 | func SetMonitoringService(service *services.MonitoringAppService) {\n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(monitorCmd)\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\root.go",
+          "line_number": 38,
+          "code_snippet": "    33 | \t\tos.Exit(1)\n    34 | \t}\n    35 | }\n    36 | \n    37 | // init initializes the CLI\n→   38 | func init() {\n    39 | \trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\n    40 | \trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\n    41 | \n    42 | \t// Add subcommand groups\n    43 | \trootCmd.AddCommand(analytics.AnalyticsCmd)\n",
+          "full_function": "func init() {\n\trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\n\trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\n\n\t// Add subcommand groups\n\trootCmd.AddCommand(analytics.AnalyticsCmd)\n\t// ci.CICmd removido - pacote ci não existe ainda\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "os",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/interfaces/cli/analytics",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\state.go",
+          "line_number": 20,
+          "code_snippet": "    15 | \t\tcmd.Println(\"State management - service implementation pending\")\n    16 | \t\treturn nil\n    17 | \t},\n    18 | }\n    19 | \n→   20 | func init() {\n    21 | \trootCmd.AddCommand(stateCmd)\n    22 | }\n    23 | \n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(stateCmd)\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\template.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"Template created\")\n    40 | \t\treturn nil\n    41 | \t},\n    42 | }\n    43 | \n→   44 | func init() {\n    45 | \trootCmd.AddCommand(templateCmd)\n    46 | \ttemplateCmd.AddCommand(templateListCmd)\n    47 | \ttemplateCmd.AddCommand(templateCreateCmd)\n    48 | \ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\n    49 | \ttemplateCreateCmd.MarkFlagRequired(\"name\")\n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(templateCmd)\n\ttemplateCmd.AddCommand(templateListCmd)\n\ttemplateCmd.AddCommand(templateCreateCmd)\n\ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\n\ttemplateCreateCmd.MarkFlagRequired(\"name\")\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\version.go",
+          "line_number": 21,
+          "code_snippet": "    16 | \t\tfmt.Printf(\"Version: %s\\n\", Version)\n    17 | \t\tfmt.Printf(\"Build Date: %s\\n\", BuildDate)\n    18 | \t},\n    19 | }\n    20 | \n→   21 | func init() {\n    22 | \trootCmd.AddCommand(versionCmd)\n    23 | }\n    24 | \n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(versionCmd)\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\analytics\\performance.go",
+          "line_number": 23,
+          "code_snippet": "    18 | \t\tcmd.Println(\"  P95 Latency: 0ms\")\n    19 | \t\treturn nil\n    20 | \t},\n    21 | }\n    22 | \n→   23 | func init() {\n    24 | \tAnalyticsCmd.AddCommand(performanceCmd)\n    25 | }\n    26 | \n",
+          "full_function": "func init() {\n\tAnalyticsCmd.AddCommand(performanceCmd)\n}",
+          "symbol_name": "init",
+          "package_name": "analytics",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        }
+      ],
+      "impact_analysis": {
+        "severity": "critical",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": true,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "10-30 minutos",
+        "priority": 1,
+        "risk_level": "high",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    },
+    {
+      "type": "Linter limpo",
+      "severity": "high",
+      "location": "multiplos arquivos",
+      "description": "✗ FAIL: 6 issues críticos, 0 warnings",
+      "suggestion": "Corrija os issues FAIL primeiro, depois warnings",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": true,
+        "requires_review": true,
+        "non_fixable_reason": "BUSINESS_LOGIC",
+        "tools": [
+          {
+            "tool_name": "golangci-lint",
+            "install_command": "go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest",
+            "diagnose_command": "golangci-lint run",
+            "fix_command": "# NAO use --fix automaticamente, revise cada issue",
+            "config_required": true,
+            "config_template": ".golangci.yml com linters selecionados",
+            "documentation": "https://golangci-lint.run/",
+            "alternative_tools": null
+          },
+          {
+            "tool_name": "staticcheck",
+            "install_command": "go install honnef.co/go/tools/cmd/staticcheck@latest",
+            "diagnose_command": "staticcheck ./...",
+            "fix_command": "# Manual - staticcheck nao tem auto-fix",
+            "config_required": false,
+            "config_template": "",
+            "documentation": "https://staticcheck.io/",
+            "alternative_tools": null
+          },
+          {
+            "tool_name": "gosec",
+            "install_command": "go install github.com/securego/gosec/v2/cmd/gosec@latest",
+            "diagnose_command": "gosec ./...",
+            "fix_command": "# Manual - corrija issues de seguranca",
+            "config_required": false,
+            "config_template": "",
+            "documentation": "https://github.com/securego/gosec",
+            "alternative_tools": null
+          }
+        ],
+        "executable_steps": null,
+        "estimated_time": "12m",
+        "confidence": 0
+      },
+      "examples": [
+        "📦 Módulos analisados: 1",
+        "📄 Linter Report v8: JSON + SARIF gerados",
+        "",
+        "📊 Resumo por ferramenta (todos os módulos):",
+        "  • golangci-lint: 𐄂 0 FAIL / ⚠ 0 WARN / ℹ 0 INFO",
+        "  • govet: 𐄂 6 FAIL / ⚠ 0 WARN / ℹ 0 INFO",
+        "  • staticcheck: 𐄂 0 FAIL / ⚠ 0 WARN / ℹ 0 INFO",
+        "",
+        "🔝 Top issues prioritários (FAIL):",
+        "  1. [govet] vet.exe: internal/ai/knowledge/indexer_test.go:68 - not enough arguments in call to NewIndexer (govet)",
+        "  2. [govet] internal/domain/value_objects/validation_rule.go:69 - non-constant format string in call to fmt.Errorf (govet)",
+        "  3. [govet] vet.exe: internal/state/cache/state_cache_test.go:127 - assignment mismatch: 1 variable but cache.Get returns 2 values (govet)",
+        "  4. [govet] vet.exe: internal/state/store/conflict_resolver_test.go:161 - invalid operation: stats == nil (mismatched types ConflictStats and un... (govet)",
+        "  5. [govet] pkg/httpserver/server_test.go:216 - comparison of function healthHandler == nil is always false (govet)",
+        "  6. [govet] pkg/httpserver/server_test.go:224 - comparison of function readyHandler == nil is always false (govet)"
+      ],
+      "non_fixable_reason": "BUSINESS_LOGIC",
+      "code_contexts": null,
+      "impact_analysis": {
+        "severity": "high",
+        "affected_files": 6,
+        "affected_lines": 6,
+        "blocks_deploy": false,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "12m",
+        "priority": 2,
+        "risk_level": "medium",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [
+        "performance",
+        "memory-optimization"
+      ],
+      "error_breakdown": {
+        "govet": 6
+      },
+      "top_files": [
+        "pkg/httpserver/server_test.go (2)",
+        "internal/domain/value_objects/validation_rule.go (1)",
+        "vet.exe: internal/state/cache/state_cache_test.go (1)",
+        "vet.exe: internal/state/store/conflict_resolver_test.go (1)",
+        "vet.exe: internal/ai/knowledge/indexer_test.go (1)"
+      ]
+    }
+  ],
+  "quick_wins": null,
+  "blockers": [
+    {
+      "type": "No Code Conflicts",
+      "severity": "critical",
+      "location": "multiplos arquivos",
+      "description": "Conflitos de declaracao detectados",
+      "suggestion": "Remova ou renomeie as declaracoes duplicadas",
+      "fixability": {
+        "safe": false,
+        "rollback_easy": false,
+        "affects_behavior": true,
+        "requires_review": true,
+        "manual_steps": "1. Identifique qual declaracao manter\n2. Remova ou renomeie as duplicatas\n3. Atualize referencias",
+        "non_fixable_reason": "ARCHITECTURAL",
+        "tools": null,
+        "executable_steps": null,
+        "estimated_time": "15-30 minutos",
+        "confidence": 0
+      },
+      "examples": [
+        "cli: 'init' declarado em ai.go, generate.go, monitor.go, root.go, state.go, template.go, version.go",
+        "analytics: 'init' declarado em metrics.go, performance.go"
+      ],
+      "non_fixable_reason": "ARCHITECTURAL",
+      "code_contexts": [
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\generate.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"MCP project generation initiated\")\n    40 | \t\treturn nil\n    41 | \t},\n    42 | }\n    43 | \n→   44 | func init() {\n    45 | \trootCmd.AddCommand(generateCmd)\n    46 | \tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\n    47 | \tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\n    48 | \tgenerateCmd.MarkFlagRequired(\"template\")\n    49 | }\n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(generateCmd)\n\tgenerateCmd.Flags().StringP(\"template\", \"t\", \"\", \"Template ID to use\")\n\tgenerateCmd.Flags().StringP(\"output\", \"o\", \".\", \"Output directory\")\n\tgenerateCmd.MarkFlagRequired(\"template\")\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\monitor.go",
+          "line_number": 24,
+          "code_snippet": "    19 | \t\tcmd.Println(\"System status: Operational\")\n    20 | \t\treturn nil\n    21 | \t},\n    22 | }\n    23 | \n→   24 | func init() {\n    25 | \trootCmd.AddCommand(monitorCmd)\n    26 | }\n    27 | \n    28 | // SetMonitoringService sets the monitoring service\n    29 | func SetMonitoringService(service *services.MonitoringAppService) {\n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(monitorCmd)\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\root.go",
+          "line_number": 38,
+          "code_snippet": "    33 | \t\tos.Exit(1)\n    34 | \t}\n    35 | }\n    36 | \n    37 | // init initializes the CLI\n→   38 | func init() {\n    39 | \trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\n    40 | \trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\n    41 | \n    42 | \t// Add subcommand groups\n    43 | \trootCmd.AddCommand(analytics.AnalyticsCmd)\n",
+          "full_function": "func init() {\n\trootCmd.PersistentFlags().BoolP(\"verbose\", \"v\", false, \"verbose output\")\n\trootCmd.PersistentFlags().String(\"config\", \"\", \"config file (default is $HOME/.hulk/config.yaml)\")\n\n\t// Add subcommand groups\n\trootCmd.AddCommand(analytics.AnalyticsCmd)\n\t// ci.CICmd removido - pacote ci não existe ainda\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "os",
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/interfaces/cli/analytics",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\state.go",
+          "line_number": 20,
+          "code_snippet": "    15 | \t\tcmd.Println(\"State management - service implementation pending\")\n    16 | \t\treturn nil\n    17 | \t},\n    18 | }\n    19 | \n→   20 | func init() {\n    21 | \trootCmd.AddCommand(stateCmd)\n    22 | }\n    23 | \n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(stateCmd)\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\template.go",
+          "line_number": 44,
+          "code_snippet": "    39 | \t\tcmd.Println(\"Template created\")\n    40 | \t\treturn nil\n    41 | \t},\n    42 | }\n    43 | \n→   44 | func init() {\n    45 | \trootCmd.AddCommand(templateCmd)\n    46 | \ttemplateCmd.AddCommand(templateListCmd)\n    47 | \ttemplateCmd.AddCommand(templateCreateCmd)\n    48 | \ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\n    49 | \ttemplateCreateCmd.MarkFlagRequired(\"name\")\n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(templateCmd)\n\ttemplateCmd.AddCommand(templateListCmd)\n\ttemplateCmd.AddCommand(templateCreateCmd)\n\ttemplateCreateCmd.Flags().StringP(\"name\", \"n\", \"\", \"Template name\")\n\ttemplateCreateCmd.MarkFlagRequired(\"name\")\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/internal/services",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger",
+            "go.uber.org/zap"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\version.go",
+          "line_number": 21,
+          "code_snippet": "    16 | \t\tfmt.Printf(\"Version: %s\\n\", Version)\n    17 | \t\tfmt.Printf(\"Build Date: %s\\n\", BuildDate)\n    18 | \t},\n    19 | }\n    20 | \n→   21 | func init() {\n    22 | \trootCmd.AddCommand(versionCmd)\n    23 | }\n    24 | \n",
+          "full_function": "func init() {\n\trootCmd.AddCommand(versionCmd)\n}",
+          "symbol_name": "init",
+          "package_name": "cli",
+          "dependencies": [
+            "fmt",
+            "github.com/spf13/cobra"
+          ],
+          "related_files": null
+        },
+        {
+          "file_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\internal\\interfaces\\cli\\analytics\\performance.go",
+          "line_number": 23,
+          "code_snippet": "    18 | \t\tcmd.Println(\"  P95 Latency: 0ms\")\n    19 | \t\treturn nil\n    20 | \t},\n    21 | }\n    22 | \n→   23 | func init() {\n    24 | \tAnalyticsCmd.AddCommand(performanceCmd)\n    25 | }\n    26 | \n",
+          "full_function": "func init() {\n\tAnalyticsCmd.AddCommand(performanceCmd)\n}",
+          "symbol_name": "init",
+          "package_name": "analytics",
+          "dependencies": [
+            "github.com/spf13/cobra",
+            "github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
+          ],
+          "related_files": null
+        }
+      ],
+      "impact_analysis": {
+        "severity": "critical",
+        "affected_files": 0,
+        "affected_lines": 0,
+        "blocks_deploy": true,
+        "blocks_tests": false,
+        "breaks_api": false,
+        "estimated_time": "10-30 minutos",
+        "priority": 1,
+        "risk_level": "high",
+        "dependencies": null
+      },
+      "related_gaps": null,
+      "tags": [],
+      "error_breakdown": {},
+      "top_files": []
+    }
+  ],
+  "technical_debt": null,
+  "recommended_tools": [
+    {
+      "tool_name": "golangci-lint",
+      "install_command": "go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest",
+      "diagnose_command": "golangci-lint run",
+      "fix_command": "# NAO use --fix automaticamente, revise cada issue",
+      "config_required": true,
+      "config_template": ".golangci.yml com linters selecionados",
+      "documentation": "https://golangci-lint.run/",
+      "alternative_tools": null
+    },
+    {
+      "tool_name": "staticcheck",
+      "install_command": "go install honnef.co/go/tools/cmd/staticcheck@latest",
+      "diagnose_command": "staticcheck ./...",
+      "fix_command": "# Manual - staticcheck nao tem auto-fix",
+      "config_required": false,
+      "config_template": "",
+      "documentation": "https://staticcheck.io/",
+      "alternative_tools": null
+    },
+    {
+      "tool_name": "gosec",
+      "install_command": "go install github.com/securego/gosec/v2/cmd/gosec@latest",
+      "diagnose_command": "gosec ./...",
+      "fix_command": "# Manual - corrija issues de seguranca",
+      "config_required": false,
+      "config_template": "",
+      "documentation": "https://github.com/securego/gosec",
+      "alternative_tools": null
+    }
+  ],
+  "next_steps": [
+    "🔴 URGENTE: Resolver 1 bloqueador(es)"
+  ],
+  "estimated_effort": "30m"
+}

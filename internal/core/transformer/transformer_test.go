@@ -8,22 +8,22 @@ import (
 
 func TestNewGLMTransformer(t *testing.T) {
 	config := GLMConfig{
-		VocabSize:    10000,
-		HiddenSize:   512,
-		NumLayers:    6,
-		NumHeads:     8,
-		MaxSeqLen:    2048,
-		Dropout:      0.1,
+		VocabSize:  10000,
+		HiddenSize: 512,
+		NumLayers:  6,
+		NumHeads:   8,
+		MaxSeqLen:  2048,
+		Dropout:    0.1,
 		Attention: AttentionConfig{
 			NumHeads: 8,
 			HeadDim:  64,
 			Dropout:  0.1,
 		},
 		FeedForward: FeedForwardConfig{
-			HiddenSize:   512,
-			Intermediate: 2048,
-			Dropout:      0.1,
-			Activation:   "gelu",
+			HiddenSize:       512,
+			IntermediateSize: 2048,
+			Dropout:          0.1,
+			Activation:       "gelu",
 		},
 		LayerNormEps: 1e-5,
 	}
@@ -59,9 +59,9 @@ func TestGLMTransformer_Forward(t *testing.T) {
 			HeadDim:  64,
 		},
 		FeedForward: FeedForwardConfig{
-			HiddenSize:   512,
-			Intermediate: 2048,
-			Activation:   "gelu",
+			HiddenSize:       512,
+			IntermediateSize: 2048,
+			Activation:       "gelu",
 		},
 		LayerNormEps: 1e-5,
 	}
@@ -83,4 +83,3 @@ func TestGLMTransformer_Forward(t *testing.T) {
 		t.Fatal("Forward() returned nil output")
 	}
 }
-

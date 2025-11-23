@@ -1,1 +1,0 @@
-# Função: Load Balancer HAProxy

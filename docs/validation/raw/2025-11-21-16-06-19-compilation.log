@@ -1,0 +1,57 @@
+# github.com/vertikon/mcp-fulfillment-ops/internal/mcp/generators
+internal\mcp\generators\generator_factory.go:317:32: req.Stack undefined (type GenerateRequest has no field or method Stack)
+internal\mcp\generators\generator_factory.go:319:50: req.Stack undefined (type GenerateRequest has no field or method Stack)
+internal\mcp\generators\generator_factory.go:323:54: req.Stack undefined (type GenerateRequest has no field or method Stack)
+internal\mcp\generators\generator_factory.go:334:75: req.Stack undefined (type GenerateRequest has no field or method Stack)
+internal\mcp\generators\generator_factory.go:350:39: req.Stack undefined (type GenerateRequest has no field or method Stack)
+internal\mcp\generators\tinygo_generator.go:324:3: cannot use "project" (untyped string constant) as zap.Field value in argument to g.logger.Info
+internal\mcp\generators\tinygo_generator.go:324:14: cannot use req.Name (variable of type string) as zap.Field value in argument to g.logger.Info
+internal\mcp\generators\tinygo_generator.go:325:3: cannot use "language" (untyped string constant) as zap.Field value in argument to g.logger.Info
+internal\mcp\generators\tinygo_generator.go:325:15: cannot use g.language (variable of type string) as zap.Field value in argument to g.logger.Info
+internal\mcp\generators\tinygo_generator.go:326:3: cannot use "features" (untyped string constant) as zap.Field value in argument to g.logger.Info
+internal\mcp\generators\tinygo_generator.go:326:3: too many errors
+# github.com/vertikon/mcp-fulfillment-ops/cmd/fulfillment-ops
+cmd\fulfillment-ops\main.go:13:2: "github.com/gin-gonic/gin" imported and not used
+cmd\fulfillment-ops\main.go:16:2: "github.com/nats-io/nats.go/jetstream" imported and not used
+cmd\fulfillment-ops\main.go:89:50: cannot use js (variable of interface type "github.com/nats-io/nats.go".JetStreamContext) as jetstream.JetStream value in argument to natsAdapter.NewEventPublisher: "github.com/nats-io/nats.go".JetStreamContext does not implement jetstream.JetStream (wrong type for method AccountInfo)
+		have AccountInfo(..."github.com/nats-io/nats.go".JSOpt) (*"github.com/nats-io/nats.go".AccountInfo, error)
+		want AccountInfo(context.Context) (*jetstream.AccountInfo, error)
+cmd\fulfillment-ops\main.go:100:53: cannot use js (variable of interface type "github.com/nats-io/nats.go".JetStreamContext) as jetstream.JetStream value in argument to natsAdapter.NewFulfillmentSubscriber: "github.com/nats-io/nats.go".JetStreamContext does not implement jetstream.JetStream (wrong type for method AccountInfo)
+		have AccountInfo(..."github.com/nats-io/nats.go".JSOpt) (*"github.com/nats-io/nats.go".AccountInfo, error)
+		want AccountInfo(context.Context) (*jetstream.AccountInfo, error)
+# github.com/vertikon/mcp-fulfillment-ops/internal/infrastructure/compute/serverless
+internal\infrastructure\compute\serverless\cloud_functions.go:14:46: undefined: FunctionConfig
+# github.com/vertikon/mcp-fulfillment-ops/internal/interfaces/cli
+internal\interfaces\cli\root.go:42:21: undefined: analytics
+internal\interfaces\cli\root.go:43:21: undefined: ci
+# github.com/vertikon/mcp-fulfillment-ops/internal/security/config
+internal\security\config\integration.go:215:26: ruleCfg.Resource undefined (type PolicyRuleConfig has no field or method Resource)
+internal\security\config\integration.go:216:26: ruleCfg.Action undefined (type PolicyRuleConfig has no field or method Action)
+internal\security\config\integration.go:218:26: ruleCfg.Description undefined (type PolicyRuleConfig has no field or method Description)
+# github.com/vertikon/mcp-fulfillment-ops/internal/state/store
+internal\state\store\conflict_resolver.go:236:10: not enough return values
+	have (*VersionedState)
+	want (*VersionedState, error)
+internal\state\store\conflict_resolver.go:238:10: not enough return values
+	have (*VersionedState)
+	want (*VersionedState, error)
+internal\state\store\conflict_resolver.go:251:2: declared and not used: localTime
+internal\state\store\conflict_resolver.go:252:2: declared and not used: remoteTime
+internal\state\store\conflict_resolver.go:283:51: too many arguments in call to r.isMergeableValue
+	have (interface{}, interface{})
+	want (interface{})
+internal\state\store\conflict_resolver.go:396:9: v declared and not used
+internal\state\store\conflict_resolver.go:415:13: r.mergeMaps undefined (type map[string]interface{} has no field or method mergeMaps)
+internal\state\store\conflict_resolver.go:419:13: r.mergeArrays undefined (type []interface{} has no field or method mergeArrays)
+# github.com/vertikon/mcp-fulfillment-ops/internal/state/cache
+internal\state\cache\cache_coherency.go:162:11: cm.cache.Delete undefined (type *StateCache is pointer to interface, not interface)
+internal\state\cache\cache_coherency.go:217:11: cm.stats.TotalUpdates undefined (type *InvalidationStats has no field or method TotalUpdates)
+internal\state\cache\cache_coherency.go:253:34: cm.stats.TotalUpdates undefined (type *InvalidationStats has no field or method TotalUpdates)
+internal\state\cache\cache_coherency.go:342:11: cm.cache.Delete undefined (type *StateCache is pointer to interface, not interface)
+# github.com/vertikon/mcp-fulfillment-ops/internal/state/events
+internal\state\events\event_replay.go:249:2: declared and not used: snapshot
+internal\state\events\event_replay.go:290:2: declared and not used: events
+internal\state\events\event_versioning.go:140:4: invalid operation: cannot call copy (variable of struct type VersionInfo): VersionInfo is not a function
+internal\state\events\event_versioning.go:216:30: ev.resolveVersionConflict undefined (type *EventVersioningImpl has no field or method resolveVersionConflict, but does have method ResolveVersionConflict)
+# github.com/vertikon/mcp-fulfillment-ops/tools/deployers
+tools\deployers\hybrid_deployer.go:10:2: "github.com/vertikon/mcp-fulfillment-ops/internal/infrastructure/cloud/kubernetes" imported and not used

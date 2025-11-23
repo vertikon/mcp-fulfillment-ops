@@ -188,7 +188,7 @@ func NewSemanticMemory(content string, sessionID string) (*SemanticMemory, error
 		return nil, err
 	}
 	return &SemanticMemory{
-		Memory:  mem,
+		Memory:   mem,
 		concepts: make([]string, 0),
 		related:  make([]string, 0),
 	}, nil
@@ -219,11 +219,11 @@ func (sm *SemanticMemory) Related() []string {
 // WorkingMemory represents working memory (active context for tasks)
 type WorkingMemory struct {
 	*Memory
-	taskID      string
-	step        int
-	maxSteps    int
-	context     map[string]interface{}
-	completed   bool
+	taskID    string
+	step      int
+	maxSteps  int
+	context   map[string]interface{}
+	completed bool
 }
 
 // NewWorkingMemory creates a new working memory
@@ -233,11 +233,11 @@ func NewWorkingMemory(content string, sessionID string, taskID string, maxSteps 
 		return nil, err
 	}
 	return &WorkingMemory{
-		Memory:   mem,
-		taskID:   taskID,
-		step:     0,
-		maxSteps: maxSteps,
-		context:  make(map[string]interface{}),
+		Memory:    mem,
+		taskID:    taskID,
+		step:      0,
+		maxSteps:  maxSteps,
+		context:   make(map[string]interface{}),
 		completed: false,
 	}, nil
 }
@@ -312,5 +312,3 @@ func NewMemoryEvent(eventType string, content string) *MemoryEvent {
 		Metadata:  make(map[string]interface{}),
 	}
 }
-
-

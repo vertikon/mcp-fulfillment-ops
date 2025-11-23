@@ -17,6 +17,6 @@ var stateCmd = &cobra.Command{
 	},
 }
 
-func init() {
+func registerStateCmd() {
 	rootCmd.AddCommand(stateCmd)
 }

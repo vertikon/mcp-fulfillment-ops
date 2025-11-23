@@ -1,0 +1,36 @@
+# github.com/vertikon/mcp-fulfillment-ops/internal/mcp/protocol
+internal\mcp\protocol\handlers.go:344:4: h.parseParams undefined (type *ListTemplatesHandler has no field or method parseParams)
+internal\mcp\protocol\handlers.go:446:4: h.parseParams undefined (type *ListProjectsHandler has no field or method parseParams)
+# github.com/vertikon/mcp-fulfillment-ops/tools/deployers
+tools\deployers\hybrid_deployer.go:10:2: "github.com/vertikon/mcp-fulfillment-ops/internal/infrastructure/cloud/kubernetes" imported and not used
+# github.com/vertikon/mcp-fulfillment-ops/internal/infrastructure/compute/serverless
+internal\infrastructure\compute\serverless\cloud_functions.go:14:46: undefined: FunctionConfig
+# github.com/vertikon/mcp-fulfillment-ops/internal/security/config
+internal\security\config\integration.go:215:26: ruleCfg.Resource undefined (type PolicyRuleConfig has no field or method Resource)
+internal\security\config\integration.go:216:26: ruleCfg.Action undefined (type PolicyRuleConfig has no field or method Action)
+internal\security\config\integration.go:218:26: ruleCfg.Description undefined (type PolicyRuleConfig has no field or method Description)
+# github.com/vertikon/mcp-fulfillment-ops/internal/state/cache
+internal\state\cache\cache_coherency.go:162:11: cm.cache.Delete undefined (type *StateCache is pointer to interface, not interface)
+internal\state\cache\cache_coherency.go:217:11: cm.stats.TotalUpdates undefined (type *InvalidationStats has no field or method TotalUpdates)
+internal\state\cache\cache_coherency.go:253:34: cm.stats.TotalUpdates undefined (type *InvalidationStats has no field or method TotalUpdates)
+internal\state\cache\cache_coherency.go:342:11: cm.cache.Delete undefined (type *StateCache is pointer to interface, not interface)
+# github.com/vertikon/mcp-fulfillment-ops/internal/state/events
+internal\state\events\event_replay.go:249:2: declared and not used: snapshot
+internal\state\events\event_replay.go:290:2: declared and not used: events
+internal\state\events\event_versioning.go:140:4: invalid operation: cannot call copy (variable of struct type VersionInfo): VersionInfo is not a function
+internal\state\events\event_versioning.go:216:30: ev.resolveVersionConflict undefined (type *EventVersioningImpl has no field or method resolveVersionConflict, but does have method ResolveVersionConflict)
+# github.com/vertikon/mcp-fulfillment-ops/internal/state/store
+internal\state\store\conflict_resolver.go:236:10: not enough return values
+	have (*VersionedState)
+	want (*VersionedState, error)
+internal\state\store\conflict_resolver.go:238:10: not enough return values
+	have (*VersionedState)
+	want (*VersionedState, error)
+internal\state\store\conflict_resolver.go:251:2: declared and not used: localTime
+internal\state\store\conflict_resolver.go:252:2: declared and not used: remoteTime
+internal\state\store\conflict_resolver.go:283:51: too many arguments in call to r.isMergeableValue
+	have (interface{}, interface{})
+	want (interface{})
+internal\state\store\conflict_resolver.go:396:9: v declared and not used
+internal\state\store\conflict_resolver.go:415:13: r.mergeMaps undefined (type map[string]interface{} has no field or method mergeMaps)
+internal\state\store\conflict_resolver.go:419:13: r.mergeArrays undefined (type []interface{} has no field or method mergeArrays)

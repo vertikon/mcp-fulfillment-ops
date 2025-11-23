@@ -250,6 +250,12 @@ func (er *EventReplayImpl) ReplayFromSnapshot(ctx context.Context, aggregateID s
 	if err != nil {
 		return nil, fmt.Errorf("failed to get snapshot: %w", err)
 	}
+	if snapshot == nil {
+		return nil, fmt.Errorf("snapshot not found for aggregate %s", aggregateID)
+	}
+	if snapshot.Version < snapshotVersion {
+		return nil, fmt.Errorf("snapshot version %d older than requested %d", snapshot.Version, snapshotVersion)
+	}
 
 	// Get events after snapshot version
 	events, err := er.store.GetEvents(ctx, aggregateID, snapshotVersion+1, 0)
@@ -286,12 +292,6 @@ func (er *EventReplayImpl) ReplayFromSnapshot(ctx context.Context, aggregateID s
 
 // ReplayToState replays events to rebuild state at a specific version
 func (er *EventReplayImpl) ReplayToState(ctx context.Context, aggregateID string, targetVersion int64, handler ReplayHandler) (interface{}, error) {
-	// Get all events up to target version
-	events, err := er.store.GetEvents(ctx, aggregateID, 1, targetVersion)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get events: %w", err)
-	}
-
 	// Replay events
 	progress, err := er.ReplayEvents(ctx, aggregateID, 1, targetVersion, handler)
 	if err != nil {

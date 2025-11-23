@@ -24,22 +24,22 @@ var (
 type CertificateManager interface {
 	// GetTLSCertificate returns TLS certificate for server
 	GetTLSCertificate() (*tls.Certificate, error)
-	
+
 	// GenerateSelfSignedCert generates a self-signed certificate
 	GenerateSelfSignedCert(commonName string, dnsNames []string) (*tls.Certificate, error)
-	
+
 	// LoadCertificateFromFile loads certificate from file
 	LoadCertificateFromFile(certFile, keyFile string) error
-	
+
 	// RotateCertificate rotates the certificate
 	RotateCertificate() error
-	
+
 	// GetCertificateExpiry returns certificate expiration time
 	GetCertificateExpiry() (time.Time, error)
 }
 
-// Manager implements CertificateManager
-type Manager struct {
+// certificateManagerImpl implements CertificateManager
+type certificateManagerImpl struct {
 	tlsCert      *tls.Certificate
 	certExpiry   time.Time
 	rotationTTL  time.Duration
@@ -54,7 +54,7 @@ type CertificateManagerConfig struct {
 
 // NewCertificateManager creates a new CertificateManager
 func NewCertificateManager(config CertificateManagerConfig) CertificateManager {
-	return &Manager{
+	return &certificateManagerImpl{
 		rotationTTL:  config.RotationTTL,
 		lastRotation: time.Now(),
 		logger:       logger.WithContext(nil),
@@ -62,7 +62,7 @@ func NewCertificateManager(config CertificateManagerConfig) CertificateManager {
 }
 
 // GetTLSCertificate returns TLS certificate for server
-func (m *Manager) GetTLSCertificate() (*tls.Certificate, error) {
+func (m *certificateManagerImpl) GetTLSCertificate() (*tls.Certificate, error) {
 	if m.tlsCert == nil {
 		return nil, ErrCertificateNotFound
 	}
@@ -76,7 +76,7 @@ func (m *Manager) GetTLSCertificate() (*tls.Certificate, error) {
 }
 
 // GenerateSelfSignedCert generates a self-signed certificate
-func (m *Manager) GenerateSelfSignedCert(commonName string, dnsNames []string) (*tls.Certificate, error) {
+func (m *certificateManagerImpl) GenerateSelfSignedCert(commonName string, dnsNames []string) (*tls.Certificate, error) {
 	// Generate private key
 	privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
 	if err != nil {
@@ -90,11 +90,11 @@ func (m *Manager) GenerateSelfSignedCert(commonName string, dnsNames []string) (
 		Subject: pkix.Name{
 			CommonName: commonName,
 		},
-		NotBefore:    time.Now(),
-		NotAfter:     time.Now().Add(365 * 24 * time.Hour), // 1 year
-		KeyUsage:     x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature,
-		ExtKeyUsage:  []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth},
-		DNSNames:     dnsNames,
+		NotBefore:             time.Now(),
+		NotAfter:              time.Now().Add(365 * 24 * time.Hour), // 1 year
+		KeyUsage:              x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature,
+		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth},
+		DNSNames:              dnsNames,
 		BasicConstraintsValid: true,
 	}
 
@@ -137,7 +137,7 @@ func (m *Manager) GenerateSelfSignedCert(commonName string, dnsNames []string) (
 }
 
 // LoadCertificateFromFile loads certificate from file
-func (m *Manager) LoadCertificateFromFile(certFile, keyFile string) error {
+func (m *certificateManagerImpl) LoadCertificateFromFile(certFile, keyFile string) error {
 	cert, err := tls.LoadX509KeyPair(certFile, keyFile)
 	if err != nil {
 		m.logger.Error("Failed to load certificate from file",
@@ -168,7 +168,7 @@ func (m *Manager) LoadCertificateFromFile(certFile, keyFile string) error {
 }
 
 // RotateCertificate rotates the certificate
-func (m *Manager) RotateCertificate() error {
+func (m *certificateManagerImpl) RotateCertificate() error {
 	if m.tlsCert == nil {
 		return ErrCertificateNotFound
 	}
@@ -200,7 +200,7 @@ func (m *Manager) RotateCertificate() error {
 }
 
 // GetCertificateExpiry returns certificate expiration time
-func (m *Manager) GetCertificateExpiry() (time.Time, error) {
+func (m *certificateManagerImpl) GetCertificateExpiry() (time.Time, error) {
 	if m.tlsCert == nil {
 		return time.Time{}, ErrCertificateNotFound
 	}

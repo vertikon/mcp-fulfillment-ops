@@ -281,4 +281,3 @@ func TestFinetuningStore_GetActiveVersion(t *testing.T) {
 		t.Errorf("Expected active version 1, got %d", active.Version())
 	}
 }
-

@@ -19,8 +19,8 @@ type CPUManager interface {
 
 // CPUStats represents CPU statistics
 type CPUStats struct {
-	Usage    float64
-	Limit    float64
-	Cores    int
-	LoadAvg  []float64
+	Usage   float64
+	Limit   float64
+	Cores   int
+	LoadAvg []float64
 }

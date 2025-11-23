@@ -94,5 +94,3 @@ const templateSchema = `
 	CREATE INDEX IF NOT EXISTS idx_templates_name ON templates(name);
 	CREATE INDEX IF NOT EXISTS idx_templates_created_at ON templates(created_at);
 `
-
-

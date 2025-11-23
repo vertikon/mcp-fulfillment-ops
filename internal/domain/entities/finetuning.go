@@ -125,19 +125,19 @@ func (d *Dataset) UpdatedAt() time.Time {
 
 // TrainingJob represents a fine-tuning training job
 type TrainingJob struct {
-	id            string
-	datasetID     string
-	baseModel     string
-	targetModel   string
-	status        TrainingStatus
-	runpodJobID   string
+	id             string
+	datasetID      string
+	baseModel      string
+	targetModel    string
+	status         TrainingStatus
+	runpodJobID    string
 	checkpointPath string
-	config        map[string]interface{}
-	metrics       map[string]float64
-	errorMessage  string
-	createdAt     time.Time
-	startedAt     *time.Time
-	completedAt   *time.Time
+	config         map[string]interface{}
+	metrics        map[string]float64
+	errorMessage   string
+	createdAt      time.Time
+	startedAt      *time.Time
+	completedAt    *time.Time
 }
 
 // NewTrainingJob creates a new training job
@@ -154,14 +154,14 @@ func NewTrainingJob(datasetID string, baseModel string, targetModel string) (*Tr
 
 	now := time.Now()
 	return &TrainingJob{
-		id:        uuid.New().String(),
-		datasetID: datasetID,
-		baseModel: baseModel,
+		id:          uuid.New().String(),
+		datasetID:   datasetID,
+		baseModel:   baseModel,
 		targetModel: targetModel,
-		status:    StatusPending,
-		config:    make(map[string]interface{}),
-		metrics:   make(map[string]float64),
-		createdAt: now,
+		status:      StatusPending,
+		config:      make(map[string]interface{}),
+		metrics:     make(map[string]float64),
+		createdAt:   now,
 	}, nil
 }
 
@@ -273,14 +273,14 @@ func (tj *TrainingJob) CompletedAt() *time.Time {
 
 // ModelVersion represents a versioned model
 type ModelVersion struct {
-	id          string
-	modelName   string
-	version     int
-	jobID       string
+	id             string
+	modelName      string
+	version        int
+	jobID          string
 	checkpointPath string
-	metrics     map[string]float64
-	isActive    bool
-	createdAt   time.Time
+	metrics        map[string]float64
+	isActive       bool
+	createdAt      time.Time
 }
 
 // NewModelVersion creates a new model version
@@ -294,14 +294,14 @@ func NewModelVersion(modelName string, version int, jobID string, checkpointPath
 
 	now := time.Now()
 	return &ModelVersion{
-		id:            uuid.New().String(),
-		modelName:     modelName,
-		version:       version,
-		jobID:         jobID,
+		id:             uuid.New().String(),
+		modelName:      modelName,
+		version:        version,
+		jobID:          jobID,
 		checkpointPath: checkpointPath,
-		metrics:       make(map[string]float64),
-		isActive:      false,
-		createdAt:     now,
+		metrics:        make(map[string]float64),
+		isActive:       false,
+		createdAt:      now,
 	}, nil
 }
 
@@ -358,5 +358,3 @@ func (mv *ModelVersion) SetActive(active bool) {
 func (mv *ModelVersion) CreatedAt() time.Time {
 	return mv.createdAt
 }
-
-

@@ -15,55 +15,55 @@ import (
 
 // KnowledgeVersion represents a versioned knowledge base
 type KnowledgeVersion struct {
-	ID            string                 `json:"id"`
-	KnowledgeID   string                 `json:"knowledge_id"`
-	Version       string                 `json:"version"`
-	DocumentCount int                    `json:"document_count"`
-	EmbeddingCount int                   `json:"embedding_count"`
-	Checksum      string                 `json:"checksum"`
-	Metadata      map[string]interface{} `json:"metadata"`
-	CreatedAt     time.Time              `json:"created_at"`
-	CreatedBy     string                 `json:"created_by"`
-	Tags          []string               `json:"tags"`
+	ID             string                 `json:"id"`
+	KnowledgeID    string                 `json:"knowledge_id"`
+	Version        string                 `json:"version"`
+	DocumentCount  int                    `json:"document_count"`
+	EmbeddingCount int                    `json:"embedding_count"`
+	Checksum       string                 `json:"checksum"`
+	Metadata       map[string]interface{} `json:"metadata"`
+	CreatedAt      time.Time              `json:"created_at"`
+	CreatedBy      string                 `json:"created_by"`
+	Tags           []string               `json:"tags"`
 }
 
 // KnowledgeDocument represents a versioned document
 type KnowledgeDocument struct {
-	ID          string                 `json:"id"`
-	VersionID  string                 `json:"version_id"`
-	Content    string                 `json:"content"`
-	Embedding  []float32              `json:"embedding,omitempty"`
-	Metadata   map[string]interface{} `json:"metadata"`
-	CreatedAt  time.Time              `json:"created_at"`
-	UpdatedAt  time.Time              `json:"updated_at"`
+	ID        string                 `json:"id"`
+	VersionID string                 `json:"version_id"`
+	Content   string                 `json:"content"`
+	Embedding []float32              `json:"embedding,omitempty"`
+	Metadata  map[string]interface{} `json:"metadata"`
+	CreatedAt time.Time              `json:"created_at"`
+	UpdatedAt time.Time              `json:"updated_at"`
 }
 
 // KnowledgeVersioning interface for knowledge versioning operations
 type KnowledgeVersioning interface {
 	// CreateVersion creates a new version of a knowledge base
 	CreateVersion(ctx context.Context, knowledgeID string, metadata map[string]interface{}) (*KnowledgeVersion, error)
-	
+
 	// GetVersion retrieves a specific version
 	GetVersion(ctx context.Context, versionID string) (*KnowledgeVersion, error)
-	
+
 	// ListVersions lists all versions for a knowledge base
 	ListVersions(ctx context.Context, knowledgeID string) ([]*KnowledgeVersion, error)
-	
+
 	// AddDocument adds a document to a version
 	AddDocument(ctx context.Context, versionID string, doc *KnowledgeDocument) error
-	
+
 	// GetDocument retrieves a document from a version
 	GetDocument(ctx context.Context, versionID string, documentID string) (*KnowledgeDocument, error)
-	
+
 	// ListDocuments lists all documents in a version
 	ListDocuments(ctx context.Context, versionID string) ([]*KnowledgeDocument, error)
-	
+
 	// DeleteVersion deletes a version (soft delete)
 	DeleteVersion(ctx context.Context, versionID string) error
-	
+
 	// GetLatestVersion gets the latest version for a knowledge base
 	GetLatestVersion(ctx context.Context, knowledgeID string) (*KnowledgeVersion, error)
-	
+
 	// TagVersion tags a version with labels
 	TagVersion(ctx context.Context, versionID string, tags []string) error
 }
@@ -113,22 +113,22 @@ func (kv *InMemoryKnowledgeVersioning) CreateVersion(ctx context.Context, knowle
 	now := time.Now()
 
 	version := &KnowledgeVersion{
-		ID:            versionID,
-		KnowledgeID:   knowledgeID,
-		Version:       latestVersion,
-		DocumentCount: 0,
+		ID:             versionID,
+		KnowledgeID:    knowledgeID,
+		Version:        latestVersion,
+		DocumentCount:  0,
 		EmbeddingCount: 0,
-		Checksum:      "",
-		Metadata:      metadata,
-		CreatedAt:     now,
-		CreatedBy:     getCurrentUser(ctx),
-		Tags:          []string{},
+		Checksum:       "",
+		Metadata:       metadata,
+		CreatedAt:      now,
+		CreatedBy:      getCurrentUser(ctx),
+		Tags:           []string{},
 	}
 
 	kv.versions[versionID] = version
 	kv.documents[versionID] = []*KnowledgeDocument{}
 
-	logger.Info("Knowledge version created", 
+	logger.Info("Knowledge version created",
 		zap.String("version_id", versionID),
 		zap.String("version", latestVersion))
 
@@ -304,7 +304,7 @@ func (kv *InMemoryKnowledgeVersioning) TagVersion(ctx context.Context, versionID
 	}
 
 	version.Tags = append(version.Tags, tags...)
-	
+
 	// Remove duplicates
 	seen := make(map[string]bool)
 	result := []string{}
@@ -316,7 +316,7 @@ func (kv *InMemoryKnowledgeVersioning) TagVersion(ctx context.Context, versionID
 	}
 	version.Tags = result
 
-	logger.Info("Version tagged", 
+	logger.Info("Version tagged",
 		zap.String("version_id", versionID),
 		zap.Strings("tags", tags))
 

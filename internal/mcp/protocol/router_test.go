@@ -76,7 +76,7 @@ func TestToolRouter_Route_ToolsCall(t *testing.T) {
 	handler := &mockToolHandler{
 		name:        "test_tool",
 		description: "Test tool",
-		schema:      map[string]interface{}{
+		schema: map[string]interface{}{
 			"type": "object",
 			"properties": map[string]interface{}{
 				"param": map[string]interface{}{
@@ -119,7 +119,7 @@ func TestToolRouter_Route_Initialize(t *testing.T) {
 		Method:  "initialize",
 		Params: map[string]interface{}{
 			"protocolVersion": "2.0",
-			"capabilities":     map[string]interface{}{},
+			"capabilities":    map[string]interface{}{},
 			"clientInfo":      map[string]interface{}{"name": "test"},
 		},
 		ID: "1",
@@ -265,7 +265,7 @@ func TestToolRouter_ValidateParams(t *testing.T) {
 			name:   "missing required field",
 			params: map[string]interface{}{},
 			schema: map[string]interface{}{
-				"type": "object",
+				"type":     "object",
 				"required": []interface{}{"name"},
 				"properties": map[string]interface{}{
 					"name": map[string]interface{}{
@@ -279,7 +279,7 @@ func TestToolRouter_ValidateParams(t *testing.T) {
 			name:   "all required fields present",
 			params: map[string]interface{}{"name": "test"},
 			schema: map[string]interface{}{
-				"type": "object",
+				"type":     "object",
 				"required": []interface{}{"name"},
 				"properties": map[string]interface{}{
 					"name": map[string]interface{}{
@@ -306,4 +306,3 @@ func TestToolRouter_ValidateParams(t *testing.T) {
 		})
 	}
 }
-

@@ -19,24 +19,24 @@ type GeneratorFactory struct {
 
 // FactoryConfig holds configuration for the generator factory
 type FactoryConfig struct {
-	TemplateRoot     string            `json:"template_root"`
-	DefaultStack     string            `json:"default_stack"`
-	CacheEnabled     bool              `json:"cache_enabled"`
-	MaxConcurrent    int               `json:"max_concurrent"`
-	StackConfigs     map[string]*StackConfig `json:"stack_configs"`
+	TemplateRoot  string                  `json:"template_root"`
+	DefaultStack  string                  `json:"default_stack"`
+	CacheEnabled  bool                    `json:"cache_enabled"`
+	MaxConcurrent int                     `json:"max_concurrent"`
+	StackConfigs  map[string]*StackConfig `json:"stack_configs"`
 }
 
 // StackConfig holds configuration for a specific stack
 type StackConfig struct {
-	Name           string   `json:"name"`
-	Description    string   `json:"description"`
-	Version        string   `json:"version"`
-	TemplateDir    string   `json:"template_dir"`
-	Features       []string `json:"features"`
-	Dependencies   []string `json:"dependencies"`
-	SupportedOS    []string `json:"supported_os"`
-	MinGoVersion   string   `json:"min_go_version,omitempty"`
-	Requirements   []string `json:"requirements"`
+	Name         string   `json:"name"`
+	Description  string   `json:"description"`
+	Version      string   `json:"version"`
+	TemplateDir  string   `json:"template_dir"`
+	Features     []string `json:"features"`
+	Dependencies []string `json:"dependencies"`
+	SupportedOS  []string `json:"supported_os"`
+	MinGoVersion string   `json:"min_go_version,omitempty"`
+	Requirements []string `json:"requirements"`
 }
 
 // Generator defines the interface for all generators
@@ -52,11 +52,11 @@ type Generator interface {
 func NewGeneratorFactory(config *FactoryConfig) *GeneratorFactory {
 	if config == nil {
 		config = &FactoryConfig{
-			TemplateRoot:     "./templates",
-			DefaultStack:     "go",
-			CacheEnabled:     true,
-			MaxConcurrent:    10,
-			StackConfigs:     make(map[string]*StackConfig),
+			TemplateRoot:  "./templates",
+			DefaultStack:  "go",
+			CacheEnabled:  true,
+			MaxConcurrent: 10,
+			StackConfigs:  make(map[string]*StackConfig),
 		}
 	}
 
@@ -91,10 +91,10 @@ func (f *GeneratorFactory) initializeDefaultStackConfigs() {
 					"monitoring",
 					"graceful-shutdown",
 				},
-				Dependencies:   []string{},
-				SupportedOS:    []string{"linux", "darwin", "windows"},
-				MinGoVersion:  "1.21",
-				Requirements:  []string{"go", "docker"},
+				Dependencies: []string{},
+				SupportedOS:  []string{"linux", "darwin", "windows"},
+				MinGoVersion: "1.21",
+				Requirements: []string{"go", "docker"},
 			},
 			"web": {
 				Name:        "Web",
@@ -109,9 +109,9 @@ func (f *GeneratorFactory) initializeDefaultStackConfigs() {
 					"prettier",
 					"docker",
 				},
-				Dependencies:   []string{},
-				SupportedOS:    []string{"linux", "darwin", "windows"},
-				Requirements:  []string{"node", "npm", "docker"},
+				Dependencies: []string{},
+				SupportedOS:  []string{"linux", "darwin", "windows"},
+				Requirements: []string{"node", "npm", "docker"},
 			},
 			"tinygo": {
 				Name:        "TinyGo",
@@ -124,10 +124,10 @@ func (f *GeneratorFactory) initializeDefaultStackConfigs() {
 					"testing",
 					"docker",
 				},
-				Dependencies:   []string{},
-				SupportedOS:    []string{"linux", "darwin", "windows"},
-				MinGoVersion:  "1.21",
-				Requirements:  []string{"tinygo", "go"},
+				Dependencies: []string{},
+				SupportedOS:  []string{"linux", "darwin", "windows"},
+				MinGoVersion: "1.21",
+				Requirements: []string{"tinygo", "go"},
 			},
 			"wasm": {
 				Name:        "WebAssembly",
@@ -140,9 +140,9 @@ func (f *GeneratorFactory) initializeDefaultStackConfigs() {
 					"testing",
 					"docker",
 				},
-				Dependencies:   []string{},
-				SupportedOS:    []string{"linux", "darwin", "windows"},
-				Requirements:  []string{"rust", "cargo"},
+				Dependencies: []string{},
+				SupportedOS:  []string{"linux", "darwin", "windows"},
+				Requirements: []string{"rust", "cargo"},
 			},
 			"mcp-go-premium": {
 				Name:        "MCP Go Premium",
@@ -158,10 +158,10 @@ func (f *GeneratorFactory) initializeDefaultStackConfigs() {
 					"docker",
 					"kubernetes",
 				},
-				Dependencies:   []string{},
-				SupportedOS:    []string{"linux", "darwin", "windows"},
-				MinGoVersion:  "1.21",
-				Requirements:  []string{"go", "docker", "kubectl"},
+				Dependencies: []string{},
+				SupportedOS:  []string{"linux", "darwin", "windows"},
+				MinGoVersion: "1.21",
+				Requirements: []string{"go", "docker", "kubectl"},
 			},
 		}
 	}
@@ -254,7 +254,7 @@ func (f *GeneratorFactory) GetGeneratorInfo(stack string) (map[string]interface{
 	}
 
 	stackConfig, configExists := f.config.StackConfigs[stack]
-	
+
 	// Get template files info
 	templateFiles, err := generator.GetTemplateFilesInfo()
 	if err != nil {
@@ -270,12 +270,12 @@ func (f *GeneratorFactory) GetGeneratorInfo(stack string) (map[string]interface{
 
 	if configExists {
 		info["config"] = map[string]interface{}{
-			"description":    stackConfig.Description,
-			"version":        stackConfig.Version,
-			"features":       stackConfig.Features,
-			"dependencies":   stackConfig.Dependencies,
-			"supported_os":   stackConfig.SupportedOS,
-			"requirements":   stackConfig.Requirements,
+			"description":  stackConfig.Description,
+			"version":      stackConfig.Version,
+			"features":     stackConfig.Features,
+			"dependencies": stackConfig.Dependencies,
+			"supported_os": stackConfig.SupportedOS,
+			"requirements": stackConfig.Requirements,
 		}
 	}
 
@@ -288,12 +288,12 @@ func (f *GeneratorFactory) GetAllGeneratorInfo() map[string]interface{} {
 	defer f.mu.RUnlock()
 
 	result := make(map[string]interface{})
-	
+
 	for stack := range f.generators {
 		info, err := f.GetGeneratorInfo(stack)
 		if err != nil {
-			f.logger.Warn("Failed to get generator info", 
-				zap.String("stack", stack), 
+			f.logger.Warn("Failed to get generator info",
+				zap.String("stack", stack),
 				zap.Error(err))
 			continue
 		}
@@ -427,12 +427,12 @@ func (f *GeneratorFactory) UpdateConfig(config *FactoryConfig) error {
 
 // GetFactoryStats returns statistics about the generator factory
 type FactoryStats struct {
-	TotalGenerators   int      `json:"total_generators"`
-	AvailableStacks   []string `json:"available_stacks"`
-	DefaultStack      string   `json:"default_stack"`
-	TemplateRoot      string   `json:"template_root"`
-	CacheEnabled      bool     `json:"cache_enabled"`
-	MaxConcurrent     int      `json:"max_concurrent"`
+	TotalGenerators int      `json:"total_generators"`
+	AvailableStacks []string `json:"available_stacks"`
+	DefaultStack    string   `json:"default_stack"`
+	TemplateRoot    string   `json:"template_root"`
+	CacheEnabled    bool     `json:"cache_enabled"`
+	MaxConcurrent   int      `json:"max_concurrent"`
 }
 
 func (f *GeneratorFactory) GetFactoryStats() FactoryStats {

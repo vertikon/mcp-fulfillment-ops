@@ -1,1 +1,0 @@
-# Função: Health Checker (checa upstreams)

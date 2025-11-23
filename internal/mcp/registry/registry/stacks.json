@@ -1,0 +1,161 @@
+{
+  "go": {
+    "name": "go",
+    "display_name": "Go",
+    "description": "Go microservice with Clean Architecture",
+    "version": "1.0.0",
+    "category": "backend",
+    "features": [
+      "clean-architecture",
+      "docker",
+      "testing",
+      "monitoring",
+      "graceful-shutdown"
+    ],
+    "dependencies": [
+      "go \u003e= 1.21",
+      "docker"
+    ],
+    "supported_os": [
+      "linux",
+      "darwin",
+      "windows"
+    ],
+    "requirements": [],
+    "templates": [
+      "go",
+      "go-grpc",
+      "go-web"
+    ],
+    "status": "active",
+    "created_at": "2025-11-21T16:16:54.9208736-03:00",
+    "updated_at": "2025-11-21T16:16:54.9208736-03:00"
+  },
+  "mcp-go-premium": {
+    "name": "mcp-go-premium",
+    "display_name": "MCP Go Premium",
+    "description": "Premium Go MCP server with AI capabilities",
+    "version": "1.0.0",
+    "category": "mcp",
+    "features": [
+      "mcp-protocol",
+      "ai-integration",
+      "clean-architecture",
+      "monitoring",
+      "security",
+      "docker",
+      "kubernetes"
+    ],
+    "dependencies": [
+      "go \u003e= 1.21",
+      "docker",
+      "kubectl"
+    ],
+    "supported_os": [
+      "linux",
+      "darwin",
+      "windows"
+    ],
+    "requirements": [],
+    "templates": [
+      "mcp-go-premium",
+      "mcp-go-enterprise"
+    ],
+    "status": "active",
+    "created_at": "2025-11-21T16:16:54.9208736-03:00",
+    "updated_at": "2025-11-21T16:16:54.9208736-03:00"
+  },
+  "tinygo": {
+    "name": "tinygo",
+    "display_name": "TinyGo",
+    "description": "TinyGo project for WebAssembly and embedded systems",
+    "version": "1.0.0",
+    "category": "embedded",
+    "features": [
+      "wasm",
+      "embedded",
+      "testing",
+      "docker"
+    ],
+    "dependencies": [
+      "tinygo \u003e= 0.30",
+      "go \u003e= 1.21"
+    ],
+    "supported_os": [
+      "linux",
+      "darwin",
+      "windows"
+    ],
+    "requirements": [],
+    "templates": [
+      "tinygo-wasm",
+      "tinygo-embedded"
+    ],
+    "status": "active",
+    "created_at": "2025-11-21T16:16:54.9208736-03:00",
+    "updated_at": "2025-11-21T16:16:54.9208736-03:00"
+  },
+  "wasm": {
+    "name": "wasm",
+    "display_name": "WebAssembly",
+    "description": "WebAssembly project using Rust/C++",
+    "version": "1.0.0",
+    "category": "wasm",
+    "features": [
+      "rust",
+      "wasm-bindgen",
+      "testing",
+      "docker"
+    ],
+    "dependencies": [
+      "rust \u003e= 1.70",
+      "cargo"
+    ],
+    "supported_os": [
+      "linux",
+      "darwin",
+      "windows"
+    ],
+    "requirements": [],
+    "templates": [
+      "rust-wasm",
+      "cpp-wasm"
+    ],
+    "status": "active",
+    "created_at": "2025-11-21T16:16:54.9208736-03:00",
+    "updated_at": "2025-11-21T16:16:54.9208736-03:00"
+  },
+  "web": {
+    "name": "web",
+    "display_name": "Web",
+    "description": "React/Vue.js web application with modern tooling",
+    "version": "1.0.0",
+    "category": "frontend",
+    "features": [
+      "typescript",
+      "vite",
+      "testing",
+      "eslint",
+      "prettier",
+      "docker"
+    ],
+    "dependencies": [
+      "node \u003e= 18",
+      "npm"
+    ],
+    "supported_os": [
+      "linux",
+      "darwin",
+      "windows"
+    ],
+    "requirements": [],
+    "templates": [
+      "react",
+      "vue",
+      "angular"
+    ],
+    "status": "active",
+    "created_at": "2025-11-21T16:16:54.9208736-03:00",
+    "updated_at": "2025-11-21T16:16:54.9208736-03:00"
+  }
+}

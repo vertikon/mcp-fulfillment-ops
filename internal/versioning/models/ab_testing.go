@@ -14,26 +14,26 @@ import (
 
 // ABTest represents an A/B test configuration
 type ABTest struct {
-	ID              string                 `json:"id"`
-	Name            string                 `json:"name"`
-	ModelID         string                 `json:"model_id"`
-	VersionA        string                 `json:"version_a"` // version ID
-	VersionB        string                 `json:"version_b"` // version ID
-	TrafficSplit    TrafficSplit          `json:"traffic_split"`
-	StartTime       time.Time              `json:"start_time"`
-	EndTime         *time.Time             `json:"end_time,omitempty"`
-	Status          ABTestStatus           `json:"status"`
-	Metrics         ABTestMetrics          `json:"metrics"`
-	Criteria        PromotionCriteria      `json:"criteria"`
-	CreatedAt       time.Time              `json:"created_at"`
-	CreatedBy       string                 `json:"created_by"`
-	Metadata        map[string]interface{} `json:"metadata"`
+	ID           string                 `json:"id"`
+	Name         string                 `json:"name"`
+	ModelID      string                 `json:"model_id"`
+	VersionA     string                 `json:"version_a"` // version ID
+	VersionB     string                 `json:"version_b"` // version ID
+	TrafficSplit TrafficSplit           `json:"traffic_split"`
+	StartTime    time.Time              `json:"start_time"`
+	EndTime      *time.Time             `json:"end_time,omitempty"`
+	Status       ABTestStatus           `json:"status"`
+	Metrics      ABTestMetrics          `json:"metrics"`
+	Criteria     PromotionCriteria      `json:"criteria"`
+	CreatedAt    time.Time              `json:"created_at"`
+	CreatedBy    string                 `json:"created_by"`
+	Metadata     map[string]interface{} `json:"metadata"`
 }
 
 // TrafficSplit represents traffic distribution
 type TrafficSplit struct {
 	VersionAPercent float64 `json:"version_a_percent"` // 0.0 to 1.0
-	VersionBPercent  float64 `json:"version_b_percent"` // 0.0 to 1.0
+	VersionBPercent float64 `json:"version_b_percent"` // 0.0 to 1.0
 }
 
 // ABTestStatus represents test status
@@ -60,51 +60,51 @@ type ABTestMetrics struct {
 
 // PromotionCriteria represents criteria for promotion
 type PromotionCriteria struct {
-	MinRequests      int64   `json:"min_requests"`
-	MinScore         float64 `json:"min_score"`
-	MaxErrorRate     float64 `json:"max_error_rate"`
-	MaxLatencyMs     float64 `json:"max_latency_ms"`
-	MinImprovement   float64 `json:"min_improvement"` // percentage improvement required
+	MinRequests    int64   `json:"min_requests"`
+	MinScore       float64 `json:"min_score"`
+	MaxErrorRate   float64 `json:"max_error_rate"`
+	MaxLatencyMs   float64 `json:"max_latency_ms"`
+	MinImprovement float64 `json:"min_improvement"` // percentage improvement required
 }
 
 // ABTesting interface for A/B testing operations
 type ABTesting interface {
 	// CreateTest creates a new A/B test
 	CreateTest(ctx context.Context, test *ABTest) (*ABTest, error)
-	
+
 	// GetTest retrieves an A/B test
 	GetTest(ctx context.Context, testID string) (*ABTest, error)
-	
+
 	// StartTest starts an A/B test
 	StartTest(ctx context.Context, testID string) error
-	
+
 	// StopTest stops an A/B test
 	StopTest(ctx context.Context, testID string) error
-	
+
 	// RecordRequest records a request for a version
 	RecordRequest(ctx context.Context, testID string, versionID string, latency time.Duration, error bool) error
-	
+
 	// GetMetrics gets current metrics for a test
 	GetMetrics(ctx context.Context, testID string) (*ABTestMetrics, error)
-	
+
 	// EvaluateTest evaluates if test criteria are met
 	EvaluateTest(ctx context.Context, testID string) (*TestEvaluation, error)
-	
+
 	// SelectVersion selects which version to use based on traffic split
 	SelectVersion(ctx context.Context, testID string) (string, error)
-	
+
 	// ListTests lists all tests for a model
 	ListTests(ctx context.Context, modelID string) ([]*ABTest, error)
 }
 
 // TestEvaluation represents evaluation result
 type TestEvaluation struct {
-	TestID          string   `json:"test_id"`
-	CanPromote      bool     `json:"can_promote"`
-	PromoteVersion  string   `json:"promote_version,omitempty"`
-	Reason          string   `json:"reason"`
-	Metrics         ABTestMetrics `json:"metrics"`
-	CriteriaMet     bool     `json:"criteria_met"`
+	TestID         string        `json:"test_id"`
+	CanPromote     bool          `json:"can_promote"`
+	PromoteVersion string        `json:"promote_version,omitempty"`
+	Reason         string        `json:"reason"`
+	Metrics        ABTestMetrics `json:"metrics"`
+	CriteriaMet    bool          `json:"criteria_met"`
 }
 
 // InMemoryABTesting implements ABTesting

@@ -13,56 +13,56 @@ import (
 
 // QualityCheck represents a quality check
 type QualityCheck struct {
-	ID            string                 `json:"id"`
-	DatasetID     string                 `json:"dataset_id"`
-	VersionID     string                 `json:"version_id"`
-	CheckType     CheckType              `json:"check_type"`
-	Status        CheckStatus            `json:"status"`
-	Result        QualityResult          `json:"result"`
-	CreatedAt     time.Time              `json:"created_at"`
-	CompletedAt   *time.Time             `json:"completed_at,omitempty"`
-	Metadata      map[string]interface{} `json:"metadata"`
+	ID          string                 `json:"id"`
+	DatasetID   string                 `json:"dataset_id"`
+	VersionID   string                 `json:"version_id"`
+	CheckType   CheckType              `json:"check_type"`
+	Status      CheckStatus            `json:"status"`
+	Result      QualityResult          `json:"result"`
+	CreatedAt   time.Time              `json:"created_at"`
+	CompletedAt *time.Time             `json:"completed_at,omitempty"`
+	Metadata    map[string]interface{} `json:"metadata"`
 }
 
 // CheckType represents check type
 type CheckType string
 
 const (
-	CheckTypeTypeSafety     CheckType = "type_safety"
-	CheckTypeNullSafety     CheckType = "null_safety"
+	CheckTypeTypeSafety       CheckType = "type_safety"
+	CheckTypeNullSafety       CheckType = "null_safety"
 	CheckTypeSchemaCompliance CheckType = "schema_compliance"
 	CheckTypeDataCompleteness CheckType = "data_completeness"
-	CheckTypeDataConsistency CheckType = "data_consistency"
-	CheckTypeCustom          CheckType = "custom"
+	CheckTypeDataConsistency  CheckType = "data_consistency"
+	CheckTypeCustom           CheckType = "custom"
 )
 
 // CheckStatus represents check status
 type CheckStatus string
 
 const (
-	CheckStatusPending   CheckStatus = "pending"
-	CheckStatusRunning   CheckStatus = "running"
-	CheckStatusPassed    CheckStatus = "passed"
-	CheckStatusFailed    CheckStatus = "failed"
-	CheckStatusWarning   CheckStatus = "warning"
+	CheckStatusPending CheckStatus = "pending"
+	CheckStatusRunning CheckStatus = "running"
+	CheckStatusPassed  CheckStatus = "passed"
+	CheckStatusFailed  CheckStatus = "failed"
+	CheckStatusWarning CheckStatus = "warning"
 )
 
 // QualityResult represents quality check result
 type QualityResult struct {
-	Passed        bool                   `json:"passed"`
-	Score         float64                `json:"score"` // 0.0 to 1.0
-	Issues        []QualityIssue         `json:"issues"`
-	Metrics       map[string]interface{} `json:"metrics"`
+	Passed  bool                   `json:"passed"`
+	Score   float64                `json:"score"` // 0.0 to 1.0
+	Issues  []QualityIssue         `json:"issues"`
+	Metrics map[string]interface{} `json:"metrics"`
 }
 
 // QualityIssue represents a quality issue
 type QualityIssue struct {
-	ID          string                 `json:"id"`
-	Severity    IssueSeverity          `json:"severity"`
-	Type        string                 `json:"type"`
-	Message     string                 `json:"message"`
-	Location    string                 `json:"location,omitempty"`
-	Metadata    map[string]interface{} `json:"metadata"`
+	ID       string                 `json:"id"`
+	Severity IssueSeverity          `json:"severity"`
+	Type     string                 `json:"type"`
+	Message  string                 `json:"message"`
+	Location string                 `json:"location,omitempty"`
+	Metadata map[string]interface{} `json:"metadata"`
 }
 
 // IssueSeverity represents issue severity
@@ -79,28 +79,28 @@ const (
 type DataQuality interface {
 	// RunCheck runs a quality check
 	RunCheck(ctx context.Context, versionID string, checkType CheckType) (*QualityCheck, error)
-	
+
 	// GetCheck retrieves a quality check
 	GetCheck(ctx context.Context, checkID string) (*QualityCheck, error)
-	
+
 	// ListChecks lists quality checks for a version
 	ListChecks(ctx context.Context, versionID string) ([]*QualityCheck, error)
-	
+
 	// ValidateVersion validates a version against all checks
 	ValidateVersion(ctx context.Context, versionID string) (*ValidationResult, error)
-	
+
 	// GetQualityScore gets overall quality score for a version
 	GetQualityScore(ctx context.Context, versionID string) (float64, error)
 }
 
 // ValidationResult represents validation result
 type ValidationResult struct {
-	VersionID    string                 `json:"version_id"`
-	Passed       bool                   `json:"passed"`
-	Score        float64                `json:"score"`
-	Checks       []*QualityCheck        `json:"checks"`
-	TotalIssues  int                    `json:"total_issues"`
-	CriticalIssues int                  `json:"critical_issues"`
+	VersionID      string          `json:"version_id"`
+	Passed         bool            `json:"passed"`
+	Score          float64         `json:"score"`
+	Checks         []*QualityCheck `json:"checks"`
+	TotalIssues    int             `json:"total_issues"`
+	CriticalIssues int             `json:"critical_issues"`
 }
 
 // InMemoryDataQuality implements DataQuality
@@ -252,11 +252,11 @@ func (dq *InMemoryDataQuality) ValidateVersion(ctx context.Context, versionID st
 	passed := avgScore >= 0.8 && criticalIssues == 0
 
 	result := &ValidationResult{
-		VersionID:     versionID,
-		Passed:        passed,
-		Score:         avgScore,
-		Checks:        checks,
-		TotalIssues:   totalIssues,
+		VersionID:      versionID,
+		Passed:         passed,
+		Score:          avgScore,
+		Checks:         checks,
+		TotalIssues:    totalIssues,
 		CriticalIssues: criticalIssues,
 	}
 
@@ -286,7 +286,7 @@ func (dq *InMemoryDataQuality) GetQualityScore(ctx context.Context, versionID st
 func (dq *InMemoryDataQuality) executeCheck(ctx context.Context, checkType CheckType, versionID string) (*QualityResult, error) {
 	// Placeholder implementation
 	// In a real implementation, this would perform actual quality checks
-	
+
 	result := &QualityResult{
 		Passed:  true,
 		Score:   1.0,

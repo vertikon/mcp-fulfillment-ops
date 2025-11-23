@@ -26,9 +26,9 @@ func NewTemplateGenerator(templateRoot string) *TemplateGenerator {
 		CacheEnabled:  true,
 		MaxConcurrent: 10,
 	}
-	
+
 	factory := generators.NewGeneratorFactory(config)
-	
+
 	return &TemplateGenerator{
 		factory: factory,
 		logger:  logger.Get(),
@@ -58,7 +58,7 @@ func (g *TemplateGenerator) GenerateFromTemplate(ctx context.Context, req Templa
 
 	// Determine stack from template name
 	stack := g.determineStackFromTemplate(req.TemplateName)
-	
+
 	// Get generator for the stack
 	gen, err := g.factory.GetGenerator(stack)
 	if err != nil {
@@ -99,20 +99,20 @@ type TemplateGenerateResult struct {
 	CreatedAt    interface{} `json:"created_at"`
 	Duration     interface{} `json:"duration"`
 	Size         int64       `json:"size"`
-	Template     string     `json:"template"`
-	Stack        string     `json:"stack"`
+	Template     string      `json:"template"`
+	Stack        string      `json:"stack"`
 }
 
 // ListAvailableTemplates returns a list of available templates
 func (g *TemplateGenerator) ListAvailableTemplates() ([]string, error) {
 	templateRoot := g.factory.GetConfig().TemplateRoot
 	var templates []string
-	
+
 	err := filepath.Walk(templateRoot, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
-		
+
 		if info.IsDir() && path != templateRoot {
 			relPath, err := filepath.Rel(templateRoot, path)
 			if err != nil {
@@ -121,26 +121,26 @@ func (g *TemplateGenerator) ListAvailableTemplates() ([]string, error) {
 			templates = append(templates, relPath)
 			return filepath.SkipDir
 		}
-		
+
 		return nil
 	})
-	
+
 	return templates, err
 }
 
 // GetTemplateInfo returns information about a specific template
 func (g *TemplateGenerator) GetTemplateInfo(templateName string) (map[string]interface{}, error) {
 	templatePath := filepath.Join(g.factory.GetConfig().TemplateRoot, templateName)
-	
+
 	info := make(map[string]interface{})
 	info["name"] = templateName
 	info["path"] = templatePath
-	
+
 	// Check if template exists
 	if _, err := os.Stat(templatePath); os.IsNotExist(err) {
 		return nil, fmt.Errorf("template not found: %s", templateName)
 	}
-	
+
 	// Get generator info if stack can be determined
 	stack := g.determineStackFromTemplate(templateName)
 	if g.factory.HasGenerator(stack) {
@@ -149,7 +149,7 @@ func (g *TemplateGenerator) GetTemplateInfo(templateName string) (map[string]int
 			info["generator"] = genInfo
 		}
 	}
-	
+
 	return info, nil
 }
 
@@ -164,11 +164,11 @@ func (g *TemplateGenerator) determineStackFromTemplate(templateName string) stri
 		"wasm":           "wasm",
 		"mcp-go-premium": "mcp-go-premium",
 	}
-	
+
 	if stack, ok := templateMap[templateName]; ok {
 		return stack
 	}
-	
+
 	// Default to go if not found
 	return "go"
 }
@@ -178,20 +178,20 @@ func (g *TemplateGenerator) Validate(req TemplateGenerateRequest) error {
 	if req.TemplateName == "" {
 		return fmt.Errorf("template name is required")
 	}
-	
+
 	if req.ProjectName == "" {
 		return fmt.Errorf("project name is required")
 	}
-	
+
 	if req.OutputPath == "" {
 		return fmt.Errorf("output path is required")
 	}
-	
+
 	// Validate template exists
 	templatePath := filepath.Join(g.factory.GetConfig().TemplateRoot, req.TemplateName)
 	if _, err := os.Stat(templatePath); os.IsNotExist(err) {
 		return fmt.Errorf("template not found: %s", req.TemplateName)
 	}
-	
+
 	return nil
 }

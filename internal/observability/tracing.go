@@ -55,4 +55,3 @@ func (tp *TracerProvider) Shutdown(ctx context.Context) error {
 func (tp *TracerProvider) Tracer(name string) trace.Tracer {
 	return otel.Tracer(name)
 }
-

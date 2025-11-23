@@ -17,10 +17,10 @@ func TestNewMCPRegistry(t *testing.T) {
 		{
 			name: "custom config",
 			config: &RegistryConfig{
-				StoragePath:   "./custom-registry",
-				AutoSave:       false,
-				MaxProjects:    500,
-				MaxTemplates:  50,
+				StoragePath:  "./custom-registry",
+				AutoSave:     false,
+				MaxProjects:  500,
+				MaxTemplates: 50,
 			},
 		},
 	}
@@ -279,4 +279,3 @@ func TestMCPRegistry_GetRegistryStats(t *testing.T) {
 		t.Error("TotalStacks should be > 0 (default stacks)")
 	}
 }
-

@@ -1,1 +1,0 @@
-# Função: Fábrica de validadores

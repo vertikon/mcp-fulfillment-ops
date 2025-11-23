@@ -1,1 +1,0 @@
-# Função: Iniciar servidor Hulk (HTTP/gRPC/MCP)

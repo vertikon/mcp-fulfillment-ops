@@ -11,10 +11,10 @@ import (
 
 func TestNewWorkerPool(t *testing.T) {
 	tests := []struct {
-		name      string
-		workers   int
-		queueSize int
-		timeout   time.Duration
+		name        string
+		workers     int
+		queueSize   int
+		timeout     time.Duration
 		wantWorkers int
 	}{
 		{
@@ -99,10 +99,10 @@ func TestWorkerPool_Stop(t *testing.T) {
 
 func TestWorkerPool_Submit(t *testing.T) {
 	tests := []struct {
-		name      string
-		setup     func(*WorkerPool)
-		task      Task
-		wantErr   bool
+		name        string
+		setup       func(*WorkerPool)
+		task        Task
+		wantErr     bool
 		wantErrType error
 	}{
 		{
@@ -338,4 +338,3 @@ func TestWorkerPool_ConcurrentSubmits(t *testing.T) {
 		t.Errorf("Expected at least %d tasks processed, got %d", numTasks/2, stats.Processed)
 	}
 }
-

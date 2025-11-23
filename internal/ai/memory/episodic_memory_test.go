@@ -106,7 +106,7 @@ func TestEpisodicMemoryManager_Consolidate(t *testing.T) {
 
 	ctx := context.Background()
 	memory, _ := manager.Create(ctx, "content", "session1")
-	
+
 	// Set importance high enough for consolidation
 	if err := memory.SetImportance(0.8); err != nil {
 		t.Fatalf("Failed to set importance: %v", err)
@@ -167,4 +167,3 @@ func TestEpisodicMemoryManager_GetByImportance(t *testing.T) {
 		}
 	}
 }
-

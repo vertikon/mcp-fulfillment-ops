@@ -24,7 +24,7 @@ var metricsCmd = &cobra.Command{
 	},
 }
 
-func init() {
+func registerMetricsCmd() {
 	AnalyticsCmd.AddCommand(metricsCmd)
 }
 

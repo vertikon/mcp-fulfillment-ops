@@ -10,7 +10,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/vertikon/mcp-fulfillment-ops/internal/mcp/protocol"
 	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
@@ -30,22 +29,22 @@ type MCPServer struct {
 
 // ServerConfig holds configuration for the MCP server
 type ServerConfig struct {
-	Name        string            `json:"name"`
-	Version     string            `json:"version"`
-	Protocol    string            `json:"protocol"`
-	Transport   string            `json:"transport"` // "stdio" or "sse"
-	Port        int               `json:"port,omitempty"`
-	Host        string            `json:"host,omitempty"`
-	Headers     map[string]string `json:"headers,omitempty"`
-	MaxWorkers  int               `json:"max_workers"`
-	Timeout     time.Duration     `json:"timeout"`
-	EnableAuth  bool              `json:"enable_auth"`
-	AuthToken   string            `json:"auth_token,omitempty"`
+	Name       string            `json:"name"`
+	Version    string            `json:"version"`
+	Protocol   string            `json:"protocol"`
+	Transport  string            `json:"transport"` // "stdio" or "sse"
+	Port       int               `json:"port,omitempty"`
+	Host       string            `json:"host,omitempty"`
+	Headers    map[string]string `json:"headers,omitempty"`
+	MaxWorkers int               `json:"max_workers"`
+	Timeout    time.Duration     `json:"timeout"`
+	EnableAuth bool              `json:"enable_auth"`
+	AuthToken  string            `json:"auth_token,omitempty"`
 }
 
 // ToolHandler represents a handler for MCP tools
 type ToolHandler interface {
-	Handle(ctx context.Context, request *protocol.JSONRPCRequest) (*protocol.JSONRPCResponse, error)
+	Handle(ctx context.Context, request *JSONRPCRequest) (*JSONRPCResponse, error)
 	Name() string
 	Description() string
 	Schema() map[string]interface{}
@@ -92,7 +91,7 @@ func (s *MCPServer) RegisterHandler(handler ToolHandler) error {
 	s.handlers[name] = handler
 	s.router = NewToolRouter(s.handlers)
 
-	s.logger.Info("Registered MCP tool handler", 
+	s.logger.Info("Registered MCP tool handler",
 		zap.String("tool", name),
 		zap.String("description", handler.Description()))
 
@@ -126,7 +125,7 @@ func (s *MCPServer) Start() error {
 // startStdioServer starts the server in stdio mode
 func (s *MCPServer) startStdioServer() error {
 	s.logger.Info("Starting MCP server in stdio mode")
-	
+
 	go func() {
 		decoder := json.NewDecoder(os.Stdin)
 		encoder := json.NewEncoder(os.Stdout)
@@ -138,7 +137,7 @@ func (s *MCPServer) startStdioServer() error {
 			default:
 			}
 
-			var request protocol.JSONRPCRequest
+			var request JSONRPCRequest
 			if err := decoder.Decode(&request); err != nil {
 				if err == io.EOF {
 					s.logger.Info("EOF received, shutting down stdio server")
@@ -162,10 +161,10 @@ func (s *MCPServer) startStdioServer() error {
 // startHTTPServer starts the server in HTTP/SSE mode
 func (s *MCPServer) startHTTPServer() error {
 	mux := http.NewServeMux()
-	
+
 	// MCP endpoint
 	mux.HandleFunc("/mcp", s.handleHTTPRequest)
-	
+
 	// Health check endpoint
 	mux.HandleFunc("/health", s.handleHealthCheck)
 
@@ -176,7 +175,7 @@ func (s *MCPServer) startHTTPServer() error {
 		WriteTimeout: s.config.Timeout,
 	}
 
-	s.logger.Info("Starting HTTP server", 
+	s.logger.Info("Starting HTTP server",
 		zap.String("addr", s.httpServer.Addr))
 
 	go func() {
@@ -190,7 +189,7 @@ func (s *MCPServer) startHTTPServer() error {
 }
 
 // processRequest processes a JSON-RPC request
-func (s *MCPServer) processRequest(request *protocol.JSONRPCRequest) *protocol.JSONRPCResponse {
+func (s *MCPServer) processRequest(request *JSONRPCRequest) *JSONRPCResponse {
 	ctx, cancel := context.WithTimeout(context.Background(), s.config.Timeout)
 	defer cancel()
 
@@ -207,7 +206,7 @@ func (s *MCPServer) processRequest(request *protocol.JSONRPCRequest) *protocol.J
 }
 
 // handleInitialize handles the MCP initialize method
-func (s *MCPServer) handleInitialize(ctx context.Context, request *protocol.JSONRPCRequest) *protocol.JSONRPCResponse {
+func (s *MCPServer) handleInitialize(ctx context.Context, request *JSONRPCRequest) *JSONRPCResponse {
 	result := map[string]interface{}{
 		"protocolVersion": s.config.Protocol,
 		"capabilities": map[string]interface{}{
@@ -221,7 +220,7 @@ func (s *MCPServer) handleInitialize(ctx context.Context, request *protocol.JSON
 		},
 	}
 
-	return &protocol.JSONRPCResponse{
+	return &JSONRPCResponse{
 		JSONRPC: "2.0",
 		ID:      request.ID,
 		Result:  result,
@@ -254,7 +253,7 @@ func (s *MCPServer) handleHTTPRequest(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	var request protocol.JSONRPCRequest
+	var request JSONRPCRequest
 	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
 		s.logger.Error("Error decoding request", zap.Error(err))
 		http.Error(w, "Invalid JSON", http.StatusBadRequest)
@@ -262,7 +261,7 @@ func (s *MCPServer) handleHTTPRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	response := s.processRequest(&request)
-	
+
 	w.Header().Set("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(response); err != nil {
 		s.logger.Error("Error encoding response", zap.Error(err))
@@ -295,13 +294,13 @@ func (s *MCPServer) Stop() error {
 	}
 
 	s.logger.Info("Stopping MCP server")
-	
+
 	s.cancelFunc()
 
 	if s.httpServer != nil {
 		ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 		defer cancel()
-		
+
 		if err := s.httpServer.Shutdown(ctx); err != nil {
 			s.logger.Error("Error shutting down HTTP server", zap.Error(err))
 		}

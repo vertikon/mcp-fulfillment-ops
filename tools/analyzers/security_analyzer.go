@@ -1,1 +1,0 @@
-# Função: Análise de segurança (SAST, secrets, config)

@@ -5,7 +5,7 @@ import "time"
 // Policy define políticas de workflow físico
 type Policy struct {
 	// SLA máximo para operações (em minutos)
-	MaxInboundDurationMinutes   int
+	MaxInboundDurationMinutes    int
 	MaxOutboundDurationMinutes   int
 	MaxTransferDurationMinutes   int
 	MaxReturnDurationMinutes     int
@@ -15,11 +15,11 @@ type Policy struct {
 // DefaultPolicy retorna a política padrão
 func DefaultPolicy() *Policy {
 	return &Policy{
-		MaxInboundDurationMinutes:   120,  // 2 horas para recebimento
-		MaxOutboundDurationMinutes:   60,   // 1 hora para expedição
-		MaxTransferDurationMinutes:   180,  // 3 horas para transferência
-		MaxReturnDurationMinutes:     90,   // 1.5 horas para devolução
-		MaxCycleCountDurationMinutes: 240,  // 4 horas para contagem
+		MaxInboundDurationMinutes:    120, // 2 horas para recebimento
+		MaxOutboundDurationMinutes:   60,  // 1 hora para expedição
+		MaxTransferDurationMinutes:   180, // 3 horas para transferência
+		MaxReturnDurationMinutes:     90,  // 1.5 horas para devolução
+		MaxCycleCountDurationMinutes: 240, // 4 horas para contagem
 	}
 }
 
@@ -59,4 +59,3 @@ func CheckSLA(createdAt time.Time, maxDurationMinutes int) bool {
 func IsIdempotencyKeyValid(key string) bool {
 	return len(key) > 0 && len(key) <= 255
 }
-

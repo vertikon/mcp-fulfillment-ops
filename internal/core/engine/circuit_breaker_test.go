@@ -310,4 +310,3 @@ func TestCircuitBreaker_ResetTimeout(t *testing.T) {
 		t.Errorf("Expected StateHalfOpen, got %v", cb.State())
 	}
 }
-

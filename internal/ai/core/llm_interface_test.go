@@ -23,12 +23,12 @@ func (m *mockLLMClient) Generate(ctx context.Context, req *LLMRequest) (*LLMResp
 	}
 	return &LLMResponse{
 		Content:      "mock response",
-		Model:         req.Model,
-		Provider:      m.provider,
-		TokensUsed:    10,
-		FinishReason:  "stop",
-		Latency:       100 * time.Millisecond,
-		Metadata:      make(map[string]interface{}),
+		Model:        req.Model,
+		Provider:     m.provider,
+		TokensUsed:   10,
+		FinishReason: "stop",
+		Latency:      100 * time.Millisecond,
+		Metadata:     make(map[string]interface{}),
 	}, nil
 }
 
@@ -38,7 +38,7 @@ func (m *mockLLMClient) GenerateStream(ctx context.Context, req *LLMRequest) (<-
 	}
 	ch := make(chan *LLMResponse, 1)
 	ch <- &LLMResponse{
-		Content:     "stream response",
+		Content:      "stream response",
 		Model:        req.Model,
 		Provider:     m.provider,
 		TokensUsed:   5,
@@ -134,21 +134,21 @@ func TestLLMInterface_Generate_Success(t *testing.T) {
 
 func TestLLMInterface_Generate_Fallback(t *testing.T) {
 	clients := make(map[LLMProvider]LLMClient)
-	
+
 	// Primary provider unavailable
 	primaryClient := &mockLLMClient{
 		provider:  ProviderOpenAI,
 		available: false,
 		models:    []string{"gpt-4"},
 	}
-	
+
 	// Fallback provider available
 	fallbackClient := &mockLLMClient{
 		provider:  ProviderGemini,
 		available: true,
 		models:    []string{"gemini-pro"},
 	}
-	
+
 	clients[ProviderOpenAI] = primaryClient
 	clients[ProviderGemini] = fallbackClient
 
@@ -212,7 +212,7 @@ func TestLLMInterface_Generate_Retry(t *testing.T) {
 				}
 			}
 			return &LLMResponse{
-				Content:     "success after retry",
+				Content:      "success after retry",
 				Model:        req.Model,
 				Provider:     ProviderOpenAI,
 				TokensUsed:   10,
@@ -305,7 +305,7 @@ func TestLLMInterface_GenerateStream(t *testing.T) {
 
 func TestLLMInterface_GetAvailableProviders(t *testing.T) {
 	clients := make(map[LLMProvider]LLMClient)
-	
+
 	clients[ProviderOpenAI] = &mockLLMClient{
 		provider:  ProviderOpenAI,
 		available: true,
@@ -408,4 +408,3 @@ func containsSubstring(s, substr string) bool {
 	}
 	return false
 }
-

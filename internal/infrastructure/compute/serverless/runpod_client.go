@@ -105,9 +105,9 @@ func (c *runpodClient) CreateJob(ctx context.Context, config *RunPodJobConfig) (
 
 	// Build request payload
 	payload := map[string]interface{}{
-		"image":        config.Image,
-		"gpuTypeId":    config.GPUType,
-		"gpuCount":     config.GPUCount,
+		"image":               config.Image,
+		"gpuTypeId":           config.GPUType,
+		"gpuCount":            config.GPUCount,
 		"containerDiskSizeGb": 20,
 	}
 
@@ -184,12 +184,12 @@ func (c *runpodClient) GetJobStatus(ctx context.Context, jobID string) (*RunPodJ
 	}
 
 	var result struct {
-		ID        string    `json:"id"`
-		Status    string    `json:"status"`
-		Progress  float64   `json:"progress"`
-		StartedAt time.Time `json:"startedAt"`
+		ID        string     `json:"id"`
+		Status    string     `json:"status"`
+		Progress  float64    `json:"progress"`
+		StartedAt time.Time  `json:"startedAt"`
 		EndedAt   *time.Time `json:"endedAt,omitempty"`
-		Error     string    `json:"error,omitempty"`
+		Error     string     `json:"error,omitempty"`
 	}
 
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {

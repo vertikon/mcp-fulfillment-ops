@@ -17,13 +17,13 @@ type RunPodClient interface {
 
 // RunPodJobConfig represents RunPod job configuration
 type RunPodJobConfig struct {
-	Image          string
-	GPUType        string
-	ContainerDisk  int
-	VolumeMounts   map[string]string
-	EnvVars        map[string]string
-	Command        string
-	Input          map[string]interface{}
+	Image         string
+	GPUType       string
+	ContainerDisk int
+	VolumeMounts  map[string]string
+	EnvVars       map[string]string
+	Command       string
+	Input         map[string]interface{}
 }
 
 // RunPodJobStatus represents RunPod job status

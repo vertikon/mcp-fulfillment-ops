@@ -1,1 +1,0 @@
-# Função: Gerenciador FaaS multi-provider

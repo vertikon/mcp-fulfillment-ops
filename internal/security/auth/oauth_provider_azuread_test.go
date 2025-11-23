@@ -165,4 +165,3 @@ func TestNewAzureADProvider_DefaultScopes(t *testing.T) {
 	assert.Contains(t, provider.oauth2Config.Scopes, "email")
 	assert.Contains(t, provider.oauth2Config.Scopes, "User.Read")
 }
-

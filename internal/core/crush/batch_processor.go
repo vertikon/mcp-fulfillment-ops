@@ -4,6 +4,7 @@ package crush
 import (
 	"context"
 	"fmt"
+	"runtime"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -14,14 +15,14 @@ import (
 
 // BatchProcessorConfig represents configuration for batch processing
 type BatchProcessorConfig struct {
-	MaxBatchSize      int           `json:"max_batch_size"`
-	MinBatchSize      int           `json:"min_batch_size"`
-	Timeout           time.Duration `json:"timeout"`
-	MaxLatency        time.Duration `json:"max_latency"`
-	EnableDynamicBatching bool     `json:"enable_dynamic_batching"`
-	EnablePrefetch    bool          `json:"enable_prefetch"`
-	EnableAsync       bool          `json:"enable_async"`
-	CompressionType   string        `json:"compression_type"`
+	MaxBatchSize          int           `json:"max_batch_size"`
+	MinBatchSize          int           `json:"min_batch_size"`
+	Timeout               time.Duration `json:"timeout"`
+	MaxLatency            time.Duration `json:"max_latency"`
+	EnableDynamicBatching bool          `json:"enable_dynamic_batching"`
+	EnablePrefetch        bool          `json:"enable_prefetch"`
+	EnableAsync           bool          `json:"enable_async"`
+	CompressionType       string        `json:"compression_type"`
 }
 
 // BatchType represents different types of batch processing
@@ -37,19 +38,19 @@ const (
 
 // Batch represents a collection of items to be processed together
 type Batch struct {
-	ID          string      `json:"id"`
-	Type        BatchType   `json:"type"`
-	Items       []interface{} `json:"items"`
-	Size        int         `json:"size"`
-	CreatedAt   time.Time   `json:"created_at"`
-	StartedAt   *time.Time  `json:"started_at,omitempty"`
-	CompletedAt *time.Time  `json:"completed_at,omitempty"`
-	Timeout     time.Duration `json:"timeout"`
-	Priority    int         `json:"priority"`
-	Context     context.Context `json:"-"`
-	Handler     BatchHandler `json:"-"`
-	Results     []interface{} `json:"results,omitempty"`
-	Errors      []error     `json:"errors,omitempty"`
+	ID          string                 `json:"id"`
+	Type        BatchType              `json:"type"`
+	Items       []interface{}          `json:"items"`
+	Size        int                    `json:"size"`
+	CreatedAt   time.Time              `json:"created_at"`
+	StartedAt   *time.Time             `json:"started_at,omitempty"`
+	CompletedAt *time.Time             `json:"completed_at,omitempty"`
+	Timeout     time.Duration          `json:"timeout"`
+	Priority    int                    `json:"priority"`
+	Context     context.Context        `json:"-"`
+	Handler     BatchHandler           `json:"-"`
+	Results     []interface{}          `json:"results,omitempty"`
+	Errors      []error                `json:"errors,omitempty"`
 	Metadata    map[string]interface{} `json:"metadata,omitempty"`
 }
 
@@ -58,93 +59,93 @@ type BatchHandler func(ctx context.Context, batch *Batch) ([]interface{}, []erro
 
 // BatchProcessor manages batch processing optimization
 type BatchProcessor struct {
-	config          BatchProcessorConfig
-	batches         map[string]*Batch
-	batchQueue      chan *Batch
-	resultQueue     chan *BatchResult
-	ctx             context.Context
-	cancel          context.CancelFunc
-	wg              sync.WaitGroup
-	stats           *BatchProcessorStats
-	dynamicSizing   *DynamicBatchSizer
-	prefetcher      *BatchPrefetcher
-	asyncProcessor  *AsyncBatchProcessor
-	mu              sync.RWMutex
+	config         BatchProcessorConfig
+	batches        map[string]*Batch
+	batchQueue     chan *Batch
+	resultQueue    chan *BatchResult
+	ctx            context.Context
+	cancel         context.CancelFunc
+	wg             sync.WaitGroup
+	stats          *BatchProcessorStats
+	dynamicSizing  *DynamicBatchSizer
+	prefetcher     *BatchPrefetcher
+	asyncProcessor *AsyncBatchProcessor
+	mu             sync.RWMutex
 }
 
 // BatchResult represents the result of batch processing
 type BatchResult struct {
-	BatchID     string        `json:"batch_id"`
-	Results     []interface{} `json:"results"`
-	Errors      []error       `json:"errors"`
-	Duration    time.Duration `json:"duration"`
-	ProcessedAt time.Time     `json:"processed_at"`
+	BatchID     string                 `json:"batch_id"`
+	Results     []interface{}          `json:"results"`
+	Errors      []error                `json:"errors"`
+	Duration    time.Duration          `json:"duration"`
+	ProcessedAt time.Time              `json:"processed_at"`
 	Metadata    map[string]interface{} `json:"metadata,omitempty"`
 }
 
 // DynamicBatchSizer adjusts batch sizes based on performance
 type DynamicBatchSizer struct {
-	config          DynamicSizingConfig
+	config           DynamicSizingConfig
 	currentBatchSize int
-	performance     *PerformanceMetrics
-	strategy        SizingStrategy
-	stats           *DynamicSizingStats
+	performance      *PerformanceMetrics
+	strategy         SizingStrategy
+	stats            *DynamicSizingStats
 }
 
 // DynamicSizingConfig represents dynamic sizing configuration
 type DynamicSizingConfig struct {
-	Enabled          bool          `json:"enabled"`
-	Strategy         SizingStrategy `json:"strategy"`
-	MinSize          int           `json:"min_size"`
-	MaxSize          int           `json:"max_size"`
-	AdjustmentInterval time.Duration `json:"adjustment_interval"`
-	TargetLatency    time.Duration `json:"target_latency"`
-	TargetThroughput float64       `json:"target_throughput"`
+	Enabled            bool           `json:"enabled"`
+	Strategy           SizingStrategy `json:"strategy"`
+	MinSize            int            `json:"min_size"`
+	MaxSize            int            `json:"max_size"`
+	AdjustmentInterval time.Duration  `json:"adjustment_interval"`
+	TargetLatency      time.Duration  `json:"target_latency"`
+	TargetThroughput   float64        `json:"target_throughput"`
 }
 
 // SizingStrategy represents different batch sizing strategies
 type SizingStrategy string
 
 const (
-	StrategyLatencyBased  SizingStrategy = "latency_based"
+	StrategyLatencyBased    SizingStrategy = "latency_based"
 	StrategyThroughputBased SizingStrategy = "throughput_based"
-	StrategyMemoryBased   SizingStrategy = "memory_based"
-	StrategyAdaptive      SizingStrategy = "adaptive"
+	StrategyMemoryBased     SizingStrategy = "memory_based"
+	StrategyAdaptive        SizingStrategy = "adaptive"
 )
 
 // PerformanceMetrics tracks batch processing performance
 type PerformanceMetrics struct {
-	AvgLatency       time.Duration `json:"avg_latency"`
-	AvgThroughput    float64       `json:"avg_throughput"`
-	MemoryUsage      float64       `json:"memory_usage"`
-	ErrorRate        float64       `json:"error_rate"`
-	LastUpdated      time.Time      `json:"last_updated"`
+	AvgLatency    time.Duration `json:"avg_latency"`
+	AvgThroughput float64       `json:"avg_throughput"`
+	MemoryUsage   float64       `json:"memory_usage"`
+	ErrorRate     float64       `json:"error_rate"`
+	LastUpdated   time.Time     `json:"last_updated"`
 }
 
 // DynamicSizingStats tracks dynamic sizing statistics
 type DynamicSizingStats struct {
-	SizeAdjustments    int64 `json:"size_adjustments"`
-	CurrentSize       int    `json:"current_size"`
-	MinSizeReached    int    `json:"min_size_reached"`
-	MaxSizeReached    int    `json:"max_size_reached"`
-	LastAdjustment    int64  `json:"last_adjustment"`
+	SizeAdjustments int64 `json:"size_adjustments"`
+	CurrentSize     int   `json:"current_size"`
+	MinSizeReached  int   `json:"min_size_reached"`
+	MaxSizeReached  int   `json:"max_size_reached"`
+	LastAdjustment  int64 `json:"last_adjustment"`
 }
 
 // BatchPrefetcher prefetches batches for improved performance
 type BatchPrefetcher struct {
-	config       PrefetchConfig
+	config        PrefetchConfig
 	prefetchQueue chan *Batch
-	cache        map[string]*Batch
-	stats        *PrefetchStats
-	mu           sync.RWMutex
+	cache         map[string]*Batch
+	stats         *PrefetchStats
+	mu            sync.RWMutex
 }
 
 // PrefetchConfig represents prefetch configuration
 type PrefetchConfig struct {
-	Enabled         bool          `json:"enabled"`
-	PrefetchSize    int           `json:"prefetch_size"`
-	PrefetchTimeout time.Duration `json:"prefetch_timeout"`
-	CacheSize       int           `json:"cache_size"`
+	Enabled         bool           `json:"enabled"`
+	PrefetchSize    int            `json:"prefetch_size"`
+	PrefetchTimeout time.Duration  `json:"prefetch_timeout"`
+	CacheSize       int            `json:"cache_size"`
 	PrefetchPolicy  PrefetchPolicy `json:"prefetch_policy"`
 }
 
@@ -152,60 +153,60 @@ type PrefetchConfig struct {
 type PrefetchPolicy string
 
 const (
-	PolicyLRU          PrefetchPolicy = "lru"
-	PolicyPredictive   PrefetchPolicy = "predictive"
-	PolicyProactive    PrefetchPolicy = "proactive"
-	PolicyLazy        PrefetchPolicy = "lazy"
+	PrefetchPolicyLRU        PrefetchPolicy = "lru"
+	PrefetchPolicyPredictive PrefetchPolicy = "predictive"
+	PrefetchPolicyProactive  PrefetchPolicy = "proactive"
+	PrefetchPolicyLazy       PrefetchPolicy = "lazy"
 )
 
 // PrefetchStats tracks prefetch performance
 type PrefetchStats struct {
-	TotalPrefetches   int64 `json:"total_prefetches"`
-	CacheHits         int64 `json:"cache_hits"`
-	CacheMisses       int64 `json:"cache_misses"`
-	HitRate           float64 `json:"hit_rate"`
-	LastPrefetch      int64 `json:"last_prefetch"`
+	TotalPrefetches int64   `json:"total_prefetches"`
+	CacheHits       int64   `json:"cache_hits"`
+	CacheMisses     int64   `json:"cache_misses"`
+	HitRate         float64 `json:"hit_rate"`
+	LastPrefetch    int64   `json:"last_prefetch"`
 }
 
 // AsyncBatchProcessor processes batches asynchronously
 type AsyncBatchProcessor struct {
-	config       AsyncProcessingConfig
-	workerPool   *WorkerPool
-	processor    BatchHandler
-	stats        *AsyncProcessingStats
+	config     AsyncProcessingConfig
+	workerPool *WorkerPool
+	processor  BatchHandler
+	stats      *AsyncProcessingStats
 }
 
 // AsyncProcessingConfig represents async processing configuration
 type AsyncProcessingConfig struct {
-	Enabled        bool          `json:"enabled"`
-	NumWorkers     int           `json:"num_workers"`
-	QueueSize      int           `json:"queue_size"`
-	WorkerTimeout  time.Duration `json:"worker_timeout"`
-	RetryAttempts  int           `json:"retry_attempts"`
-	BackoffFactor  float64       `json:"backoff_factor"`
+	Enabled       bool          `json:"enabled"`
+	NumWorkers    int           `json:"num_workers"`
+	QueueSize     int           `json:"queue_size"`
+	WorkerTimeout time.Duration `json:"worker_timeout"`
+	RetryAttempts int           `json:"retry_attempts"`
+	BackoffFactor float64       `json:"backoff_factor"`
 }
 
 // AsyncProcessingStats tracks async processing statistics
 type AsyncProcessingStats struct {
-	TotalBatches     int64   `json:"total_batches"`
-	AsyncBatches     int64   `json:"async_batches"`
-	BatchErrors      int64   `json:"batch_errors"`
+	TotalBatches      int64         `json:"total_batches"`
+	AsyncBatches      int64         `json:"async_batches"`
+	BatchErrors       int64         `json:"batch_errors"`
 	AvgProcessingTime time.Duration `json:"avg_processing_time"`
-	WorkerUtilization float64 `json:"worker_utilization"`
+	WorkerUtilization float64       `json:"worker_utilization"`
 }
 
 // BatchProcessorStats tracks batch processor performance
 type BatchProcessorStats struct {
-	TotalBatches      int64         `json:"total_batches"`
-	TotalItems        int64         `json:"total_items"`
-	CompletedBatches  int64         `json:"completed_batches"`
-	FailedBatches     int64         `json:"failed_batches"`
-	AvgBatchSize      float64       `json:"avg_batch_size"`
-	AvgProcessingTime time.Duration `json:"avg_processing_time"`
-	TotalProcessingTime time.Duration `json:"total_processing_time"`
-	Throughput       float64       `json:"throughput"`
-	QueueUtilization  float64       `json:"queue_utilization"`
-	LastUpdated      time.Time      `json:"last_updated"`
+	TotalBatches        int64         `json:"total_batches"`
+	TotalItems          int64         `json:"total_items"`
+	CompletedBatches    int64         `json:"completed_batches"`
+	FailedBatches       int64         `json:"failed_batches"`
+	AvgBatchSize        float64       `json:"avg_batch_size"`
+	AvgProcessingTime   time.Duration `json:"avg_processing_time"`
+	TotalProcessingTime int64         `json:"total_processing_time"` // nanoseconds
+	Throughput          float64       `json:"throughput"`
+	QueueUtilization    float64       `json:"queue_utilization"`
+	LastUpdated         time.Time     `json:"last_updated"`
 }
 
 // NewBatchProcessor creates a new batch processor
@@ -230,7 +231,7 @@ func NewBatchProcessor(config BatchProcessorConfig) *BatchProcessor {
 	)
 
 	ctx, cancel := context.WithCancel(context.Background())
-	
+
 	processor := &BatchProcessor{
 		config:      config,
 		batches:     make(map[string]*Batch),
@@ -244,10 +245,10 @@ func NewBatchProcessor(config BatchProcessorConfig) *BatchProcessor {
 	// Initialize dynamic sizing
 	if config.EnableDynamicBatching {
 		processor.dynamicSizing = NewDynamicBatchSizer(DynamicSizingConfig{
-			Enabled:   true,
-			Strategy:  StrategyAdaptive,
-			MinSize:   config.MinBatchSize,
-			MaxSize:   config.MaxBatchSize,
+			Enabled:       true,
+			Strategy:      StrategyAdaptive,
+			MinSize:       config.MinBatchSize,
+			MaxSize:       config.MaxBatchSize,
 			TargetLatency: config.MaxLatency,
 		})
 	}
@@ -255,10 +256,10 @@ func NewBatchProcessor(config BatchProcessorConfig) *BatchProcessor {
 	// Initialize prefetcher
 	if config.EnablePrefetch {
 		processor.prefetcher = NewBatchPrefetcher(PrefetchConfig{
-			Enabled:      true,
-			PrefetchSize: config.MaxBatchSize,
-			CacheSize:    100,
-			PrefetchPolicy: PolicyPredictive,
+			Enabled:        true,
+			PrefetchSize:   config.MaxBatchSize,
+			CacheSize:      100,
+			PrefetchPolicy: PrefetchPolicyPredictive,
 		})
 	}
 
@@ -330,7 +331,7 @@ func (bp *BatchProcessor) Submit(ctx context.Context, itemType BatchType, item i
 
 	// Find existing batch or create new one
 	batch := bp.findOrCreateBatch(itemType, handler)
-	
+
 	batch.Items = append(batch.Items, item)
 	batch.Size = len(batch.Items)
 
@@ -351,7 +352,7 @@ func (bp *BatchProcessor) Submit(ctx context.Context, itemType BatchType, item i
 // SubmitBatch submits a complete batch for processing
 func (bp *BatchProcessor) SubmitBatch(ctx context.Context, batch *Batch) error {
 	batch.Context = ctx
-	
+
 	select {
 	case bp.batchQueue <- batch:
 		return nil
@@ -366,18 +367,18 @@ func (bp *BatchProcessor) SubmitBatch(ctx context.Context, batch *Batch) error {
 func (bp *BatchProcessor) findOrCreateBatch(itemType BatchType, handler BatchHandler) *Batch {
 	// For simplicity, create a new batch each time
 	// In practice, this would group items by type and handler
-	
+
 	batchID := fmt.Sprintf("batch_%d_%s", time.Now().UnixNano(), itemType)
 	batch := &Batch{
-		ID:       batchID,
-		Type:     itemType,
-		Items:    make([]interface{}, 0),
-		Size:     0,
+		ID:        batchID,
+		Type:      itemType,
+		Items:     make([]interface{}, 0),
+		Size:      0,
 		CreatedAt: time.Now(),
-		Timeout:  bp.config.Timeout,
-		Priority: 0,
-		Handler:  handler,
-		Metadata: make(map[string]interface{}),
+		Timeout:   bp.config.Timeout,
+		Priority:  0,
+		Handler:   handler,
+		Metadata:  make(map[string]interface{}),
 	}
 
 	bp.batches[batchID] = batch
@@ -387,7 +388,7 @@ func (bp *BatchProcessor) findOrCreateBatch(itemType BatchType, handler BatchHan
 // submitBatch submits a batch to the processing queue
 func (bp *BatchProcessor) submitBatch(batch *Batch) error {
 	delete(bp.batches, batch.ID)
-	
+
 	return bp.SubmitBatch(batch.Context, batch)
 }
 
@@ -396,7 +397,7 @@ func (bp *BatchProcessor) getOptimalBatchSize(itemType BatchType) int {
 	if bp.dynamicSizing != nil {
 		return bp.dynamicSizing.GetCurrentBatchSize()
 	}
-	
+
 	return bp.config.MaxBatchSize
 }
 
@@ -424,7 +425,7 @@ func (bp *BatchProcessor) checkBatchTimeouts() {
 	defer bp.mu.Unlock()
 
 	now := time.Now()
-	for id, batch := range bp.batches {
+	for _, batch := range bp.batches {
 		if now.Sub(batch.CreatedAt) >= batch.Timeout && len(batch.Items) > 0 {
 			bp.submitBatch(batch)
 		}
@@ -574,7 +575,7 @@ func (bp *BatchProcessor) collectStats() {
 	// Calculate average batch size
 	totalBatches := atomic.LoadInt64(&bp.stats.TotalBatches)
 	totalItems := atomic.LoadInt64(&bp.stats.TotalItems)
-	
+
 	if totalBatches > 0 {
 		bp.stats.AvgBatchSize = float64(totalItems) / float64(totalBatches)
 	}
@@ -582,7 +583,7 @@ func (bp *BatchProcessor) collectStats() {
 	// Calculate average processing time
 	completedBatches := atomic.LoadInt64(&bp.stats.CompletedBatches)
 	totalProcessingTime := atomic.LoadInt64(&bp.stats.TotalProcessingTime)
-	
+
 	if completedBatches > 0 {
 		bp.stats.AvgProcessingTime = time.Duration(totalProcessingTime / completedBatches)
 	}
@@ -609,11 +610,11 @@ func (bp *BatchProcessor) GetStats() BatchProcessorStats {
 // NewDynamicBatchSizer creates a new dynamic batch sizer
 func NewDynamicBatchSizer(config DynamicSizingConfig) *DynamicBatchSizer {
 	return &DynamicBatchSizer{
-		config:          config,
+		config:           config,
 		currentBatchSize: config.MinSize,
-		performance:     &PerformanceMetrics{},
-		strategy:        config.Strategy,
-		stats:           &DynamicSizingStats{},
+		performance:      &PerformanceMetrics{},
+		strategy:         config.Strategy,
+		stats:            &DynamicSizingStats{},
 	}
 }
 
@@ -765,7 +766,7 @@ func (bp *BatchPrefetcher) prefetchBatch(batch *Batch) {
 func (bp *BatchPrefetcher) HandleResult(result *BatchResult) {
 	// Update cache statistics
 	atomic.AddInt64(&bp.stats.CacheHits, 1)
-	
+
 	// Calculate hit rate
 	total := atomic.LoadInt64(&bp.stats.TotalPrefetches)
 	hits := atomic.LoadInt64(&bp.stats.CacheHits)
@@ -776,9 +777,18 @@ func (bp *BatchPrefetcher) HandleResult(result *BatchResult) {
 
 // NewAsyncBatchProcessor creates a new async batch processor
 func NewAsyncBatchProcessor(config AsyncProcessingConfig) *AsyncBatchProcessor {
+	// Create a parallel processor config for the worker pool
+	poolConfig := ParallelProcessorConfig{
+		MaxWorkers:    config.NumWorkers,
+		QueueSize:     config.QueueSize,
+		AutoScaling:   false,
+		LoadBalancing: false,
+	}
+	workerPool := NewParallelProcessor(poolConfig)
+
 	return &AsyncBatchProcessor{
 		config:     config,
-		workerPool: NewWorkerPool(config.NumWorkers, config.QueueSize, config.WorkerTimeout),
+		workerPool: workerPool,
 		stats:      &AsyncProcessingStats{},
 	}
 }
@@ -789,7 +799,7 @@ func (abp *AsyncBatchProcessor) Start(ctx context.Context) {
 		return
 	}
 
-	abp.workerPool.Start(ctx)
+	_ = abp.workerPool.Start()
 }
 
 // Helper functions min/max are defined in utils.go

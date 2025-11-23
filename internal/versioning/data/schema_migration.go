@@ -13,27 +13,27 @@ import (
 
 // SchemaMigration represents a schema migration
 type SchemaMigration struct {
-	ID            string                 `json:"id"`
-	DatasetID     string                 `json:"dataset_id"`
-	FromVersion   string                 `json:"from_version"`
-	ToVersion     string                 `json:"to_version"`
-	Status        MigrationStatus        `json:"status"`
-	Steps         []MigrationStep        `json:"steps"`
-	CreatedAt     time.Time              `json:"created_at"`
-	StartedAt     *time.Time             `json:"started_at,omitempty"`
-	CompletedAt   *time.Time             `json:"completed_at,omitempty"`
-	Error         string                 `json:"error,omitempty"`
-	Metadata      map[string]interface{} `json:"metadata"`
+	ID          string                 `json:"id"`
+	DatasetID   string                 `json:"dataset_id"`
+	FromVersion string                 `json:"from_version"`
+	ToVersion   string                 `json:"to_version"`
+	Status      MigrationStatus        `json:"status"`
+	Steps       []MigrationStep        `json:"steps"`
+	CreatedAt   time.Time              `json:"created_at"`
+	StartedAt   *time.Time             `json:"started_at,omitempty"`
+	CompletedAt *time.Time             `json:"completed_at,omitempty"`
+	Error       string                 `json:"error,omitempty"`
+	Metadata    map[string]interface{} `json:"metadata"`
 }
 
 // MigrationStatus represents migration status
 type MigrationStatus string
 
 const (
-	MigrationStatusPending   MigrationStatus = "pending"
-	MigrationStatusRunning   MigrationStatus = "running"
-	MigrationStatusCompleted MigrationStatus = "completed"
-	MigrationStatusFailed    MigrationStatus = "failed"
+	MigrationStatusPending    MigrationStatus = "pending"
+	MigrationStatusRunning    MigrationStatus = "running"
+	MigrationStatusCompleted  MigrationStatus = "completed"
+	MigrationStatusFailed     MigrationStatus = "failed"
 	MigrationStatusRolledBack MigrationStatus = "rolled_back"
 )
 
@@ -66,19 +66,19 @@ const (
 type SchemaMigrationEngine interface {
 	// CreateMigration creates a new schema migration
 	CreateMigration(ctx context.Context, datasetID string, fromVersion, toVersion string, steps []MigrationStep) (*SchemaMigration, error)
-	
+
 	// GetMigration retrieves a migration
 	GetMigration(ctx context.Context, migrationID string) (*SchemaMigration, error)
-	
+
 	// ListMigrations lists migrations for a dataset
 	ListMigrations(ctx context.Context, datasetID string) ([]*SchemaMigration, error)
-	
+
 	// ExecuteMigration executes a migration
 	ExecuteMigration(ctx context.Context, migrationID string) error
-	
+
 	// RollbackMigration rolls back a migration
 	RollbackMigration(ctx context.Context, migrationID string) error
-	
+
 	// ValidateMigration validates if a migration is safe
 	ValidateMigration(ctx context.Context, migrationID string) error
 }

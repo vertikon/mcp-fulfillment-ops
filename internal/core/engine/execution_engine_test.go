@@ -163,7 +163,7 @@ func TestExecutionEngine_Submit(t *testing.T) {
 				ctx := context.Background()
 				_ = ee.Start(ctx)
 			},
-			task: &mockTask{id: "test-task"},
+			task:    &mockTask{id: "test-task"},
 			wantErr: false,
 		},
 		{
@@ -320,7 +320,7 @@ func TestExecutionEngine_ConcurrentOperations(t *testing.T) {
 	for i := 0; i < 10; i++ {
 		go func(id int) {
 			task := &mockTask{
-				id:      "task-" + string(rune(id)),
+				id: "task-" + string(rune(id)),
 				execute: func(ctx context.Context) error {
 					time.Sleep(10 * time.Millisecond)
 					return nil
@@ -376,4 +376,3 @@ func TestExecutionEngine_ErrorHandling(t *testing.T) {
 		t.Error("Expected failed count to be incremented")
 	}
 }
-

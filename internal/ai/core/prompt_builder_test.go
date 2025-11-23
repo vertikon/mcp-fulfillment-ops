@@ -255,4 +255,3 @@ func TestDefaultPromptPolicy(t *testing.T) {
 		t.Errorf("Expected Temperature 0.7, got %f", policy.Temperature)
 	}
 }
-

@@ -19,16 +19,16 @@ type FunctionOrchestrator interface {
 
 // OrchestrationConfig represents orchestration configuration
 type OrchestrationConfig struct {
-	Type      string
-	Config    map[string]interface{}
-	Timeout   int
-	Retries   int
+	Type    string
+	Config  map[string]interface{}
+	Timeout int
+	Retries int
 }
 
 // OrchestrationStatus represents orchestration status
 type OrchestrationStatus struct {
-	ID        string
-	Status    string
-	Progress  float64
-	Error     string
+	ID       string
+	Status   string
+	Progress float64
+	Error    string
 }

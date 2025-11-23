@@ -7,12 +7,12 @@ import (
 	"sync"
 	"time"
 
+	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/trace"
-	"github.com/vertikon/mcp-fulfillment-ops/pkg/logger"
 	"go.uber.org/zap"
 )
 
@@ -44,11 +44,11 @@ func DefaultTraceConfig() *TraceConfig {
 
 // DistributedTracer provides distributed tracing functionality
 type DistributedTracer struct {
-	config      *TraceConfig
-	tracer      trace.Tracer
-	mu          sync.RWMutex
-	spans       map[string]*SpanInfo
-	propagator  propagation.TextMapPropagator
+	config     *TraceConfig
+	tracer     trace.Tracer
+	mu         sync.RWMutex
+	spans      map[string]*SpanInfo
+	propagator propagation.TextMapPropagator
 }
 
 // SpanInfo represents information about a span
@@ -100,7 +100,7 @@ func NewDistributedTracer(config *TraceConfig) (*DistributedTracer, error) {
 
 	dt := &DistributedTracer{
 		config:     config,
-		tracer:      tracer,
+		tracer:     tracer,
 		spans:      make(map[string]*SpanInfo),
 		propagator: otel.GetTextMapPropagator(),
 	}
@@ -119,7 +119,7 @@ func (dt *DistributedTracer) StartSpan(ctx context.Context, name string, opts ..
 	}
 
 	ctx, span := dt.tracer.Start(ctx, name, opts...)
-	
+
 	spanCtx := span.SpanContext()
 	if spanCtx.IsValid() {
 		spanInfo := &SpanInfo{

@@ -1,1 +1,0 @@
-# Função: Interface/cliente genérico de Document DB

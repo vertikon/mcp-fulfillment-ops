@@ -42,22 +42,22 @@ type LogEntry struct {
 
 // LogConfig represents logging configuration
 type LogConfig struct {
-	Level      LogLevel `json:"level"`
-	Format     string   `json:"format"` // json, text
-	Output     string   `json:"output"` // stdout, file, syslog
-	Service    string   `json:"service"`
-	Component  string   `json:"component"`
-	EnableTrace bool    `json:"enable_trace"`
+	Level       LogLevel `json:"level"`
+	Format      string   `json:"format"` // json, text
+	Output      string   `json:"output"` // stdout, file, syslog
+	Service     string   `json:"service"`
+	Component   string   `json:"component"`
+	EnableTrace bool     `json:"enable_trace"`
 }
 
 // DefaultLogConfig returns default logging configuration
 func DefaultLogConfig() *LogConfig {
 	return &LogConfig{
-		Level:      LogLevelInfo,
-		Format:     "json",
-		Output:     "stdout",
-		Service:    "mcp-fulfillment-ops",
-		Component:  "monitoring",
+		Level:       LogLevelInfo,
+		Format:      "json",
+		Output:      "stdout",
+		Service:     "mcp-fulfillment-ops",
+		Component:   "monitoring",
 		EnableTrace: true,
 	}
 }
@@ -127,12 +127,12 @@ func (sl *StructuredLogger) Fatal(ctx context.Context, message string, fields ..
 // LogEntry logs a structured log entry
 func (sl *StructuredLogger) LogEntry(ctx context.Context, entry LogEntry) {
 	logger := sl.getLoggerWithContext(ctx)
-	
+
 	fields := []zap.Field{
 		zap.String("level", string(entry.Level)),
 		zap.Time("timestamp", entry.Timestamp),
 	}
-	
+
 	if entry.TraceID != "" {
 		fields = append(fields, zap.String("trace_id", entry.TraceID))
 	}
@@ -145,11 +145,11 @@ func (sl *StructuredLogger) LogEntry(ctx context.Context, entry LogEntry) {
 	if entry.Component != "" {
 		fields = append(fields, zap.String("component", entry.Component))
 	}
-	
+
 	for k, v := range entry.Fields {
 		fields = append(fields, zap.Any(k, v))
 	}
-	
+
 	switch entry.Level {
 	case LogLevelDebug:
 		logger.Debug(entry.Message, fields...)
@@ -182,7 +182,7 @@ func (sl *StructuredLogger) GetLevel() LogLevel {
 func (sl *StructuredLogger) shouldLog(level LogLevel) bool {
 	sl.mu.RLock()
 	defer sl.mu.RUnlock()
-	
+
 	levels := map[LogLevel]int{
 		LogLevelDebug: 0,
 		LogLevelInfo:  1,
@@ -190,10 +190,10 @@ func (sl *StructuredLogger) shouldLog(level LogLevel) bool {
 		LogLevelError: 3,
 		LogLevelFatal: 4,
 	}
-	
+
 	currentLevel := levels[sl.level]
 	requestedLevel := levels[level]
-	
+
 	return requestedLevel >= currentLevel
 }
 

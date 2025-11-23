@@ -1,1 +1,0 @@
-# Função: Mostrar configuração ativa

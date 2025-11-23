@@ -9,14 +9,14 @@ import (
 
 // CycleCountTask: Tarefa de contagem cíclica/inventário físico
 type CycleCountTask struct {
-	ID             string    `json:"id"`
-	Location       string    `json:"location"`
-	SKUs           []string  `json:"skus"` // Lista de SKUs para contagem
-	Status         Status    `json:"status"`
-	CountedItems   []Item    `json:"counted_items"` // Itens contados fisicamente
-	IdempotencyKey string    `json:"idempotency_key"`
-	CreatedAt      time.Time `json:"created_at"`
-	UpdatedAt      time.Time `json:"updated_at"`
+	ID             string     `json:"id"`
+	Location       string     `json:"location"`
+	SKUs           []string   `json:"skus"` // Lista de SKUs para contagem
+	Status         Status     `json:"status"`
+	CountedItems   []Item     `json:"counted_items"` // Itens contados fisicamente
+	IdempotencyKey string     `json:"idempotency_key"`
+	CreatedAt      time.Time  `json:"created_at"`
+	UpdatedAt      time.Time  `json:"updated_at"`
 	CompletedAt    *time.Time `json:"completed_at,omitempty"`
 }
 

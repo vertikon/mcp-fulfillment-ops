@@ -75,7 +75,7 @@ func main() {
 	eventPublisher := events.NewEventPublisher(js)
 
 	// Initialize cache (L1 only for now, L2/L3 can be added later)
-	cacheInstance := cache.NewMultiLevelCache(cfg.Cache.L1Size, nil, nil)
+	_ = cache.NewMultiLevelCache(cfg.Cache.L1Size, nil, nil)
 
 	// Initialize execution engine
 	workers := config.GetEngineWorkers(&cfg.Engine)
@@ -151,4 +151,3 @@ func main() {
 
 	logger.Info("Server stopped")
 }
-

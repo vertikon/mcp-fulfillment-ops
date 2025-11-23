@@ -140,4 +140,3 @@ func (s *FulfillmentSubscriber) handleOrderEvent(ctx context.Context, msg jetstr
 
 	return nil
 }
-

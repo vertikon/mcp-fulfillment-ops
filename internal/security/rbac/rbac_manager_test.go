@@ -107,12 +107,12 @@ func (m *MockPolicyEnforcer) Clear() {
 
 func TestRBACManager_HasPermission(t *testing.T) {
 	tests := []struct {
-		name          string
-		userID        string
-		resource      string
-		action        string
-		setupMocks    func(*MockRoleManager, *MockPermissionChecker, *MockPolicyEnforcer)
-		expected      bool
+		name       string
+		userID     string
+		resource   string
+		action     string
+		setupMocks func(*MockRoleManager, *MockPermissionChecker, *MockPolicyEnforcer)
+		expected   bool
 	}{
 		{
 			name:     "permission granted",
@@ -303,4 +303,3 @@ func TestRBACManager_GetUserRoles(t *testing.T) {
 	assert.Contains(t, roles, "admin")
 	assert.Contains(t, roles, "user")
 }
-

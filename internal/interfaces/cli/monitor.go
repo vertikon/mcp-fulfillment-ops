@@ -21,7 +21,7 @@ var monitorCmd = &cobra.Command{
 	},
 }
 
-func init() {
+func registerMonitorCmd() {
 	rootCmd.AddCommand(monitorCmd)
 }
 

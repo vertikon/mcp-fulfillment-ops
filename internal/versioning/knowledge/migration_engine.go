@@ -15,20 +15,20 @@ import (
 type MigrationType string
 
 const (
-	MigrationTypeKnowledge   MigrationType = "knowledge"
-	MigrationTypeEmbedding   MigrationType = "embedding"
-	MigrationTypeGraph       MigrationType = "graph"
-	MigrationTypeSchema      MigrationType = "schema"
+	MigrationTypeKnowledge MigrationType = "knowledge"
+	MigrationTypeEmbedding MigrationType = "embedding"
+	MigrationTypeGraph     MigrationType = "graph"
+	MigrationTypeSchema    MigrationType = "schema"
 )
 
 // MigrationStatus represents the status of a migration
 type MigrationStatus string
 
 const (
-	MigrationStatusPending   MigrationStatus = "pending"
-	MigrationStatusRunning   MigrationStatus = "running"
-	MigrationStatusCompleted MigrationStatus = "completed"
-	MigrationStatusFailed    MigrationStatus = "failed"
+	MigrationStatusPending    MigrationStatus = "pending"
+	MigrationStatusRunning    MigrationStatus = "running"
+	MigrationStatusCompleted  MigrationStatus = "completed"
+	MigrationStatusFailed     MigrationStatus = "failed"
 	MigrationStatusRolledBack MigrationStatus = "rolled_back"
 )
 
@@ -38,8 +38,8 @@ type Migration struct {
 	Type          MigrationType          `json:"type"`
 	SourceVersion string                 `json:"source_version"`
 	TargetVersion string                 `json:"target_version"`
-	Status        MigrationStatus         `json:"status"`
-	Steps         []MigrationStep         `json:"steps"`
+	Status        MigrationStatus        `json:"status"`
+	Steps         []MigrationStep        `json:"steps"`
 	CreatedAt     time.Time              `json:"created_at"`
 	StartedAt     *time.Time             `json:"started_at,omitempty"`
 	CompletedAt   *time.Time             `json:"completed_at,omitempty"`
@@ -51,9 +51,9 @@ type Migration struct {
 type MigrationStep struct {
 	ID          string                 `json:"id"`
 	Name        string                 `json:"name"`
-	Status      MigrationStatus       `json:"status"`
-	StartedAt   *time.Time            `json:"started_at,omitempty"`
-	CompletedAt *time.Time            `json:"completed_at,omitempty"`
+	Status      MigrationStatus        `json:"status"`
+	StartedAt   *time.Time             `json:"started_at,omitempty"`
+	CompletedAt *time.Time             `json:"completed_at,omitempty"`
 	Error       string                 `json:"error,omitempty"`
 	Metadata    map[string]interface{} `json:"metadata"`
 }
@@ -62,25 +62,25 @@ type MigrationStep struct {
 type MigrationEngine interface {
 	// MigrateKnowledge migrates knowledge from one version to another
 	MigrateKnowledge(ctx context.Context, sourceVersionID, targetVersionID string, steps []MigrationStep) (*Migration, error)
-	
+
 	// MigrateEmbeddings migrates embeddings
 	MigrateEmbeddings(ctx context.Context, sourceVersionID, targetVersionID string) (*Migration, error)
-	
+
 	// MigrateGraph migrates knowledge graph
 	MigrateGraph(ctx context.Context, sourceVersionID, targetVersionID string) (*Migration, error)
-	
+
 	// GetMigration retrieves a migration
 	GetMigration(ctx context.Context, migrationID string) (*Migration, error)
-	
+
 	// ListMigrations lists migrations for a knowledge base
 	ListMigrations(ctx context.Context, knowledgeID string) ([]*Migration, error)
-	
+
 	// ValidateMigration validates if a migration is safe
 	ValidateMigration(ctx context.Context, sourceVersionID, targetVersionID string) error
-	
+
 	// RollbackMigration rolls back a migration
 	RollbackMigration(ctx context.Context, migrationID string) error
-	
+
 	// ValidateIntegrity validates integrity after migration
 	ValidateIntegrity(ctx context.Context, versionID string) error
 }

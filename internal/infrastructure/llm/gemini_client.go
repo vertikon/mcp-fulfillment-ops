@@ -72,7 +72,7 @@ func (c *geminiClient) Complete(ctx context.Context, prompt string, options *Com
 
 	if options.Temperature > 0 {
 		payload["generationConfig"] = map[string]interface{}{
-			"temperature": options.Temperature,
+			"temperature":     options.Temperature,
 			"maxOutputTokens": options.MaxTokens,
 		}
 	}
@@ -126,8 +126,8 @@ func (c *geminiClient) Complete(ctx context.Context, prompt string, options *Com
 	}
 
 	return &Completion{
-		Text:        result.Candidates[0].Content.Parts[0].Text,
-		Model:       options.Model,
+		Text:         result.Candidates[0].Content.Parts[0].Text,
+		Model:        options.Model,
 		FinishReason: result.Candidates[0].FinishReason,
 		Usage: &Usage{
 			PromptTokens:     result.UsageMetadata.PromptTokenCount,
@@ -173,7 +173,7 @@ func (c *geminiClient) Chat(ctx context.Context, messages []*Message, options *C
 
 	if options.Temperature > 0 {
 		payload["generationConfig"] = map[string]interface{}{
-			"temperature": options.Temperature,
+			"temperature":     options.Temperature,
 			"maxOutputTokens": options.MaxTokens,
 		}
 	}
@@ -227,8 +227,8 @@ func (c *geminiClient) Chat(ctx context.Context, messages []*Message, options *C
 	}
 
 	return &Completion{
-		Text:        result.Candidates[0].Content.Parts[0].Text,
-		Model:       options.Model,
+		Text:         result.Candidates[0].Content.Parts[0].Text,
+		Model:        options.Model,
 		FinishReason: result.Candidates[0].FinishReason,
 		Usage: &Usage{
 			PromptTokens:     result.UsageMetadata.PromptTokenCount,

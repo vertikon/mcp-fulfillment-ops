@@ -10,17 +10,17 @@ import (
 
 // ConsolidationPolicy defines policy for memory consolidation
 type ConsolidationPolicy struct {
-	EpisodicTTL      time.Duration // Time before episodic can be consolidated
-	ImportanceThreshold float64    // Minimum importance for consolidation
-	BatchSize        int           // Number of memories to consolidate at once
+	EpisodicTTL         time.Duration // Time before episodic can be consolidated
+	ImportanceThreshold float64       // Minimum importance for consolidation
+	BatchSize           int           // Number of memories to consolidate at once
 }
 
 // DefaultConsolidationPolicy returns default consolidation policy
 func DefaultConsolidationPolicy() *ConsolidationPolicy {
 	return &ConsolidationPolicy{
-		EpisodicTTL:       24 * time.Hour,
+		EpisodicTTL:         24 * time.Hour,
 		ImportanceThreshold: 0.7,
-		BatchSize:         10,
+		BatchSize:           10,
 	}
 }
 
@@ -136,27 +136,27 @@ func (mc *MemoryConsolidation) AutoConsolidate(ctx context.Context) error {
 	// 1. Find all sessions with episodic memories
 	// 2. Check each session for memories ready to consolidate
 	// 3. Consolidate eligible memories
-	
+
 	// Since we don't have session listing, we'll use ConsolidateBatch approach
 	// Get all episodic memories that should be consolidated
 	// This requires access to all episodic memories
-	
+
 	// Simplified implementation: Use ConsolidateBatch with memories retrieved from store
 	// In production, you would:
 	// 1. List all sessions (requires SessionRepository)
 	// 2. For each session, call ConsolidateSession
-	
+
 	// For now, we'll implement a basic version that processes memories in batches
 	// This requires the episodic manager to support batch retrieval
-	
+
 	// Note: This is a simplified implementation
 	// Full implementation would require:
 	// - SessionRepository.ListSessions()
 	// - EpisodicMemoryManager.GetAllReadyForConsolidation()
-	
+
 	// Workaround: Process consolidation for sessions that have been accessed recently
 	// This is not ideal but provides basic functionality
-	
+
 	// Return informative error indicating what's needed
 	return fmt.Errorf("auto consolidate requires session listing - implement SessionRepository.ListSessions() or call ConsolidateSession manually for each session")
 }

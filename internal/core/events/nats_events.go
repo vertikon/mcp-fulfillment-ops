@@ -30,7 +30,7 @@ func (ep *EventPublisher) PublishTaskCreated(ctx context.Context, taskID string,
 		Metadata:  metadata,
 	}
 
-	return ep.publishEvent(ctx, "hulk.task.created", event)
+	return ep.publishEvent(ctx, "fulfillment.task.created", event)
 }
 
 // PublishTaskCompleted publishes a task completed event
@@ -42,7 +42,7 @@ func (ep *EventPublisher) PublishTaskCompleted(ctx context.Context, taskID strin
 		Result:    result,
 	}
 
-	return ep.publishEvent(ctx, "hulk.task.completed", event)
+	return ep.publishEvent(ctx, "fulfillment.task.completed", event)
 }
 
 // PublishTaskFailed publishes a task failed event
@@ -54,7 +54,7 @@ func (ep *EventPublisher) PublishTaskFailed(ctx context.Context, taskID string, 
 		Error:     error,
 	}
 
-	return ep.publishEvent(ctx, "hulk.task.failed", event)
+	return ep.publishEvent(ctx, "fulfillment.task.failed", event)
 }
 
 // PublishRuntimeHealth publishes a runtime health event
@@ -65,7 +65,7 @@ func (ep *EventPublisher) PublishRuntimeHealth(ctx context.Context, healthy bool
 		Details:   details,
 	}
 
-	return ep.publishEvent(ctx, "hulk.runtime.health", event)
+	return ep.publishEvent(ctx, "fulfillment.runtime.health", event)
 }
 
 // publishEvent publishes a generic event
@@ -103,4 +103,3 @@ type HealthEvent struct {
 	Timestamp time.Time              `json:"timestamp"`
 	Details   map[string]interface{} `json:"details,omitempty"`
 }
-

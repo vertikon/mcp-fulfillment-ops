@@ -51,7 +51,7 @@ func (d *DockerDeployer) Deploy(ctx context.Context, req DockerDeployRequest) (*
 	if err != nil {
 		return nil, fmt.Errorf("failed to read Dockerfile: %w", err)
 	}
-	
+
 	if len(dockerfileContent) == 0 {
 		return nil, fmt.Errorf("Dockerfile is empty")
 	}
@@ -112,8 +112,8 @@ type DockerDeployRequest struct {
 
 // DockerComposeDeployRequest represents a docker-compose deployment request
 type DockerComposeDeployRequest struct {
-	ProjectName string `json:"project_name"`
-	ProjectPath string `json:"project_path"`
+	ProjectName string   `json:"project_name"`
+	ProjectPath string   `json:"project_path"`
 	Services    []string `json:"services,omitempty"`
 }
 

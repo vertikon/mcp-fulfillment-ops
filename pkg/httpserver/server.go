@@ -17,8 +17,8 @@ import (
 
 // Server represents an HTTP server
 type Server struct {
-	e      *echo.Echo
-	config Config
+	e       *echo.Echo
+	config  Config
 	metrics *observability.Metrics
 }
 
@@ -95,7 +95,7 @@ func (s *Server) GetEcho() *echo.Echo {
 // healthHandler handles health check requests
 func healthHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"status": "healthy",
+		"status":    "healthy",
 		"timestamp": time.Now(),
 	})
 }
@@ -103,7 +103,7 @@ func healthHandler(c echo.Context) error {
 // readyHandler handles readiness check requests
 func readyHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"status": "ready",
+		"status":    "ready",
 		"timestamp": time.Now(),
 	})
 }
@@ -155,4 +155,3 @@ func metricsMiddleware(m *observability.Metrics) echo.MiddlewareFunc {
 		}
 	}
 }
-

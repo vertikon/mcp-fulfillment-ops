@@ -31,13 +31,13 @@ func (v *MCPValidator) ValidateMCP(ctx context.Context, req MCPValidateRequest) 
 
 	// Use structure validator from factory
 	structValidator := v.factory.GetStructureValidator()
-	
+
 	// Validate structure
 	structResult, err := structValidator.Validate(ctx, validators.StructureRequest{
 		Path:       req.Path,
 		StrictMode: req.StrictMode,
 	})
-	
+
 	if err != nil {
 		return nil, fmt.Errorf("MCP validation failed: %w", err)
 	}
@@ -46,11 +46,11 @@ func (v *MCPValidator) ValidateMCP(ctx context.Context, req MCPValidateRequest) 
 	if req.CheckSecurity {
 		secValidator := v.factory.GetSecurityValidator()
 		secResult, err := secValidator.Validate(ctx, validators.SecurityRequest{
-			Path:        req.Path,
+			Path:         req.Path,
 			CheckSecrets: true,
-			CheckPerms:  true,
+			CheckPerms:   true,
 		})
-		
+
 		if err == nil {
 			// Merge security errors and warnings
 			structResult.Errors = append(structResult.Errors, secResult.Errors...)
@@ -63,12 +63,12 @@ func (v *MCPValidator) ValidateMCP(ctx context.Context, req MCPValidateRequest) 
 	if req.CheckDependencies {
 		depValidator := v.factory.GetDependencyValidator()
 		depResult, err := depValidator.Validate(ctx, validators.DependencyRequest{
-			Path:          req.Path,
-			CheckVersions: true,
+			Path:           req.Path,
+			CheckVersions:  true,
 			CheckConflicts: true,
-			CheckLicenses: false,
+			CheckLicenses:  false,
 		})
-		
+
 		if err == nil {
 			// Merge dependency errors and warnings
 			structResult.Errors = append(structResult.Errors, depResult.Errors...)
@@ -79,12 +79,12 @@ func (v *MCPValidator) ValidateMCP(ctx context.Context, req MCPValidateRequest) 
 
 	// Convert to external format
 	result := &MCPValidateResult{
-		Path:       structResult.Path,
-		Valid:      structResult.Valid,
-		Warnings:   structResult.Warnings,
-		Errors:     structResult.Errors,
-		Checks:     structResult.Checks,
-		Duration:   structResult.Duration.String(),
+		Path:        structResult.Path,
+		Valid:       structResult.Valid,
+		Warnings:    structResult.Warnings,
+		Errors:      structResult.Errors,
+		Checks:      structResult.Checks,
+		Duration:    structResult.Duration.String(),
 		ValidatedAt: structResult.ValidatedAt,
 	}
 
@@ -98,20 +98,20 @@ func (v *MCPValidator) ValidateMCP(ctx context.Context, req MCPValidateRequest) 
 
 // MCPValidateRequest represents a request to validate an MCP
 type MCPValidateRequest struct {
-	Path             string `json:"path"`
-	StrictMode       bool   `json:"strict_mode,omitempty"`
-	CheckSecurity    bool   `json:"check_security,omitempty"`
-	CheckDependencies bool  `json:"check_dependencies,omitempty"`
+	Path              string `json:"path"`
+	StrictMode        bool   `json:"strict_mode,omitempty"`
+	CheckSecurity     bool   `json:"check_security,omitempty"`
+	CheckDependencies bool   `json:"check_dependencies,omitempty"`
 }
 
 // MCPValidateResult represents the result of MCP validation
 type MCPValidateResult struct {
-	Path       string    `json:"path"`
-	Valid      bool      `json:"valid"`
-	Warnings   []string  `json:"warnings"`
-	Errors     []string  `json:"errors"`
-	Checks     []string  `json:"checks"`
-	Duration   string    `json:"duration"`
+	Path        string      `json:"path"`
+	Valid       bool        `json:"valid"`
+	Warnings    []string    `json:"warnings"`
+	Errors      []string    `json:"errors"`
+	Checks      []string    `json:"checks"`
+	Duration    string      `json:"duration"`
 	ValidatedAt interface{} `json:"validated_at"`
 }
 

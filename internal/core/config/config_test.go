@@ -107,9 +107,9 @@ func TestValidate(t *testing.T) {
 			name: "valid config",
 			cfg: &Config{
 				Server: ServerConfig{
-					Port:        8080,
-					Host:        "0.0.0.0",
-					ReadTimeout: 30 * time.Second,
+					Port:         8080,
+					Host:         "0.0.0.0",
+					ReadTimeout:  30 * time.Second,
 					WriteTimeout: 30 * time.Second,
 				},
 				Engine: EngineConfig{
@@ -222,8 +222,8 @@ func TestValidateServer(t *testing.T) {
 		{
 			name: "valid config",
 			cfg: &ServerConfig{
-				Port:        8080,
-				ReadTimeout: 30 * time.Second,
+				Port:         8080,
+				ReadTimeout:  30 * time.Second,
 				WriteTimeout: 30 * time.Second,
 			},
 			wantErr: false,
@@ -448,4 +448,3 @@ func TestValidateLogging(t *testing.T) {
 		})
 	}
 }
-

@@ -4,7 +4,6 @@ package fulfillment
 type Item struct {
 	SKU      string `json:"sku"`
 	Quantity int    `json:"quantity"`
-	Batch    string `json:"batch,omitempty"` // Opcional na entrada, obrigatório na saída se controlado
+	Batch    string `json:"batch,omitempty"`    // Opcional na entrada, obrigatório na saída se controlado
 	Location string `json:"location,omitempty"` // Localização física (opcional)
 }
-

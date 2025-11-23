@@ -36,16 +36,16 @@ const (
 type RollbackManager interface {
 	// RollbackToVersion rolls back to a specific version
 	RollbackToVersion(ctx context.Context, knowledgeID string, targetVersionID string) (*RollbackOperation, error)
-	
+
 	// GetRollbackOperation retrieves a rollback operation
 	GetRollbackOperation(ctx context.Context, operationID string) (*RollbackOperation, error)
-	
+
 	// ListRollbackOperations lists rollback operations for a knowledge base
 	ListRollbackOperations(ctx context.Context, knowledgeID string) ([]*RollbackOperation, error)
-	
+
 	// ValidateRollback validates if a rollback is safe
 	ValidateRollback(ctx context.Context, knowledgeID string, targetVersionID string) error
-	
+
 	// CancelRollback cancels a pending rollback
 	CancelRollback(ctx context.Context, operationID string) error
 }

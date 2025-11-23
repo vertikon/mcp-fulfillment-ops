@@ -308,4 +308,3 @@ func TestMemoryStore_DeleteWorking(t *testing.T) {
 		t.Error("Expected error when getting deleted working memory")
 	}
 }
-

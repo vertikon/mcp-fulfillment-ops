@@ -65,7 +65,7 @@ func (v *ConfigValidator) ValidateConfig(ctx context.Context, req ConfigValidate
 		ConfigType: req.ConfigType,
 		Schema:     req.Schema,
 	})
-	
+
 	if err == nil {
 		errors = append(errors, configResult.Errors...)
 		warnings = append(warnings, configResult.Warnings...)
@@ -102,7 +102,7 @@ type ConfigValidateResult struct {
 // validateConfigFormat validates the config file format
 func (v *ConfigValidator) validateConfigFormat(path, configType string, errors *[]string, warnings *[]string, checks *[]string) error {
 	ext := strings.ToLower(filepath.Ext(path))
-	
+
 	expectedExt := map[string]string{
 		"yaml": ".yaml",
 		"yml":  ".yaml",
@@ -110,7 +110,7 @@ func (v *ConfigValidator) validateConfigFormat(path, configType string, errors *
 		"env":  ".env",
 		"toml": ".toml",
 	}
-	
+
 	if expectedExt[configType] != "" && ext != expectedExt[configType] && ext != ".yml" {
 		*warnings = append(*warnings, fmt.Sprintf("config type '%s' does not match file extension '%s'", configType, ext))
 	}
@@ -195,11 +195,11 @@ func (v *ConfigValidator) Validate(req ConfigValidateRequest) error {
 	if req.Path == "" {
 		return fmt.Errorf("path is required")
 	}
-	
+
 	if req.ConfigType == "" {
 		return fmt.Errorf("config type is required")
 	}
-	
+
 	validTypes := []string{"yaml", "yml", "json", "env", "toml"}
 	valid := false
 	for _, vt := range validTypes {
@@ -211,6 +211,6 @@ func (v *ConfigValidator) Validate(req ConfigValidateRequest) error {
 	if !valid {
 		return fmt.Errorf("invalid config type: %s", req.ConfigType)
 	}
-	
+
 	return nil
 }

@@ -53,11 +53,11 @@ func main() {
 			os.Exit(1)
 		}
 		req := deployers.KubernetesDeployRequest{
-			ProjectName:  projectName,
-			ProjectPath:  projectPath,
-			Namespace:    namespace,
-			Image:        image,
-			Replicas:     replicas,
+			ProjectName:   projectName,
+			ProjectPath:   projectPath,
+			Namespace:     namespace,
+			Image:         image,
+			Replicas:      replicas,
 			ManifestsPath: manifestsPath,
 		}
 		req.Labels = parseKeyValue(labels)
@@ -207,4 +207,3 @@ func parsePorts(s string) []int {
 	}
 	return result
 }
-

@@ -41,7 +41,7 @@ var templateCreateCmd = &cobra.Command{
 	},
 }
 
-func init() {
+func registerTemplateCmd() {
 	rootCmd.AddCommand(templateCmd)
 	templateCmd.AddCommand(templateListCmd)
 	templateCmd.AddCommand(templateCreateCmd)

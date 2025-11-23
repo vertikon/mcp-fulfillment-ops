@@ -1,1 +1,0 @@
-# Função: SSL Terminator / TLS Offload

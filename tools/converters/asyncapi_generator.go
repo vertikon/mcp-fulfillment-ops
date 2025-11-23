@@ -89,7 +89,7 @@ func (g *AsyncAPIGenerator) buildAsyncAPISpec(req AsyncAPIGenerateRequest) map[s
 			"version":     req.Version,
 			"description": req.Description,
 		},
-		"servers": map[string]interface{}{},
+		"servers":  map[string]interface{}{},
 		"channels": req.Channels,
 	}
 

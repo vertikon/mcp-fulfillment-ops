@@ -75,10 +75,10 @@ func initializeMCPServer(cfg *config.Config) (*protocol.MCPServer, error) {
 
 	// Initialize generator factory
 	genFactory := generators.NewGeneratorFactory(nil) // Use default config
-	
+
 	// Initialize validator factory
 	valFactory := validators.NewValidatorFactory()
-	
+
 	// Initialize registry
 	regConfig := &registry.RegistryConfig{
 		StoragePath:   cfg.MCP.Registry.StoragePath,
@@ -112,7 +112,7 @@ func initializeMCPServer(cfg *config.Config) (*protocol.MCPServer, error) {
 
 	// Initialize handler manager
 	handlerManager := protocol.NewHandlerManager(genFactory, valFactory, mcpRegistry)
-	
+
 	// Register all handlers
 	handlers := handlerManager.GetAllHandlers()
 	for name, handler := range handlers {

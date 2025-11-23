@@ -87,4 +87,3 @@ func (uc *SubmitCycleCountUseCase) SubmitCycleCount(ctx context.Context, taskID 
 	uc.logger.Info("Cycle count task completed", "id", taskID)
 	return nil
 }
-

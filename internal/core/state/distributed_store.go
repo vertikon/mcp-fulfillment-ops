@@ -17,7 +17,7 @@ import (
 type StateStoreType string
 
 const (
-	StateStoreTypeMemory    StateStoreType = "memory"
+	StateStoreTypeMemory   StateStoreType = "memory"
 	StateStoreTypeRedis    StateStoreType = "redis"
 	StateStoreTypeConsul   StateStoreType = "consul"
 	StateStoreTypeEtcd     StateStoreType = "etcd"
@@ -26,17 +26,17 @@ const (
 
 // StateStoreConfig represents configuration for state store
 type StateStoreConfig struct {
-	Type           StateStoreType `json:"type"`
-	ConnectionString string        `json:"connection_string"`
-	Namespace      string        `json:"namespace"`
-	TTL           time.Duration `json:"ttl"`
-	EnableLocking  bool          `json:"enable_locking"`
-	EnableCache    bool          `json:"enable_cache"`
-	CacheSize      int           `json:"cache_size"`
-	Compression    bool          `json:"compression"`
-	Encryption     bool          `json:"encryption"`
-	Replication    bool          `json:"replication"`
-	Consistency    ConsistencyLevel `json:"consistency"`
+	Type             StateStoreType   `json:"type"`
+	ConnectionString string           `json:"connection_string"`
+	Namespace        string           `json:"namespace"`
+	TTL              time.Duration    `json:"ttl"`
+	EnableLocking    bool             `json:"enable_locking"`
+	EnableCache      bool             `json:"enable_cache"`
+	CacheSize        int              `json:"cache_size"`
+	Compression      bool             `json:"compression"`
+	Encryption       bool             `json:"encryption"`
+	Replication      bool             `json:"replication"`
+	Consistency      ConsistencyLevel `json:"consistency"`
 }
 
 // ConsistencyLevel represents different consistency levels
@@ -44,21 +44,21 @@ type ConsistencyLevel string
 
 const (
 	ConsistencyEventual ConsistencyLevel = "eventual"
-	ConsistencyStrong  ConsistencyLevel = "strong"
-	ConsistencyQuorum  ConsistencyLevel = "quorum"
+	ConsistencyStrong   ConsistencyLevel = "strong"
+	ConsistencyQuorum   ConsistencyLevel = "quorum"
 )
 
 // StateEntry represents a state entry
 type StateEntry struct {
-	Key        string                 `json:"key"`
-	Value      interface{}            `json:"value"`
-	Version    int64                  `json:"version"`
-	CreatedAt  time.Time              `json:"created_at"`
-	UpdatedAt  time.Time              `json:"updated_at"`
-	ExpiresAt  *time.Time             `json:"expires_at,omitempty"`
-	TTL        time.Duration          `json:"ttl,omitempty"`
-	Metadata   map[string]interface{} `json:"metadata,omitempty"`
-	Tags       []string               `json:"tags,omitempty"`
+	Key       string                 `json:"key"`
+	Value     interface{}            `json:"value"`
+	Version   int64                  `json:"version"`
+	CreatedAt time.Time              `json:"created_at"`
+	UpdatedAt time.Time              `json:"updated_at"`
+	ExpiresAt *time.Time             `json:"expires_at,omitempty"`
+	TTL       time.Duration          `json:"ttl,omitempty"`
+	Metadata  map[string]interface{} `json:"metadata,omitempty"`
+	Tags      []string               `json:"tags,omitempty"`
 }
 
 // StateStore interface for different state store implementations
@@ -100,19 +100,19 @@ const (
 
 // Lock represents a distributed lock
 type Lock struct {
-	Key        string        `json:"key"`
-	Owner      string        `json:"owner"`
-	ExpiresAt  time.Time     `json:"expires_at"`
-	Metadata   interface{}   `json:"metadata,omitempty"`
+	Key       string      `json:"key"`
+	Owner     string      `json:"owner"`
+	ExpiresAt time.Time   `json:"expires_at"`
+	Metadata  interface{} `json:"metadata,omitempty"`
 }
 
 // Operation represents a state operation
 type Operation struct {
-	Type      OpType       `json:"type"`
-	Key       string       `json:"key"`
-	Value     interface{} `json:"value,omitempty"`
-	TTL       time.Duration `json:"ttl,omitempty"`
-	Version   int64       `json:"version,omitempty"`
+	Type    OpType        `json:"type"`
+	Key     string        `json:"key"`
+	Value   interface{}   `json:"value,omitempty"`
+	TTL     time.Duration `json:"ttl,omitempty"`
+	Version int64         `json:"version,omitempty"`
 }
 
 // OpType represents operation types
@@ -125,31 +125,31 @@ const (
 
 // StateStoreStats tracks state store performance
 type StateStoreStats struct {
-	TotalOperations int64     `json:"total_operations"`
-	ReadOperations  int64     `json:"read_operations"`
-	WriteOperations int64     `json:"write_operations"`
-	DeleteOperations int64    `json:"delete_operations"`
-	AvgReadLatency  time.Duration `json:"avg_read_latency"`
-	AvgWriteLatency time.Duration `json:"avg_write_latency"`
-	CacheHits       int64     `json:"cache_hits"`
-	CacheMisses     int64     `json:"cache_misses"`
-	LockOperations  int64     `json:"lock_operations"`
-	LockWaitTime    time.Duration `json:"lock_wait_time"`
-	LastUpdated     int64    `json:"last_updated"`
+	TotalOperations  int64 `json:"total_operations"`
+	ReadOperations   int64 `json:"read_operations"`
+	WriteOperations  int64 `json:"write_operations"`
+	DeleteOperations int64 `json:"delete_operations"`
+	AvgReadLatency   int64 `json:"avg_read_latency"`  // nanoseconds
+	AvgWriteLatency  int64 `json:"avg_write_latency"` // nanoseconds
+	CacheHits        int64 `json:"cache_hits"`
+	CacheMisses      int64 `json:"cache_misses"`
+	LockOperations   int64 `json:"lock_operations"`
+	LockWaitTime     int64 `json:"lock_wait_time"` // nanoseconds
+	LastUpdated      int64 `json:"last_updated"`
 }
 
 // DistributedStateStore implements distributed state management
 type DistributedStateStore struct {
-	config       StateStoreConfig
-	localStore   *MemoryStateStore
-	remoteStore  StateStore
-	cache        *StateCache
-	syncManager  *StateSyncManager
-	replication  *ReplicationManager
-	consistency  *ConsistencyManager
-	stats        *StateStoreStats
-	mu           sync.RWMutex
-	closed       int32
+	config      StateStoreConfig
+	localStore  *MemoryStateStore
+	remoteStore StateStore
+	cache       *StateCache
+	syncManager *StateSyncManager
+	replication *ReplicationManager
+	consistency *ConsistencyManager
+	stats       *StateStoreStats
+	mu          sync.RWMutex
+	closed      int32
 }
 
 // MemoryStateStore implements in-memory state store
@@ -163,27 +163,27 @@ type MemoryStateStore struct {
 
 // StateCache provides caching layer for state store
 type StateCache struct {
-	config   CacheConfig
-	entries  map[string]*CacheEntry
-	mu       sync.RWMutex
-	stats    *CacheStats
+	config  CacheConfig
+	entries map[string]*CacheEntry
+	mu      sync.RWMutex
+	stats   *CacheStats
 }
 
 // CacheConfig represents cache configuration
 type CacheConfig struct {
-	MaxSize      int           `json:"max_size"`
-	TTL          time.Duration `json:"ttl"`
+	MaxSize       int           `json:"max_size"`
+	TTL           time.Duration `json:"ttl"`
 	FlushInterval time.Duration `json:"flush_interval"`
-	Compression  bool          `json:"compression"`
+	Compression   bool          `json:"compression"`
 }
 
 // CacheEntry represents a cached entry
 type CacheEntry struct {
-	Key       string        `json:"key"`
-	Value     *StateEntry   `json:"value"`
-	ExpiresAt time.Time     `json:"expires_at"`
-	Accessed  time.Time     `json:"accessed"`
-	Hits      int64         `json:"hits"`
+	Key       string      `json:"key"`
+	Value     *StateEntry `json:"value"`
+	ExpiresAt time.Time   `json:"expires_at"`
+	Accessed  time.Time   `json:"accessed"`
+	Hits      int64       `json:"hits"`
 }
 
 // CacheStats tracks cache performance
@@ -197,17 +197,17 @@ type CacheStats struct {
 
 // StateSyncManager manages state synchronization
 type StateSyncManager struct {
-	config    SyncConfig
-	lastSync  time.Time
-	inSync    bool
-	stats     *SyncStats
+	config   SyncConfig
+	lastSync time.Time
+	inSync   bool
+	stats    *SyncStats
 }
 
 // SyncConfig represents synchronization configuration
 type SyncConfig struct {
-	Interval     time.Duration `json:"interval"`
-	MaxRetries   int           `json:"max_retries"`
-	RetryBackoff  time.Duration `json:"retry_backoff"`
+	Interval     time.Duration    `json:"interval"`
+	MaxRetries   int              `json:"max_retries"`
+	RetryBackoff time.Duration    `json:"retry_backoff"`
 	ConflictRes  ConflictResolver `json:"conflict_resolver"`
 }
 
@@ -218,30 +218,30 @@ type ConflictResolver interface {
 
 // SyncStats tracks synchronization performance
 type SyncStats struct {
-	TotalSyncs    int64         `json:"total_syncs"`
-	SuccessfulSyncs int64       `json:"successful_syncs"`
-	FailedSyncs    int64         `json:"failed_syncs"`
-	Conflicts      int64         `json:"conflicts"`
-	AvgSyncTime    time.Duration `json:"avg_sync_time"`
-	LastSyncTime   int64         `json:"last_sync_time"`
+	TotalSyncs      int64         `json:"total_syncs"`
+	SuccessfulSyncs int64         `json:"successful_syncs"`
+	FailedSyncs     int64         `json:"failed_syncs"`
+	Conflicts       int64         `json:"conflicts"`
+	AvgSyncTime     time.Duration `json:"avg_sync_time"`
+	LastSyncTime    int64         `json:"last_sync_time"`
 }
 
 // ReplicationManager manages state replication
 type ReplicationManager struct {
-	config      ReplicationConfig
-	replicas    []StateStore
-	strategy    ReplicationStrategy
-	stats       *ReplicationStats
+	config   ReplicationConfig
+	replicas []StateStore
+	strategy ReplicationStrategy
+	stats    *ReplicationStats
 }
 
 // ReplicationConfig represents replication configuration
 type ReplicationConfig struct {
-	Enabled      bool                `json:"enabled"`
-	Replicas     []string            `json:"replicas"`
-	Strategy     ReplicationStrategy  `json:"strategy"`
-	WriteQuorum  int                 `json:"write_quorum"`
-	ReadQuorum   int                 `json:"read_quorum"`
-	SyncMode     SyncMode            `json:"sync_mode"`
+	Enabled     bool                `json:"enabled"`
+	Replicas    []string            `json:"replicas"`
+	Strategy    ReplicationStrategy `json:"strategy"`
+	WriteQuorum int                 `json:"write_quorum"`
+	ReadQuorum  int                 `json:"read_quorum"`
+	SyncMode    SyncMode            `json:"sync_mode"`
 }
 
 // ReplicationStrategy represents different replication strategies
@@ -249,8 +249,8 @@ type ReplicationStrategy string
 
 const (
 	StrategyLeaderFollowers ReplicationStrategy = "leader_followers"
-	StrategyMultiMaster    ReplicationStrategy = "multi_master"
-	StrategyRaft          ReplicationStrategy = "raft"
+	StrategyMultiMaster     ReplicationStrategy = "multi_master"
+	StrategyRaft            ReplicationStrategy = "raft"
 )
 
 // SyncMode represents synchronization modes
@@ -265,32 +265,32 @@ const (
 type ReplicationStats struct {
 	WriteReplications int64         `json:"write_replications"`
 	ReadReplications  int64         `json:"read_replications"`
-	ReplicationLag   time.Duration `json:"replication_lag"`
-	FailedReps       int64         `json:"failed_replications"`
+	ReplicationLag    time.Duration `json:"replication_lag"`
+	FailedReps        int64         `json:"failed_replications"`
 }
 
 // ConsistencyManager manages consistency guarantees
 type ConsistencyManager struct {
-	config   ConsistencyConfig
-	level     ConsistencyLevel
-	readQuorum int
+	config      ConsistencyConfig
+	level       ConsistencyLevel
+	readQuorum  int
 	writeQuorum int
-	stats     *ConsistencyStats
+	stats       *ConsistencyStats
 }
 
 // ConsistencyConfig represents consistency configuration
 type ConsistencyConfig struct {
-	Level         ConsistencyLevel `json:"level"`
-	ReadQuorum    int             `json:"read_quorum"`
-	WriteQuorum   int             `json:"write_quorum"`
-	EnableQuorum  bool            `json:"enable_quorum"`
+	Level        ConsistencyLevel `json:"level"`
+	ReadQuorum   int              `json:"read_quorum"`
+	WriteQuorum  int              `json:"write_quorum"`
+	EnableQuorum bool             `json:"enable_quorum"`
 }
 
 // ConsistencyStats tracks consistency performance
 type ConsistencyStats struct {
-	QuorumChecks    int64         `json:"quorum_checks"`
-	QuorumTimeouts  int64         `json:"quorum_timeouts"`
-	ConsistencyViolations int64     `json:"consistency_violations"`
+	QuorumChecks          int64 `json:"quorum_checks"`
+	QuorumTimeouts        int64 `json:"quorum_timeouts"`
+	ConsistencyViolations int64 `json:"consistency_violations"`
 }
 
 // NewDistributedStateStore creates a new distributed state store
@@ -303,9 +303,9 @@ func NewDistributedStateStore(config StateStoreConfig) (*DistributedStateStore, 
 	)
 
 	store := &DistributedStateStore{
-		config: config,
+		config:     config,
 		localStore: NewMemoryStateStore(),
-		stats:   &StateStoreStats{},
+		stats:      &StateStoreStats{},
 	}
 
 	// Initialize remote store based on type
@@ -318,8 +318,8 @@ func NewDistributedStateStore(config StateStoreConfig) (*DistributedStateStore, 
 	// Initialize cache if enabled
 	if config.EnableCache {
 		store.cache = NewStateCache(CacheConfig{
-			MaxSize:      config.CacheSize,
-			TTL:          config.TTL,
+			MaxSize:       config.CacheSize,
+			TTL:           config.TTL,
 			FlushInterval: 30 * time.Second,
 		})
 	}
@@ -329,7 +329,7 @@ func NewDistributedStateStore(config StateStoreConfig) (*DistributedStateStore, 
 		config: SyncConfig{
 			Interval:     10 * time.Second,
 			MaxRetries:   3,
-			RetryBackoff:  1 * time.Second,
+			RetryBackoff: 1 * time.Second,
 		},
 		stats: &SyncStats{},
 	}
@@ -338,11 +338,11 @@ func NewDistributedStateStore(config StateStoreConfig) (*DistributedStateStore, 
 	if config.Replication {
 		store.replication = &ReplicationManager{
 			config: ReplicationConfig{
-				Enabled:      true,
-				Strategy:     StrategyLeaderFollowers,
-				WriteQuorum:  2,
-				ReadQuorum:   1,
-				SyncMode:     SyncModeAsync,
+				Enabled:     true,
+				Strategy:    StrategyLeaderFollowers,
+				WriteQuorum: 2,
+				ReadQuorum:  1,
+				SyncMode:    SyncModeAsync,
 			},
 			stats: &ReplicationStats{},
 		}
@@ -351,13 +351,13 @@ func NewDistributedStateStore(config StateStoreConfig) (*DistributedStateStore, 
 	// Initialize consistency manager
 	store.consistency = &ConsistencyManager{
 		config: ConsistencyConfig{
-			Level:         config.Consistency,
-			ReadQuorum:    1,
-			WriteQuorum:   2,
-			EnableQuorum:   true,
+			Level:        config.Consistency,
+			ReadQuorum:   1,
+			WriteQuorum:  2,
+			EnableQuorum: true,
 		},
-		level:   config.Consistency,
-		stats:   &ConsistencyStats{},
+		level: config.Consistency,
+		stats: &ConsistencyStats{},
 	}
 
 	return store, nil
@@ -540,7 +540,7 @@ func (dss *DistributedStateStore) Lock(ctx context.Context, key string, ttl time
 	start := time.Now()
 	defer func() {
 		atomic.AddInt64(&dss.stats.LockOperations, 1)
-		atomic.StoreInt64(&dss.stats.LockWaitTime.Nanoseconds(), time.Since(start).Nanoseconds())
+		atomic.StoreInt64(&dss.stats.LockWaitTime, time.Since(start).Nanoseconds())
 	}()
 
 	// Try remote store first
@@ -646,16 +646,16 @@ func (dss *DistributedStateStore) Stats() StateStoreStats {
 
 // updateReadLatency updates read latency statistics
 func (dss *DistributedStateStore) updateReadLatency(latency time.Duration) {
-	current := atomic.LoadInt64(&dss.stats.AvgReadLatency.Nanoseconds())
-	newAvg := time.Duration((int64(current) + int64(latency.Nanoseconds())) / 2)
-	atomic.StoreInt64(&dss.stats.AvgReadLatency.Nanoseconds(), int64(newAvg))
+	current := atomic.LoadInt64(&dss.stats.AvgReadLatency)
+	newAvg := (current + latency.Nanoseconds()) / 2
+	atomic.StoreInt64(&dss.stats.AvgReadLatency, newAvg)
 }
 
 // updateWriteLatency updates write latency statistics
 func (dss *DistributedStateStore) updateWriteLatency(latency time.Duration) {
-	current := atomic.LoadInt64(&dss.stats.AvgWriteLatency.Nanoseconds())
-	newAvg := time.Duration((int64(current) + int64(latency.Nanoseconds())) / 2)
-	atomic.StoreInt64(&dss.stats.AvgWriteLatency.Nanoseconds(), int64(newAvg))
+	current := atomic.LoadInt64(&dss.stats.AvgWriteLatency)
+	newAvg := (current + latency.Nanoseconds()) / 2
+	atomic.StoreInt64(&dss.stats.AvgWriteLatency, newAvg)
 }
 
 // NewMemoryStateStore creates a new in-memory state store

@@ -18,11 +18,11 @@ const (
 
 // RetrievalResult represents a single retrieval result
 type RetrievalResult struct {
-	ID          string
-	Content     string
-	Score       float64
-	Metadata    map[string]interface{}
-	Source      RetrievalMethod
+	ID       string
+	Content  string
+	Score    float64
+	Metadata map[string]interface{}
+	Source   RetrievalMethod
 }
 
 // KnowledgeContext represents enriched knowledge context for AI

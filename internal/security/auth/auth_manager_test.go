@@ -306,15 +306,15 @@ func TestAuthManager_Register(t *testing.T) {
 
 func TestAuthManager_ValidateToken(t *testing.T) {
 	tests := []struct {
-		name          string
-		token         string
-		setupMocks    func(*MockTokenManager)
+		name           string
+		token          string
+		setupMocks     func(*MockTokenManager)
 		expectedUserID string
-		expectedError error
+		expectedError  error
 	}{
 		{
 			name:  "valid token",
-			token:  "valid_token",
+			token: "valid_token",
 			setupMocks: func(tm *MockTokenManager) {
 				tm.On("Validate", mock.Anything, "valid_token").Return("user123", nil)
 			},
@@ -323,7 +323,7 @@ func TestAuthManager_ValidateToken(t *testing.T) {
 		},
 		{
 			name:  "invalid token",
-			token:  "invalid_token",
+			token: "invalid_token",
 			setupMocks: func(tm *MockTokenManager) {
 				tm.On("Validate", mock.Anything, "invalid_token").Return("", ErrInvalidToken)
 			},
@@ -365,12 +365,12 @@ func TestAuthManager_ValidateToken(t *testing.T) {
 
 func TestAuthManager_HasPermission(t *testing.T) {
 	tests := []struct {
-		name          string
-		userID        string
-		resource      string
-		action        string
-		setupMocks    func(*MockRBACManager)
-		expected      bool
+		name       string
+		userID     string
+		resource   string
+		action     string
+		setupMocks func(*MockRBACManager)
+		expected   bool
 	}{
 		{
 			name:     "has permission",
@@ -471,4 +471,3 @@ func TestAuthManager_Logout(t *testing.T) {
 		})
 	}
 }
-

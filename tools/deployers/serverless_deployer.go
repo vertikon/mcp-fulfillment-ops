@@ -118,7 +118,7 @@ type ServerlessDeployRequest struct {
 	FunctionName string            `json:"function_name"`
 	FunctionPath string            `json:"function_path"`
 	Provider     string            `json:"provider"` // aws, azure, gcp
-	Runtime      string            `json:"runtime"` // go, nodejs, python, etc.
+	Runtime      string            `json:"runtime"`  // go, nodejs, python, etc.
 	Handler      string            `json:"handler"`
 	Environment  map[string]string `json:"environment,omitempty"`
 	Timeout      int               `json:"timeout,omitempty"`

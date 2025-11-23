@@ -1,1 +1,0 @@
-# Função: Interface genérica de CDN

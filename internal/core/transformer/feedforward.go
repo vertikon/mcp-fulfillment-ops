@@ -16,54 +16,54 @@ import (
 type ActivationType string
 
 const (
-	ActivationGELU      ActivationType = "gelu"
-	ActivationReLU      ActivationType = "relu"
-	ActivationSwiGLU    ActivationType = "swiglu"
-	ActivationGeGLU     ActivationType = "geglu"
-	ActivationSiLU      ActivationType = "silu"
-	ActivationTanh      ActivationType = "tanh"
-	ActivationSigmoid   ActivationType = "sigmoid"
+	ActivationGELU    ActivationType = "gelu"
+	ActivationReLU    ActivationType = "relu"
+	ActivationSwiGLU  ActivationType = "swiglu"
+	ActivationGeGLU   ActivationType = "geglu"
+	ActivationSiLU    ActivationType = "silu"
+	ActivationTanh    ActivationType = "tanh"
+	ActivationSigmoid ActivationType = "sigmoid"
 )
 
 // FeedForwardConfig represents feed-forward network configuration
 type FeedForwardConfig struct {
-	HiddenSize     int           `json:"hidden_size"`
-	IntermediateSize int          `json:"intermediate_size"`
-	Activation      ActivationType `json:"activation"`
-	Dropout         float64       `json:"dropout"`
-	UseBias         bool          `json:"use_bias"`
-	UseSwiGLU       bool          `json:"use_swiglu"`
-	ExpertSize      int           `json:"expert_size,omitempty"`
-	NumExperts      int           `json:"num_experts,omitempty"`
-	TopK            int           `json:"top_k,omitempty"`
+	HiddenSize       int            `json:"hidden_size"`
+	IntermediateSize int            `json:"intermediate_size"`
+	Activation       ActivationType `json:"activation"`
+	Dropout          float64        `json:"dropout"`
+	UseBias          bool           `json:"use_bias"`
+	UseSwiGLU        bool           `json:"use_swiglu"`
+	ExpertSize       int            `json:"expert_size,omitempty"`
+	NumExperts       int            `json:"num_experts,omitempty"`
+	TopK             int            `json:"top_k,omitempty"`
 }
 
 // FeedForwardNetwork implements position-wise feed-forward networks
 type FeedForwardNetwork struct {
-	config           FeedForwardConfig
-	activationFunc   ActivationFunction
-	gateWeights      *Tensor
-	gateBias         *Tensor
-	upWeights        *Tensor
-	upBias           *Tensor
-	downWeights      *Tensor
-	downBias         *Tensor
-	expertWeights    []*Tensor
-	expertBiases     []*Tensor
-	routerWeights    *Tensor
-	routerBias       *Tensor
-	mu               sync.RWMutex
-	stats            *FeedForwardStats
+	config         FeedForwardConfig
+	activationFunc ActivationFunction
+	gateWeights    *Tensor
+	gateBias       *Tensor
+	upWeights      *Tensor
+	upBias         *Tensor
+	downWeights    *Tensor
+	downBias       *Tensor
+	expertWeights  []*Tensor
+	expertBiases   []*Tensor
+	routerWeights  *Tensor
+	routerBias     *Tensor
+	mu             sync.RWMutex
+	stats          *FeedForwardStats
 }
 
 // MoELayer implements mixture of experts
 type MoELayer struct {
-	config         FeedForwardConfig
-	experts        []*FeedForwardNetwork
-	router         *Router
-	topK           int
-	loadBalancing   bool
-	stats          *MoEStats
+	config        FeedForwardConfig
+	experts       []*FeedForwardNetwork
+	router        *Router
+	topK          int
+	loadBalancing bool
+	stats         *MoEStats
 }
 
 // Router implements expert routing for MoE
@@ -77,20 +77,20 @@ type Router struct {
 // FeedForwardStats tracks feed-forward network statistics
 type FeedForwardStats struct {
 	TotalForward   int64   `json:"total_forward"`
-	AvgForwardTime float64  `json:"avg_forward_time"`
-	ActivationUtil float64   `json:"activation_utilization"`
-	SparsityRatio float64   `json:"sparsity_ratio"`
-	LastUpdated   int64     `json:"last_updated"`
+	AvgForwardTime float64 `json:"avg_forward_time"`
+	ActivationUtil float64 `json:"activation_utilization"`
+	SparsityRatio  float64 `json:"sparsity_ratio"`
+	LastUpdated    int64   `json:"last_updated"`
 }
 
 // MoEStats tracks mixture of experts statistics
 type MoEStats struct {
-	TotalCalls      int64             `json:"total_calls"`
-	ExpertUsage     map[int]int64     `json:"expert_usage"`
-	LoadBalance     float64           `json:"load_balance"`
-	RoutingEntropy  float64           `json:"routing_entropy"`
-	AvgForwardTime float64           `json:"avg_forward_time"`
-	LastUpdated     int64             `json:"last_updated"`
+	TotalCalls     int64         `json:"total_calls"`
+	ExpertUsage    map[int]int64 `json:"expert_usage"`
+	LoadBalance    float64       `json:"load_balance"`
+	RoutingEntropy float64       `json:"routing_entropy"`
+	AvgForwardTime float64       `json:"avg_forward_time"`
+	LastUpdated    int64         `json:"last_updated"`
 }
 
 // RouterStats tracks router statistics
@@ -98,7 +98,7 @@ type RouterStats struct {
 	TotalRoutes     int64   `json:"total_routes"`
 	AvgRoutingTime  float64 `json:"avg_routing_time"`
 	LoadBalanceCost float64 `json:"load_balance_cost"`
-	LastUpdated     int64    `json:"last_updated"`
+	LastUpdated     int64   `json:"last_updated"`
 }
 
 // ActivationFunction represents different activation functions
@@ -191,13 +191,14 @@ func (ffn *FeedForwardNetwork) forwardStandard(ctx context.Context, input *Tenso
 // forwardMoE performs mixture of experts computation
 func (ffn *FeedForwardNetwork) forwardMoE(ctx context.Context, input *Tensor) (*Tensor, error) {
 	// Router determines which experts to use
-	router, err := ffn.router.Forward(input)
-	if err != nil {
-		return nil, fmt.Errorf("routing error: %w", err)
+	// Compute router scores using router weights
+	routerScores := t.matmul(input, ffn.routerWeights)
+	if ffn.routerBias != nil {
+		routerScores = t.add(routerScores, ffn.routerBias)
 	}
 
 	// Select top-k experts
-	selectedExperts := ffn.selectTopKExperts(router)
+	selectedExperts := ffn.selectTopKExperts(routerScores)
 
 	// Combine expert outputs
 	output := ffn.combineExperts(input, selectedExperts)
@@ -273,9 +274,9 @@ func (ffn *FeedForwardNetwork) combineExperts(input *Tensor, selectedExperts []i
 // updateStats updates feed-forward statistics
 func (ffn *FeedForwardNetwork) updateStats(computationTime time.Duration) {
 	ffn.stats.TotalForward++
-	ffn.stats.AvgForwardTime = 
-		(ffn.stats.AvgForwardTime*float64(ffn.stats.TotalForward-1) + 
-		 computationTime.Seconds()) / float64(ffn.stats.TotalForward)
+	ffn.stats.AvgForwardTime =
+		(ffn.stats.AvgForwardTime*float64(ffn.stats.TotalForward-1) +
+			computationTime.Seconds()) / float64(ffn.stats.TotalForward)
 	ffn.stats.LastUpdated = time.Now().Unix()
 }
 
@@ -294,9 +295,9 @@ func NewMoELayer(config FeedForwardConfig) *MoELayer {
 	)
 
 	moe := &MoELayer{
-		config:       config,
-		experts:      make([]*FeedForwardNetwork, config.NumExperts),
-		topK:         config.TopK,
+		config:        config,
+		experts:       make([]*FeedForwardNetwork, config.NumExperts),
+		topK:          config.TopK,
 		loadBalancing: true,
 		stats: &MoEStats{
 			ExpertUsage: make(map[int]int64),
@@ -372,9 +373,9 @@ func (moe *MoELayer) combineExpertOutputs(outputs []*Tensor, weights []float64) 
 // updateStats updates MoE statistics
 func (moe *MoELayer) updateStats(computationTime time.Duration) {
 	moe.stats.TotalCalls++
-	moe.stats.AvgForwardTime = 
-		(moe.stats.AvgForwardTime*float64(moe.stats.TotalCalls-1) + 
-		 computationTime.Seconds()) / float64(moe.stats.TotalCalls)
+	moe.stats.AvgForwardTime =
+		(moe.stats.AvgForwardTime*float64(moe.stats.TotalCalls-1) +
+			computationTime.Seconds()) / float64(moe.stats.TotalCalls)
 	moe.stats.LastUpdated = time.Now().Unix()
 }
 

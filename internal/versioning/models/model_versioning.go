@@ -14,28 +14,28 @@ import (
 type VersioningStrategy string
 
 const (
-	VersioningStrategySemantic VersioningStrategy = "semantic" // v1.0.0, v1.1.0, etc.
+	VersioningStrategySemantic    VersioningStrategy = "semantic"    // v1.0.0, v1.1.0, etc.
 	VersioningStrategyIncremental VersioningStrategy = "incremental" // v1, v2, v3, etc.
-	VersioningStrategyTimestamp VersioningStrategy = "timestamp" // timestamp-based
+	VersioningStrategyTimestamp   VersioningStrategy = "timestamp"   // timestamp-based
 )
 
 // ModelVersioning interface for model versioning operations
 type ModelVersioning interface {
 	// CreateVersion creates a new version of a model
 	CreateVersion(ctx context.Context, modelID string, strategy VersioningStrategy, metadata map[string]interface{}) (*ModelVersion, error)
-	
+
 	// PromoteVersion promotes a version to a new status
 	PromoteVersion(ctx context.Context, versionID string, targetStatus ModelVersionStatus) error
-	
+
 	// DeprecateVersion deprecates a version
 	DeprecateVersion(ctx context.Context, versionID string) error
-	
+
 	// GetVersionHistory gets version history for a model
 	GetVersionHistory(ctx context.Context, modelID string) ([]*ModelVersion, error)
-	
+
 	// CompareVersions compares two versions
 	CompareVersions(ctx context.Context, versionID1, versionID2 string) (*VersionComparison, error)
-	
+
 	// GetVersionLifecycle gets lifecycle information for a version
 	GetVersionLifecycle(ctx context.Context, versionID string) (*VersionLifecycle, error)
 }
@@ -45,7 +45,7 @@ type VersionComparison struct {
 	Version1      *ModelVersion `json:"version1"`
 	Version2      *ModelVersion `json:"version2"`
 	Differences   []string      `json:"differences"`
-	Compatibility string       `json:"compatibility"` // "compatible", "breaking", "unknown"
+	Compatibility string        `json:"compatibility"` // "compatible", "breaking", "unknown"
 }
 
 // VersionLifecycle represents lifecycle information
@@ -60,11 +60,11 @@ type VersionLifecycle struct {
 
 // StatusTransition represents a status transition
 type StatusTransition struct {
-	FromStatus   ModelVersionStatus `json:"from_status"`
-	ToStatus     ModelVersionStatus `json:"to_status"`
-	Timestamp    time.Time          `json:"timestamp"`
-	TriggeredBy  string             `json:"triggered_by"`
-	Reason       string             `json:"reason"`
+	FromStatus  ModelVersionStatus `json:"from_status"`
+	ToStatus    ModelVersionStatus `json:"to_status"`
+	Timestamp   time.Time          `json:"timestamp"`
+	TriggeredBy string             `json:"triggered_by"`
+	Reason      string             `json:"reason"`
 }
 
 // InMemoryModelVersioning implements ModelVersioning
@@ -214,9 +214,9 @@ func (mv *InMemoryModelVersioning) CompareVersions(ctx context.Context, versionI
 	}
 
 	comparison := &VersionComparison{
-		Version1:    version1,
-		Version2:    version2,
-		Differences: []string{},
+		Version1:      version1,
+		Version2:      version2,
+		Differences:   []string{},
 		Compatibility: "unknown",
 	}
 
@@ -286,4 +286,3 @@ func (mv *InMemoryModelVersioning) incrementSemanticVersion(version string) stri
 	patch++
 	return fmt.Sprintf("v%d.%d.%d", major, minor, patch)
 }
-

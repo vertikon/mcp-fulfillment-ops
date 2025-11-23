@@ -35,4 +35,3 @@ func (l *ZapLoggerAdapter) Warn(msg string, args ...interface{}) {
 		l.logger.Warn(msg)
 	}
 }
-

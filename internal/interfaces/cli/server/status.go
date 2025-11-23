@@ -1,1 +1,0 @@
-# Função: Status do servidor (health, uptime, endpoints)

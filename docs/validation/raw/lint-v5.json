@@ -1,0 +1,468 @@
+{
+  "linter_report_version": 5,
+  "modules": [
+    {
+      "module_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops",
+      "module_name": "github.com/vertikon/gera-treina\ngithub.com/vertikon/model-router\ngithub.com/vertikon/claude-desktop-agent\ngithub.com/vertikon/mcp-core-inventory\ngithub.com/vertikon/mcp-fulfillment-ops\ngithub.com/vertikon/mcp-wa-auth\ngithub.com/docker/compose/v2\ngithub.com/vertikon/mcp-gateway-providers-ai",
+      "linter_results": [
+        {
+          "tool": "golangci-lint",
+          "exit_code": 3,
+          "issues": [],
+          "fail_count": 0,
+          "warn_count": 0,
+          "info_count": 0,
+          "raw_log_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\lint-temp.json"
+        },
+        {
+          "tool": "govet",
+          "exit_code": 1,
+          "issues": [
+            {
+              "tool": "govet",
+              "file": "cmd/main.go",
+              "line": 12,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "pkg/logger/logger.go",
+              "line": 8,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "pkg/logger/fields.go",
+              "line": 4,
+              "col": 8,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "pkg/logger/logger.go",
+              "line": 10,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/core/config/config.go",
+              "line": 10,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/observability/metrics.go",
+              "line": 7,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/observability/metrics.go",
+              "line": 8,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/observability/tracing.go",
+              "line": 7,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/observability/tracing.go",
+              "line": 8,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/observability/tracing.go",
+              "line": 9,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/observability/tracing.go",
+              "line": 10,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/observability/tracing.go",
+              "line": 11,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/observability/tracing.go",
+              "line": 12,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "pkg/httpserver/server.go",
+              "line": 10,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "pkg/httpserver/server.go",
+              "line": 11,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "cmd/fulfillment-ops/main.go",
+              "line": 13,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "cmd/fulfillment-ops/main.go",
+              "line": 14,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "cmd/fulfillment-ops/main.go",
+              "line": 16,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/domain/fulfillment/cycle_count_task.go",
+              "line": 7,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/adapters/redis/redis_client.go",
+              "line": 8,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "cmd/mcp-cli/main.go",
+              "line": 8,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "cmd/mcp-init/internal/config/config.go",
+              "line": 11,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/infrastructure/cloud/kubernetes/k8s_client.go",
+              "line": 11,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/infrastructure/cloud/kubernetes/k8s_client.go",
+              "line": 12,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/infrastructure/cloud/kubernetes/k8s_client.go",
+              "line": 13,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/infrastructure/cloud/kubernetes/k8s_client.go",
+              "line": 14,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/infrastructure/cloud/kubernetes/k8s_client.go",
+              "line": 15,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/infrastructure/cloud/kubernetes/k8s_client.go",
+              "line": 16,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/infrastructure/cloud/kubernetes/k8s_client.go",
+              "line": 17,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/infrastructure/cloud/kubernetes/k8s_client.go",
+              "line": 18,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/infrastructure/cloud/kubernetes/k8s_client.go",
+              "line": 19,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/core/state/store.go",
+              "line": 9,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/interfaces/grpc/ai_grpc_server.go",
+              "line": 9,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/interfaces/grpc/interceptors/auth_interceptor.go",
+              "line": 10,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/interfaces/grpc/interceptors/auth_interceptor.go",
+              "line": 11,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/interfaces/grpc/interceptors/auth_interceptor.go",
+              "line": 12,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/monitoring/observability/distributed_tracing.go",
+              "line": 12,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/monitoring/observability/distributed_tracing.go",
+              "line": 13,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/security/auth/token_manager.go",
+              "line": 9,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/security/auth/auth_manager.go",
+              "line": 10,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/security/auth/oauth_provider.go",
+              "line": 16,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            },
+            {
+              "tool": "govet",
+              "file": "internal/security/encryption/encryption_manager.go",
+              "line": 15,
+              "col": 2,
+              "code": "govet",
+              "severity": "FAIL",
+              "message": "github.com/vertikon/mcp-shared@v0.0.0 (replaced by ./mcp-shared): reading E:\\vertikon\\mcp-shared\\go.mod: open E:\\vertikon\\mcp-shared\\go.mod: The system cannot find the path specified.",
+              "snippet": ""
+            }
+          ],
+          "fail_count": 42,
+          "warn_count": 0,
+          "info_count": 0,
+          "raw_log_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\govet.txt"
+        },
+        {
+          "tool": "staticcheck",
+          "exit_code": 1,
+          "issues": null,
+          "fail_count": 0,
+          "warn_count": 0,
+          "info_count": 0,
+          "raw_log_path": "E:\\vertikon\\.endurance\\internal\\services\\bloco-1-core\\mcp-fulfillment-ops\\docs\\validation\\raw\\staticcheck.txt"
+        }
+      ],
+      "total_fail": 42,
+      "total_warn": 0,
+      "total_info": 0,
+      "status": "FAIL"
+    }
+  ],
+  "timestamp": "2025-11-20 11:18:21",
+  "total_fail": 42,
+  "total_info": 0,
+  "total_modules": 1,
+  "total_warn": 0
+}

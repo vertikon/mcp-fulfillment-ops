@@ -35,30 +35,30 @@ type Metric struct {
 
 // MetricsCollector collects and manages metrics
 type MetricsCollector struct {
-	mu            sync.RWMutex
-	metrics       map[string]*Metric
-	registry      *prometheus.Registry
-	counters      map[string]*prometheus.CounterVec
-	gauges        map[string]*prometheus.GaugeVec
-	histograms    map[string]*prometheus.HistogramVec
-	summaries     map[string]*prometheus.SummaryVec
+	mu              sync.RWMutex
+	metrics         map[string]*Metric
+	registry        *prometheus.Registry
+	counters        map[string]*prometheus.CounterVec
+	gauges          map[string]*prometheus.GaugeVec
+	histograms      map[string]*prometheus.HistogramVec
+	summaries       map[string]*prometheus.SummaryVec
 	collectInterval time.Duration
-	ctx           context.Context
-	cancel        context.CancelFunc
+	ctx             context.Context
+	cancel          context.CancelFunc
 }
 
 // MetricsConfig represents metrics collection configuration
 type MetricsConfig struct {
-	CollectInterval time.Duration `json:"collect_interval"`
-	EnablePrometheus bool         `json:"enable_prometheus"`
-	EnableExport     bool         `json:"enable_export"`
+	CollectInterval  time.Duration `json:"collect_interval"`
+	EnablePrometheus bool          `json:"enable_prometheus"`
+	EnableExport     bool          `json:"enable_export"`
 	ExportInterval   time.Duration `json:"export_interval"`
 }
 
 // DefaultMetricsConfig returns default metrics configuration
 func DefaultMetricsConfig() *MetricsConfig {
 	return &MetricsConfig{
-		CollectInterval: 15 * time.Second,
+		CollectInterval:  15 * time.Second,
 		EnablePrometheus: true,
 		EnableExport:     false,
 		ExportInterval:   60 * time.Second,
@@ -74,15 +74,15 @@ func NewMetricsCollector(config *MetricsConfig) *MetricsCollector {
 	ctx, cancel := context.WithCancel(context.Background())
 
 	collector := &MetricsCollector{
-		metrics:        make(map[string]*Metric),
-		registry:       prometheus.NewRegistry(),
-		counters:       make(map[string]*prometheus.CounterVec),
-		gauges:         make(map[string]*prometheus.GaugeVec),
-		histograms:     make(map[string]*prometheus.HistogramVec),
-		summaries:      make(map[string]*prometheus.SummaryVec),
+		metrics:         make(map[string]*Metric),
+		registry:        prometheus.NewRegistry(),
+		counters:        make(map[string]*prometheus.CounterVec),
+		gauges:          make(map[string]*prometheus.GaugeVec),
+		histograms:      make(map[string]*prometheus.HistogramVec),
+		summaries:       make(map[string]*prometheus.SummaryVec),
 		collectInterval: config.CollectInterval,
-		ctx:            ctx,
-		cancel:         cancel,
+		ctx:             ctx,
+		cancel:          cancel,
 	}
 
 	if config.EnablePrometheus {

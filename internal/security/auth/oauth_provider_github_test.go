@@ -157,4 +157,3 @@ func TestNewGitHubProvider_DefaultScopes(t *testing.T) {
 	// Verify default scopes
 	assert.Contains(t, provider.oauth2Config.Scopes, "user:email")
 }
-

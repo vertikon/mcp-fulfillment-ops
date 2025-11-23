@@ -1,13 +1,13 @@
 services:
   postgres:
-    image: postgres:15-alpine
+    image: postgres:16-alpine  # Usando versão mais recente
     container_name: fulfillment-postgres
     environment:
       POSTGRES_USER: fulfillment
       POSTGRES_PASSWORD: fulfillment123
       POSTGRES_DB: fulfillment
     ports:
-      - "5432:5432"
+      - "5435:5432"  # Porta diferente para evitar conflito
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./internal/adapters/postgres/migrations:/docker-entrypoint-initdb.d
@@ -24,8 +24,8 @@ services:
     container_name: fulfillment-nats
     command: ["-js", "-m", "8222"]
     ports:
-      - "4222:4222"  # NATS client
-      - "8222:8222"  # HTTP monitoring
+      - "4225:4222"  # Porta diferente para evitar conflito
+      - "8225:8222"  # Porta diferente para evitar conflito
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8222/healthz"]
       interval: 10s
@@ -38,7 +38,7 @@ services:
     image: redis:7-alpine
     container_name: fulfillment-redis
     ports:
-      - "6379:6379"
+      - "6381:6379"  # Porta diferente para evitar conflito
     volumes:
       - redis_data:/data
     healthcheck:
@@ -73,7 +73,7 @@ services:
       # Environment
       ENV: development
     ports:
-      - "8080:8080"
+      - "8082:8080"  # Porta diferente para evitar conflito
     depends_on:
       postgres:
         condition: service_healthy
@@ -100,4 +100,3 @@ volumes:
 networks:
   fulfillment-network:
     driver: bridge
-

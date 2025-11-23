@@ -138,4 +138,3 @@ func TestNewGoogleProvider_DefaultScopes(t *testing.T) {
 	assert.Contains(t, provider.oauth2Config.Scopes, "profile")
 	assert.Contains(t, provider.oauth2Config.Scopes, "email")
 }
-

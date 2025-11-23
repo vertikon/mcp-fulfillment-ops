@@ -65,7 +65,7 @@ type GenerateMCPResponse struct {
 
 // ValidateMCPResponse represents a response from MCP validation
 type ValidateMCPResponse struct {
-	MCPID string `json:"mcp_id"`
-	Valid bool   `json:"valid"`
+	MCPID  string   `json:"mcp_id"`
+	Valid  bool     `json:"valid"`
 	Errors []string `json:"errors,omitempty"`
 }

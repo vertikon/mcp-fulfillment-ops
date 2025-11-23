@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"runtime"
+	"runtime/debug"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -15,70 +16,70 @@ import (
 
 // MemoryOptimizerConfig represents configuration for memory optimization
 type MemoryOptimizerConfig struct {
-	GCThreshold      float64       `json:"gc_threshold"`
-	Interval        time.Duration `json:"interval"`
-	MaxMemoryMB     int           `json:"max_memory_mb"`
-	CompactionRatio float64       `json:"compaction_ratio"`
-	EvictionPolicy  EvictionPolicy `json:"eviction_policy"`
-	EnableGC        bool          `json:"enable_gc"`
-	EnableCompaction bool         `json:"enable_compaction"`
+	GCThreshold      float64        `json:"gc_threshold"`
+	Interval         time.Duration  `json:"interval"`
+	MaxMemoryMB      int            `json:"max_memory_mb"`
+	CompactionRatio  float64        `json:"compaction_ratio"`
+	EvictionPolicy   EvictionPolicy `json:"eviction_policy"`
+	EnableGC         bool           `json:"enable_gc"`
+	EnableCompaction bool           `json:"enable_compaction"`
 }
 
 // EvictionPolicy represents different eviction strategies
 type EvictionPolicy string
 
 const (
-	PolicyLRU      EvictionPolicy = "lru"
-	PolicyLFU      EvictionPolicy = "lfu"
-	PolicyFIFO     EvictionPolicy = "fifo"
-	PolicyRandom   EvictionPolicy = "random"
-	PolicyTTL      EvictionPolicy = "ttl"
+	PolicyLRU    EvictionPolicy = "lru"
+	PolicyLFU    EvictionPolicy = "lfu"
+	PolicyFIFO   EvictionPolicy = "fifo"
+	PolicyRandom EvictionPolicy = "random"
+	PolicyTTL    EvictionPolicy = "ttl"
 )
 
 // MemoryPool represents a pooled memory allocator
 type MemoryPool struct {
-	config         MemoryOptimizerConfig
-	pools          map[int]*MemorySegment
-	freeSegments   chan *MemorySegment
-	usedSegments   map[string]*MemorySegment
-	segmentsMu     sync.RWMutex
-	stats          *MemoryPoolStats
-	compactor      *MemoryCompactor
+	config           MemoryOptimizerConfig
+	pools            map[int]*MemorySegment
+	freeSegments     chan *MemorySegment
+	usedSegments     map[string]*MemorySegment
+	segmentsMu       sync.RWMutex
+	stats            *MemoryPoolStats
+	compactor        *MemoryCompactor
 	garbageCollector *GarbageCollector
-	ctx            context.Context
-	cancel         context.CancelFunc
+	ctx              context.Context
+	cancel           context.CancelFunc
 }
 
 // MemorySegment represents a pooled memory segment
 type MemorySegment struct {
-	ID          string        `json:"id"`
-	Size        int           `json:"size"`
-	Data        []byte        `json:"data"`
-	InUse       bool          `json:"in_use"`
-	LastUsed    time.Time     `json:"last_used"`
-	ExpiresAt   *time.Time    `json:"expires_at,omitempty"`
-	AccessCount  int64         `json:"access_count"`
-	Locked      bool          `json:"locked"`
-	Tags        []string      `json:"tags,omitempty"`
+	ID          string     `json:"id"`
+	Size        int        `json:"size"`
+	Data        []byte     `json:"data"`
+	InUse       bool       `json:"in_use"`
+	LastUsed    time.Time  `json:"last_used"`
+	ExpiresAt   *time.Time `json:"expires_at,omitempty"`
+	AccessCount int64      `json:"access_count"`
+	Locked      bool       `json:"locked"`
+	Tags        []string   `json:"tags,omitempty"`
 }
 
 // MemoryCompactor handles memory compaction
 type MemoryCompactor struct {
-	config       CompactionConfig
-	segments     []*MemorySegment
-	strategy     CompactionStrategy
-	stats        *CompactorStats
-	running      bool
-	mu           sync.RWMutex
+	config   CompactionConfig
+	segments []*MemorySegment
+	strategy CompactionStrategy
+	stats    *CompactorStats
+	running  bool
+	mu       sync.RWMutex
 }
 
 // CompactionConfig represents compaction configuration
 type CompactionConfig struct {
-	Enabled           bool          `json:"enabled"`
-	Interval          time.Duration `json:"interval"`
-	Threshold         float64       `json:"threshold"`
-	MinSegmentSize    int           `json:"min_segment_size"`
-	MaxFragmentation  float64       `json:"max_fragmentation"`
+	Enabled          bool          `json:"enabled"`
+	Interval         time.Duration `json:"interval"`
+	Threshold        float64       `json:"threshold"`
+	MinSegmentSize   int           `json:"min_segment_size"`
+	MaxFragmentation float64       `json:"max_fragmentation"`
 }
 
 // CompactionStrategy represents different compaction strategies
@@ -87,64 +88,64 @@ type CompactionStrategy string
 const (
 	StrategyDefragment  CompactionStrategy = "defragment"
 	StrategyConsolidate CompactionStrategy = "consolidate"
-	StrategyReclaim    CompactionStrategy = "reclaim"
+	StrategyReclaim     CompactionStrategy = "reclaim"
 )
 
 // GarbageCollector handles garbage collection optimization
 type GarbageCollector struct {
-	config       GCConfig
-	stats        *GCStats
-	running      bool
-	mu           sync.RWMutex
+	config  GCConfig
+	stats   *GCStats
+	running bool
+	mu      sync.RWMutex
 }
 
 // GCConfig represents garbage collection configuration
 type GCConfig struct {
-	Enabled           bool          `json:"enabled"`
-	Interval          time.Duration `json:"interval"`
-	TargetGCPause     time.Duration `json:"target_gc_pause"`
-	MaxGCPause        time.Duration `json:"max_gc_pause"`
-	GCPercent         int           `json:"gc_percent"`
-	SoftMemoryLimit   int           `json:"soft_memory_limit"`
-	HardMemoryLimit   int           `json:"hard_memory_limit"`
+	Enabled         bool          `json:"enabled"`
+	Interval        time.Duration `json:"interval"`
+	TargetGCPause   time.Duration `json:"target_gc_pause"`
+	MaxGCPause      time.Duration `json:"max_gc_pause"`
+	GCPercent       int           `json:"gc_percent"`
+	SoftMemoryLimit int           `json:"soft_memory_limit"`
+	HardMemoryLimit int           `json:"hard_memory_limit"`
 }
 
 // MemoryPoolStats tracks memory pool performance
 type MemoryPoolStats struct {
-	TotalSegments     int64   `json:"total_segments"`
-	UsedSegments      int64   `json:"used_segments"`
-	FreeSegments      int64   `json:"free_segments"`
-	TotalMemoryMB     float64  `json:"total_memory_mb"`
-	UsedMemoryMB      float64  `json:"used_memory_mb"`
-	FreeMemoryMB      float64  `json:"free_memory_mb"`
-	HitRate          float64  `json:"hit_rate"`
-	MissRate         float64  `json:"miss_rate"`
-	Evictions        int64    `json:"evictions"`
-	Compactions      int64    `json:"compactions"`
-	GCRuns          int64    `json:"gc_runs"`
-	LastGC           int64    `json:"last_gc"`
-	LastUpdated      int64    `json:"last_updated"`
+	TotalSegments int64   `json:"total_segments"`
+	UsedSegments  int64   `json:"used_segments"`
+	FreeSegments  int64   `json:"free_segments"`
+	TotalMemoryMB int64   `json:"total_memory_mb"` // MB as int64
+	UsedMemoryMB  int64   `json:"used_memory_mb"`  // MB as int64
+	FreeMemoryMB  int64   `json:"free_memory_mb"`  // MB as int64
+	HitRate       float64 `json:"hit_rate"`
+	MissRate      float64 `json:"miss_rate"`
+	Evictions     int64   `json:"evictions"`
+	Compactions   int64   `json:"compactions"`
+	GCRuns        int64   `json:"gc_runs"`
+	LastGC        int64   `json:"last_gc"`
+	LastUpdated   int64   `json:"last_updated"`
 }
 
 // CompactorStats tracks compaction performance
 type CompactorStats struct {
-	TotalCompactions  int64         `json:"total_compactions"`
-	CompactedBytes    int64         `json:"compacted_bytes"`
-	FreedBytes        int64         `json:"freed_bytes"`
-	AvgCompactionTime time.Duration `json:"avg_compaction_time"`
-	FragmentationRate float64       `json:"fragmentation_rate"`
-	LastCompaction   int64          `json:"last_compaction"`
-	LastUpdated      int64          `json:"last_updated"`
+	TotalCompactions  int64   `json:"total_compactions"`
+	CompactedBytes    int64   `json:"compacted_bytes"`
+	FreedBytes        int64   `json:"freed_bytes"`
+	AvgCompactionTime int64   `json:"avg_compaction_time"` // nanoseconds
+	FragmentationRate float64 `json:"fragmentation_rate"`
+	LastCompaction    int64   `json:"last_compaction"`
+	LastUpdated       int64   `json:"last_updated"`
 }
 
 // GCStats tracks garbage collection performance
 type GCStats struct {
-	TotalGCs         int64         `json:"total_gcs"`
-	AvgGCPause       time.Duration `json:"avg_gc_pause"`
-	MaxGCPause        time.Duration `json:"max_gc_pause"`
-	MemoryReclaimedMB float64       `json:"memory_reclaimed_mb"`
-	LastGCTime       int64         `json:"last_gc_time"`
-	LastUpdated       int64         `json:"last_updated"`
+	TotalGCs          int64 `json:"total_gcs"`
+	AvgGCPause        int64 `json:"avg_gc_pause"`        // nanoseconds
+	MaxGCPause        int64 `json:"max_gc_pause"`        // nanoseconds
+	MemoryReclaimedMB int64 `json:"memory_reclaimed_mb"` // MB as int64
+	LastGCTime        int64 `json:"last_gc_time"`
+	LastUpdated       int64 `json:"last_updated"`
 }
 
 // NewMemoryOptimizer creates a new memory optimizer
@@ -164,15 +165,15 @@ func NewMemoryOptimizer(config MemoryOptimizerConfig) *MemoryPool {
 	)
 
 	ctx, cancel := context.WithCancel(context.Background())
-	
+
 	pool := &MemoryPool{
-		config:        config,
-		pools:         make(map[int]*MemorySegment),
-		freeSegments:  make(chan *MemorySegment, 1000),
-		usedSegments:  make(map[string]*MemorySegment),
-		stats:         &MemoryPoolStats{},
-		ctx:           ctx,
-		cancel:        cancel,
+		config:       config,
+		pools:        make(map[int]*MemorySegment),
+		freeSegments: make(chan *MemorySegment, 1000),
+		usedSegments: make(map[string]*MemorySegment),
+		stats:        &MemoryPoolStats{},
+		ctx:          ctx,
+		cancel:       cancel,
 	}
 
 	// Initialize compactor
@@ -193,8 +194,8 @@ func NewMemoryOptimizer(config MemoryOptimizerConfig) *MemoryPool {
 			TargetGCPause:   5 * time.Millisecond,
 			MaxGCPause:      10 * time.Millisecond,
 			GCPercent:       100,
-			SoftMemoryLimit:  int(float64(config.MaxMemoryMB) * 0.8),
-			HardMemoryLimit:  config.MaxMemoryMB,
+			SoftMemoryLimit: int(float64(config.MaxMemoryMB) * 0.8),
+			HardMemoryLimit: config.MaxMemoryMB,
 		})
 	}
 
@@ -229,7 +230,7 @@ func (mo *MemoryPool) Stop() error {
 	logger.Info("Stopping memory optimizer")
 
 	mo.cancel()
-	
+
 	// Force garbage collection
 	runtime.GC()
 
@@ -246,11 +247,11 @@ func (mo *MemoryPool) Allocate(size int, tags ...string) (*MemorySegment, error)
 			segment.LastUsed = time.Now()
 			segment.AccessCount++
 			segment.Tags = tags
-			
+
 			mo.segmentsMu.Lock()
 			mo.usedSegments[segment.ID] = segment
 			mo.segmentsMu.Unlock()
-			
+
 			return segment, nil
 		}
 	default:
@@ -258,13 +259,13 @@ func (mo *MemoryPool) Allocate(size int, tags ...string) (*MemorySegment, error)
 
 	// Create new segment
 	segment := &MemorySegment{
-		ID:         fmt.Sprintf("seg_%d_%d", size, time.Now().UnixNano()),
-		Size:       size,
-		Data:       make([]byte, size),
-		InUse:      true,
-		LastUsed:   time.Now(),
+		ID:          fmt.Sprintf("seg_%d_%d", size, time.Now().UnixNano()),
+		Size:        size,
+		Data:        make([]byte, size),
+		InUse:       true,
+		LastUsed:    time.Now(),
 		AccessCount: 1,
-		Tags:       tags,
+		Tags:        tags,
 	}
 
 	mo.segmentsMu.Lock()
@@ -326,7 +327,7 @@ func (mo *MemoryPool) checkMemoryUsage() {
 
 	currentMemoryMB := float64(m.Alloc) / 1024 / 1024
 	maxMemoryMB := float64(mo.config.MaxMemoryMB)
-	
+
 	// Calculate usage ratio
 	usageRatio := currentMemoryMB / maxMemoryMB
 
@@ -342,7 +343,7 @@ func (mo *MemoryPool) checkMemoryUsage() {
 			zap.Float64("usage_ratio", usageRatio),
 			zap.Float64("threshold", mo.config.GCThreshold),
 		)
-		
+
 		mo.triggerGarbageCollection()
 	}
 
@@ -351,7 +352,7 @@ func (mo *MemoryPool) checkMemoryUsage() {
 		logger.Warn("High memory usage, triggering eviction",
 			zap.Float64("usage_ratio", usageRatio),
 		)
-		
+
 		mo.triggerEviction()
 	}
 }
@@ -409,15 +410,15 @@ func (mo *MemoryPool) triggerEviction() {
 	for i := 0; i < evictCount && i < len(candidates); i++ {
 		segment := candidates[i]
 		delete(mo.usedSegments, segment.ID)
-		
+
 		// Add to free pool
 		select {
 		case mo.freeSegments <- segment:
 		default:
 		}
-		
+
 		atomic.AddInt64(&mo.stats.Evictions, 1)
-		
+
 		logger.Debug("Evicted memory segment",
 			zap.String("segment_id", segment.ID),
 			zap.Int("size", segment.Size),
@@ -500,7 +501,7 @@ func (mo *MemoryPool) collectStats() {
 	if totalRequests > 0 {
 		hitRate := float64(atomic.LoadInt64(&mo.stats.UsedSegments)) / float64(totalRequests)
 		missRate := float64(atomic.LoadInt64(&mo.stats.Evictions)) / float64(totalRequests)
-		
+
 		// These are simplified calculations
 		logger.Debug("Memory pool statistics",
 			zap.Float64("hit_rate", hitRate),
@@ -521,7 +522,7 @@ func (mo *MemoryPool) GetStats() MemoryPoolStats {
 // NewMemoryCompactor creates a new memory compactor
 func NewMemoryCompactor(config CompactionConfig) *MemoryCompactor {
 	return &MemoryCompactor{
-		config:  config,
+		config:   config,
 		segments: make([]*MemorySegment, 0),
 		strategy: StrategyDefragment,
 		stats:    &CompactorStats{},
@@ -561,28 +562,28 @@ func (mc *MemoryCompactor) compact() {
 	}
 
 	start := time.Now()
-	
+
 	// Simplified compaction logic
 	compactedBytes := int64(0)
 	freedBytes := int64(0)
-	
+
 	// In practice, this would:
 	// 1. Identify fragmented segments
 	// 2. Consolidate adjacent segments
 	// 3. Reclaim unused space
-	
+
 	atomic.AddInt64(&mc.stats.TotalCompactions, 1)
 	atomic.AddInt64(&mc.stats.CompactedBytes, compactedBytes)
 	atomic.AddInt64(&mc.stats.FreedBytes, freedBytes)
-	
+
 	duration := time.Since(start)
-	
+
 	// Update average compaction time
 	total := atomic.LoadInt64(&mc.stats.TotalCompactions)
-	current := time.Duration(atomic.LoadInt64(&mc.stats.AvgCompactionTime.Nanoseconds()))
-	avg := time.Duration((int64(current)*total + int64(duration.Nanoseconds())) / total)
-	atomic.StoreInt64(&mc.stats.AvgCompactionTime.Nanoseconds(), int64(avg))
-	
+	current := atomic.LoadInt64(&mc.stats.AvgCompactionTime)
+	avg := (current*total + duration.Nanoseconds()) / (total + 1)
+	atomic.StoreInt64(&mc.stats.AvgCompactionTime, avg)
+
 	atomic.StoreInt64(&mc.stats.LastCompaction, time.Now().Unix())
 
 	logger.Debug("Memory compaction completed",
@@ -611,7 +612,7 @@ func (gc *GarbageCollector) Start(ctx context.Context) {
 
 	// Set GOGC if specified
 	if gc.config.GCPercent > 0 {
-		runtime.SetGCPercent(gc.config.GCPercent)
+		debug.SetGCPercent(gc.config.GCPercent)
 	}
 
 	ticker := time.NewTicker(gc.config.Interval)
@@ -654,38 +655,38 @@ func (gc *GarbageCollector) checkAndTriggerGC() {
 // TriggerGC triggers optimized garbage collection
 func (gc *GarbageCollector) TriggerGC() {
 	start := time.Now()
-	
+
 	// Get memory stats before GC
 	var mBefore runtime.MemStats
 	runtime.ReadMemStats(&mBefore)
-	
+
 	// Force garbage collection
 	runtime.GC()
-	
+
 	// Get memory stats after GC
 	var mAfter runtime.MemStats
 	runtime.ReadMemStats(&mAfter)
-	
+
 	pause := time.Since(start)
 	reclaimedMB := float64(mBefore.Alloc-mAfter.Alloc) / 1024 / 1024
-	
+
 	// Update statistics
 	atomic.AddInt64(&gc.stats.TotalGCs, 1)
-	atomic.StoreInt64(&gc.stats.MemoryReclaimedMB, int64(reclaimedMB*100)/100) // Convert to int64 with 2 decimal places
+	atomic.StoreInt64(&gc.stats.MemoryReclaimedMB, int64(reclaimedMB))
 	atomic.StoreInt64(&gc.stats.LastGCTime, time.Now().Unix())
-	
+
 	// Update average pause time
 	total := atomic.LoadInt64(&gc.stats.TotalGCs)
-	current := time.Duration(atomic.LoadInt64(&gc.stats.AvgGCPause.Nanoseconds()))
-	avg := time.Duration((int64(current)*total + int64(pause.Nanoseconds())) / total)
-	atomic.StoreInt64(&gc.stats.AvgGCPause.Nanoseconds(), int64(avg))
-	
+	current := atomic.LoadInt64(&gc.stats.AvgGCPause)
+	avg := (current*(total-1) + pause.Nanoseconds()) / total
+	atomic.StoreInt64(&gc.stats.AvgGCPause, avg)
+
 	// Update max pause time
-	maxPause := time.Duration(atomic.LoadInt64(&gc.stats.MaxGCPause.Nanoseconds()))
-	if pause > maxPause {
-		atomic.StoreInt64(&gc.stats.MaxGCPause.Nanoseconds(), int64(pause.Nanoseconds()))
+	maxPause := atomic.LoadInt64(&gc.stats.MaxGCPause)
+	if pause.Nanoseconds() > maxPause {
+		atomic.StoreInt64(&gc.stats.MaxGCPause, pause.Nanoseconds())
 	}
-	
+
 	logger.Debug("Optimized GC completed",
 		zap.Duration("pause", pause),
 		zap.Float64("reclaimed_mb", reclaimedMB),

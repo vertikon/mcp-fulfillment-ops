@@ -41,22 +41,22 @@ type SessionStore interface {
 type SessionManager interface {
 	// Create creates a new session for a user
 	Create(ctx context.Context, userID, token, ipAddress, userAgent string) (*Session, error)
-	
+
 	// Get retrieves a session by ID
 	Get(ctx context.Context, sessionID string) (*Session, error)
-	
+
 	// GetByUserID retrieves all active sessions for a user
 	GetByUserID(ctx context.Context, userID string) ([]*Session, error)
-	
+
 	// Validate checks if session is valid
 	Validate(ctx context.Context, sessionID string) (*Session, error)
-	
+
 	// Refresh extends session expiration
 	Refresh(ctx context.Context, sessionID string) error
-	
+
 	// Invalidate invalidates a session
 	Invalidate(ctx context.Context, sessionID string) error
-	
+
 	// InvalidateAll invalidates all sessions for a user
 	InvalidateAll(ctx context.Context, userID string) error
 }

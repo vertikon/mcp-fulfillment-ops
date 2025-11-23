@@ -43,4 +43,3 @@ func LoggingInterceptor() grpc.UnaryServerInterceptor {
 		return resp, err
 	}
 }
-

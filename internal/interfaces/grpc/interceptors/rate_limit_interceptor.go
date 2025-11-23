@@ -27,7 +27,7 @@ func RateLimitInterceptor(rateLimiter RateLimiter, limit int, window time.Durati
 	) (interface{}, error) {
 		// Get client identifier
 		clientID := "unknown"
-		
+
 		// Try to get user ID from context first
 		if userID, ok := ctx.Value("user_id").(string); ok {
 			clientID = userID
@@ -59,4 +59,3 @@ func RateLimitInterceptor(rateLimiter RateLimiter, limit int, window time.Durati
 		return handler(ctx, req)
 	}
 }
-

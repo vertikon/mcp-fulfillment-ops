@@ -100,15 +100,15 @@ func (g *ConfigGenerator) Validate(req ConfigGenerateRequest) error {
 	if req.Type == "" {
 		return fmt.Errorf("config type is required")
 	}
-	
+
 	if req.Name == "" {
 		return fmt.Errorf("name is required")
 	}
-	
+
 	if req.OutputPath == "" {
 		return fmt.Errorf("output path is required")
 	}
-	
+
 	validTypes := []string{"env", "yaml", "json", "nats-schema", "toml"}
 	valid := false
 	for _, vt := range validTypes {
@@ -120,72 +120,72 @@ func (g *ConfigGenerator) Validate(req ConfigGenerateRequest) error {
 	if !valid {
 		return fmt.Errorf("invalid config type: %s (valid types: %v)", req.Type, validTypes)
 	}
-	
+
 	return nil
 }
 
 // generateEnv generates a .env file
 func (g *ConfigGenerator) generateEnv(req ConfigGenerateRequest) ([]byte, error) {
 	var lines []string
-	
+
 	lines = append(lines, fmt.Sprintf("# Generated config for %s", req.Name))
 	lines = append(lines, "")
-	
+
 	for key, value := range req.Values {
 		line := fmt.Sprintf("%s=%v", strings.ToUpper(key), value)
 		lines = append(lines, line)
 	}
-	
+
 	return []byte(strings.Join(lines, "\n")), nil
 }
 
 // generateYAML generates a YAML config file
 func (g *ConfigGenerator) generateYAML(req ConfigGenerateRequest) ([]byte, error) {
 	data := make(map[string]interface{})
-	
+
 	// Add name
 	data["name"] = req.Name
-	
+
 	// Add values
 	if req.Values != nil {
 		data["config"] = req.Values
 	}
-	
+
 	// Add schema if provided
 	if req.Schema != nil {
 		data["schema"] = req.Schema
 	}
-	
+
 	content, err := yaml.Marshal(data)
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal YAML: %w", err)
 	}
-	
+
 	return content, nil
 }
 
 // generateJSON generates a JSON config file
 func (g *ConfigGenerator) generateJSON(req ConfigGenerateRequest) ([]byte, error) {
 	data := make(map[string]interface{})
-	
+
 	// Add name
 	data["name"] = req.Name
-	
+
 	// Add values
 	if req.Values != nil {
 		data["config"] = req.Values
 	}
-	
+
 	// Add schema if provided
 	if req.Schema != nil {
 		data["schema"] = req.Schema
 	}
-	
+
 	content, err := yaml.Marshal(data)
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal JSON: %w", err)
 	}
-	
+
 	// Convert YAML to JSON-like structure (simplified)
 	// In production, use proper JSON marshaling
 	return content, nil
@@ -194,13 +194,13 @@ func (g *ConfigGenerator) generateJSON(req ConfigGenerateRequest) ([]byte, error
 // generateNATSSchema generates a NATS schema file
 func (g *ConfigGenerator) generateNATSSchema(req ConfigGenerateRequest) ([]byte, error) {
 	var lines []string
-	
+
 	lines = append(lines, fmt.Sprintf("# NATS Schema for %s", req.Name))
 	lines = append(lines, "")
 	lines = append(lines, "subject: "+req.Name)
 	lines = append(lines, "")
 	lines = append(lines, "schema:")
-	
+
 	// Generate schema from values
 	if req.Values != nil {
 		for key, value := range req.Values {
@@ -208,24 +208,24 @@ func (g *ConfigGenerator) generateNATSSchema(req ConfigGenerateRequest) ([]byte,
 			lines = append(lines, fmt.Sprintf("  %s: %s", key, valueType))
 		}
 	}
-	
+
 	return []byte(strings.Join(lines, "\n")), nil
 }
 
 // generateTOML generates a TOML config file
 func (g *ConfigGenerator) generateTOML(req ConfigGenerateRequest) ([]byte, error) {
 	var lines []string
-	
+
 	lines = append(lines, fmt.Sprintf("# Generated TOML config for %s", req.Name))
 	lines = append(lines, "")
-	
+
 	if req.Values != nil {
 		for key, value := range req.Values {
 			line := fmt.Sprintf("%s = %v", key, value)
 			lines = append(lines, line)
 		}
 	}
-	
+
 	return []byte(strings.Join(lines, "\n")), nil
 }
 

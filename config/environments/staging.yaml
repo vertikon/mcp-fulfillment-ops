@@ -6,7 +6,7 @@ server:
 database:
   host: "postgres-staging"
   port: 5432
-  database: "mcp_hulk_staging"
+  database: "fulfillment_staging"
   ssl_mode: "require"
 
 ai:
